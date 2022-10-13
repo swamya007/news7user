@@ -1,0 +1,94 @@
+.about-us-container {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 1.2rem;
+}
+
+.about-us-text-container {
+    margin-top: 15px;
+    color: #9c9c9c;
+}
+
+.contact-information {
+    margin-top: 15px;
+}
+
+.address {
+    color: #9c9c9c;
+}
+
+.contact-information span{
+    font-weight: bold;
+}
+
+.send-message-container {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 1.2rem;
+    margin-top: 1.5rem;
+}
+
+.contact-us-container {
+    padding: 2% 3.9%;
+    background-color: #f4f4f4;
+}
+
+.contact-info-container {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 1.2rem;
+    margin: 1rem 0rem;
+}
+
+.heading-container {
+    display: flex;
+    align-items: center;
+}
+
+.heading-container .grey-line {
+    background-color: #bbb;
+    height: 10px;
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.contact-us-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-us-form input{
+    width: 100%;
+    min-height: 40px;
+}
+
+.contact-us-form textarea{
+    width: 100%;
+    min-height: 150px;
+}
+
+.contact-us-form mat-label {
+    font-weight: bold;
+    color: #595959;
+    margin: 1rem 0rem 0.3rem 0rem;
+    font-size: 14px;
+}
+
+.contact-us-form .mat-raised-button {
+    width: 17%;
+    background-color: #b50000;
+    color: #fff;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.filler-container {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    height: 40px;
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+}

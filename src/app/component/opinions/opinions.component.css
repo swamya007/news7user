@@ -1,0 +1,70 @@
+.opinion-main-section {
+  background: #fff;
+  border: 1px rgb(215, 215, 215) solid;
+  padding: 1.3rem;
+}
+
+.news-section {
+  background: #fff;
+  cursor: pointer;
+}
+
+.heading-container {
+  display: flex;
+  align-items: center;
+}
+
+.heading-container .grey-line {
+  background-color: #bbb;
+  height: 10px;
+  flex-grow: 1;
+  margin-left: 10px;
+}
+
+.opinion-content {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.opinion-content span {
+  background-color: #d12133;
+  line-height: 13px;
+  padding: 3px 7px 2px;
+  color: white;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.opinion-section p {
+  margin-top: 20px;
+  margin-bottom: 0px;
+  font-weight: bold;
+  color: rgb(71, 71, 71);
+  transition: all .4s ease;
+  text-align: center;
+}
+
+.author-name {
+  text-align: center;
+}
+
+.divider {
+  margin-top: 40px;
+  border-top: 1px dotted #bbb;
+}
+
+.load-more-button {
+  width: 100%;
+  padding: 5px 0px;
+  font-size: 15px;
+  color: #000;
+  font-weight: bold;
+  background: transparent;
+  border: 1px solid #bbb;
+  margin-top: 20px;
+}
+
+.load-more-button:hover {
+  color: #fff;
+  background-color: rgb(211, 0, 0);
+}

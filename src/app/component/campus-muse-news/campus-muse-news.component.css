@@ -1,0 +1,34 @@
+.news-section {
+  padding: 1rem;
+  background: transparent;
+  color: #fff;
+}
+
+.news-box {
+  padding: 1rem 0rem;
+}
+
+.news-box:hover {
+  color: #000;
+}
+
+.news-img-container img {
+  width: 100%;
+  cursor: pointer;
+}
+
+
+.heading-container {
+  display: flex;
+  align-items: center;
+}
+.heading-container .grey-line {
+  background-color: #bbb;
+  height: 10px;
+  flex-grow: 1;
+  margin-left: 10px;
+}
+
+.divider {
+  border-top: 1px dotted #bbb;
+}

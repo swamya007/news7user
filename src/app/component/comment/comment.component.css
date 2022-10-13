@@ -1,0 +1,32 @@
+.heading-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .heading-container .grey-line {
+    background-color: #bbb;
+    height: 10px;
+    flex-grow: 1;
+    margin-left: 10px;
+  }
+  
+  .send-message-container {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 1.2rem;
+    margin-top: 1.5rem;
+  }
+  .img-width{
+    width: 10%;
+    height: 10%;
+  }
+  .comment-name{
+    margin-top: 20px;
+  }
+  .name-user{
+    font-weight: 600;
+  }
+  .says{
+    color: #bbb;
+    margin-left: 5px;
+  }

@@ -49,6 +49,12 @@ import { BroadcastLiveComponent } from './component/broadcast-live/broadcast-liv
 import { InterviewNewsComponent } from './component/interview-news/interview-news.component';
 import { TechnologyNewsComponent } from './component/technology-news/technology-news.component';
 import { AutomobileNewsComponent } from './component/automobile-news/automobile-news.component';
+import { OdishaComponent } from './component/categories/odisha/odisha.component';
+import { NationComponent } from './component/categories/nation/nation.component';
+import { EducationComponent } from './component/categories/education/education.component';
+import { EntertainmentComponent } from './component/categories/entertainment/entertainment.component';
+import { SportsComponent } from './component/categories/sports/sports.component';
+import { PoliticsComponent } from './component/categories/politics/politics.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,7 +96,13 @@ import { AutomobileNewsComponent } from './component/automobile-news/automobile-
     BroadcastLiveComponent,
     InterviewNewsComponent,
     TechnologyNewsComponent,
-    AutomobileNewsComponent
+    AutomobileNewsComponent,
+    OdishaComponent,
+    NationComponent,
+    EducationComponent,
+    EntertainmentComponent,
+    SportsComponent,
+    PoliticsComponent
     ],
   imports: [
     BrowserModule,

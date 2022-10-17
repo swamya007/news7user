@@ -10,6 +10,7 @@
   
   .news-img-container img {
     width: 100%;
+    height: 60px;
   }
   
   .news-text-container p {

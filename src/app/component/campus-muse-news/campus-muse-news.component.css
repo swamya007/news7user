@@ -15,6 +15,7 @@
 .news-img-container img {
   width: 100%;
   cursor: pointer;
+  height: 60px;
 }
 
 

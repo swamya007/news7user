@@ -30,7 +30,6 @@
 .contact-us-form textarea {
   width: 100%;
   min-height: 150px;
-  padding: 10px;
 }
 
 .contact-us-form mat-label {
@@ -41,7 +40,7 @@
 }
 
 .contact-us-form .mat-raised-button {
-  width: 22%;
+  width: fit-content;
   background: #434343;
   color: #fff;
   margin-top: 10px;
@@ -67,13 +66,9 @@
 }
 
 .contact-details input {
-  min-height: 40px;
+  min-height: 25px;
 }
 
 .contact-details .mat-form-field {
   width: 100%;
-}
-
-.website {
-  margin: 1.5rem 0px;
 }

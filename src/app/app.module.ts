@@ -55,6 +55,18 @@ import { EducationComponent } from './component/categories/education/education.c
 import { EntertainmentComponent } from './component/categories/entertainment/entertainment.component';
 import { SportsComponent } from './component/categories/sports/sports.component';
 import { PoliticsComponent } from './component/categories/politics/politics.component';
+import { BusinessComponent } from './component/categories/business/business.component';
+import { OlympicsComponent } from './component/categories/olympics/olympics.component';
+import { WeatherComponent } from './component/categories/weather/weather.component';
+import { ZodiacComponent } from './component/categories/zodiac/zodiac.component';
+import { BiographyComponent } from './component/categories/biography/biography.component';
+import { ProfileComponent } from './component/categories/profile/profile.component';
+import { SpecialReportComponent } from './component/categories/special-report/special-report.component';
+import { VideoCategoryComponent } from './component/categories/video-category/video-category.component';
+import { DharmaComponent } from './component/categories/dharma/dharma.component';
+import { CoronaComponent } from './component/categories/corona/corona.component';
+import { BiographyNewsComponent } from './component/biography-news/biography-news.component';
+import { CrimeComponent } from './component/categories/crime/crime.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -102,7 +114,19 @@ import { PoliticsComponent } from './component/categories/politics/politics.comp
     EducationComponent,
     EntertainmentComponent,
     SportsComponent,
-    PoliticsComponent
+    PoliticsComponent,
+    BusinessComponent,
+    OlympicsComponent,
+    WeatherComponent,
+    ZodiacComponent,
+    BiographyComponent,
+    ProfileComponent,
+    SpecialReportComponent,
+    VideoCategoryComponent,
+    DharmaComponent,
+    CoronaComponent,
+    BiographyNewsComponent,
+    CrimeComponent,
     ],
   imports: [
     BrowserModule,

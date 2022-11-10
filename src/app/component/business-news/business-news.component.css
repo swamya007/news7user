@@ -1,6 +1,6 @@
 .news-section {
   padding: 1rem;
-  background:var(--white);
+  background: var(--white);
   border: 1px rgb(215, 215, 215) solid;
 }
 
@@ -29,7 +29,7 @@
 }
 
 .news-thumbtext {
-  height:40px;
+  height: 40px;
 }
 
 .heading-container {
@@ -53,9 +53,10 @@
 }
 
 .news-text-container p {
-  color:rgb(71, 71, 71);
+  color: rgb(71, 71, 71);
   transition: all .4s ease;
 }
+
 .news-box:hover .news-text-container p {
   color: #da0000;
 }
@@ -64,31 +65,37 @@
   width: 100%;
   height: 110px;
 }
-.btn-previous{
+
+.btn-previous {
   margin-right: 10px;
   color: #bbb;
   border: 1px solid #bbb;
   box-shadow: none;
   text-transform: uppercase;
   padding: 2px 3px;
- }
- .btn-next{
+}
+
+.btn-next {
   color: #918989;
   border: 1px solid #bbb;
   background: transparent;
   text-transform: uppercase;
   padding: 2px 3px;
- }
- .btn-next:hover{
-  background-color:#d12133;
-  color:var(--white);
- }
- .twin-city-btn{
+}
+
+.btn-next:hover {
+  background-color: #d12133;
+  color: var(--white);
+}
+
+.twin-city-btn {
   padding-top: 30px;
- }
- .news-card h6{
+}
+
+.news-card h6 {
   margin-top: 10px;
 }
+
 .news-card .category {
   position: absolute;
   text-transform: uppercase;

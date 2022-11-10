@@ -1,0 +1,34 @@
+<div class="viewcategory-container">
+  <div class="view-category">
+    <div class="search-category">
+      <mat-form-field appearance="outline" class="form-group w-200">
+        <input matInput type="text" name="cname">
+      </mat-form-field>
+      <button mat-raised-button color="primary" class="search-btn">Search
+        post</button>
+    </div>
+    <div class="header">
+      <div>
+      </div>
+      <table id="view-table">
+        <thead class="table-header">
+          <th class="first">
+            <input type="checkbox" class="example-margin">
+          </th>
+          <th class="content">Post Title</th>
+          <th class="content">Post Date</th>
+          <th class="content">Action</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of postarr; index as i">
+            <td class="first">
+              <input type="checkbox" class="example-margin">
+            </td>
+            <td>{{data.post_title}}</td>
+            <td>{{data.post_date | date:'dd-MM-yyyy'}}</td>
+            <td><button (click)="openDialog(data)">Open</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

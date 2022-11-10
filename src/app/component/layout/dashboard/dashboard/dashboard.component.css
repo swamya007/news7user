@@ -1,0 +1,126 @@
+/* Main Content Section*/
+.page-content {
+  background-color: #f4f4f4;
+  min-height: 100vh;
+}
+
+.card {
+  /* -webkit-box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08); */
+  box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+  margin-bottom: 30px;
+}
+
+.f-w-600 {
+  font-weight: 600;
+}
+
+.padding {
+  padding: 2rem !important
+}
+
+.user-card-full {
+  overflow: hidden;
+}
+
+.btn-primary {
+  width: 100px !important;
+}
+
+.draft-sec {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0px 0px 0px;
+}
+
+.view-drafts {
+  color: #0d6efd;
+  cursor: pointer;
+}
+
+.draft-sub {
+  color: #0d6efd;
+}
+
+.desc {
+  margin: 10px 0px 0px 0px;
+}
+
+:host ::ng-deep .ht-120 .mat-form-field-flex {
+  height: 125px !important;
+}
+
+.quick-drf {
+  margin: 10px;
+  font-weight: 500;
+}
+
+.dash-inner {
+  padding: 15px;
+}
+.trend-inner{
+  padding: 10px 10px 0px 10px;
+}
+
+.margin-divider {
+  border-top: 1px solid #cbbfbf;
+}
+
+.divider {
+  border-top: 1px solid #e8e4e4;
+}
+
+.post-sec {
+  display: flex;
+  align-items: center;
+}
+
+.mt-10 {
+  margin: 10px 0px 0px 0px;
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+.tag-info{
+  font-weight: 500;
+}
+.treading-blue {
+  color: #0d6efd;
+  font-weight: bold;
+  margin-left: 10px;
+}
+.glance-sec {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0px 0px 0px;
+}
+.view-num {
+  color: #7c7c7c;
+}
+.view-more {
+  color: #0d6efd;
+  text-align: center;
+}
+.elseblock{
+  text-align: center;
+  margin: 10px
+}
+.comment-section {
+  display: flex;
+  margin-top: 20px;
+}
+.author-image img {
+  height: 60px;
+  width: 60px;
+}
+.count-post {
+  color: #0d6efd;
+  margin-left: 10px;
+}
+.post-title{
+  color: #0d6efd;
+}

@@ -1,6 +1,6 @@
-.news-section{
+.news-section {
   padding: 1rem;
-  background:var(--white);
+  background: var(--white);
   border: 1px rgb(215, 215, 215) solid;
   margin-top: 20px;
   position: sticky;
@@ -17,15 +17,16 @@
 }
 
 .news-card img {
-width: 100%;
-height: 160px;
+  width: 100%;
+  height: 160px;
 }
 
-.news-card p{
+.news-card p {
   margin-top: 10px;
   transition: all .4s ease;
 }
-.news-date{
+
+.news-date {
   margin-left: 10px;
 }
 
@@ -33,6 +34,7 @@ height: 160px;
   display: flex;
   align-items: center;
 }
+
 .heading-container .grey-line {
   background-color: #bbb;
   height: 10px;

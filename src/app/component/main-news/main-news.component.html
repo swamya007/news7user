@@ -2,11 +2,11 @@
     <div class="slideshow-container">
         <div class="myImages image-bg">
             <img src="assets/img/cover2.jpg" />
-            <div class="category">ବାଣିଜ୍ୟ</div>
+            <div class="category">Business</div>
             <div class="heading-container">
-                <h1>ହାତୀ ଓ ବନ୍ୟଜନ୍ତୁଙ୍କ ଉପଦ୍ରବରେ କ୍ଷତି ସହୁଛି ଚାଷୀ, ସ୍ଥାୟୀ ପ୍ରତିକାର ସହ ଉଚିତ କ୍ଷତିପୂରଣ ଦାବିରେ ରେଞ୍ଜ ଅଫିସ୍ ଘେରାଉ…</h1>
+                <h1>The Magic Money Tree Does Exist, According To Modern Monetary Theory</h1>
                 <div class="news-date-section d-flex">
-                    <div class="author-name">ସୁରଭି ଗୌତମ</div>
+                    <div class="author-name">james</div>
                     <div> <i class="fa-solid fa-circle news-circle-icon"></i></div>
                     <div class="news-date"> August 26, 2020</div>
                 </div>
@@ -14,11 +14,11 @@
         </div>
         <div class="myImages image-bg">
             <img src="assets/img/slider1.jpg" />
-            <div class="category">ମନୋରଞ୍ଜନ</div>
+            <div class="category">Entertainment</div>
             <div class="heading-container">
-                <h1>ହାତୀ ଓ ବନ୍ୟଜନ୍ତୁଙ୍କ ଉପଦ୍ରବରେ କ୍ଷତି ସହୁଛି ଚାଷୀ, ସ୍ଥାୟୀ ପ୍ରତିକାର ସହ ଉଚିତ କ୍ଷତିପୂରଣ ଦାବିରେ ରେଞ୍ଜ ଅଫିସ୍ ଘେରାଉ…</h1>
+                <h1>The Magic Money Tree Does Exist, According To Modern Monetary Theory</h1>
                 <div class="news-date-section d-flex">
-                    <div class="author-name">ସୁରଭି ଗୌତମ</div>
+                    <div class="author-name">james</div>
                     <div> <i class="fa-solid fa-circle news-circle-icon"></i></div>
                     <div class="news-date"> August 26, 2020</div>
                 </div>
@@ -26,11 +26,11 @@
         </div>
         <div class="myImages image-bg">
             <img src="assets/img/slider2.jpg" />
-            <div class="category">ରାଜ୍ୟ</div>
+            <div class="category">Odisha</div>
             <div class="heading-container">
-                <h1>ହାତୀ ଓ ବନ୍ୟଜନ୍ତୁଙ୍କ ଉପଦ୍ରବରେ କ୍ଷତି ସହୁଛି ଚାଷୀ, ସ୍ଥାୟୀ ପ୍ରତିକାର ସହ ଉଚିତ କ୍ଷତିପୂରଣ ଦାବିରେ ରେଞ୍ଜ ଅଫିସ୍ ଘେରାଉ…</h1>
+                <h1>The Magic Money Tree Does Exist, According To Modern Monetary Theory</h1>
                 <div class="news-date-section d-flex">
-                    <div class="author-name">ସୁରଭି ଗୌତମ</div>
+                    <div class="author-name">james</div>
                     <div> <i class="fa-solid fa-circle news-circle-icon"></i></div>
                     <div class="news-date"> August 26, 2020</div>
                 </div>
@@ -46,50 +46,15 @@
     </div>
     <div class="main-news-container">
         <div class="row main-news-section">
-            <div class="col-md-6 ">
+            <div class="col-md-6 " *ngFor="let post of postarr" (click)="opennewsSec(post.slug)">
                 <div class="news-card main-news-border">
-                    <img src="assets/img/news.jpg">
+                    <img [src]="post.guid">
                     <div class="news-date-section d-flex">
-                        <div class="author-name">ସୁରଭି ଗୌତମ</div>
+                        <div class="author-name">{{post.author_name}}</div>
                         <div> <i class="fa-solid fa-circle news-circle-icon "></i></div>
-                        <div class="news-date"> August 26, 2020</div>
+                        <div class="news-date"> {{post.post_date | date:'MMMM dd, yyyy'}}</div>
                     </div>
-                    <p>ହାତୀ ଓ ବନ୍ୟଜନ୍ତୁଙ୍କ ଉପଦ୍ରବରେ କ୍ଷତି ସହୁଛି ଚାଷୀ, ସ୍ଥାୟୀ ପ୍ରତିକାର ସହ ଉଚିତ କ୍ଷତିପୂରଣ ଦାବିରେ ରେଞ୍ଜ ଅଫିସ୍ ଘେରାଉ…</p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="news-card main-news-border">
-                    <img src="assets/img/news.jpg">
-                    <div class="news-date-section d-flex">
-                        <div class="author-name">ସୁରଭି ଗୌତମ</div>
-                        <div> <i class="fa-solid fa-circle news-circle-icon "></i></div>
-                        <div class="news-date"> August 26, 2020</div>
-                    </div>
-                    <p>ହାତୀ ଓ ବନ୍ୟଜନ୍ତୁଙ୍କ ଉପଦ୍ରବରେ କ୍ଷତି ସହୁଛି ଚାଷୀ, ସ୍ଥାୟୀ ପ୍ରତିକାର ସହ ଉଚିତ କ୍ଷତିପୂରଣ ଦାବିରେ ରେଞ୍ଜ ଅଫିସ୍ ଘେରାଉ……</p>
-                </div>
-            </div>
-        </div>
-        <div class="row main-news-section">
-            <div class="col-md-6 ">
-                <div class="news-card second-news-section">
-                    <img src="assets/img/news.jpg">
-                    <div class="news-date-section d-flex">
-                        <div class="author-name">ସୁରଭି ଗୌତମ</div>
-                        <div> <i class="fa-solid fa-circle news-circle-icon "></i></div>
-                        <div class="news-date"> August 26, 2020</div>
-                    </div>
-                    <p>ହାତୀ ଓ ବନ୍ୟଜନ୍ତୁଙ୍କ ଉପଦ୍ରବରେ କ୍ଷତି ସହୁଛି ଚାଷୀ, ସ୍ଥାୟୀ ପ୍ରତିକାର ସହ ଉଚିତ କ୍ଷତିପୂରଣ ଦାବିରେ ରେଞ୍ଜ ଅଫିସ୍ ଘେରାଉ…</p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="news-card second-news-section">
-                    <img src="assets/img/news.jpg">
-                    <div class="news-date-section d-flex">
-                        <div class="author-name">ସୁରଭି ଗୌତମ</div>
-                        <div> <i class="fa-solid fa-circle news-circle-icon "></i></div>
-                        <div class="news-date"> August 26, 2020</div>
-                    </div>
-                    <p>ହାତୀ ଓ ବନ୍ୟଜନ୍ତୁଙ୍କ ଉପଦ୍ରବରେ କ୍ଷତି ସହୁଛି ଚାଷୀ, ସ୍ଥାୟୀ ପ୍ରତିକାର ସହ ଉଚିତ କ୍ଷତିପୂରଣ ଦାବିରେ ରେଞ୍ଜ ଅଫିସ୍ ଘେରାଉ……</p>
+                    <p>{{post.post_title ? getShortName(post.post_title) : ''}}</p>
                 </div>
             </div>
         </div>

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { PostserviceService } from 'src/app/services/postservice/postservice.service';
+import { environment } from 'src/environments/environment';
+import { News7_CONSTANTS } from 'src/new7constants/new7constants';
 
 @Component({
   selector: 'app-main-news',
@@ -8,10 +12,34 @@ import { Component, OnInit } from '@angular/core';
 export class MainNewsComponent implements OnInit {
   slideIndex: number = 0;
   myTimer: any;
-  constructor() { }
+  postarr:any = []
+
+  constructor(private postserviceService: PostserviceService, private router:Router) { }
+
 
   ngOnInit(): void {
     this.showImage(this.slideIndex);
+    this.getLatestNews()
+  }
+
+  getShortName(user_name: any) {
+    return user_name.slice(0, 61).trim() + (user_name.length > 60 ? "..." : "");
+  }
+
+  getLatestNews() {
+    this.postserviceService.getLatestNews(1,environment.CUSTOMER_ID,News7_CONSTANTS.LOOKUPS.none).subscribe((res: any) => {
+      if (res.code == 'success') {
+        var data = res.body;
+        this.postarr = data.map((dt: any) => JSON.parse(dt));
+        if (this.postarr.length > 0) {
+          this.postarr = this.postarr.slice(0, 4)
+        }
+      } else {
+        this.postarr = []
+      }
+    }, (err) => {
+      this.postarr = []
+    })
   }
 
   currentImage(n: number){
@@ -23,7 +51,6 @@ export class MainNewsComponent implements OnInit {
   }
 
   showImage(n: number) {
-    // alert(n)
     let i;
     let slides: any = document.getElementsByClassName("myImages");
     let dots: any = document.getElementsByClassName("dot");
@@ -60,5 +87,9 @@ export class MainNewsComponent implements OnInit {
     //     this.plusSlides(n + 1);
     //   }, 4000);
     // }
+  }
+
+  opennewsSec(id: any) {
+    this.router.navigate(['/post/' + id]);
   }
 }

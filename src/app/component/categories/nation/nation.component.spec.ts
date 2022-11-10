@@ -11,7 +11,9 @@ describe('NationComponent', () => {
       declarations: [ NationComponent ]
     })
     .compileComponents();
+  });
 
+  beforeEach(() => {
     fixture = TestBed.createComponent(NationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

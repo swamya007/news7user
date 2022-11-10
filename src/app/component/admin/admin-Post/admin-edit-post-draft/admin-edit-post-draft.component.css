@@ -1,0 +1,78 @@
+.add-post-container {
+    background-color: var(--site-background);
+    padding: 2% 3.9%;
+}
+
+.add-post-container .add-post-heading h1{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.add-post-container .add-post-form mat-label {
+    display: block;
+}
+
+.add-post-container .add-post-form mat-form-field {
+    width: 100%;
+}
+
+.add-post-form .add-post-form-field mat-radio-group {
+    display: inline-block;
+}
+
+.add-post-form .add-post-form-field mat-radio-group mat-radio-button {
+    margin-right: 15px;
+}
+
+.add-post-post-field-container {
+    border: 1px solid #cccccc;
+    border-radius: 7px;
+    padding: 12px;
+    box-shadow: 2px 2px #dedede;
+    margin-bottom: 20px;
+} 
+
+.add-post-discussion-field-container {
+    border: 1px solid #cccccc;
+    border-radius: 7px;
+    padding: 12px;
+    box-shadow: 2px 2px #dedede;
+    margin-bottom: 20px;
+}
+
+.add-post-seo-field-container {
+    border: 1px solid #cccccc;
+    border-radius: 7px;
+    padding: 12px;
+    box-shadow: 2px 2px #dedede;
+    margin-bottom: 20px;
+}
+
+.add-post-text-field-container {
+    border: 1px solid #cccccc;
+    border-radius: 7px;
+    padding: 12px;
+    box-shadow: 2px 2px #dedede;
+    margin-bottom: 20px;
+}
+
+.add-post-form .add-post-form-field .add-post-title {
+    font-size: 15px;
+    margin-bottom: 3px;
+    margin-top: 5px;
+}
+
+.add-post-form .add-post-sub-heading {
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 0px;
+
+}
+
+.selecttag{
+    margin-bottom:35px;
+}
+
+.or-div {
+    margin: 10px 30px;
+}

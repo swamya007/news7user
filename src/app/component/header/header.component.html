@@ -8,54 +8,8 @@
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Live Tv</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/categories/odisha">ରାଜ୍ୟ</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/categories/nation">ଦେଶ-ବିଦେଶ</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/categories/politics">ରାଜନୀତି</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/categories/education">ଶିକ୍ଷା ଓ ନିଯୁକ୍ତି</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/categories/sports">ଖେଳ</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/categories/business">ବାଣିଜ୍ୟ</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/categories/entertainment">ମନୋରଞ୍ଜନ</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/categories/crime">ଅପରାଧ</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/categories/dharma">ଧର୍ମ</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/categories/special-report">ସ୍ପେଶାଲ୍ ରିପୋର୍ଟ</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/categories/video-category">ଭିଡିଓ</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-          ଅଧିକ
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="/categories/weather">ପାଣିପାଗ</a>
-          <a class="dropdown-item" href="/categories/zodiac">ରାଶିଫଳ</a>
-          <a class="dropdown-item" href="/categories/biography">ଜୀବନଚର୍ଯ୍ୟା</a>
-          <a class="dropdown-item" href="/categories/profile">ସାକ୍ଷାତକାର</a>
-          <a class="dropdown-item" href="/categories/corona">କରୋନା</a>
-          <a class="dropdown-item" href="/categories/olympics">ଅଲିମ୍ପିକ୍ସ</a>
-        </div>
+      <li class="nav-item" *ngFor="let item of headerarry">
+        <a class="nav-link"  routerLink="{{item.category_url}}">{{item.category_name}}</a>
       </li>
     </ul>
   </div>

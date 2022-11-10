@@ -1,0 +1,108 @@
+.add-user-form .mat-form-field-flex {
+  height: 36px !important;
+}
+
+.add-user-form .mat-form-field-outline {
+  background: var(--white) !important;
+  border: 1px solid gray !important;
+  border-radius: 5px;
+}
+
+.add-user-form .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 0.1em 0 1em 0;
+}
+
+.user-container {
+  background-color: #f4f4f4;
+  padding: 2% 5%;
+}
+
+.add-user-form .User-info {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.user-btn {
+  width: 11%;
+  background: #0b5fc7;
+  color: var(--white);
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.role-part {
+  margin-top: 20px
+}
+
+.pass-btn {
+  border-color: #0d6efd;
+  height: 35px;
+  font-weight: normal;
+  color: #0d6efd;
+}
+
+.pass-btn i {
+  margin-right: 5px;
+  color: #0d6efd;
+}
+
+.w-400 {
+  width: 400px !important;
+}
+
+.pass-btn span {
+  color: #0d6efd;
+}
+
+.add-user-form .pass-btn {
+  margin-top: 4px;
+  margin-bottom: 10px;
+}
+
+.add-user-form .hide-icon {
+  border-color: #0d6efd;
+  height: 35px;
+  font-weight: normal;
+  color: #0d6efd;
+  width: 100px;
+}
+
+.hide-icon i {
+  color: #0d6efd;
+  margin-right: 5px;
+}
+
+.hide-icon span {
+  color: #0d6efd;
+}
+
+.hide-icon .pass-btn {
+  margin-top: 4px;
+  margin-bottom: 10px;
+}
+
+.add-user-form .hide-icon {
+  margin-left: 10px;
+  margin-top: 4px;
+}
+
+.add-user-form .mat-form-field {
+  margin-bottom: 0px !important;
+}
+
+.add-user-form .col-md-3 {
+  display: flex;
+  align-items: center;
+}
+
+:host ::ng-deep .multiselect-dropdown .dropdown-list .item1 li:first-child {
+  display: none;
+}
+
+:host ::ng-deep .multiselect-dropdown .dropdown-list .item1 .filter-textbox {
+  display: none;
+}
+
+:host ::ng-deep .multiselect-dropdown .dropdown-list .item2 {
+  max-height: 128px !important;
+}

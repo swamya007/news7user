@@ -1,29 +1,27 @@
 
 <div class="news-section">
-    <div class="heading-container">
-      <h4 class="news-sub">ବାଣିଜ୍ୟ</h4>
-      <div class="grey-line"></div>
-    </div>
-    <div class="news-card">
-      <!-- <div class="category">Education</div> -->
-      <img src="assets/img/news.jpg">
-      <p>ହାତୀ ଓ ବନ୍ୟଜନ୍ତୁଙ୍କ ଉପଦ୍ରବରେ କ୍ଷତି ସହୁଛି ଚାଷୀ, ସ୍ଥାୟୀ ପ୍ରତିକାର ସହ ଉଚିତ କ୍ଷତିପୂରଣ ଦାବିରେ ରେଞ୍ଜ ଅଫିସ୍ ଘେରାଉ…</p>
-      <div class="news-date"> 22 October</div>
-      <div class="news-thumbtext"><span>ହାତୀ ଓ ବନ୍ୟଜନ୍ତୁଙ୍କ ଉପଦ୍ରବରେ କ୍ଷତି ସହୁଛି ଚାଷୀ, ସ୍ଥାୟୀ ପ୍ରତିକାର ସହ ଉଚିତ କ୍ଷତିପୂରଣ ଦାବିରେ ରେଞ୍ଜ ଅଫିସ୍ ଘେରାଉ…</span></div>
-    </div>
-    <div class="row news-box">
-      <div class="col-md-5 col-sm-12 col-12 news-img-container">
-        <img src="assets/img/news.jpg">
-      </div>
-      <div class="col-md-7 col-sm-12 col-12 news-text-container">
-        <p>ହାତୀ ଓ ବନ୍ୟଜନ୍ତୁଙ୍କ ଉପଦ୍ରବରେ କ୍ଷତି ସହୁଛି ଚାଷୀ, ସ୍ଥାୟୀ ପ୍ରତିକାର ସହ ଉଚିତ କ୍ଷତିପୂରଣ ଦାବିରେ ରେଞ୍ଜ ଅଫିସ୍ ଘେରାଉ…</p>
-        <div class="news-date"> 22 October</div>
-      </div>
-    </div>
-    <!-- <div class="twin-city-">
-      <button class="btn-previous">&laquo; Prev</button>
-      <button class="btn-next">Next &raquo;</button>
-    </div> -->
+  <div class="heading-container">
+    <h4 class="news-sub">Technology</h4>
+    <div class="grey-line"></div>
   </div>
- 
- 
+  <div class="news-card" *ngIf="firstpostbussiness">
+    <!-- <div class="category">Education</div> -->
+    <img [src]="firstpostbussiness.guid">
+    <p>{{firstpostbussiness.post_title}}</p>
+    <div class="news-date"> {{firstpostbussiness.post_date | date:'MMMM dd, yyyy'}}</div>
+    <div class="news-thumbtext"><span [innerHTML]="getShortName(firstpostbussiness.post_content)"></span></div>
+  </div>
+  <div class="row news-box" *ngFor="let post of nextthree; let i = index" [ngClass]="i !== 0 ? 'divider' : ''" (click)="opennewsSec(post.slug)">
+    <div class="col-md-5 col-sm-12 col-12 news-img-container">
+      <img [src]="post.guid">
+    </div>
+    <div class="col-md-7 col-sm-12 col-12 news-text-container">
+      <p>{{post.post_title}}</p>
+      <div class="news-date"> {{post.post_date | date:'MMMM dd, yyyy'}}</div>
+    </div>
+  </div>
+  <!-- <div class="twin-city-">
+    <button class="btn-previous">&laquo; Prev</button>
+    <button class="btn-next">Next &raquo;</button>
+  </div> -->
+</div>

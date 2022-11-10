@@ -1,0 +1,94 @@
+<div class="user-container">
+    <form class="add-user-form" novalidate autocomplete="off" #userForm="ngForm">
+      <div class="row">
+        <h4>Create a new brand new user and add them to this site</h4>
+        <div class="col-md-3 col-sm-12 col-12">
+          <mat-label class="User-info">Username (required)</mat-label>
+        </div>
+        <div class="col-md-5 col-sm-12 col-12">
+          <mat-form-field appearance="outline" class="form-group w-400">
+            <input matInput type="text" name="userName" [(ngModel)]="userData.user_login">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-sm-12 col-12">
+          <mat-label class="User-info">Email (required)</mat-label>
+        </div>
+        <div class="col-md-5 col-sm-12 col-12">
+          <mat-form-field appearance="outline" class="form-group w-400">
+            <input matInput type="email" name="userEmail" [(ngModel)]="userData.user_email">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-sm-12 col-12">
+          <mat-label class="User-info">Full Name</mat-label>
+        </div>
+        <div class="col-md-5 col-sm-12 col-12">
+          <mat-form-field appearance="outline" class="form-group w-400">
+            <input matInput type="text" name="firstName" [(ngModel)]="userData.user_nicename">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-sm-12 col-12">
+          <mat-label class="User-info">Display Name</mat-label>
+        </div>
+        <div class="col-md-5 col-sm-12 col-12">
+          <mat-form-field appearance="outline" class="form-group w-400">
+            <input matInput type="text" name="lastName" [(ngModel)]="userData.display_name">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-sm-12 col-12">
+          <mat-label class="User-info">Website</mat-label>
+        </div>
+        <div class="col-md-5 col-sm-12 col-12">
+          <mat-form-field appearance="outline" class="form-group w-400">
+            <input matInput type="text" name="website" [(ngModel)]="userData.user_url">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row" style="display: none">
+        <div class="col-md-3 col-sm-12 col-12">
+          <mat-label class="User-info">Password</mat-label>
+        </div>
+        <div class="col-md-5 col-sm-12 col-12">
+          <button mat-stroked-button class="pass-btn">Generate Password</button>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="form-group w-400">
+              <input matInput name="password" [type]="(hide)?'password':'text'"
+                [(ngModel)]="userData.user_pass">
+            </mat-form-field>
+            <button mat-stroked-button class="hide-icon" (click)="hide=!hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>{{(hide)?'Hide':'Show'}}
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-sm-12 col-12">
+          <mat-label class="User-info">Send User Notification</mat-label>
+        </div>
+        <div class="col-md-5 col-sm-12 col-12">
+          <mat-checkbox class="checkbox-margin" (change)="onChange($event)" [checked]="checkedVal">Send the new user an email about their account.
+          </mat-checkbox>
+        </div>
+      </div>
+      <div class="row role-part">
+        <div class="col-md-3 col-sm-12 col-12 role-">
+          <mat-label class="User-info">Role</mat-label>
+        </div>
+        <div class="col-md-5 col-sm-12 col-12">
+          <ng-multiselect-dropdown [ngModelOptions]="{standalone: true}" [placeholder]="'Select Role'" [settings]="dropdownSettings" [data]="role"
+          [(ngModel)]="userData.role">
+        </ng-multiselect-dropdown>
+        </div>
+      </div>
+      <br>
+      <br>
+      <button mat-raised-button class="user-btn" (click)="userFormData(userForm)" value="addUser">Update User</button>
+    </form>
+  </div>

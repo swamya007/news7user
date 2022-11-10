@@ -2,131 +2,154 @@
 <div class="article-container">
     <div class="row">
         <div class="col-md-9 col-12">
-            <div class="article-section-container">
+            <div class="article-section-container" *ngIf="news">
                 <h1 class="article-heading">
-                    ଡିଜାଇନର ଶାଢୀରେ କିଲର ଲୁକ୍‌ ଦେଲେ ଶେହନାଜ୍, ଦିୱାନା ହେଲେ ଫ୍ୟାନ୍ସ
+                   {{news.post_title}}
                 </h1>
                 <div class="author-cat-section">
                     <div class="author-section">
-                        <img src="assets/img/author.jpg" />
-                        <p>By <span>James Raphels</span> - Last Updated <span>August 26, 2022</span></p>
+                        <img [src]="news.guid">
+                        <p>By <span>{{news.author_name}}</span> - Last Updated <span>{{news.post_date | date:'MMMM dd, yyyy'}}</span></p>
                     </div>
                     <div class="category-section">
-                        Business
+                        {{news.tags}}
                     </div>
                 </div>
-                <img class="article-image" src="assets/img/cover5.jpg" />
+                <img class="article-image" [src]="news.guid">
                 <div class="social-section">
                     <div class="share-section">
                         <div class="share-cont">
                             <i class="fa-solid fa-share-nodes"></i>
                             Share
                         </div>
-                        <div class="facebook-icon">
-                            <i class="fa-brands fa-facebook-f"></i>
+                        <div (click)="createNavigationUrl('facebook')" class="facebook-icon">
+                            <i class="fa-brands fa-facebook-f" ></i>
+                            
                         </div>
                         <div class="twitter-icon">
-                            <i class="fa-brands fa-twitter"></i>
+                            <i class="fa-brands fa-twitter" (click)="createNavigationUrl('twitter')"></i>
                         </div>
                     </div>
                 </div>
                 <div class="article-text-section">
-                    <p>Three days before Cboe Global Markets Inc., one of the world’s biggest regulated exchanges,
-                         debuts futures on the cryptocurrency, it had one of its wildest sessions ever. On Coinbase Inc.’s GDAX exchange,
-                          prices zoomed up to almost $20,000 from $16,000 in only about 90 minutes — then crashed back down. 
-                          The largest digital currency is still up more than 16-fold this year.
-                    </p>
-                    <div class="row">
-                        <div class="col-md-6 col-sm-12 col-12">
-                            <p>Three days before Cboe Global Markets Inc., one of the world’s biggest regulated exchanges,
-                                debuts futures on the cryptocurrency, it had one of its wildest sessions ever. 
-                                On Coinbase Inc.’s GDAX exchange, prices zoomed up to almost $20,000 from $16,000 in only about 90 minutes — then crashed back down.
-                                 The largest digital currency is still up more than 16-fold this year.
-                           </p>
+                    <div [innerHTML]="news.post_content"></div>
 
-                           <p>The group outlined their concerns in an open letter, questioning whether the exchanges would be
-                            able to adequately police market manipulation for bitcoin futures. FIA added that the exchanges
-                            didn’t get enough industry feedback on margin levels, trading limits, stress tests, and clearing
-                            for the products before bringing them to market.
-                        </p>
-                        </div>
-                        <div class="col-md-6 col-sm-12 col-12">
-                            <div class="advertisement-space-container-first" style="background-image: url('assets/img/ad.jpg')">
-                                <p class="placeholder-text">Advertisement</p>
-                                <p class="placeholder-size">300 X 250</p>
-                              </div>
-                              <p class="ad-text">-Advertisement-</p>
-                        </div>
-                    </div>
-
-
-                 
-                    <p>Three days before Cboe Global Markets Inc., one of the world’s biggest regulated exchanges,
-                        debuts futures on the cryptocurrency, it had one of its wildest sessions ever. 
-                        On Coinbase Inc.’s GDAX exchange, prices zoomed up to almost $20,000 from $16,000 in only about 90 minutes — then crashed back down.
-                         The largest digital currency is still up more than 16-fold this year..
-                    </p>
-                    <p>Three days before Cboe Global Markets Inc., one of the world’s biggest regulated exchanges,
-                        debuts futures on the cryptocurrency, it had one of its wildest sessions ever. 
-                        On Coinbase Inc.’s GDAX exchange, prices zoomed up to almost $20,000 from $16,000 in only about 90 minutes — then crashed back down.
-                         The largest digital currency is still up more than 16-fold this year.
-                    </p>
-                    <p>The group outlined their concerns in an open letter, questioning whether the exchanges would be
-                        able to adequately police market manipulation for bitcoin futures. FIA added that the exchanges
-                        didn’t get enough industry feedback on margin levels, trading limits, stress tests, and clearing
-                        for the products before bringing them to market.
-                    </p>
-                    <p>The group outlined their concerns in an open letter, questioning whether the exchanges would be
-                        able to adequately police market manipulation for bitcoin futures. FIA added that the exchanges
-                        didn’t get enough industry feedback on margin levels, trading limits, stress tests, and clearing
-                        for the products before bringing them to market.
-                    </p>
-                    <p>Three days before Cboe Global Markets Inc., one of the world’s biggest regulated exchanges,
-                        debuts futures on the cryptocurrency, it had one of its wildest sessions ever. 
-                        On Coinbase Inc.’s GDAX exchange, prices zoomed up to almost $20,000 from $16,000 in only about 90 minutes — then crashed back down.
-                         The largest digital currency is still up more than 16-fold this year.
-                    </p>
-                    <p>The group outlined their concerns in an open letter, questioning whether the exchanges would be
-                        able to adequately police market manipulation for bitcoin futures. FIA added that the exchanges
-                        didn’t get enough industry feedback on margin levels, trading limits, stress tests, and clearing
-                        for the products before bringing them to market.
-                    </p>
-                    <p>Three days before Cboe Global Markets Inc., one of the world’s biggest regulated exchanges,
-                        debuts futures on the cryptocurrency, it had one of its wildest sessions ever. 
-                        On Coinbase Inc.’s GDAX exchange, prices zoomed up to almost $20,000 from $16,000 in only about 90 minutes — then crashed back down.
-                         The largest digital currency is still up more than 16-fold this year.
-                    </p>
 
                 </div>
             </div>
+            <div class="author-details-section">
+                <div class="author-image">
+                    <img [src]="news.author_image ? news.author_image : '/assets/img/default-profile.png'">
+                </div>
+                <div>
+                    <div class="author-name-container">
+                        <h4>{{news.author_name}}</h4>
+                        <div class="d-flex">
+                            <div class="sharing-icon" (click)="openUrl(news.instagram)"><i class="fa-brands fa-instagram"></i></div>
+                            <div class="sharing-icon" (click)="openUrl(news.facebook)"><i class="fa-brands fa-facebook-f"></i></div>
+                            <div class="sharing-icon" (click)="openUrl(news.twitter)"><i class="fa-brands fa-twitter"></i></div>
+                        </div>
+                    </div>
+                    <div class="author-desc-text">
+                        Publisher gives you the ability to let people actually read your content,
+                        instead of focusing on all the other stuff that’s going on their screen.
+                    </div>
+                </div>
 
-            <div class="news-section">
-                <div class="comment-img">
-                    <div class="comment-section">
-                    <img src="/assets/img/author.jpg">
-                    <div class="author-name">james ghosling</div>
-                <div class="post-part">119 Posts</div>
-                <div class="comment-part">0 comment</div>
-               
             </div>
-                <div class="social-media-part">
-                 <div class="sharing-icon"> <i class="fa-brands fa-google-plus-g"></i></div> 
-                 <div class="sharing-icon"><i class="fa-brands fa-facebook-f"></i></div>
-                <div class="sharing-icon"><i class="fa-brands fa-twitter"></i></div>
-                </div>        
-          
+            <div *ngIf="author_post.length > 0">
+                <div class="send-message-container more-from-author">
+                    <div class="heading-container">
+                        <h4 class="news-sub">You Might Also Like</h4>
+                        <div class="grey-line"></div>
+                        <div class="news-sub-right">More From Author</div>
+                    </div>
+                    <carousel>
+                    <!-- <div class="row"> -->
+                        <div class="mx-1 news-card carousel-cell"  *ngFor="let post of author_post" (click)="opennewsSec(post.slug)">
+                            <div class="category" >{{post.category_name}}</div>
+                            <img [src]="post.guid">
+                            <p>{{post.post_title}}</p>
+                        </div>
+                    <!-- </div> -->
+                </carousel>
+                </div>
             </div>
+            <div *ngIf="news.comment_status === 'opened'">
+                <div class="send-message-container">
+                    <div class="heading-container">
+                        <h4 class="news-sub">{{comment_count}} Comments</h4>
+                        <div class="grey-line"></div>
+                    </div>
+                    <div class="comment-image d-flex" *ngFor="let cmt of comments">
+                        <img src="/assets/img/default.jpg" class="img-width">
+
+                        <div class="comment-name">
+                            <h4 class="name-user">{{cmt.comment_author}} <span class="says">Says</span></h4>
+                            <p>{{cmt.comment_content}}</p>
+                        </div>
+                    </div>
+                    <div class="prev-next-container" *ngIf="comment_count > 0">
+                        <button class="btn-previous active" [disabled]="comment_page_no === 1" (click)="prevComment()">&laquo; Prev</button>
+                        <button class="btn-next active" [disabled]="0 > comment_page_no || comments.length !== 10" (click)="nextComment()">Next &raquo;</button>
+                    </div>
+                </div>
             </div>
-            <app-might-also-like></app-might-also-like>
-            <app-reply></app-reply>
-            <app-comment></app-comment>
+            <div *ngIf="news.comment_status === 'opened'">
+                <div class="send-message-container">
+                    <div class="heading-container">
+                        <h4 class="news-sub">Leave A Reply</h4>
+                        <div class="grey-line"></div>
+                    </div>
+                    <div class="message-hint">Your email address will not be published.</div>
+                    <form class="contact-us-form">
+                        <mat-form-field appearance="outline">
+                            <textarea matInput #input name="comment" placeholder="Your comment" [(ngModel)]="comment_obj.comment_content"></textarea>
+                        </mat-form-field>
+                        <div class="contact-details row">
+                            <div class="col-md-6 col-sm-6 col-12">
+                                <mat-form-field appearance="outline">
+                                    <input matInput #input name="name" placeholder="Your Name" [(ngModel)]="comment_obj.comment_author" />
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-12">
+                                <mat-form-field appearance="outline">
+                                    <input matInput #input name="email" placeholder="Your email" [(ngModel)]="comment_obj.comment_author_email" />
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <mat-form-field appearance="outline" class="website">
+                            <input type="text" matInput #input name="website" placeholder="Your website" [(ngModel)]="comment_obj.comment_author_url" />
+                        </mat-form-field>
+                         <section class="checkbox-section">
+                            <mat-checkbox class="checkbox-margin" (change)="onChange($event)">Save my name, email, and website in this browser for the next time I
+                                comment.</mat-checkbox>
+                        </section>
+                        <button mat-raised-button (click)="savePostComment()">POST COMMENT</button>
+                    </form>
+                </div>
+            </div>
         </div>
         <div class="col-md-3 col-12">
-            <div class="advertisement-space-container-first" style="background-image: url('assets/img/ad.jpg')">
-                <p class="placeholder-text">Advertisement</p>
-                <p class="placeholder-size">300 X 200</p>
-            </div>
-            <p class="ad-text">-Advertisement-</p>
+            <div class="advertisement-space-container-first">
+                <div id="carouselExampleControls4" class="carousel slide carousel-fade" data-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item" *ngFor="let rightupper_ad of ads_rightupper; let i = index"
+                      [ngClass]="i === 0 ? 'active' : ''">
+                      <img class="d-block w-100" src={{rightupper_ad.ads_image}} alt={{rightupper_ad.ads_image_alt_text}}
+                        (click)="openLink(rightupper_ad.ads_image_link)">
+                    </div>
+                  </div>
+                  <a class="carousel-control-prev" href="#carouselExampleControls4" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleControls4" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+              </div>
             <app-latest-news></app-latest-news>
         </div>
     </div>

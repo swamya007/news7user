@@ -1,0 +1,179 @@
+<div class="page-content">
+  <div class="padding">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card-block user-card-full card">
+          <div class="quick-drf">Quick Draft</div>
+          <div class="margin-divider">
+            <div class="dash-inner">
+              <div class="tag-info">
+                <mat-label>Title</mat-label>
+              </div>
+              <mat-form-field appearance="outline" class="form-group">
+                <input matInput type="text" name="title" [(ngModel)]="draft.post_title" required>
+              </mat-form-field>
+              <mat-label class="tag-info">Content</mat-label>
+              <mat-form-field appearance="outline" class="form-group content-form ht-120">
+                <textarea matInput type="text" class="context-textarea" [(ngModel)]="draft.post_content" name="title"
+                  placeholder="whats on your mind?" required></textarea>
+              </mat-form-field>
+              <button class="btn btn-primary" (click)="saveDraft()">Save draft</button>
+              <div class="draft-sec">
+                <div>
+                  Your Recent Drafts
+                </div>
+                <div class="view-drafts">View drafts</div>
+              </div>
+              <div *ngIf="draftarr && draftarr.length ; else elseblock">
+                <div *ngFor="let d of draftarr">
+                  <div class="desc"><span class="draft-sub">{{d.post_title}}</span> {{d.created_on | date}}</div>
+                  <!-- <div>{{d.post_content}}</div> -->
+                </div>
+              </div>
+              <ng-template #elseblock>
+                <div class="elseblock">
+                  No record Found
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+        <div class="card-block user-card-full card">
+          <div class="quick-drf">Activity</div>
+          <div class="margin-divider"></div>
+          <div class="dash-inner">
+            <div class="tag-info mb-10">Publising Soon</div>
+            <div *ngIf="publishingarr &&  publishingarr.length; else elseblock">
+              <div class="row" *ngFor="let p of publishingarr">
+                <div class="col-md-6">
+                  <div class="mb-10">
+                    <div class="">{{p.post_date | date}}, 7.07pm</div>
+                    <!-- <div class="">crore loan</div> -->
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-10">
+                    <div class="view-drafts">{{p.post_title}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <ng-template #elseblock>
+              <div class="elseblock">
+                No record Found
+              </div>
+            </ng-template>
+            <div class="margin-divider"></div>
+            <div class="tag-info mb-10 mt-10 ">Recently Published</div>
+            <div *ngIf="publishedarr &&  publishedarr.length; else elseblock">
+              <div class="row" *ngFor="let p of publishedarr">
+                <div class="col-md-6">
+                  <div class="mb-10">{{p.post_date | date}}, 7.07pm</div>
+                </div>
+                <div class="col-md-6">
+                  <div class="view-drafts mb-10">{{p.post_title}}</div>
+                  <!-- <div class="view-drafts mb-10">Active covid cases in</div> -->
+                </div>
+              </div>
+            </div>
+            <ng-template #elseblock>
+              <div class="elseblock">
+                No record Found
+              </div>
+            </ng-template>
+            <div class="margin-divider"></div>
+              <div class="tag-info mb-10 mt-10">Recent Comments </div>
+            <div *ngIf = "commentarr && commentarr.length ; else elseblock">
+             <div class="comment-section" *ngFor = "let c of commentarr">              
+                <div class="author-image"><img src="/assets/img/default-avatar.png"></div>
+                <div class="ml-10">From {{c.user_nicename}} on <span class="post-title">{{c.post_title}} </span>
+                <div>{{c.comment_content}}</div>
+                </div>
+                <!-- <div>{{c.comment_content}}</div> -->
+              </div>           
+            </div> 
+            <ng-template #elseblock>
+              <div class="elseblock">
+                No record Found
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card-block user-card-full card">
+          <div class="quick-drf">At a Glance</div>
+          <div class="margin-divider">
+            <div *ngIf="dashboardarr &&  dashboardarr.length; else elseblock">
+              <div *ngFor="let d of dashboardarr">
+                <div class="row mt-10">
+                  <div class="col-md-6">
+                    <div class="post-sec">
+                      <div>
+                        <mat-icon>folder_open</mat-icon>
+                      </div>
+                      <div class="count-post">{{d.p_posts}} Posts</div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="post-sec">
+                      <div>
+                        <mat-icon>forum</mat-icon>
+                      </div>
+                      <div class="count-post">4 Pages</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-10">
+                  <div class="col-md-6">
+                    <div class="post-sec">
+                      <div>
+                        <mat-icon>comment</mat-icon>
+                      </div>
+                      <div class="count-post">{{d.p_comments}} Comments</div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="post-sec">
+                      <div>
+                        <mat-icon>visibility</mat-icon>
+                      </div>
+                      <div class="count-post">53 views in last hour </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ng-template #elseblock>
+            <div class="elseblock">
+              No record Found
+            </div>
+          </ng-template>
+        </div>
+        <div class="card-block user-card-full card">
+          <div class="quick-drf">Trending Now</div>
+          <div class="margin-divider">
+            <div *ngIf="postarr &&  postarr.length; else elseblock">
+              <div class="trend-inner" *ngFor="let post of postarr ; index as i">
+                <div class="mb-10">
+                  <div>{{i+1}}. <span class="treading-blue">{{post.post_title}}</span></div>
+                  <div class="view-num">22 views, 0 comments</div>
+                </div>
+                <div class="divider"></div>
+              </div>
+              <div class="view-more">View More</div>
+            </div>
+            <ng-template #elseblock>
+              <div class="elseblock">
+                No record Found
+              </div>
+            </ng-template>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MasterServiceService } from 'src/app/services/masterservice/master-service.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -6,34 +8,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor() { }
+  headerarry: any[] = []
+  customer_id: any;
+
+  constructor(private masterAPI: MasterServiceService) { }
 
   ngOnInit(): void {
+    this.getallheaders();
   }
 
-  // menuBtn: any = document.querySelector(".menu-icon span");
-  // searchBtn: any = document.querySelector(".search-icon");
-  // cancelBtn: any = document.querySelector(".cancel-icon");
-  // items: any = document.querySelector(".nav-items");
-  // form: any = document.querySelector("form");
+  getallheaders() {
+    this.masterAPI.getAllheaders(environment.CUSTOMER_ID).subscribe((res: any) => {
+      if (res.code == 'success') {
+        var data = res.body;
+        //console.log(res.body);
+        this.headerarry = data.map((dt: any) => JSON.parse(dt));
 
-  // menuClick () {
-  //   this.items.classList.add("active");
-  //   this.menuBtn.classList.add("hide");
-  //   this.searchBtn.classList.add("hide");
-  //   this.cancelBtn.classList.add("show");
-  // }
-  // onCancel() {
-  //   this.items.classList.remove("active");
-  //   this.menuBtn.classList.remove("hide");
-  //   this.searchBtn.classList.remove("hide");
-  //   this.cancelBtn.classList.remove("show");
-  //   this.form.classList.remove("active");
-  //   this.cancelBtn.style.color = "#ff3d00";
-  // }
-  // onSearch() {
-  //   this.form.classList.add("active");
-  //   this.searchBtn.classList.add("hide");
-  //   this.cancelBtn.classList.add("show");
-  // }
+        console.log(this.headerarry);
+      } else {
+        this.headerarry = []
+      }
+    }, (err) => {
+      this.headerarry = []
+    })
+  }
 }

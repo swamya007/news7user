@@ -1,0 +1,147 @@
+<app-header></app-header>
+
+<div class="home-ad-container">
+    <div id="carouselExampleControls1" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item" *ngFor="let top_ad of ads_top; let i = index"
+                [ngClass]="i === 0 ? 'active' : ''">
+                <img class="d-block w-100" src={{top_ad.ads_image}} alt={{top_ad.ads_image_alt_text}}
+                    (click)="openLink(top_ad.ads_image_link)">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls1" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls1" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+
+<div class="home-first-container">
+    <div class="row">
+        <div class="col-md-3 col-sm-12 col-12">
+            <app-odisha-news></app-odisha-news>
+            <div class="advertisement-container-long">
+                <div id="carouselExampleControls2" class="carousel slide carousel-fade" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item" *ngFor="let leftmiddle_ad of ads_leftmiddle;let i = index"
+                            [ngClass]="i === 0 ? 'active' : ''">
+                            <img class="d-block w-100" src={{leftmiddle_ad.ads_image}}
+                                alt={{leftmiddle_ad.ads_image_alt_text}}
+                                (click)="openLink(leftmiddle_ad.ads_image_link)">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls2" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls2" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <app-crime-news></app-crime-news>
+        </div>
+        <div class="col-md-9 col-sm-12 col-12">
+            <div class="row">
+                <div class="col-md-8 col-sm-12 col-12">
+                    <h1 class="page-title">Search results for: <span>{{searchval}}</span></h1>
+                    <app-search-news [postarr]="postarr" *ngIf="postarr && postarr.length" [p]="p"></app-search-news>
+                    <div *ngIf="postarr.length <= 0">
+                        <div class="page-title mt-25">Nothing Found</div>
+                        <div class="page-sub-title">Sorry, but nothing matched your search terms. Please try again with
+                            some different keywords.</div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 col-12">
+                    <div class="advertisement-space-container-first">
+                        <div id="carouselExampleControls4" class="carousel slide carousel-fade" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item" *ngFor="let rightupper_ad of ads_rightupper; let i = index"
+                                    [ngClass]="i === 0 ? 'active' : ''">
+                                    <img class="d-block w-100" src={{rightupper_ad.ads_image}}
+                                        alt={{rightupper_ad.ads_image_alt_text}}
+                                        (click)="openLink(rightupper_ad.ads_image_link)">
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleControls4" role="button"
+                                data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleControls4" role="button"
+                                data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                    <app-entertainment-news></app-entertainment-news>
+                </div>
+            </div>
+            <div class="home-ad-container-wide">
+                <div id="carouselExampleControls3" class="carousel slide carousel-fade" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item" *ngFor="let middle_ad of ads_middle;let i = index"
+                            [ngClass]="i === 0 ? 'active' : ''">
+                            <img class="d-block w-100" src={{middle_ad.ads_image}} alt={{middle_ad.ads_image_alt_text}}
+                                (click)="openLink(middle_ad.ads_image_link)">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls3" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls3" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-12 col-12">
+                    <app-business-news></app-business-news>
+                </div>
+                <div class="col-md-6 col-sm-12 col-12">
+                    <app-technology-news></app-technology-news>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-sm-12 col-12">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <app-politics-news></app-politics-news>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <app-sports-news></app-sports-news>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <app-nation-news></app-nation-news>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <app-automobile-news></app-automobile-news>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <app-health-news></app-health-news>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <app-blog></app-blog>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 col-12">
+                    <app-education-news></app-education-news>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

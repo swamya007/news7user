@@ -18,7 +18,12 @@
   display: none;
 }
 
+.mySlides p:hover {
+  color: #e10505;
+}
+
 .mySlides p {
+  cursor: pointer;
   margin: 0px 0px 0px 20px;
   font-size: 15px;
   color: #73797f;

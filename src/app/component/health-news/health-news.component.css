@@ -15,16 +15,19 @@
 }
 
 .news-text-container p {
-  color:#474747;
+  color: #474747;
   transition: all .4s ease;
 }
+
 .news-box:hover .news-text-container p {
   color: #da0000;
 }
+
 .heading-container {
   display: flex;
   align-items: center;
 }
+
 .heading-container .grey-line {
   background-color: #bbbbbb;
   height: 10px;

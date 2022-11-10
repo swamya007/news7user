@@ -1,0 +1,21 @@
+<div class="addtag-container">
+    <div class="add-tag-heading">
+      <h1>Add New Media</h1>
+    </div>
+    <div>
+		<div class="dropzone" fileDragDrop (filesChangeEmiter)="onFileChangeDragNDrop($event)">
+			<div class="text-wrapper">
+				<div class="centered">
+					<input type="file" name="file" id="file" (change)="onFileChangeThroughInputFile($event)" multiple>
+					<label for="file"><span class="textLink">Select your file</span> <br> <span class="drop-cls"> Drop it here!</span></label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="upload-btn" *ngIf="upload_status">
+		<button mat-raised-button color="primary" (click)="uploadFile()">Upload</button>
+	</div>
+	<div class="upload-btn" *ngIf="upload_status">
+		<img src="" id="media_img_id" class="media-img">
+	</div>
+</div>

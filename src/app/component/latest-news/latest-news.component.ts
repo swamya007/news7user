@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { PostserviceService } from 'src/app/services/postservice/postservice.service';
+import { environment } from 'src/environments/environment';
+import { News7_CONSTANTS } from 'src/new7constants/new7constants';
 
 @Component({
   selector: 'app-latest-news',
@@ -7,16 +10,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./latest-news.component.css']
 })
 export class LatestNewsComponent implements OnInit {
-  news: any = [];
-  constructor() { }
+  postarr:any = [];
+  nextthree: any = [];
+
+  constructor(private postserviceService: PostserviceService, private router:Router) { }
 
   ngOnInit(): void {
-    this.generate();
+    this.getLatestNews()
   }
-  generate() {
-    for (let index = 0; index < 15; index++) {
-      this.news[index] = index;
-    }
-    return this.news;
+
+  getShortName(user_name: any) {
+    return user_name.slice(0, 46).trim() + (user_name.length > 45 ? "..." : "");
+  }
+  
+  getLatestNews() {
+    this.postserviceService.getLatestNews(1,environment.CUSTOMER_ID,'').subscribe((res: any) => {
+      if (res.code == 'success') {
+        var data = res.body;
+        this.postarr = data.map((dt: any) => JSON.parse(dt));
+        this.nextthree = this.postarr?.slice(0, 7);
+      } else {
+        this.postarr = []
+      }
+    }, (err) => {
+      this.postarr = []
+    })
+  }
+
+  opennewsSec(id: any) {
+    this.router.navigate(['/post/' + id]);
   }
 }
+

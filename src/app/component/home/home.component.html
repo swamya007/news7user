@@ -1,72 +1,11 @@
-<!-- <app-header></app-header>
-<app-latest-news-header></app-latest-news-header>
-
-<div class="home-first-container">
-  <div class="row">
-    <div class="col-md-3 col-sm-12 col-12">
-      <app-odisha-news></app-odisha-news>
-      <div class="advertisement-container-long" style="background-image: url('assets/img/ad2.jpg')">
-        <p class="placeholder-text">Advertisement</p>
-        <p class="placeholder-size">300 X 600</p>
-      </div>
-    </div>
-    <div class="col-md-6 col-sm-12 col-12">
-      <app-main-news></app-main-news>
-      <div class="advertisement-container-wide">
-        <p>Advertisement</p>
-      </div>
-      <app-blog></app-blog>
-    </div>
-    <div class="col-md-3 col-sm-12 col-12">
-      <div class="advertisement-space-container-first" style="background-image: url('assets/img/ad.jpg')">
-        <p class="placeholder-text">Advertisement</p>
-        <p class="placeholder-size">300 X 200</p>
-      </div>
-      <p class="ad-text">-Advertisement-</p>
-      <app-latest-news></app-latest-news>
-    </div>
-  </div>
-</div>
-<div class="home-wide-container">
-  <app-business-news></app-business-news>
-</div>
-<div class="home-second-container">
-  <div class="row">
-    <div class="col-md-3 col-sm-12 col-12">
-      <app-crime-news></app-crime-news>
-      <div class="culture-section">
-      <app-horoscope-news></app-horoscope-news>
-      </div>
-    </div>
-    <div class="col-md-6 col-sm-12 col-12">
-      <app-interview-news></app-interview-news>
-      <div class="row culture-section">
-        <div class="col-md-6 col-sm-12 col-12">
-        </div>
-        <div class="col-md-6 col-sm-12 col-12">
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3 col-sm-12 col-12">
-      <app-entertainment-news></app-entertainment-news>
-      <div class="health-section">
-      <app-video></app-video>
-      </div>
-    </div>
-  </div>
-</div>
-
-<app-footer></app-footer> -->
-
-
 <app-header></app-header>
 <app-latest-news-header></app-latest-news-header>
 
 <div class="home-ad-container">
   <div id="carouselExampleControls1" class="carousel slide carousel-fade" data-ride="carousel">
     <div class="carousel-inner">
-      <div class="carousel-item"  >
-        <img class="d-block w-100" src="" alt="">
+      <div class="carousel-item"  *ngFor="let top_ad of ads_top; let i = index" [ngClass]="i === 0 ? 'active' : ''">
+        <img class="d-block w-100" src={{top_ad.ads_image}} alt={{top_ad.ads_image_alt_text}} (click)="openLink(top_ad.ads_image_link)">
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleControls1" role="button" data-slide="prev">
@@ -78,6 +17,7 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
+  <!-- <div style="background-image: url('assets/img/cover4.jpg')"></div> -->
 </div>
 
 <div class="home-first-container">
@@ -87,8 +27,8 @@
       <div class="advertisement-container-long">
         <div id="carouselExampleControls2" class="carousel slide carousel-fade" data-ride="carousel">
           <div class="carousel-inner">
-            <div class="carousel-item" >
-              <img class="d-block w-100" src="" alt="">
+            <div class="carousel-item" *ngFor="let leftmiddle_ad of ads_leftmiddle;let i = index" [ngClass]="i === 0 ? 'active' : ''">
+              <img class="d-block w-100" src={{leftmiddle_ad.ads_image}} alt={{leftmiddle_ad.ads_image_alt_text}} (click)="openLink(leftmiddle_ad.ads_image_link)">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleControls2" role="button" data-slide="prev">
@@ -112,8 +52,8 @@
           <div class="advertisement-space-container-first">
             <div id="carouselExampleControls4" class="carousel slide carousel-fade" data-ride="carousel">
               <div class="carousel-inner">
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="" alt="">
+                <div class="carousel-item" *ngFor="let rightupper_ad of ads_rightupper; let i = index" [ngClass]="i === 0 ? 'active' : ''">
+                  <img class="d-block w-100" src={{rightupper_ad.ads_image}} alt={{rightupper_ad.ads_image_alt_text}} (click)="openLink(rightupper_ad.ads_image_link)">
                 </div>
               </div>
               <a class="carousel-control-prev" href="#carouselExampleControls4" role="button" data-slide="prev">
@@ -126,14 +66,20 @@
               </a>
             </div>
           </div>
+          <div class="search-category">
+            <mat-form-field appearance="outline" class="form-group w-200">
+              <input matInput type="text" name="cname" [(ngModel)]="searchval">
+            </mat-form-field>
+            <button mat-raised-button color="primary" class="search-btn" (click)="searchPost()">Search</button>
+          </div>
           <app-entertainment-news></app-entertainment-news>
         </div>
       </div>
       <div class="home-ad-container-wide">
         <div id="carouselExampleControls3" class="carousel slide carousel-fade" data-ride="carousel">
           <div class="carousel-inner">
-            <div class="carousel-item">
-              <img class="d-block w-100" src="" alt="">
+            <div class="carousel-item" *ngFor="let middle_ad of ads_middle;let i = index" [ngClass]="i === 0 ? 'active' : ''">
+              <img class="d-block w-100" src={{middle_ad.ads_image}} alt={{middle_ad.ads_image_alt_text}} (click)="openLink(middle_ad.ads_image_link)">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleControls3" role="button" data-slide="prev">
@@ -151,7 +97,7 @@
           <app-business-news></app-business-news>
         </div>
         <div class="col-md-6 col-sm-12 col-12">
-          <app-biography-news></app-biography-news>
+          <app-technology-news></app-technology-news>
         </div>
       </div>
       <div class="row">
@@ -189,5 +135,110 @@
   </div>
 </div>
 
+<!-- ---------------Previous Layout Start---------------- -->
+
+<!-- <div class="home-first-container">
+  <div class="row">
+    <div class="col-md-3 col-sm-12 col-12">
+      <app-odisha-news></app-odisha-news>
+      <div class="advertisement-container-long" style="background-image: url('assets/img/ad2.jpg')">
+        <p class="placeholder-text">Advertisement</p>
+        <p class="placeholder-size">300 X 600</p>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12 col-12">
+      <app-main-news></app-main-news>
+      <div class="advertisement-container-wide">
+        <p>Advertisement</p>
+      </div>
+      <app-blog></app-blog>
+      <div class="row culture-section">
+        <div class="col-md-6 col-sm-12 col-12">
+          <app-business-news></app-business-news>
+        </div>
+        <div class="col-md-6 col-sm-12 col-12">
+          <app-technology-news></app-technology-news>
+        </div>
+      </div> 
+    </div>
+    <div class="col-md-3 col-sm-12 col-12">
+      <div class="advertisement-space-container-first" style="background-image: url('assets/img/ad.jpg')">
+        <p class="placeholder-text">Advertisement</p>
+        <p class="placeholder-size">300 X 200</p>
+      </div>
+      <p class="ad-text">-Advertisement-</p>
+      <app-latest-news></app-latest-news>
+      <app-entertainment-news></app-entertainment-news>
+    </div>
+  </div>
+</div> -->
+<!-- <div class="home-wide-container">
+  <app-business-news></app-business-news>
+</div> -->
+<!-- <div class="home-second-container">
+  <div class="row">
+    <div class="col-md-3 col-sm-12 col-12">
+      <app-crime-news></app-crime-news>
+      <div class="culture-section">
+        <app-economy-news></app-economy-news>
+      </div>
+      <div class="culture-section fixed-sidebar">
+        <app-culture-news></app-culture-news>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12 col-12">
+      <app-twin-city-news></app-twin-city-news>
+      <div class="row culture-section">
+        <div class="col-md-6 col-sm-12 col-12">
+          <app-education-news></app-education-news>
+        </div>
+        <div class="col-md-6 col-sm-12 col-12">
+          <app-campus-muse-news></app-campus-muse-news>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-12 col-12">
+      <app-entertainment-news></app-entertainment-news>
+      <div class="health-section">
+        <app-health-news></app-health-news>
+      </div>
+      <div class="health-section fixed-sidebar">
+        <app-environment-news></app-environment-news>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- <div class="home-third-container">
+  <div class="row">
+    <div class="col-md-3 col-sm-12 col-12">
+      <div>
+        <app-economy-news></app-economy-news>
+      </div>
+      <div class="culture-section">
+        <app-culture-news></app-culture-news>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12 col-12">
+      <div class="row">
+        <div class="col-md-6 col-sm-12 col-12">
+          <app-education-news></app-education-news>
+        </div>
+        <div class="col-md-6 col-sm-12 col-12">
+          <app-campus-muse-news></app-campus-muse-news>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-12 col-12">
+      <div class="health-section">
+        <app-health-news></app-health-news>
+      </div>
+      <div>
+        <app-environment-news></app-environment-news>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- ---------------Previous Layout End---------------- -->
 
 <app-footer></app-footer>

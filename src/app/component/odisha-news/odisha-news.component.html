@@ -1,46 +1,46 @@
 <div class="news-section">
   <div class="heading-container">
-    <h4 class="news-sub">ରାଜ୍ୟ</h4>
+    <h4 class="news-sub">Odisha</h4>
     <div class="grey-line"></div>
   </div>
-  <div class="news-card">
-    <img src="assets/img/news.jpg">
-    <p>ହାତୀ ଓ ବନ୍ୟଜନ୍ତୁଙ୍କ ଉପଦ୍ରବରେ କ୍ଷତି ସହୁଛି ଚାଷୀ, ସ୍ଥାୟୀ ପ୍ରତିକାର ସହ ଉଚିତ କ୍ଷତିପୂରଣ ଦାବିରେ ରେଞ୍ଜ ଅଫିସ୍ ଘେରାଉ…</p>
+  <div class="news-card" *ngFor="let post of postarr; let i = index" (click)="opennewsSec(post.slug)"  [ngClass]="i !== 0 ? 'divider' : ''">
+    <img [src]="post.guid">
+    <p>{{post.post_title}}</p>
       <div class="news-date-section d-flex">
-        <div class="author-name"> ସୁରଭି ଗୌତମ</div>
+        <div class="author-name" [innerHTML]="getShortAuthorName(post.author_name)"></div>
         <div> <i class="fa-solid fa-circle news-circle-icon"></i></div>
-        <div class="news-date"> August 26, 2020</div>
+        <div class="news-date"> {{post.post_date | date:'MMMM dd, yyyy'}}</div>
       </div>
   </div>
   
-  <div class="news-card divider">
+  <!-- <div class="news-card divider">
     <img src="assets/img/news.jpg">
-    <p>ହାତୀ ଓ ବନ୍ୟଜନ୍ତୁଙ୍କ ଉପଦ୍ରବରେ କ୍ଷତି ସହୁଛି ଚାଷୀ, ସ୍ଥାୟୀ ପ୍ରତିକାର ସହ ଉଚିତ କ୍ଷତିପୂରଣ ଦାବିରେ ରେଞ୍ଜ ଅଫିସ୍ ଘେରାଉ…</p>
-
+    <p class="">A Christmas Carol, Old Vic, London,
+      review: Rhys Ifans gives a remarkably powerful…</p>
     <div class="news-date-section d-flex">
-      <div class="author-name"> ସୁରଭି ଗୌତମ</div>
+      <div class="author-name">james</div>
       <div> <i class="fa-solid fa-circle news-circle-icon"></i></div>
       <div class="news-date"> August 26, 2020</div>
     </div>
   </div>
   <div class="news-card divider">
     <img src="assets/img/news.jpg">
-    <p>ହାତୀ ଓ ବନ୍ୟଜନ୍ତୁଙ୍କ ଉପଦ୍ରବରେ କ୍ଷତି ସହୁଛି ଚାଷୀ, ସ୍ଥାୟୀ ପ୍ରତିକାର ସହ ଉଚିତ କ୍ଷତିପୂରଣ ଦାବିରେ ରେଞ୍ଜ ଅଫିସ୍ ଘେରାଉ…</p>
-
+    <p class="">A Christmas Carol, Old Vic, London,
+      review: Rhys Ifans gives a remarkably powerful…</p>
     <div class="news-date-section d-flex">
-      <div class="author-name"> ସୁରଭି ଗୌତମ</div>
+      <div class="author-name">james</div>
       <div> <i class="fa-solid fa-circle news-circle-icon"></i></div>
       <div class="news-date"> August 26, 2020</div>
     </div>
   </div>
   <div class="news-card divider">
     <img src="assets/img/news.jpg">
-    <p>ହାତୀ ଓ ବନ୍ୟଜନ୍ତୁଙ୍କ ଉପଦ୍ରବରେ କ୍ଷତି ସହୁଛି ଚାଷୀ, ସ୍ଥାୟୀ ପ୍ରତିକାର ସହ ଉଚିତ କ୍ଷତିପୂରଣ ଦାବିରେ ରେଞ୍ଜ ଅଫିସ୍ ଘେରାଉ…</p>
-
+    <p class="">A Christmas Carol, Old Vic, London,
+      review: Rhys Ifans gives a remarkably powerful…</p>
     <div class="news-date-section d-flex">
-      <div class="author-name"> ସୁରଭି ଗୌତମ</div>
+      <div class="author-name">james</div>
       <div> <i class="fa-solid fa-circle news-circle-icon"></i></div>
       <div class="news-date"> August 26, 2020</div>
     </div>
-  </div>
+  </div> -->
 </div>

@@ -1,16 +1,17 @@
 <div class="news-section">
   <div class="heading-container">
-    <h4 class="news-sub">ଅପରାଧ</h4>
+    <h4 class="news-sub">Crime</h4>
     <div class="grey-line"></div>
   </div>
- 
-  <div class="news-card">
-    <img src="assets/img/news.jpg">
-    <p>ଘରେ ରଖି କରୁଥିଲେ ଚୋରା ବନ୍ଧୁକ କାରବାର, ଚଢାଉ କରି ଜଣଙ୍କୁ ବାନ୍ଧିଲା ପୋଲିସ</p>
+
+  <div class="news-card" (click)="opennewsSec(post.slug)" *ngFor="let post of postarr; let i = index" [ngClass]="i !== 0 ? 'divider' : ''">
+    <!-- <a (click)="opennewsSec(post.id)"> -->
+      <img [src]="post.guid">
+      <p>{{post.post_title}}</p>
       <div class="news-date-section d-flex">
-        <div class="author-name">author name</div>
+        <div class="author-name">{{post.author_name}}</div>
         <div> <i class="fa-solid fa-circle news-circle-icon"></i></div>
-        <div class="news-date"> 22 October</div>
+        <div class="news-date"> {{post.post_date | date:'MMMM dd, yyyy'}}</div>
       </div>
+    <!-- </a> -->
   </div>
-</div>

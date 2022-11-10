@@ -1,38 +1,19 @@
 <div class="news-section">
     <div class="heading-container">
-        <h4 class="news-sub">ମନୋରଞ୍ଜନ</h4>
+        <h4 class="news-sub">Entertainment</h4>
         <div class="grey-line"></div>
     </div>
-    <div class="row news-box">
+    <div class="row news-box" (click)="opennewsSec(post.slug)" *ngFor="let post of postarr">
+        <!-- <a (click)="opennewsSec(post.id)"> -->
         <div class="col-md-4 col-sm-12 col-12 news-img-container">
-            <img src="assets/img/news.jpg">
+            
+            <img [src]="post.guid">
         </div>
         <div class="col-md-8 col-sm-12 col-12 news-text-container">
-            <p>ଘରେ ରଖି କରୁଥିଲେ ଚୋରା ବନ୍ଧୁକ କାରବାର, ଚଢାଉ କରି ଜଣଙ୍କୁ ବାନ୍ଧିଲା ପୋଲିସ</p>
+            
+            <p>{{post.post_title ? getShortName(post.post_title) : ''}}</p>
+        
         </div>
-    </div>
-    <div class="row news-box divider">
-        <div class="col-md-4 col-sm-12 col-12 news-img-container">
-            <img src="assets/img/news.jpg">
-        </div>
-        <div class="col-md-8 col-sm-12 col-12 news-text-container">
-            <p>ଘରେ ରଖି କରୁଥିଲେ ଚୋରା ବନ୍ଧୁକ କାରବାର, ଚଢାଉ କରି ଜଣଙ୍କୁ ବାନ୍ଧିଲା ପୋଲିସ</p>
-        </div>
-    </div>
-    <div class="row news-box divider">
-        <div class="col-md-4 col-sm-12 col-12 news-img-container">
-            <img src="assets/img/news.jpg">
-        </div>
-        <div class="col-md-8 col-sm-12 col-12 news-text-container">
-            <p>ଘରେ ରଖି କରୁଥିଲେ ଚୋରା ବନ୍ଧୁକ କାରବାର, ଚଢାଉ କରି ଜଣଙ୍କୁ ବାନ୍ଧିଲା ପୋଲିସ</p>
-        </div>
-    </div>
-    <div class="row news-box divider">
-        <div class="col-md-4 col-sm-12 col-12 news-img-container">
-            <img src="assets/img/news.jpg">
-        </div>
-        <div class="col-md-8 col-sm-12 col-12 news-text-container">
-            <p>ଘରେ ରଖି କରୁଥିଲେ ଚୋରା ବନ୍ଧୁକ କାରବାର, ଚଢାଉ କରି ଜଣଙ୍କୁ ବାନ୍ଧିଲା ପୋଲିସ</p>
-        </div>
+    <!-- </a> -->
     </div>
 </div>

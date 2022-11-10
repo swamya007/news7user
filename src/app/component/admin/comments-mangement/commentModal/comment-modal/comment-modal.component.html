@@ -1,0 +1,39 @@
+<div class="viewcategory-container">
+    <div class="view-category">
+        <div class="search-category">
+            <button mat-raised-button color="primary" class="search-btn" [disabled]="comments.length === 0" (click)="approveComments()">Approve</button>
+        </div>
+        <div class="header">
+            <div>
+            </div>
+            <table id="view-table">
+                <thead class="table-header">
+                    <th class="first three">
+                        <input type="checkbox" name="comment_list" class="example-margin" [(ngModel)]="selectedAll" (change)="selectAll();">
+                    </th>
+                    <th class="content ten">Author</th>
+                    <th class="content twelve">IP</th>
+                    <!-- <th class="content">Url</th> -->
+                    <th class="content ten">Date</th>
+                    <th class="content fifty-five">Content</th>
+                    <th class="content ten">Is Approved ?</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of comments; index as i">
+                        <td class="first three">
+                            <input type="checkbox" name="comment_list" class="example-margin" [(ngModel)]="data.selected" [value]="data.comment_id" (change)="checkIfAllSelected();" [disabled]="data.comment_approved === 'Y'">
+                        </td>
+                        <td class="ten">{{data.comment_author}}</td>
+                        <td class="twelve">{{data.comment_author_ip}}</td>
+                        <!-- <td>{{data.comment_author_url}}</td> -->
+                        <td class="ten">{{data.comment_date | date:'dd-MM-yyyy'}}</td>
+                        <td class="fifty-five">{{data.comment_content}}</td>
+                        <td class="ten center approve-status">{{data.comment_approved}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="search-category">
+            <button mat-raised-button color="primary" class="search-btn" [disabled]="comments.length === 0" (click)="approveComments()">Approve</button>
+        </div>
+    </div>

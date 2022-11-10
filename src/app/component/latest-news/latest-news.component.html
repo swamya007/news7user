@@ -1,102 +1,14 @@
-
-
 <div class="news-section">
   <div class="heading-container">
-    <h4 class="news-sub">ପ୍ରମୁଖ ଖବର</h4>
-    <div class="grey-line"></div>
+      <h4 class="news-sub">Latest News</h4>
+      <div class="grey-line"></div>
   </div>
-  <div class="row news-box">
-    <div class="col-md-4 col-sm-12 col-12 news-img-container">
-      <img src="assets/img/news.jpg">
-    </div>
-    <div class="col-md-8 col-sm-12 col-12 news-text-container">
-      <p>ଘରେ ରଖି କରୁଥିଲେ ଚୋରା ବନ୍ଧୁକ କାରବାର, ଚଢାଉ କରି ଜଣଙ୍କୁ ବାନ୍ଧିଲା ପୋଲିସ</p>
-    </div>
-  </div>
-  <div *ngFor="let n of news">
-    <div class="row news-box divider">
+  <div class="row news-box" *ngFor="let post of nextthree" (click)="opennewsSec(post.slug)">
       <div class="col-md-4 col-sm-12 col-12 news-img-container">
-        <img src="assets/img/news.jpg">
+          <img [src]="post.guid">
       </div>
       <div class="col-md-8 col-sm-12 col-12 news-text-container">
-        <p>ଘରେ ରଖି କରୁଥିଲେ ଚୋରା ବନ୍ଧୁକ କାରବାର, ଚଢାଉ କରି ଜଣଙ୍କୁ ବାନ୍ଧିଲା ପୋଲିସ</p>
+          <p>{{post.post_title ? getShortName(post.post_title) : ''}}</p>
       </div>
-    </div>
   </div>
-  <!-- <div class="row news-box divider">
-    <div class="col-md-4 col-sm-12 col-12 news-img-container">
-      <img src="assets/img/news.jpg">
-    </div>
-    <div class="col-md-8 col-sm-12 col-12 news-text-container">
-      <p>A Christmas Carol, Old Vic, London,
-        review…</p>
-    </div>
-  </div>
-  <div class="row news-box divider">
-    <div class="col-md-4 col-sm-12 col-12 news-img-container">
-      <img src="assets/img/news.jpg">
-    </div>
-    <div class="col-md-8 col-sm-12 col-12 news-text-container">
-      <p>A Christmas Carol, Old Vic, London,
-        review…</p>
-    </div>
-  </div>
-  <div class="row news-box divider">
-    <div class="col-md-4 col-sm-12 col-12 news-img-container">
-      <img src="assets/img/news.jpg">
-    </div>
-    <div class="col-md-8 col-sm-12 col-12 news-text-container">
-      <p>A Christmas Carol, Old Vic, London,
-        review…</p>
-    </div>
-  </div>
-  <div class="row news-box divider">
-    <div class="col-md-4 col-sm-12 col-12 news-img-container">
-      <img src="assets/img/news.jpg">
-    </div>
-    <div class="col-md-8 col-sm-12 col-12 news-text-container">
-      <p>A Christmas Carol, Old Vic, London,
-        review…</p>
-    </div>
-  </div>
-  <div class="row news-box divider">
-    <div class="col-md-4 col-sm-12 col-12 news-img-container">
-      <img src="assets/img/news.jpg">
-    </div>
-    <div class="col-md-8 col-sm-12 col-12 news-text-container">
-      <p>A Christmas Carol, Old Vic, London,
-        review…</p>
-    </div>
-<<<<<<< HEAD
-  </div>
-  <div class="row news-box divider">
-    <div class="col-md-4 col-sm-12 col-12 news-img-container">
-      <img src="assets/img/news.jpg">
-    </div>
-    <div class="col-md-8 col-sm-12 col-12 news-text-container">
-      <p>A Christmas Carol, Old Vic, London,
-        review…</p>
-    </div>
-  </div>
-  <div class="row news-box divider">
-    <div class="col-md-4 col-sm-12 col-12 news-img-container">
-      <img src="assets/img/news.jpg">
-    </div>
-    <div class="col-md-8 col-sm-12 col-12 news-text-container">
-      <p>A Christmas Carol, Old Vic, London,
-        review…</p>
-    </div>
-  </div>
-  <div class="row news-box divider">
-    <div class="col-md-4 col-sm-12 col-12 news-img-container">
-      <img src="assets/img/news.jpg">
-    </div>
-    <div class="col-md-8 col-sm-12 col-12 news-text-container">
-      <p>A Christmas Carol, Old Vic, London,
-        review…</p>
-    </div>
-  </div> -->
-  <button class="load-more-button" type="button">
-    Load More Posts
-  </button>
 </div>

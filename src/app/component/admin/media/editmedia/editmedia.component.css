@@ -1,0 +1,67 @@
+.addtag-container {
+  background-color: var(--site-background);
+  padding: 2% 3.9%;
+  min-height: 100vh;
+}
+
+.add-tag-form .add-tag-form-field .tag-info {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 15px;
+}
+
+.add-tag-heading h1 {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+
+.addtag-container .add-tag-form mat-label {
+  display: block;
+}
+
+.addtag-container .add-tag-form mat-form-field {
+  width: 100%;
+}
+
+.addtag-container .add-tag-form .add-tag-form-field h5 {
+  color: #ababab;
+}
+
+.copy-clipboard {
+  border: 2px solid #3f51b5;
+  width: 325px;
+}
+
+.row {
+  margin-bottom: 10px;
+}
+
+.add-tag-form .add-tag-form-field mat-form-field .textarea-add-tag.mat-input-element {
+  min-height: 75px !important;
+}
+
+.cropped-img {
+  height: 200px;
+  width: 300px;
+}
+
+.view-changed-img {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.img-crop-cls {
+  height: 300px;
+  width: 650px;
+}
+
+.btn-groups {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.stmt {
+  margin-top: 5px;
+  text-align: center;
+}

@@ -8,7 +8,7 @@
     justify-content: center;
     padding: 1.5%;
     background: var(--black);
-    color:#ccc;
+    color: #ccc;
 }
 
 .credits-container p {
@@ -21,12 +21,12 @@
 .credits-container p a {
     text-decoration: none;
     font-weight: bold;
-    color:var(--white);
+    color: var(--white);
 }
 
 .credits-container p a:hover {
     color: rgb(233, 0, 0);
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .footer-links-container ul {
@@ -37,7 +37,7 @@
     margin: 1rem 0rem;
 }
 
-.footer-links-container ul li{
+.footer-links-container ul li {
     float: none;
     display: inline-block;
     margin-right: 15px;
@@ -45,7 +45,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-weight: bold;
-    color:var(--white);
+    color: var(--white);
     transition: all .5s ease;
     padding: 5px 10px;
     cursor: pointer;

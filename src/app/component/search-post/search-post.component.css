@@ -1,0 +1,171 @@
+.home-ad-container {
+    display: flex;
+    justify-content: center;
+    background-color: #f4f4f4;
+    padding: 0rem 1rem;
+    padding-top: 1rem;
+  }
+  .home-ad-container div{
+    width: 970px;
+    height: 250px;
+    /* margin-top: 2%; */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .home-ad-container-wide {
+    background-color: #f4f4f4;
+    padding: 2% 0%;
+  }
+  .home-ad-container-wide div{
+    width: 728px;
+    height: 90px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .home-ad-container-wide .carousel .carousel-item img {
+    height: 90px;
+  }
+  
+  .home-ad-container-wide .carousel {
+    height: 90px;
+  }
+  
+  .home-first-container {
+    background-color: #f4f4f4;
+    padding: 2% 3.9%;
+  }
+  .home-second-container{
+    background-color: #f4f4f4;
+    padding: 2% 3.9%;
+  }
+  .home-third-container{
+    background-color: #f4f4f4;
+    padding: 0% 3.9% 2% 3.9%;
+  }
+  
+  .advertisement-space-container-first {
+    height: 250px;
+    width: 100%;
+    margin-bottom: 20px;
+    /* display: flex;
+    flex-direction: column;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 30px; */
+  }
+  .advertisement-space-container-first .carousel {
+    height: 250px;
+  }
+  .advertisement-space-container-first .carousel .carousel-item img {
+    height: 250px;
+  }
+  .culture-section{
+    margin-top: 20px;
+  }
+  .health-section{
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  .advertisement-space-container-first .placeholder-text {
+    margin: 0px;
+      color: #ffffff;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 12px;
+  }
+  
+  .advertisement-space-container-first .placeholder-size {
+    color: #ffffff;
+    font-size: 26px;
+  }
+  
+  .ad-text {
+    text-align: center;
+    color: #cccccc;
+    font-size: 12px;
+  }
+  
+  .advertisement-container-wide {
+    background-color: rgba(121, 121, 121, 0.2);
+    margin: 20px 0px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(121, 121, 121, 0.4);
+    width: 728px;
+  }
+  
+  .advertisement-container-wide p {
+    color: #707070;
+    margin: 0px;
+  }
+  
+  .advertisement-container-long {
+    height: 600px;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .advertisement-container-long .carousel .carousel-item img {
+    height: 600px;
+  }
+  
+  .advertisement-container-long .carousel {
+    height: 600px;
+  }
+  
+  .home-wide-container {
+    background-color: #f4f4f4;
+    padding: 0% 3.9%;
+  }
+  
+  .fixed-sidebar {
+    position: sticky;
+    top: 0;
+  }
+  
+  .carousel-inner {
+    cursor: pointer;
+  }
+  
+  .page-title {
+    font-weight: bold;
+    margin: 0px;
+    font-size: 30px;
+  }
+
+  .page-sub-title {
+    margin-top: 15px;
+    font-size: 24px;
+  }
+
+  .mt-25 {
+    margin-top: 25px;
+  }
+
+  .news-section {
+    padding: 1rem;
+    background:var(--white);
+    border: 1px rgb(215, 215, 215) solid;
+  }
+
+  .main-news-container {
+    padding: 3rem 0rem 1rem 0rem;
+  }
+  
+  .main-news-border {
+    border-bottom: 1px dotted #bbb;
+    padding: 20px 0px 30px 0px;
+  }
+  
+  .second-news-section {
+    padding: 30px 0px 20px 0px;
+  }
+  

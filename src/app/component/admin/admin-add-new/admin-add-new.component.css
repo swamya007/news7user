@@ -1,0 +1,91 @@
+/*.admin-add-new-fields {
+ font-weight: bolder;
+}
+
+.form-wrapper {
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.admin-add-new-tags mat-form-field {
+
+}
+
+.admin-add-new-tags .mat-form-field-appearance-outline .mat-form-field-infix {
+  height: 35px;
+}
+
+.admin-add-new-tags .mat-form-field-infix {
+  width: 400px;
+}*/
+
+.user-form .mat-form-field-flex {
+  height: 36px !important;
+}
+.user-form .mat-form-field-outline {
+  background: var(--white)!important;
+  border: 1px solid gray !important;
+  border-radius: 5px;
+}
+.user-form .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 0.1em 0 1em 0;
+}
+.user-container {
+  background-color: var(--site-background);
+  padding: 2% 5%;
+}
+.user-form .User-info {
+  font-size: 16px;
+  font-weight: 500;
+}
+.user-btn {
+  width: 10%;
+  background:  var(--blue);
+  color: var(--white);
+  margin-top: 10px;
+  font-weight: normal;
+}
+.role-part {
+  margin-top: 20px
+}
+.pass-btn {
+  border-color: var(--blue);
+  height: 2rem;
+  font-weight: normal;
+}
+.pass-btn i {
+  margin-right: 5px;
+  color:  var(--blue);
+}
+.w-400 {
+  width: 400px !important;
+}
+.pass-btn span {
+  color:  var(--blue);
+}
+.user-form .pass-btn {
+  margin-top: 4px;
+  margin-bottom: 10px;
+}
+.user-form .hide-icon {
+  border-color:  var(--blue);
+  height: 2rem;
+  font-weight: normal;
+}
+.hide-icon i {
+  color:  var(--blue);
+  margin-right: 5px;
+}
+.hide-icon span {
+  color:  var(--blue);
+}
+.hide-icon .pass-btn {
+  margin-top: 4px;
+  margin-bottom: 10px;
+}
+.user-form .hide-icon {
+  margin-left: 10px;
+  margin-top: 4px;
+}

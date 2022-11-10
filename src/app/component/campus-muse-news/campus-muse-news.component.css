@@ -1,7 +1,7 @@
 .news-section {
   padding: 1rem;
   background: transparent;
-  color: #fff;
+  color: var(--white);
 }
 
 .news-box {
@@ -18,11 +18,11 @@
   height: 60px;
 }
 
-
 .heading-container {
   display: flex;
   align-items: center;
 }
+
 .heading-container .grey-line {
   background-color: #bbb;
   height: 10px;

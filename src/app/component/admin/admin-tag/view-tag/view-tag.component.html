@@ -1,0 +1,54 @@
+<div class="viewtag-container">
+    <div class="view-tag">
+        <div class="search-category">
+            <mat-form-field appearance="outline" class="form-group w-200">
+                <input matInput type="text" name="cname" [(ngModel)]="tagSearch" (keydown.enter)="onKeydown($event)" (keyup.enter)="searchtag()">
+            </mat-form-field>
+            <button mat-raised-button color="primary" class="search-btn" (click)="searchtag()" >Search
+               Tag</button>
+        </div>
+        <!-- <div class="header">
+            <div>
+            </div>
+            <pagination-controls class="pagination-color"></pagination-controls>
+        </div> --> 
+        <table id="view-table">
+            <thead class="table-header">
+                <th class="first">
+                    <input type="checkbox" class="example-margin">
+                </th>
+                <th class="content">Name</th>
+                <th class="content">Description</th>
+                <th class="content">Slug</th>
+                <th class="content">Action</th>
+            </thead>
+            
+                <tr *ngFor="let data of tagarray | paginate: { itemsPerPage: 10, currentPage: p } ">
+                    <td class="first">
+                        <input type="checkbox" class="example-margin">
+                    </td>
+                    <td>{{data.tag_name}}</td>
+                    <td class="description">{{data.description}}</td>
+                    <td>{{data.slug}}</td>
+                    <td><button (click)="edittag(data)">Edit</button></td>
+                </tr>
+            
+        </table>
+        <ng-template #elseblock>
+            <tbody>
+              <tr>
+                <td colspan="6" class="text-center" style="color: black;">
+                  No record Found
+                </td>
+              </tr>
+            </tbody>
+         </ng-template>
+         <div class="col-lg-12 col-md-12 col-12 w-100 d-flex justify-content-between flex-wrap"
+         style="padding-top:1vw;padding-bottom:1vw;">
+         <div class="d-flex" style="padding-left: 3%;">
+           <!-- <button class="apply-btn" style="margin-left:1vw;">apply to selected items</button> -->
+         </div>
+         <pagination-controls class="pagination-color" (pageChange)="p = $event"></pagination-controls>
+       </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+.search-category {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.view-user-container {
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    padding: 2% 3%;
+}
+
+.content {
+    color:  var(--blue);
+}
+
+.view-table {
+    width: 100%;
+    border: 1px solid #ebebeb;
+    margin-top: 30px;
+}
+
+.view-table th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    text-align: left;
+    background-color: #f4f4f4;
+}
+
+.view-table td {
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    vertical-align: top;
+}
+
+tr:nth-child(odd) {
+    background-color: #fffcfc;
+}
+
+.search-btn {
+    margin-left: 10px;
+}
+
+.del-btn{
+    border-radius: 80px;
+    border-width: -5px;
+}

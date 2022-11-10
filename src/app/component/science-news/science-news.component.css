@@ -1,7 +1,7 @@
 .news-section {
     padding: 1rem;
     background: transparent;
-    color: #fff;
+    color: var(--white);
 }
 
 .news-box {
@@ -9,7 +9,7 @@
 }
 
 .news-box:hover {
-    color: #000;
+    color:var(--black);
 }
 
 .news-img-container img {
@@ -24,12 +24,12 @@
     align-items: center;
 }
 .heading-container .grey-line {
-    background-color: #bbb;
+    background-color: #bbbbbb;
     height: 10px;
     flex-grow: 1;
     margin-left: 10px;
 }
 
 .divider {
-    border-top: 1px dotted #bbb;
+    border-top: 1px dotted #bbbbbb;
 }

@@ -30,7 +30,7 @@ export class AddTagComponent implements OnInit {
     this.tag.createdby = this.currentuser.user_id;
     this.tag.flag = 'I';
     this.tag.tag_id = null;
-    this.tag.customer_id = 1
+    this.tag.customer_id = 2
     
     this.tagserivce.addnewtag(this.tag).subscribe((res: any) => {
       if (res.code == "success") {

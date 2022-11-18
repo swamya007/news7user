@@ -1,0 +1,9 @@
+<input type="checkbox" id="check">
+<label class="chat-btn" for="check"> <i class="fa fa-search comment" id="commentOpenSection"></i> <i
+        class="fa fa-close close" id="commentCloseSection"></i> </label>
+<div class="wrapper search-modal">
+    <mat-form-field appearance="outline" class="form-group">
+        <input matInput type="text" name="slug" [(ngModel)]="searchval" required (keydown.enter)="onKeydown($event)" (keyup.enter)="searchPost()">
+    </mat-form-field>
+    <button class="search-button" (click)="searchPost()" ><i class="fa fa-search"></i></button>
+</div>

@@ -49,6 +49,10 @@ export class MasterServiceService {
     return this.HTTP.get<any>(MasterAPI + `/get-without-header-category?customer_id=${customer_id}`);
   }
 
+  bulkDeletion(functions: any, deleteids: any, userid: any, customerid: any) {
+    return this.HTTP.get<any>(MasterAPI + `/bulk-deletion?function=${functions}&&deleteids=${deleteids}&&userid=${userid}&&customerid=${customerid}`);
+  }
+
   updateheader(headerarry: any) {
     return this.HTTP.post<any>(MasterAPI + `/update-header`, {...headerarry});
   }

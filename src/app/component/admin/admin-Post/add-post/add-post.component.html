@@ -26,10 +26,16 @@
             <h2 class="add-post-sub-heading">SEO</h2>
             <div class="add-post-form-field row">
                 <div class="col-md-6 col-sm-12 col-12">
+
                     <mat-label class="add-post-title">Slug</mat-label>
-                    <mat-form-field appearance="outline">
-                        <input matInput type="text" name="slug" [(ngModel)]="addPost.slug" required readonly>
-                    </mat-form-field>
+                    
+                    <div class="form-control slug" [(ngModel)]="addPost.slug" >
+                        {{addPost.post_title}}
+                    </div>
+                    <!-- <mat-form-field appearance="outline">
+                        
+                        <input matInput type="text" name="slug"  [(ngModel)]="addPost.slug" required readonly>
+                    </mat-form-field> -->
                 </div>
             </div>
             <div class="add-post-form-field row">
@@ -96,9 +102,12 @@
             <div class="add-post-form-field row">
                 <div class="col-md-6 col-sm-12 col-12">
                     <mat-label class="add-post-title">Permalink</mat-label>
-                    <mat-form-field appearance="outline">
+                    <div class="form-control slug" name="canonical-url" [(ngModel)]="addPost.permalink" >
+                        {{addPost.post_title}}
+                    </div>
+                    <!-- <mat-form-field appearance="outline">
                         <input matInput type="text" name="canonical-url" [(ngModel)]="addPost.permalink" required readonly>
-                    </mat-form-field>
+                    </mat-form-field> -->
                 </div>
             </div>
             <div class="add-post-form-field row">

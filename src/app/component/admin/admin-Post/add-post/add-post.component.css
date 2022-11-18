@@ -76,3 +76,9 @@
 .or-div {
     margin: 10px 30px;
 }
+
+.slug{
+    width: 100%;
+    height: auto;
+    min-height: 36px;
+}

@@ -1,0 +1,144 @@
+
+.chat-btn {
+    position: absolute;
+    right: 14px;
+    bottom: 30px;
+    cursor: pointer
+}
+
+.chat-btn .close {
+    display: none
+}
+
+.chat-btn i {
+    transition: all 0.9s ease
+}
+
+#check:checked~.chat-btn i {
+    display: block;
+    pointer-events: auto;
+    transform: rotate(180deg)
+}
+
+#check:checked~.chat-btn .comment {
+    display: none
+}
+
+.chat-btn i {
+    font-size: 22px;
+    color: #fff !important
+}
+
+.chat-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 6px 0 rgb(0 0 0 / 30%);
+    border-radius: 50px;
+    background-color: var(--red);
+    color: #fff;
+    font-size: 22px;
+    border: none;
+    position: fixed;
+    z-index: 9999;
+    bottom: 40%;
+    right: 0px;
+
+}
+
+.search-button {
+    border-color: var(--red);
+    margin-left: 10px;
+    border-radius: 50%;
+    padding: 5px 7px;
+}
+
+.search-button i{
+    color: var(--red);
+    font-size: 14px;
+}
+
+.wrapper .nav-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    font-size: 0.8rem;
+    color: #000;
+}
+
+.tab-section {
+    padding: 10px
+}
+
+.wrapper .nav-link {
+    display: block;
+    padding: 0.5rem 0.6rem;
+    width: 102%;
+}
+
+.wrapper .nav {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    background: #fff;
+    box-shadow: 0 1px 6px 0 rgb(32 76 137);
+}
+
+.wrapper {
+    position: fixed;
+    right: 0px;
+    bottom: 47%;
+    height: 42px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    transition: all 0.4s;
+    z-index: 9999;
+    display: none;
+    box-shadow: 0 1px 6px 0 rgb(32 33 36 / 60%);
+    padding: 0.3em 1em 0 1em;
+}
+
+#check:checked~.wrapper {
+    display: block;
+}
+
+.chat-header {
+    text-align: center;
+    background: linear-gradient(60deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%);
+    border-radius: 5px 5px 0px 0px;
+    margin-bottom: 10px;
+    color: #fff;
+    padding: 6px;
+    font-family: var(--subheading);
+    font-size: 18px;
+}
+
+.chat-form input,
+textarea,
+button {
+    margin-bottom: 10px
+}
+
+.chat-form textarea {
+    resize: none
+}
+
+.form-control:focus,
+.btn:focus {
+    box-shadow: none
+}
+
+#check {
+    display: none !important
+}
+
+.mat-form-field {
+    margin-bottom: 0px;
+}

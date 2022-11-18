@@ -114,6 +114,8 @@ import { AdminDraftEditComponent } from './component/admin/drafts/admin-draft-ed
 import { SearchPostComponent } from './component/search-post/search-post.component';
 import { SearchNewsComponent } from './component/search-post/search-news/search-news.component';
 import { AdminEditPostDraftComponent } from './component/admin/admin-Post/admin-edit-post-draft/admin-edit-post-draft.component';
+import { SearchStickyComponent } from './component/search-sticky/search-sticky.component';
+import { DeleteConfirmationModalComponent } from './component/common/delete-confirmation-modal/delete-confirmation-modal.component';
 
 @NgModule({
   declarations: [
@@ -199,7 +201,9 @@ import { AdminEditPostDraftComponent } from './component/admin/admin-Post/admin-
     AdminDraftEditComponent,
     SearchPostComponent,
     SearchNewsComponent,
-    AdminEditPostDraftComponent
+    AdminEditPostDraftComponent,
+    SearchStickyComponent,
+    DeleteConfirmationModalComponent
 
   ],
   imports: [

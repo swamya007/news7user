@@ -1,14 +1,25 @@
 <div class="viewcategory-container">
   <div class="view-category">
     <div class="search-category">
+      <mat-form-field appearance="outline">
+        <mat-select [(ngModel)]="categorysearch" disableRipple [ngModelOptions]="{standalone: true}">
+          <mat-option value="">Select Category</mat-option>
+          <mat-option *ngFor="let gm of catarr" [value]="gm.category_id">{{ gm.category_name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button color="primary" class="search-btn" (click)="searchCategory()">Search Category</button>
+      <button mat-raised-button color="primary" class="search-btn" (click)="postbyauthor()">Mine</button>/
+      <button mat-raised-button color="primary" class="search-btn" (click)="getallpost()">All Post</button>/
+        &nbsp;&nbsp;
       <mat-form-field appearance="outline" class="form-group w-200">
         <input matInput type="text" name="cname" [(ngModel)]="searchval">
       </mat-form-field>
       <button mat-raised-button color="primary" class="search-btn" (click)="searchPost()">Search
         Post</button>
-        <button mat-raised-button color="primary" class="search-btn" (click)="viewdraft()">View Drafts
-          Post</button>
-      
+      <button mat-raised-button color="primary" class="search-btn" (click)="viewdraft()">View Drafts
+        Post</button>
+
     </div>
     <div class="header">
       <div>
@@ -21,8 +32,9 @@
           <th class="content">Post Title</th>
           <th class="content">Post Date</th>
           <th class="content">Action</th>
+          <th class="content">Delete</th>
         </thead>
-        <tbody>
+        <tbody *ngIf="postarr &&  postarr.length; else elseblock">
           <tr *ngFor="let data of postarr | paginate: { itemsPerPage: 10, currentPage: p } ">
             <td class="first">
               <input type="checkbox" class="example-margin">
@@ -30,6 +42,9 @@
             <td>{{data.post_title}}</td>
             <td>{{data.post_date | date:'dd-MM-yyyy'}}</td>
             <td><button (click)="editUser(data.id)" >Edit</button></td>
+            <td>
+              <button class="del-btn" (click)="deletePost(data.id)"><mat-icon>delete_forever</mat-icon></button>  
+          </td>
           </tr>
         </tbody>
       </table>
@@ -42,7 +57,7 @@
           </td>
         </tr>
       </tbody>
-      </ng-template>
+    </ng-template>
     <div class="col-lg-12 col-md-12 col-12 w-100 d-flex justify-content-between flex-wrap"
       style="padding-top:1vw;padding-bottom:1vw;">
       <div class="d-flex" style="padding-left: 3%;">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { postModel } from 'src/app/models/postModel';
 import { LoginService } from 'src/app/services/loginService/login.service';
 import { MasterServiceService } from 'src/app/services/masterservice/master-service.service';
@@ -24,7 +25,7 @@ export class DashboardComponent implements OnInit {
   publishedarr:any = [];
   commentarr:any = [];
   constructor(private loginService: LoginService, private draftService: PostserviceService,
-    private notification: NotificationService,private masterService: MasterServiceService) { }
+    private notification: NotificationService,private masterService: MasterServiceService,private router: Router) { }
 
   ngOnInit(): void {
     this.cust_id = environment.CUSTOMER_ID
@@ -124,6 +125,11 @@ export class DashboardComponent implements OnInit {
       this.publishedarr = []
     })
   }
+
+
+  opennewsSec(id: any) {
+    this.router.navigate(['/post/' + id]);
+  }
   getCommentDetails(){
     this.masterService.getCommentDetails(this.cust_id).subscribe(res=>{
       if (res.code == 'success') {
@@ -137,4 +143,9 @@ export class DashboardComponent implements OnInit {
       this.commentarr = []
     })
   }
+  viewMore(){
+    this.router.navigate(['/admin/post/view']);
+  }
+
+
 }

@@ -17,12 +17,12 @@
                 <textarea matInput type="text" class="context-textarea" [(ngModel)]="draft.post_content" name="title"
                   placeholder="whats on your mind?" required></textarea>
               </mat-form-field>
-              <button class="btn btn-primary" (click)="saveDraft()">Save draft</button>
+              <button class="btn btn-primary" (click)="saveDraft()">Save Draft</button>
               <div class="draft-sec">
                 <div>
                   Your Recent Drafts
                 </div>
-                <div class="view-drafts">View drafts</div>
+                <div class="view-drafts">View Drafts</div>
               </div>
               <div *ngIf="draftarr && draftarr.length ; else elseblock">
                 <div *ngFor="let d of draftarr">
@@ -156,14 +156,14 @@
           <div class="quick-drf">Trending Now</div>
           <div class="margin-divider">
             <div *ngIf="postarr &&  postarr.length; else elseblock">
-              <div class="trend-inner" *ngFor="let post of postarr ; index as i">
+              <div (click)="opennewsSec(post.slug)" class="trend-inner" *ngFor="let post of postarr ; index as i">
                 <div class="mb-10">
                   <div>{{i+1}}. <span class="treading-blue">{{post.post_title}}</span></div>
                   <div class="view-num">22 views, 0 comments</div>
                 </div>
                 <div class="divider"></div>
               </div>
-              <div class="view-more">View More</div>
+              <div class="view-more" (click)="viewMore()">View More</div>
             </div>
             <ng-template #elseblock>
               <div class="elseblock">

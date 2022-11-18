@@ -66,25 +66,27 @@ export class AddUserComponent implements OnInit {
   userFormData(form: any) {
     this.userData.user_status = 1;
     this.userData.flag = 'I';
-    this.userData.customer_id = 1
-
+    this.userData.customer_id = 2;
+    let roles = '';
     if(this.userData.role !== null && this.userData.role !== undefined && this.userData.role !== '') {
-      var result = this.userData.role.map(function(val: any) {
+      var result = this.userData?.role?.map(function(val: any) {
         return val.id;
       }).join(',');
-      this.userData.role = result;
+      roles = result;
     }
-
-    this.userService.createUser(this.userData).subscribe((res: any) => {
+    const payload = { ...this.userData, role: roles};
+    this.userService.createUser(payload).subscribe((res: any) => {
       if (res.code == "success") {
         this.notify.success(res.message);
         form.reset();
         this.router.navigate(['/admin/user/view']);
       } else {
-        this.notify.error(res.message)
+        this.notify.error(res.message);
+        // this.userData.role = [];
       }
     }, (err: any) => {
       this.notify.error(err.message)
+      // this.userData.role = [];
     })
   }
 

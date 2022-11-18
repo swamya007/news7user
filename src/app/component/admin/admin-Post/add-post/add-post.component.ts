@@ -176,6 +176,7 @@ export class AddPostComponent implements OnInit {
   getSlug() {
     this.addPost.slug = this.addPost.post_title.replace(/[^\w\s]/gi, "").replaceAll(" ", "-").toLowerCase();
     this.addPost.permalink = environment.POST_URL + this.addPost.slug;
+    console.log(this.addPost.permalink = environment.POST_URL + this.addPost.slug,"dd")
   }
 
   onFilterChange(event: any) {

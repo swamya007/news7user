@@ -6,7 +6,7 @@
         <div class="add-post-text-field-container">
             <div class="add-post-form-field row">
                 <div class="col-md-12 col-12">
-                    <mat-label class="add-post-title">Title</mat-label>
+                    <mat-label class="add-post-title">Title (required)</mat-label>
                     <mat-form-field appearance="outline">
                         <input matInput type="text" name="title" [(ngModel)]="addPost.post_title" (keyup)="getSlug()"
                             required>
@@ -15,7 +15,7 @@
             </div>
             <div class="add-post-form-field row">
                 <div class="col-md-12 col-12">
-                    <mat-label class="add-post-title">Post</mat-label>
+                    <mat-label class="add-post-title">Post (required)</mat-label>
                     <ckeditor #editor id="description" [config]="ckeConfig" [(ngModel)]="addPost.post_content"
                         #myckeditor="ngModel" name="ckdescription">
                     </ckeditor>
@@ -26,16 +26,10 @@
             <h2 class="add-post-sub-heading">SEO</h2>
             <div class="add-post-form-field row">
                 <div class="col-md-6 col-sm-12 col-12">
-
                     <mat-label class="add-post-title">Slug</mat-label>
-                    
-                    <div class="form-control slug" [(ngModel)]="addPost.slug" >
-                        {{addPost.post_title}}
-                    </div>
-                    <!-- <mat-form-field appearance="outline">
-                        
-                        <input matInput type="text" name="slug"  [(ngModel)]="addPost.slug" required readonly>
-                    </mat-form-field> -->
+                    <mat-form-field appearance="outline">
+                        <input matInput type="text" name="slug" [(ngModel)]="addPost.slug" required readonly>
+                    </mat-form-field>
                 </div>
             </div>
             <div class="add-post-form-field row">
@@ -70,16 +64,22 @@
                 </div>
             </div>
             <div class="add-post-form-field row">
-                <div class="col-md-6 col-sm-12 col-12">
-                    <mat-label class="add-post-title">Publish Date</mat-label>
+                <div class="col-md-3 col-sm-12 col-12">
+                    <mat-label class="add-post-title">Publish Date & Time (required)</mat-label>
                     <mat-form-field appearance="outline">
-                        <input matInput type="date" [(ngModel)]="addPost.post_date" required>
+                        <input matInput type="date" [(ngModel)]="addPost.post_date" required  onkeydown="return false">
                     </mat-form-field>
                 </div>
+                <div class="col-md-3 col-sm-12 col-12 time-field">
+                    <mat-form-field name="stime" appearance="fill" class="form-field">
+                      <input matInput type="time" name="stime"  name="stime" class="time"
+                        [(ngModel)]="addPost.post_time" onkeydown="return false">
+                    </mat-form-field>
+                  </div>
             </div>
             <div class="add-post-form-field row">
                 <div class="col-md-6 col-sm-12 col-12">
-                    <mat-label class="add-post-title">Immidiate Publish ?</mat-label>
+                    <mat-label class="add-post-title">Immediate Publish</mat-label>
                     <mat-radio-group aria-label="Select an option" name="oplist1"
                         [(ngModel)]="addPost.immidiate_publish">
                         <mat-radio-button *ngFor="let k of list1" [value]="k.key" name="oplist1" [checked]="k.checked">
@@ -102,17 +102,14 @@
             <div class="add-post-form-field row">
                 <div class="col-md-6 col-sm-12 col-12">
                     <mat-label class="add-post-title">Permalink</mat-label>
-                    <div class="form-control slug" name="canonical-url" [(ngModel)]="addPost.permalink" >
-                        {{addPost.post_title}}
-                    </div>
-                    <!-- <mat-form-field appearance="outline">
+                    <mat-form-field appearance="outline">
                         <input matInput type="text" name="canonical-url" [(ngModel)]="addPost.permalink" required readonly>
-                    </mat-form-field> -->
+                    </mat-form-field>
                 </div>
             </div>
             <div class="add-post-form-field row">
                 <div class="col-md-6 col-sm-12 col-12">
-                    <mat-label class="add-post-title">Category</mat-label>
+                    <mat-label class="add-post-title">Category (required)</mat-label>
                     <div class="selecttag">
                         <ng-multiselect-dropdown [placeholder]="'Select Category'" [settings]="dropdownSettingsCat"
                             [data]="catarr" [(ngModel)]="addPost.category" (keyup.enter)="onFilterChange($event)">
@@ -132,7 +129,7 @@
             </div>
             <div class="add-post-form-field row">
                 <div class="col-md-6 col-sm-12 col-12">
-                    <mat-label class="add-post-title">Featured Image</mat-label>
+                    <mat-label class="add-post-title">Featured Image (required)</mat-label>
                     <div class="upload_txt"><input #tourBanner type="file" id="file-select"
                             accept="image/png, image/jpeg" (change)="onfileselected($event)"
                             [(ngModel)]="addPost.media_url"></div>

@@ -134,3 +134,25 @@
 .carousel-inner {
   cursor: pointer;
 }
+@media (max-width:992px)
+{
+.home-ad-container div{
+  width: 100%;
+  height: auto;
+  /* margin-top: 2%; */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+}
+@media (max-width:767px)
+{
+.home-ad-container div{
+  width: 100%;
+  height: auto;
+  /* margin-top: 2%; */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+}

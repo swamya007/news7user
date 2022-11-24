@@ -84,3 +84,7 @@ tr:nth-child(odd) {
 .pagination-color {
     margin-top: 20px;
 }
+.del-btn{
+    border-radius: 80px;
+    border-width: -5px;
+}

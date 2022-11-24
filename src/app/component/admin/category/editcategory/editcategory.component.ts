@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { categoryModel } from 'src/app/models/categorymodel';
 import { CategoryServiceService } from 'src/app/services/categoryservice/category-service.service';
+import { LoaderService } from 'src/app/services/loaderService/loader.service';
 import { LoginService } from 'src/app/services/loginService/login.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 
@@ -18,7 +19,7 @@ export class EditcategoryComponent implements OnInit {
   catarr: any[] = []
   currentuser: any = {}
   
-  constructor(private Categorydata:CategoryServiceService,private router: Router,private activatedRoute: ActivatedRoute,private loginService: LoginService,private notify:NotificationService) { }
+  constructor(private spinnerService: LoaderService,private Categorydata:CategoryServiceService,private router: Router,private activatedRoute: ActivatedRoute,private loginService: LoginService,private notify:NotificationService) { }
 
   ngOnInit(): void {
     this.currentuser = this.loginService.getCurrentUser();
@@ -33,19 +34,26 @@ export class EditcategoryComponent implements OnInit {
   }
 
   updatecategory() {
-    
+    this.spinnerService.show()
+
     this.updatecat.createdby = this.currentuser.user_id;
     this.updatecat.flag = 'U';
     
     this.Categorydata.createCategory(this.updatecat).subscribe((res: any) => {
       if (res.code == "success") {
+        this.spinnerService.hide()
+
         this.notify.success('Category updated successfully');
         this.router.navigate(['/admin/category/view']);
       } else {
         this.notify.error(res.message)
+        this.spinnerService.hide()
+
       }
     }, (err: any) => {
       this.notify.error(err.message)
+      this.spinnerService.hide()
+
     })
 
   }

@@ -14,6 +14,7 @@ import { CategoryServiceService } from 'src/app/services/categoryservice/categor
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ChoosemediaComponent } from 'src/app/component/admin/admin-Post/choosemedia/choosemedia.component';
+import { LoaderService } from 'src/app/services/loaderService/loader.service';
 
 @Component({
   selector: 'app-add-post',
@@ -42,7 +43,7 @@ export class AddPostComponent implements OnInit {
   tag: any
   checkedval: boolean = true
   catarr: any = []
-  
+  selected:any = true
 
   list = [
     { "name": "Yes", "key": "opened", "checked": true },
@@ -57,7 +58,7 @@ export class AddPostComponent implements OnInit {
   constructor(private userService: UserService, private loginService: LoginService, 
     private viewstag: TagserviceService, private post: PostserviceService, 
     private notify: NotificationService, private router: Router, private tagserivce: TagserviceService,
-    private categoryService:CategoryServiceService,public dialog: MatDialog) { }
+    private categoryService:CategoryServiceService,public dialog: MatDialog,private spinnerService: LoaderService) { }
 
   ngOnInit(): void {
 
@@ -109,8 +110,8 @@ export class AddPostComponent implements OnInit {
     this.tag = new tagModel()
     this.addPost.comment_status = "opened"
     this.addPost.immidiate_publish = "2"
-
-    this.getDraftedPost();
+    this.addPost.visibility = "0"
+    // this.getDraftedPost();
   }
 
   getDraftedPost() {
@@ -135,7 +136,7 @@ export class AddPostComponent implements OnInit {
           let value = this.tagarray.filter((d: any) => arr.map((v: any) => v.tag_name).includes(d.tag_name));
           this.addPost.addtags = value;
         }
-        console.log('this.addPost.category===',this.addPost.category)
+        
         if (this.addPost.category !== null && this.addPost.category !== undefined) {
           let arr: any = [];
           let split_arr = this.addPost.category.split(",");
@@ -176,7 +177,6 @@ export class AddPostComponent implements OnInit {
   getSlug() {
     this.addPost.slug = this.addPost.post_title.replace(/[^\w\s]/gi, "").replaceAll(" ", "-").toLowerCase();
     this.addPost.permalink = environment.POST_URL + this.addPost.slug;
-    console.log(this.addPost.permalink = environment.POST_URL + this.addPost.slug,"dd")
   }
 
   onFilterChange(event: any) {
@@ -256,6 +256,8 @@ export class AddPostComponent implements OnInit {
 
 
   addpost() {
+    this.spinnerService.show()
+
     this.addPost.createdby = this.currentuser.user_id;
     this.addPost.flag = 'I';
     this.addPost.tag_id = null;
@@ -286,23 +288,43 @@ export class AddPostComponent implements OnInit {
       };
     }
 
+    if(this.addPost.post_date) {
+      if(this.addPost.post_time) {
+        this.addPost.post_date = this.addPost.post_date + " " + this.addPost.post_time;
+      } else {
+        this.addPost.post_date = this.addPost.post_date + " 00:00";
+      }
+    }
+
     setTimeout(() => {
       if (this.addPost.Multiimage) {
         this.addPost.base64file = reader.result
+      } else {
+        if (this.addPost.guid) {
+          this.addPost.post_img = this.addPost.guid;
+        }
       }
       this.post.addpost(this.addPost).subscribe((res: any) => {
         if (res.code == "success") {
+          this.spinnerService.hide()
+
           this.notify.success(res.message);
           this.router.navigate(['/admin/post/view']);
         } else {
           this.notify.error(res.message)
+          this.spinnerService.hide()
+
         }
       }, (err: any) => {
         this.notify.error(err.message)
+        this.spinnerService.hide()
+
       })
     }, 1000)
   }
   saveas_draft() {
+    this.spinnerService.show()
+
     this.addPost.createdby = this.currentuser.user_id;
     this.addPost.flag = 'I';
     this.addPost.tag_id = null;
@@ -333,22 +355,37 @@ export class AddPostComponent implements OnInit {
       };
     }
 
+    if(this.addPost.post_date) {
+      if(this.addPost.post_time) {
+        this.addPost.post_date = this.addPost.post_date + " " + this.addPost.post_time;
+      } else {
+        this.addPost.post_date = this.addPost.post_date + " 00:00";
+      }
+    }
+
     setTimeout(() => {
       if (this.addPost.Multiimage) {
         this.addPost.base64file = reader.result
-      }
-      if(this.addPost.guid) {
-        this.addPost.post_img = this.addPost.guid
+      } else {
+        if (this.addPost.guid) {
+          this.addPost.post_img = this.addPost.guid;
+        }
       }
       this.post.draftpost(this.addPost).subscribe((res: any) => {
         if (res.code == "success") {
+          this.spinnerService.hide()
+
           this.notify.success(res.message);
-          // this.router.navigate(['/admin/post/view']);
+          this.router.navigate(['/admin/drafts/view']);
         } else {
           this.notify.error(res.message)
+          this.spinnerService.hide()
+
         }
       }, (err: any) => {
         this.notify.error(err.message)
+        this.spinnerService.hide()
+
       })
     }, 1000)
   }
@@ -361,6 +398,8 @@ export class AddPostComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result.media_url){     
+        this.addPost.Multiimage = ''
+        this.tourBanner.nativeElement.value = '';
         let postImg:any = document.querySelector('#bannerImage');
         postImg.src = result.media_url;
         this.addPost.post_img=result.media_url;

@@ -1,7 +1,7 @@
 <section class="user-table-container" style="overflow-x:auto;">
   <div class="d-flex flex-column w-100">
     <div class="view-user-container">
-      <div class="search-category">   
+      <div class="search-category">
         <mat-form-field appearance="outline">
           <mat-select [(ngModel)]="rolesearch" disableRipple [ngModelOptions]="{standalone: true}">
             <mat-option value="">Select Role</mat-option>
@@ -87,7 +87,7 @@
       <div class="col-lg-12 col-md-12 col-12 w-100 d-flex justify-content-between flex-wrap"
         style="padding-top:1vw;padding-bottom:1vw;">
         <div class="d-flex" style="padding-left: 3%;">
-           <!-- <button class="apply-btn" style="margin-left:1vw;">apply to selected items</button>  -->
+          <!-- <button class="apply-btn" style="margin-left:1vw;">apply to selected items</button> -->
         </div>
         <pagination-controls class="pagination-color" (pageChange)="p = $event"></pagination-controls>
       </div>

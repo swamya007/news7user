@@ -1,18 +1,22 @@
 .navbar-bg {
   background: #000;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .navbar-brand img {
-  height: 40px;
-  width: 150px;
+  height: 50px;
+  width: 130px;
 }
 
-.navbar-nav .nav-link{
-  color: #fff;
+.navbar-nav .nav-link {
+  color: var(--white);
+  font-size: 17px;
 }
 
 .navbar-toggler {
   background-color: rgb(137, 137, 137);
+  /* margin-right: 20px; */
 }
 
 .nav-link {
@@ -23,6 +27,6 @@
 
 .nav-link:hover {
   color: #bbb;
-  background-color: rgba(255, 0, 0, 0.956);
+  background-color: rgba(255, 255, 255, 0.226);
   border-radius: 5px;
 }

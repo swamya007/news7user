@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-delete-confirmation-modal',
   templateUrl: './delete-confirmation-modal.component.html',
@@ -11,6 +12,7 @@ export class DeleteConfirmationModalComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   cancel(){
     this.dialogRef.close(false);
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdserviceService } from 'src/app/services/Adservice/adservice.service';
 import { environment } from 'src/environments/environment';
+import { LoaderService } from 'src/app/services/loaderService/loader.service';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +23,7 @@ export class HomeComponent implements OnInit {
 
   searchval:any
 
-  constructor(private adsService:AdserviceService,private router:Router) { }
+  constructor(private adsService:AdserviceService,private router:Router,private spinnerService: LoaderService,) { }
 
   ngOnInit(): void {
     this.customer_id = environment.CUSTOMER_ID
@@ -30,9 +31,11 @@ export class HomeComponent implements OnInit {
   }
 
   getAllAdsList() {
+    this.spinnerService.show()
+   
     this.ads_id = ''
     this.img_size = ''
-    this.adsService.getAllAds(this.ads_id,this.img_size,this.customer_id).subscribe((res: any) => {
+    this.adsService.getAllAds(this.ads_id,this.img_size,this.customer_id,'U').subscribe((res: any) => {
       this.allAdsList = res.body;
       this.allAdsList = this.allAdsList.map((dt: any) => JSON.parse(dt));
 
@@ -44,6 +47,9 @@ export class HomeComponent implements OnInit {
       this.ads_leftmiddle = this.allAdsList.filter((data: any) => data.ads_img_size === "3");
       /** Middle */
       this.ads_middle = this.allAdsList.filter((data: any) => data.ads_img_size === "4");
+      setTimeout(() => {
+        this.spinnerService.hide()
+      }, 3000);
     })
   }
 

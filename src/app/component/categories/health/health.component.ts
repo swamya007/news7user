@@ -32,7 +32,7 @@ export class HealthComponent implements OnInit {
   getAllAdsList() {
     this.ads_id = ''
     this.img_size = ''
-    this.adsService.getAllAds(this.ads_id, this.img_size, this.customer_id).subscribe((res: any) => {
+    this.adsService.getAllAds(this.ads_id, this.img_size, this.customer_id,'U').subscribe((res: any) => {
       this.allAdsList = res.body;
       this.allAdsList = this.allAdsList.map((dt: any) => JSON.parse(dt));
 

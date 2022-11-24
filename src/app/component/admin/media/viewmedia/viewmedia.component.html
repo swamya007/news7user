@@ -46,6 +46,7 @@
             <th class="content">Description</th>
             <th class="content">Caption</th>
             <th class="content">Action</th>
+            <th class="content">Delete</th>
         </thead>
         <tbody>
             <tr *ngFor="let row of mediadetails | paginate: { itemsPerPage: 5, currentPage: p }">
@@ -55,7 +56,11 @@
                 <td>{{row.media_title}}</td>
                 <td class="description">{{row.media_desc}}</td>
                 <td class="description">{{row.media_caption}}</td>
-                <td><button (click)="editmedia(row)">Edit</button></td>
+                <td><mat-icon class="mat-icon-cls" (click)="editmedia(row)" title="Edit"> edit</mat-icon></td>
+                <!-- <td><button (click)="editmedia(row)">Edit</button></td> -->
+                <td>
+                    <button class="del-btn" (click)="deleteMedia(row)"><mat-icon>delete_forever</mat-icon></button>  
+                </td>
             </tr>
         </tbody>
     </table>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { mediamodel } from 'src/app/models/mediamodel';
+import { LoaderService } from 'src/app/services/loaderService/loader.service';
 import { LoginService } from 'src/app/services/loginService/login.service';
 import { MasterServiceService } from 'src/app/services/masterservice/master-service.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
@@ -17,7 +18,7 @@ export class AddmediaComponent implements OnInit {
   upload_status: Boolean = false
   currentuser: any = {}
 
-  constructor(private masterService: MasterServiceService, private notify: NotificationService,
+  constructor(private spinnerService: LoaderService,private masterService: MasterServiceService, private notify: NotificationService,
     private router: Router, private loginService: LoginService) { }
 
   ngOnInit(): void {
@@ -104,7 +105,7 @@ export class AddmediaComponent implements OnInit {
   }
 
   uploadFile() {
-
+    this.spinnerService.show()
     var reader = new FileReader();
     reader.readAsDataURL(this.media.mulfile);
     reader.onload = function () {
@@ -117,13 +118,19 @@ export class AddmediaComponent implements OnInit {
       this.media.base64file = reader.result
       this.masterService.createMedia(this.media).subscribe((res: any) => {
         if (res.code == "success") {
+          this.spinnerService.hide()
+
           this.notify.success(res.message);
           this.router.navigate(['/admin/media/view']);
         } else {
           this.notify.error(res.message)
+          this.spinnerService.hide()
+
         }
       }, (err: any) => {
         this.notify.error(err.message)
+        this.spinnerService.hide()
+
       })
     }, 1000);
   }

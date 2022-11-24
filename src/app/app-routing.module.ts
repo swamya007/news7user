@@ -48,7 +48,7 @@ import { AdminDraftEditComponent } from './component/admin/drafts/admin-draft-ed
 import { AdminPostDraftComponent } from './component/admin/admin-Post/admin-post-draft/admin-post-draft.component';
 import { SearchPostComponent } from './component/search-post/search-post.component';
 import { AdminEditPostDraftComponent } from './component/admin/admin-Post/admin-edit-post-draft/admin-edit-post-draft.component';
-import { CategoryComponent } from './component/header-category/category/category.component';
+import { AuthGuard } from './Guards/auth.guard';
 
 
 const routes: Routes = [
@@ -69,7 +69,7 @@ const routes: Routes = [
     component: ArticleComponent
   },
   {
-    path: 'admin', component: SidenavComponent,
+    path: 'admin', component: SidenavComponent,canActivate: [AuthGuard],
     children: [
       { path: 'profile', component: UserProfileComponent,  data: {
         title: 'dxcfcf',

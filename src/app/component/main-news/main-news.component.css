@@ -7,8 +7,8 @@
   cursor: pointer;
 }
 .news-card img {
-  width: 100%;
-  height: 160px;
+  max-width: 100%;
+  height: auto;
 }
 
 .news-card:hover p {
@@ -33,7 +33,7 @@
 .slideshow-container {
   max-width: 1000px;
   position: relative;
-  margin: auto;
+  /* margin: auto; */
 }
 
 .myImages {

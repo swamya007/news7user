@@ -36,8 +36,7 @@
                 <div class="col-md-6 col-sm-12 col-12">
                     <mat-label class="add-post-title">Meta Description</mat-label>
                     <mat-form-field appearance="outline">
-                        <input matInput type="text" name="meta-description" [(ngModel)]="updatepost.meta_description"
-                            >
+                        <input matInput type="text" name="meta-description" [(ngModel)]="updatepost.meta_description">
                     </mat-form-field>
                 </div>
             </div>
@@ -45,7 +44,7 @@
                 <div class="col-md-6 col-sm-12 col-12">
                     <mat-label class="add-post-title">Canonical Url</mat-label>
                     <mat-form-field appearance="outline">
-                        <input matInput type="text" name="canonical-url" [(ngModel)]="updatepost.canonical_url" >
+                        <input matInput type="text" name="canonical-url" [(ngModel)]="updatepost.canonical_url">
                     </mat-form-field>
                 </div>
             </div>
@@ -64,16 +63,22 @@
                 </div>
             </div>
             <div class="add-post-form-field row">
-                <div class="col-md-6 col-sm-12 col-12">
-                    <mat-label class="add-post-title">Publish Date</mat-label>
+                <div class="col-md-3 col-sm-12 col-12">
+                    <mat-label class="add-post-title">Publish Date & Time (required)</mat-label>
                     <mat-form-field appearance="outline">
                         <input matInput type="date" [(ngModel)]="updatepost.post_date" required>
                     </mat-form-field>
                 </div>
+                <div class="col-md-3 col-sm-12 col-12 time-field">
+                    <mat-form-field name="stime" appearance="fill" class="form-field">
+                      <input matInput type="time" name="stime"  name="stime" class="time"
+                        [(ngModel)]="updatepost.post_time">
+                    </mat-form-field>
+                  </div>
             </div>
             <div class="add-post-form-field row">
                 <div class="col-md-6 col-sm-12 col-12">
-                    <mat-label class="add-post-title">Immidiate Publish ?</mat-label>
+                    <mat-label class="add-post-title">Immediate Publish</mat-label>
                     <mat-radio-group aria-label="Select an option" name="oplist1"
                         [(ngModel)]="updatepost.immidiate_publish">
                         <mat-radio-button *ngFor="let k of list1" [value]="k.key" name="oplist1" [checked]="k.checked">
@@ -97,7 +102,8 @@
                 <div class="col-md-6 col-sm-12 col-12">
                     <mat-label class="add-post-title">Permalink</mat-label>
                     <mat-form-field appearance="outline">
-                        <input matInput type="text" name="canonical-url" [(ngModel)]="updatepost.permalink" required readonly>
+                        <input matInput type="text" name="canonical-url" [(ngModel)]="updatepost.permalink" required
+                            readonly>
                     </mat-form-field>
                 </div>
             </div>
@@ -132,8 +138,7 @@
                     </div>
                 </div>
                 <div class="col-md-2 col-sm-12 col-12">
-                    <img [src]="updatepost.guid" id="bannerImage"
-                        class="img-fluid">
+                    <img [src]="updatepost.guid" id="bannerImage" class="img-fluid">
                 </div>
             </div>
             <div class="add-post-form-field row">
@@ -159,8 +164,9 @@
             </div>
         </div>
         <div class="submit-button-container">
-        <button mat-raised-button color="primary" (click)="modifypost()">Update as Post</button> 
-             <button mat-raised-button color="accent" (click)="saveas_draft()" style="margin-left: 5px">Save As Draft</button> 
+            <button mat-raised-button color="primary" (click)="modifypost()">Update as Post</button>
+            <button mat-raised-button color="accent" (click)="saveas_draft()" style="margin-left: 5px">Save As
+                Draft</button>
 
         </div>
     </div>

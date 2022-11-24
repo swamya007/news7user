@@ -14,6 +14,10 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.navbar {
+  margin-bottom: 0px;
+}
+
 /** 22-08-2022 **/
 
 .news-date {
@@ -419,3 +423,122 @@ h4.news-sub {
   padding-bottom: 0em !important;
 } 
 /* --------------------------contact-us-------------------- */
+/* --------------------Edit Profile------------------------ */
+.card-block .mat-form-field-flex {
+  height: 40px !important;
+}
+.card-block .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 0.25em 0 1em 0 !important;
+}
+.card-block  .mat-form-field-wrapper {
+  padding-bottom: 0em !important;
+}
+.card-block .mat-form-field{
+  width: 100% !important;
+}
+
+/* --------------------Edit Profile------------------------ */
+
+/* ---------------------more from author carousal--------------------- */
+.more-from-author .carousel-cells .carousel-cell img, .carousel-cells .carousel-cell video {
+  width: 100%;
+  height: 134px !important;
+  position: unset !important;
+  object-fit: unset !important;
+}
+
+.more-from-author carousel {
+  height: 280px !important;
+}
+
+/* ---------------------more from author carousal end--------------------- */
+/* ---------------------Change password------------------------------- */
+.panel-body  .mat-form-field-flex {
+  height: 40px !important;
+}
+.panel-body  .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 0.25em 0 1em 0 !important;
+}
+.panel-body   .mat-form-field-wrapper {
+  padding-bottom: 0em !important;
+}
+.panel-body  .mat-form-field{
+  width: 100% !important;
+}
+
+
+/*** Sagar CSS Starts ***/
+
+.mat-icon-cls {
+  cursor: pointer;
+}
+
+.mat-icon-cls:hover {
+  color: var(--blue);
+}
+
+.pagination .ngx-pagination .current {
+  padding: 0.8rem 0.8rem !important;
+  background: transparent !important;
+  color: #fff !important;
+  cursor: default;
+  background-color: #000 !important;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.pagination .ngx-pagination li:not(.disabled):hover,a:hover {
+  color: #fff !important;
+  background-color: #000 !important;
+}
+
+.pagination .ngx-pagination li {
+  padding: 0.5rem 0.5rem !important;
+  font-size: 18px;
+  font-weight: 500;
+  border: 2px solid #000;
+  color: #000;
+  margin-left: 2px;
+}
+
+.pagination .ngx-pagination .disabled {
+  padding: 0.5rem 0.5rem !important;
+  border: 2px solid #cacaca;
+  color: #cacaca;
+}
+
+.user-container .biographical-info mat-form-field .textarea-add-category .mat-input-element {
+  border: 1px solid rgb(222, 222, 222);
+    border-radius: 3px;
+    padding: 4px;
+    margin-top: -18px;
+    min-height: 100px;
+    width: 98%;
+    height: 90px;
+}
+
+.carousel a:hover {
+  background: transparent !important;
+}
+
+/*** Sagar CSS Ends ***/
+
+/* ---------------------Change password------------------------------- */
+
+.content-form textarea {
+  min-height: 100px;
+  width: 98%;
+}
+
+/* ------------------------search modal---------------------------- */
+
+.search-modal .mat-form-field-wrapper  {
+  padding-bottom: 0.2em;
+  margin: 0px !important;
+}
+
+.search-modal .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 0.2em 0 0.4em 0;
+}
+
+/* ------------------------search modal end---------------------------- */

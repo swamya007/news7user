@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CommentModel } from 'src/app/models/commentModel';
 import { postModel } from 'src/app/models/postModel';
+import { LoaderService } from 'src/app/services/loaderService/loader.service';
 import { LoginService } from 'src/app/services/loginService/login.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { PostserviceService } from 'src/app/services/postservice/postservice.service';
@@ -30,7 +31,7 @@ export class CommentModalComponent implements OnInit {
   selectedAll: any;
 
   constructor(public dialogRef: MatDialogRef<CommentModalComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private post: PostserviceService, 
-  private loginService: LoginService,private notify:NotificationService) { }
+  private loginService: LoginService,private notify:NotificationService,private spinnerService: LoaderService) { }
 
   ngOnInit(): void {
     this.content = new postModel()
@@ -56,6 +57,7 @@ export class CommentModalComponent implements OnInit {
   }
 
   approveComments() {
+
     this.comment.comment_post_id = this.comments[0].comment_post_id
     this.comment.customer_id = this.comments[0].customer_id
     this.comment.flag = 'A'
@@ -65,27 +67,39 @@ export class CommentModalComponent implements OnInit {
     console.log('this.comment===',this.comment)
     this.post.savePostComment(this.comment).subscribe((res: any) => {
       if (res.code == "success") {
+        this.spinnerService.hide()
+
         this.notify.success("Comment approved successfully")
         this.getCommentsByPost(this.content.id);
       } else {
         this.notify.error(res.message)
+
       }
     }, (err: any) => {
       this.notify.error(err.message)
+
     })
   }
 
   getCommentsByPost(post_id: any) {
+    this.spinnerService.show()
+
     this.post.getCommentByPost(0, post_id, environment.CUSTOMER_ID).subscribe((res: any) => {
       if (res.code == 'success') {
+        this.spinnerService.hide()
+
         var data = res.body;
         this.comments = data?.map((dt: any) => JSON.parse(dt));
         this.comment_count = this.comments[0].comment_count
       } else {
         this.comments = []
+        this.spinnerService.hide()
+
       }
     }, (err) => {
       this.comments = []
+      this.spinnerService.hide()
+
     })
   }
 

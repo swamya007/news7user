@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { DeleteConfirmationModalComponent } from 'src/app/component/common/delete-confirmation-modal/delete-confirmation-modal.component';
 import { CategoryServiceService } from 'src/app/services/categoryservice/category-service.service';
+import { LoaderService } from 'src/app/services/loaderService/loader.service';
 import { LoginService } from 'src/app/services/loginService/login.service';
+import { MasterServiceService } from 'src/app/services/masterservice/master-service.service';
+import { NotificationService } from 'src/app/services/notification/notification.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-viewcategory',
@@ -15,12 +21,15 @@ export class ViewcategoryComponent implements OnInit {
   catadata: any[] = []
   catid: any = ''
   p: number = 1;
-  constructor(private Categorydata: CategoryServiceService,private router: Router,private loginservice: LoginService) { }
+  cust_id:any;
+  constructor(private Categorydata: CategoryServiceService,private router: Router,private loginservice: LoginService,
+    private masterService:MasterServiceService,private notification:NotificationService,private matDialog:MatDialog,private spinnerService: LoaderService) { }
  
   ngOnInit(): void {
     this.currentuser = this.loginservice.getCurrentUser();
     this.getallcategory();
     //this.searchCategory();
+    this.cust_id = environment.CUSTOMER_ID;
   }
 
   getallcategory() {
@@ -63,4 +72,31 @@ export class ViewcategoryComponent implements OnInit {
   view(slug:any) {
     this.router.navigate([`/category/${slug}`]);
   }
+
+  deleteCategory(id: any) {
+    console.log(id, 'this user is clicked')
+      const dialogRef = this.matDialog.open(DeleteConfirmationModalComponent);
+      dialogRef.afterClosed().subscribe((result:any) => {      
+        if(result){
+          this.categoryDelete(id);
+        }
+      });
+      return;
+    }
+    categoryDelete(id:any){
+      this.spinnerService.show()
+      var funct = 'CATEGORY';
+      this.masterService.bulkDeletion(funct,id,0,this.cust_id).subscribe(res=>{
+        if(res.code === "success"){
+          this.spinnerService.hide()
+
+          this.notification.success("Category deleted successfully");
+         window.location.reload();
+        }else {
+          this.notification.error(res.message);
+          this.spinnerService.hide()
+
+        }
+      })
+    }
 }

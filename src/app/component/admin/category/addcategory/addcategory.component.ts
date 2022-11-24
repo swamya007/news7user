@@ -4,6 +4,7 @@ import { NotificationService } from 'src/app/services/notification/notification.
 import {categoryModel} from 'src/app/models/categorymodel'
 import { LoginService } from 'src/app/services/loginService/login.service';
 import { CategoryServiceService } from 'src/app/services/categoryservice/category-service.service';
+import { LoaderService } from 'src/app/services/loaderService/loader.service';
 @Component({
   selector: 'app-addcategory',
   templateUrl: './addcategory.component.html',
@@ -19,7 +20,7 @@ category:any;
 userdata:any
   currentuser: any={};
   
-  constructor(private loginService :LoginService,private Categorydata:CategoryServiceService, private notify:NotificationService,private router:Router) { }
+  constructor(private spinnerService: LoaderService,private loginService :LoginService,private Categorydata:CategoryServiceService, private notify:NotificationService,private router:Router) { }
   
   ngOnInit(): void {
     this.category = new categoryModel();
@@ -32,6 +33,8 @@ userdata:any
   }
 
   addcategory(form: any) {
+    this.spinnerService.show()
+
     console.log(this.userdata);
     this.category.createdby = this.currentuser.user_id;
     this.category.flag = 'I';
@@ -40,13 +43,19 @@ userdata:any
     console.log(this.category);
     this.Categorydata.createCategory(this.category).subscribe((res: any) => {
       if (res.code === "success") {
+        this.spinnerService.hide()
+
         this.notify.success(res.message);
         this.router.navigate(['/admin/category/view']);
       } else {
         this.notify.error(res.message)
+        this.spinnerService.hide()
+
       }
     }, (err: any) => {
       this.notify.error(err.message)
+      this.spinnerService.hide()
+
     })
 
   }

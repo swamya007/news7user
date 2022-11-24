@@ -18,7 +18,7 @@ export class LatestNewsHeaderComponent implements OnInit {
     this.getLatestNews()
     setTimeout(() => {
       this.showSlides(this.slideIndex);
-    }, 1500);
+    }, 1000);
   }
 
   getLatestNews() {

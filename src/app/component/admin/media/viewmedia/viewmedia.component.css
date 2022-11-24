@@ -95,3 +95,7 @@ tr:nth-child(odd) {
   width: 20%;
   color: #545454;
 }
+.del-btn{
+  border-radius: 80px;
+  border-width: -5px;
+}

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { CommentModalComponent } from 'src/app/component/admin/comments-mangement/commentModal/comment-modal/comment-modal.component';
 import { postModel } from 'src/app/models/postModel';
 import { LoginService } from 'src/app/services/loginService/login.service';
 import { MasterServiceService } from 'src/app/services/masterservice/master-service.service';
@@ -19,13 +21,13 @@ export class DashboardComponent implements OnInit {
   currentuser: any;
   draft_id: any = '';
   draftarr: any = [];
-  dashboardarr:any = [];
-  postarr:any = [];
-  publishingarr:any = [];
-  publishedarr:any = [];
-  commentarr:any = [];
+  dashboardarr: any = [];
+  postarr: any = [];
+  publishingarr: any = [];
+  publishedarr: any = [];
+  commentarr: any = [];
   constructor(private loginService: LoginService, private draftService: PostserviceService,
-    private notification: NotificationService,private masterService: MasterServiceService,private router: Router) { }
+    private notification: NotificationService, private masterService: MasterServiceService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.cust_id = environment.CUSTOMER_ID
@@ -39,11 +41,11 @@ export class DashboardComponent implements OnInit {
     this.getCommentDetails();
   }
   saveDraft() {
-    if(!this.draft.post_title){
+    if (!this.draft.post_title) {
       this.notification.error("Enter post title");
       return;
     }
-    if(!this.draft.post_content){
+    if (!this.draft.post_content) {
       this.notification.error("Enter post content");
       return;
     }
@@ -62,7 +64,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getDraftAll() {
-    this.draftService.getDraftDetails(this.draft_id, this.cust_id).subscribe(res => {
+    this.draftService.getDraftDetails(this.currentuser.user_id, this.draft_id, this.cust_id, '').subscribe(res => {
       if (res.code == 'success') {
         var data = res.body;
         this.draftarr = data.map((dt: any) => JSON.parse(dt));
@@ -74,9 +76,9 @@ export class DashboardComponent implements OnInit {
       this.draftarr = []
     })
   }
-  getDashboardCount(){
-    this.masterService.getDashboardCount(this.cust_id).subscribe(res=>{
-      if(res.code == 'success'){
+  getDashboardCount() {
+    this.masterService.getDashboardCount(this.cust_id).subscribe(res => {
+      if (res.code == 'success') {
         var data = res.body;
         this.dashboardarr = data.map((dt: any) => JSON.parse(dt));
       } else {
@@ -87,7 +89,7 @@ export class DashboardComponent implements OnInit {
     })
   }
   getLatestNews() {
-    this.draftService.getLatestNews(1,environment.CUSTOMER_ID,'').subscribe((res: any) => {
+    this.draftService.getLatestNews(1, environment.CUSTOMER_ID, '').subscribe((res: any) => {
       if (res.code == 'success') {
         var data = res.body;
         this.postarr = data.map((dt: any) => JSON.parse(dt));
@@ -95,7 +97,7 @@ export class DashboardComponent implements OnInit {
       } else {
         this.postarr = []
       }
-    }, (err:any) => {
+    }, (err: any) => {
       this.postarr = []
     })
   }
@@ -108,7 +110,7 @@ export class DashboardComponent implements OnInit {
       } else {
         this.publishingarr = []
       }
-    }, (err:any) => {
+    }, (err: any) => {
       this.publishingarr = []
     })
   }
@@ -121,31 +123,70 @@ export class DashboardComponent implements OnInit {
       } else {
         this.publishedarr = []
       }
-    }, (err:any) => {
+    }, (err: any) => {
       this.publishedarr = []
     })
   }
-
-
-  opennewsSec(id: any) {
-    this.router.navigate(['/post/' + id]);
-  }
-  getCommentDetails(){
-    this.masterService.getCommentDetails(this.cust_id).subscribe(res=>{
+  getCommentDetails() {
+    this.masterService.getCommentDetails(this.cust_id).subscribe(res => {
       if (res.code == 'success') {
         var data = res.body;
         this.commentarr = data.map((dt: any) => JSON.parse(dt));
-        this.commentarr  = this.commentarr.slice(0, 3);
+        this.commentarr = this.commentarr.slice(0, 3);
       } else {
         this.commentarr = []
       }
-    }, (err:any) => {
+    }, (err: any) => {
       this.commentarr = []
     })
   }
-  viewMore(){
-    this.router.navigate(['/admin/post/view']);
+  opennewsSec(slug: any) {
+    this.router.navigate(['/post/' + slug]);
   }
+  editdraft(draft_id: any) {
+    this.router.navigate([`/admin/drafts/edit/${draft_id}`]);
+  }
+  viewdraft() {
+    this.router.navigate([`/admin/drafts/view`]);
+  }
+  openDialog(event: any) {
+    const dialogRef = this.dialog.open(CommentModalComponent, {
+      height: '95%',
+      width: '100%',
+      data: { value: event },
+
+    });
+  }
+  viewMore() {
+    this.router.navigate([`/admin/post/view`]);
+  }
+  formatAMPM(dt: any) {
+
+    if (dt) {
+      var split_data = dt.split(" ");
+      var dt1 = split_data[0]
+      var time = ''
+      if (split_data.length > 1) {
+        time = split_data[1]
+      } else {
+        time = '00:00'
+      }
+
+      dt = dt1 + " " + time
+
+      var date = new Date(dt);
+      var hours = date.getHours();
+      var minutes: any = date.getMinutes();
+      var ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12; // the hour '0' should be '12'
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      var strTime = hours + ':' + minutes + ' ' + ampm;
+      return strTime;
+    } else {
+      return '00:00 AM';
+    }
 
 
+  }
 }

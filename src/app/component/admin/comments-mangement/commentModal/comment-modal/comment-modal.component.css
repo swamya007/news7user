@@ -152,3 +152,8 @@ tbody::-webkit-scrollbar-thumb {
 .approve-status {
   text-align: left;
 }
+.table-txt
+{
+  margin: 5px;
+  text-align: left;
+}

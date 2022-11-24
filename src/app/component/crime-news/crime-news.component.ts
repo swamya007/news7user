@@ -22,6 +22,9 @@ export class CrimeNewsComponent implements OnInit {
       if (res.code == 'success') {
         var data = res.body;
         this.postarr = data.map((dt: any) => JSON.parse(dt));
+        if(this.postarr.length > 6) {
+          this.postarr = this.postarr.slice(0,6)
+        }
       } else {
         this.postarr = []
       }

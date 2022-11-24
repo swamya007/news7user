@@ -9,8 +9,8 @@
         </mat-select>
       </mat-form-field>
       <button mat-raised-button color="primary" class="search-btn" (click)="searchCategory()">Search Category</button>
-      <button mat-raised-button color="primary" class="search-btn" (click)="postbyauthor()">Mine</button>/
-      <button mat-raised-button color="primary" class="search-btn" (click)="getallpost()">All Post</button>/
+      <button mat-raised-button color="primary" class="search-btn" (click)="postbyauthor()">Mine</button>
+      <button mat-raised-button color="primary" class="search-btn" (click)="getallpost()">All Post</button>
         &nbsp;&nbsp;
       <mat-form-field appearance="outline" class="form-group w-200">
         <input matInput type="text" name="cname" [(ngModel)]="searchval">
@@ -25,7 +25,7 @@
       <div>
       </div>
       <table id="view-table">
-        <thead class="table-header">
+        <thead class="table-header" style="color: a;">
           <th class="first">
             <input type="checkbox" class="example-margin">
           </th>
@@ -34,14 +34,15 @@
           <th class="content">Action</th>
           <th class="content">Delete</th>
         </thead>
-        <tbody *ngIf="postarr &&  postarr.length; else elseblock">
+        <tbody>
           <tr *ngFor="let data of postarr | paginate: { itemsPerPage: 10, currentPage: p } ">
             <td class="first">
               <input type="checkbox" class="example-margin">
             </td>
             <td>{{data.post_title}}</td>
             <td>{{data.post_date | date:'dd-MM-yyyy'}}</td>
-            <td><button (click)="editUser(data.id)" >Edit</button></td>
+            <td><mat-icon class="mat-icon-cls" (click)="editPost(data.id)" title="Edit"> edit</mat-icon></td>
+            <!-- <td><button (click)="editUser(data.id)" >Edit</button></td> -->
             <td>
               <button class="del-btn" (click)="deletePost(data.id)"><mat-icon>delete_forever</mat-icon></button>  
           </td>

@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdmodelTopContent } from 'src/app/models/adModel';
 import { AdserviceService } from 'src/app/services/Adservice/adservice.service';
+import { LoaderService } from 'src/app/services/loaderService/loader.service';
 import { LoginService } from 'src/app/services/loginService/login.service';
 import { MasterServiceService } from 'src/app/services/masterservice/master-service.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
@@ -28,13 +29,14 @@ export class AdminAdComponent implements OnInit {
   currentuser: any = {}
   username: any
 
-  constructor(private masterService: MasterServiceService, private loginService: LoginService, private Notification: NotificationService, private router: Router, private notify: NotificationService, private adsservice: AdserviceService) { }
+  constructor(private spinnerService: LoaderService,private masterService: MasterServiceService, private loginService: LoginService, private Notification: NotificationService, private router: Router, private notify: NotificationService, private adsservice: AdserviceService) { }
 
   adstopsec: any
   adsrightuppersec: any
   adsleftmiddlesec: any
   adsmiddlesec: any
   ngOnInit(): void {
+
     this.adstopsec = new AdmodelTopContent()
     this.adsrightuppersec = new AdmodelTopContent()
     this.adsleftmiddlesec = new AdmodelTopContent()
@@ -73,7 +75,7 @@ export class AdminAdComponent implements OnInit {
         const height = path[0].height;
         const width = path[0].width;
         console.log(height, width);
-        if (height != 250 && width != 970) {
+        if (height != 250 || width != 970) {
           this.Notification.error('Please choose image with given height and width which mentioned above.');
           this.adstopsec.ads_mulfile = ''
           bannerImg = document.querySelector('#thumbnailImage_topsec')
@@ -110,7 +112,7 @@ export class AdminAdComponent implements OnInit {
         const height = path[0].height;
         const width = path[0].width;
         console.log(height, width);
-        if (height != 200 && width != 300) {
+        if (height != 200 || width != 300) {
           this.Notification.error('Please choose image with given height and width which mentioned above.');
           this.adsrightuppersec.ads_mulfile = ''
           bannerImg = document.querySelector('#thumbnailImage_rightuppersec')
@@ -147,7 +149,7 @@ export class AdminAdComponent implements OnInit {
         const height = path[0].height;
         const width = path[0].width;
         console.log(height, width);
-        if (height != 600 && width != 300) {
+        if (height != 600 || width != 300) {
           this.Notification.error('Please choose image with given height and width which mentioned above.');
           this.adsleftmiddlesec.ads_mulfile = ''
           bannerImg = document.querySelector('#thumbnailImage_leftmiddlesec')
@@ -184,7 +186,7 @@ export class AdminAdComponent implements OnInit {
         const height = path[0].height;
         const width = path[0].width;
         console.log(height, width);
-        if (height != 90 && width != 728) {
+        if (height != 90 || width != 728) {
           this.Notification.error('Please choose image with given height and width which mentioned above.');
           this.adsmiddlesec.ads_mulfile = ''
           bannerImg = document.querySelector('#thumbnailImage_middlesec')
@@ -202,6 +204,7 @@ export class AdminAdComponent implements OnInit {
   /*** Add Part  ***/
 
   addtopsec() {
+    this.spinnerService.show()
 
     var reader = new FileReader();
     reader.readAsDataURL(this.adstopsec.ads_mulfile);
@@ -220,6 +223,7 @@ export class AdminAdComponent implements OnInit {
       console.log(this.adstopsec, 'dd')
       this.adsservice.addAd(this.adstopsec).subscribe((res: any) => {
         if (res.code === "success") {
+          this.spinnerService.hide()
           this.notify.success(res.message);
           this.router.navigate(['/admin/ads/view']);
         } else {
@@ -232,6 +236,7 @@ export class AdminAdComponent implements OnInit {
   }
 
   addrightuppersec() {
+    this.spinnerService.show()
 
     var reader = new FileReader();
     reader.readAsDataURL(this.adsrightuppersec.ads_mulfile);
@@ -250,6 +255,8 @@ export class AdminAdComponent implements OnInit {
       console.log(this.adsrightuppersec, 'dd')
       this.adsservice.addAd(this.adsrightuppersec).subscribe((res: any) => {
         if (res.code === "success") {
+          this.spinnerService.hide()
+
           this.notify.success(res.message);
           this.router.navigate(['/admin/ads/view']);
         } else {
@@ -262,6 +269,7 @@ export class AdminAdComponent implements OnInit {
   }
 
   addleftmiddlesec() {
+    this.spinnerService.show()
 
     var reader = new FileReader();
     reader.readAsDataURL(this.adsleftmiddlesec.ads_mulfile);
@@ -280,6 +288,8 @@ export class AdminAdComponent implements OnInit {
       console.log(this.adsleftmiddlesec, 'dd')
       this.adsservice.addAd(this.adsleftmiddlesec).subscribe((res: any) => {
         if (res.code === "success") {
+          this.spinnerService.hide()
+
           this.notify.success(res.message);
           this.router.navigate(['/admin/ads/view']);
         } else {
@@ -292,6 +302,8 @@ export class AdminAdComponent implements OnInit {
   }
 
   addmiddlesec() {
+    this.spinnerService.show()
+
 
     var reader = new FileReader();
     reader.readAsDataURL(this.adsmiddlesec.ads_mulfile);
@@ -310,13 +322,19 @@ export class AdminAdComponent implements OnInit {
       console.log(this.adsmiddlesec, 'dd')
       this.adsservice.addAd(this.adsmiddlesec).subscribe((res: any) => {
         if (res.code === "success") {
+          this.spinnerService.hide()
+
           this.notify.success(res.message);
           this.router.navigate(['/admin/ads/view']);
         } else {
           this.notify.error(res.message)
+          this.spinnerService.hide()
+
         }
       }, (err: any) => {
         this.notify.error(err.message)
+        this.spinnerService.hide()
+
       })
     }, 1000);
   }

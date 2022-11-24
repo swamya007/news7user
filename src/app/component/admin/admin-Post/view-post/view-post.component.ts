@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DeleteConfirmationModalComponent } from 'src/app/component/common/delete-confirmation-modal/delete-confirmation-modal.component';
 import { CategoryServiceService } from 'src/app/services/categoryservice/category-service.service';
+import { LoaderService } from 'src/app/services/loaderService/loader.service';
 import { LoginService } from 'src/app/services/loginService/login.service';
 import { MasterServiceService } from 'src/app/services/masterservice/master-service.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
@@ -20,7 +21,7 @@ export class ViewPostComponent implements OnInit {
 
   constructor(private userService: UserService, private loginService: LoginService, private viewstag: TagserviceService, private post: PostserviceService, private notify: NotificationService,
       private tagserivce: TagserviceService,private router: Router,private matDialog:MatDialog,
-      private masterService: MasterServiceService,private notification:NotificationService,private Categorydata:CategoryServiceService) { }
+      private masterService: MasterServiceService,private notification:NotificationService,private spinnerService: LoaderService,private Categorydata:CategoryServiceService) { }
   post_id: any = ''
   post_name: any = ''
   currentuser: any={};
@@ -37,18 +38,26 @@ export class ViewPostComponent implements OnInit {
   }
 
 postbyauthor(){
+  this.spinnerService.show()
+
 this.author_id=this.currentuser.user_id
 
     this.post.getPostByAuthor(this.author_id,this.post_id,this.currentuser.customer_id).subscribe((res: any) => {
       if (res.code == 'success') {
+        this.spinnerService.hide()
+
         var data = res.body;
         this.postarr = data.map((dt: any) => JSON.parse(dt));
         console.log('this.postarr====',this.postarr)
       } else {
         this.postarr = []
+        this.spinnerService.hide()
+
       }
     }, (err) => {
       this.postarr = []
+      this.spinnerService.hide()
+
     })
   
 
@@ -87,17 +96,19 @@ this.author_id=this.currentuser.user_id
     })
   }
   searchPost() {
-    this.post.getpostall(this.post_id,this.searchval,this.currentuser.customer_id).subscribe((res: any) => {
-      if (res.code == 'success') {
-        var data = res.body;
-        this.postarr = data.map((dt: any) => JSON.parse(dt));
-        console.log('this.postarr====',this.postarr)
-      } else {
+    if(this.searchval) {
+      this.post.getpostall(this.post_id,this.searchval,this.currentuser.customer_id).subscribe((res: any) => {
+        if (res.code == 'success') {
+          var data = res.body;
+          this.postarr = data.map((dt: any) => JSON.parse(dt));
+          console.log('this.postarr====',this.postarr)
+        } else {
+          this.postarr = []
+        }
+      }, (err) => {
         this.postarr = []
-      }
-    }, (err) => {
-      this.postarr = []
-    })
+      })
+    } 
   }
 
   getallpost() {
@@ -113,7 +124,7 @@ this.author_id=this.currentuser.user_id
     })
   }
 
-  editUser(uid: any) {
+  editPost(uid: any) {
     this.router.navigate([`/admin/post/edit/${uid}`]);
   }
 
@@ -134,7 +145,8 @@ this.author_id=this.currentuser.user_id
     this.masterService.bulkDeletion(funct,id,0,this.currentuser.customer_id).subscribe(res=>{
       if(res.code === "success"){
         this.notification.success("Post deleted successfully");
-        window.location.reload();
+        this.getallpost()
+        
       }else {
         this.notification.error(res.message);
       }

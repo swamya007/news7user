@@ -39,6 +39,7 @@
 
 .draft-sub {
   color: #0d6efd;
+  cursor: pointer;
 }
 
 .desc {
@@ -63,7 +64,6 @@
 
 .margin-divider {
   border-top: 1px solid #cbbfbf;
-  cursor:pointer
 }
 
 .divider {
@@ -93,6 +93,7 @@
   color: #0d6efd;
   font-weight: bold;
   margin-left: 10px;
+  cursor: pointer;
 }
 .glance-sec {
   display: flex;
@@ -103,6 +104,7 @@
   color: #7c7c7c;
 }
 .view-more {
+  padding: 10px;
   color: #0d6efd;
   text-align: center;
 }
@@ -124,4 +126,5 @@
 }
 .post-title{
   color: #0d6efd;
+  cursor: pointer;
 }

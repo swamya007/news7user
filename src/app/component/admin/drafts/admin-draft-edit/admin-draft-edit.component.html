@@ -64,12 +64,18 @@
                 </div>
             </div>
             <div class="add-post-form-field row">
-                <div class="col-md-6 col-sm-12 col-12">
-                    <mat-label class="add-post-title">Publish Date</mat-label>
+                <div class="col-md-3 col-sm-12 col-12">
+                    <mat-label class="add-post-title">Publish Date & Time (required)</mat-label>
                     <mat-form-field appearance="outline">
                         <input matInput type="date" [(ngModel)]="updatepost.post_date" required>
                     </mat-form-field>
                 </div>
+                <div class="col-md-3 col-sm-12 col-12 time-field">
+                    <mat-form-field name="stime" appearance="fill" class="form-field">
+                      <input matInput type="time" name="stime"  name="stime" class="time"
+                        [(ngModel)]="updatepost.post_time">
+                    </mat-form-field>
+                  </div>
             </div>
             <div class="add-post-form-field row">
                 <div class="col-md-6 col-sm-12 col-12">

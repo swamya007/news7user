@@ -64,8 +64,13 @@ export class PostserviceService {
   getCommentByPost(page_no: any,post_id:any,customer_id:any) {
     return this.HTTP.get<any>(Masterapi + `/get-comment-by-post?page_no=${page_no}&post_id=${post_id}&customer_id=${customer_id}`);
   }
-  getDraftDetails(draft_id: any,cust_id:any) {
-    return this.HTTP.get<any>(Masterapi + `/get-draft-details?draft_id=${draft_id}&customer_id=${cust_id}`);
+
+  getPostForManageComments(searchval:any,customer_id:any) {
+    return this.HTTP.get<any>(Masterapi + `/get-post-for-manage-comments?searchval=${searchval}&customer_id=${customer_id}`);
+  }
+
+  getDraftDetails(user_id:any,draft_id: any,cust_id:any,searchval:any) {
+    return this.HTTP.get<any>(Masterapi + `/get-draft-details?user_id=${user_id}&draft_id=${draft_id}&customer_id=${cust_id}&searchval=${searchval}`);
   }
   getdraftdetailsbypost(post_id:any,draft_id: any,cust_id:any) {
     return this.HTTP.get<any>(Masterapi + `/get-draft-details-by-post?post_id=${post_id}&draft_id=${draft_id}&customer_id=${cust_id}`);

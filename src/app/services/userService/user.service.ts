@@ -34,11 +34,11 @@ export class UserService {
   changepassword(user: any) {
     return this.HTTP.post<any>(MasterAPI + `/change-password`, { ...user });
   }
-  bulkDeletion(functions: any, deleteids: any, userid: any, customerid: any) {
-    return this.HTTP.get<any>(MasterAPI + `/bulk-deletion?function=${functions}&&deleteids=${deleteids}&&userid=${userid}&&customerid=${customerid}`);
-  }
   forgetpassword(data: any) {
     return this.HTTP.post<any>(MasterAPI + `/forgot-password-get-otp`, { ...data });
+  }
+  updatePassword(data:any) {
+    return this.HTTP.post<any>(MasterAPI + `/update-password`, { ...data });
   }
 
 }

@@ -1,7 +1,102 @@
-<div >
-    <div class="gallery" *ngFor="let row of mediadetails">
+<header class="fixed-header">
+    <div class="header-content">
+        <div class="heading">
+            Media
+        </div>
+        <div class="search-category" *ngIf="firstone">
+            <mat-form-field appearance="outline" class="form-group w-200">
+                <input matInput type="text" name="cname" [(ngModel)]="mediasearchval">
+            </mat-form-field>
+            &nbsp;<button mat-raised-button color="primary" class="search-btn" (click)="searchMedia()">Search</button>
+            &nbsp;<button mat-raised-button color="accent" class="search-btn"
+                (click)="getallmediadetails()">Clear</button>
+            &nbsp;<button mat-raised-button color="warn" class="search-btn" (click)="close()">Close</button>
+        </div>
+    </div>
+</header>
+<div class="gallery-scroll" *ngIf="firstone">
+    <div class="gallery" *ngFor="let row of mediadetails | paginate: { itemsPerPage: 12, currentPage: p }">
         <a href="javascript:void(0)">
             <img [src]="row.media_url" [alt]="row.media_alt_text" width="600" height="400" (click)="sendData(row)">
+            <div class="edit" (click)="openMediaDetails(row.media_id)"><a href="javascript:void(0)"><i
+                        class="fa fa-pencil fa-lg"></i></a></div>
         </a>
     </div>
+    <div class="col-lg-12 col-md-12 col-12 w-100 d-flex justify-content-between flex-wrap"
+        style="padding-top:1vw;padding-bottom:1vw;">
+        <div class="d-flex" style="padding-left: 3%;">
+        </div>
+    </div>
 </div>
+<div class="gallery-scroll addtag-container" *ngIf="secondone">
+    <div class="row">
+        <div class="col-md-6">
+            <form class="add-tag-form">
+                <div class="add-tag-form-field row">
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <mat-label class="tag-info">Title</mat-label>
+                        <mat-form-field appearance="outline" class="form-group">
+                            <input matInput type="text" name="media_title" required
+                                [(ngModel)]="singlemedia.media_title" readonly>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="add-tag-form-field row">
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <mat-label class="tag-info">Description</mat-label>
+                        <mat-form-field class="outline">
+                            <textarea matInput name="desc" class="textarea-add-tag" [(ngModel)]="singlemedia.media_desc"
+                                readonly></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="add-tag-form-field row">
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <mat-label class="tag-info">Url</mat-label>
+                        <mat-form-field appearance="outline" class="form-group">
+                            <input matInput type="text" name="media_url" id="media_url" required
+                                [(ngModel)]="singlemedia.media_url" readonly>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <button mat-raised-button class="copy-clipboard" (click)="copyToClipboard()">Copy to
+                            Clipboard</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <form class="add-tag-form">
+                <div class="add-tag-form-field row">
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <mat-label class="tag-info">Alternate Text</mat-label>
+                        <mat-form-field appearance="outline" class="form-group">
+                            <input matInput type="text" readonly name="media_alt_text"
+                                [(ngModel)]="singlemedia.media_alt_text">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="add-tag-form-field row">
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <mat-label class="tag-info">Caption</mat-label>
+                        <mat-form-field class="outline">
+                            <textarea matInput name="desc" class="textarea-add-tag"
+                                [(ngModel)]="singlemedia.media_caption" readonly></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="add-tag-form-field row">
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <img [src]="singlemedia.media_url" style="height: 100; width: 150px">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<footer class="fixed-footer">
+    <div class="footer-pagination-div">
+        <pagination-controls *ngIf="firstone" class="pagination-color" (pageChange)="p = $event"></pagination-controls>
+        <button mat-raised-button color="warn" *ngIf="secondone" (click)="goToFirstOne()">Back To Media</button>
+    </div>
+</footer>

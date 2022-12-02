@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AdserviceService } from 'src/app/services/Adservice/adservice.service';
+import { LoaderService } from 'src/app/services/loaderService/loader.service';
 import { environment } from 'src/environments/environment';
 import { EditAdDailogComponent } from '../edit-ad-dailog/edit-ad-dailog.component';
 
@@ -11,16 +12,16 @@ import { EditAdDailogComponent } from '../edit-ad-dailog/edit-ad-dailog.componen
 })
 export class AdminAdViewComponent implements OnInit {
 
-  customer_id:any
-  ads_id:any
-  img_size:any
-  allAdsList:any = []
-  ads_top:any = []
-  ads_rightupper:any = []
-  ads_leftmiddle:any = []
-  ads_middle:any = []
+  customer_id: any
+  ads_id: any
+  img_size: any
+  allAdsList: any = []
+  ads_top: any = []
+  ads_rightupper: any = []
+  ads_leftmiddle: any = []
+  ads_middle: any = []
 
-  constructor(private adsService:AdserviceService,public dialog: MatDialog) { }
+  constructor(private adsService: AdserviceService, public dialog: MatDialog, private spinnerService: LoaderService) { }
 
   ngOnInit(): void {
     this.customer_id = environment.CUSTOMER_ID
@@ -28,9 +29,10 @@ export class AdminAdViewComponent implements OnInit {
   }
 
   getAllAdsList() {
+    this.spinnerService.show()
     this.ads_id = ''
     this.img_size = ''
-    this.adsService.getAllAds(this.ads_id,this.img_size,this.customer_id).subscribe((res: any) => {
+    this.adsService.getAllAds(this.ads_id, this.img_size, this.customer_id, 'A').subscribe((res: any) => {
       this.allAdsList = res.body;
       this.allAdsList = this.allAdsList.map((dt: any) => JSON.parse(dt));
 
@@ -42,13 +44,15 @@ export class AdminAdViewComponent implements OnInit {
       this.ads_leftmiddle = this.allAdsList.filter((data: any) => data.ads_img_size === "3");
       /** Middle */
       this.ads_middle = this.allAdsList.filter((data: any) => data.ads_img_size === "4");
+      this.spinnerService.hide()
+
     })
   }
-  openDialog(event:any,id:any) {
+  openDialog(event: any, id: any) {
     const dialogRef = this.dialog.open(EditAdDailogComponent, {
       height: '540px',
       width: '900px',
-      data: {value:event,ads_size:id},
+      data: { value: event, ads_size: id },
     });
 
     dialogRef.afterClosed().subscribe(result => {

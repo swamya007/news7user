@@ -3,7 +3,7 @@
 <div class="home-ad-container">
     <div id="carouselExampleControls1" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item" *ngFor="let top_ad of ads_top; let i = index"
+            <div class="carousel-item" *ngFor="let top_ad of ads_middle; let i = index"
                 [ngClass]="i === 0 ? 'active' : ''">
                 <img class="d-block w-100" src={{top_ad.ads_image}} alt={{top_ad.ads_image_alt_text}}
                     (click)="openLink(top_ad.ads_image_link)">
@@ -144,4 +144,5 @@
         </div>
     </div>
 </div>
+<app-search-sticky [searchval]="searchval"></app-search-sticky>
 <app-footer></app-footer>

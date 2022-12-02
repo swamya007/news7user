@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoaderService } from 'src/app/services/loaderService/loader.service';
 import { LoginService } from 'src/app/services/loginService/login.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { PostserviceService } from 'src/app/services/postservice/postservice.service';
@@ -12,7 +13,7 @@ import { UserService } from 'src/app/services/userService/user.service';
 })
 export class AdminPostDraftComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute,private userService: UserService, private loginService: LoginService, private viewstag: TagserviceService, private post: PostserviceService, private notify: NotificationService,  private tagserivce: TagserviceService,private router: Router) { }
+  constructor(private spinnerService: LoaderService,private activatedRoute: ActivatedRoute,private userService: UserService, private loginService: LoginService, private viewstag: TagserviceService, private post: PostserviceService, private notify: NotificationService,  private tagserivce: TagserviceService,private router: Router) { }
   post_id: any 
   draft_id: any = ''
   post_name: any = ''
@@ -27,15 +28,21 @@ export class AdminPostDraftComponent implements OnInit {
 
   }
   getalldraftsbypost() {
+    this.spinnerService.show()
+
     this.post.getdraftdetailsbypost(this.post_id,this.draft_id,this.currentuser.customer_id).subscribe((res: any) => {
       if (res.code == 'success') {
         var data = res.body;
         this.draftarrpost = data.map((dt: any) => JSON.parse(dt));
       } else {
         this.draftarrpost = []
+        this.spinnerService.hide()
+
       }
     }, (err) => {
       this.draftarrpost = []
+      this.spinnerService.hide()
+
     })
   }
   editdraft(id:any,draft_id: any) {

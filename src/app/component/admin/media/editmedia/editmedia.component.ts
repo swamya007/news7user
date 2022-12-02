@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { mediamodel } from 'src/app/models/mediamodel';
 import { CategoryServiceService } from 'src/app/services/categoryservice/category-service.service';
+import { LoaderService } from 'src/app/services/loaderService/loader.service';
 import { LoginService } from 'src/app/services/loginService/login.service';
 import { MasterServiceService } from 'src/app/services/masterservice/master-service.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
@@ -19,10 +20,9 @@ export class EditmediaComponent implements OnInit {
   currentuser: any = {}
   imageBase64: any
 
-  constructor(private masterService: MasterServiceService, private router: Router, private activatedRoute: ActivatedRoute, private loginService: LoginService, private notify: NotificationService) {
+  constructor(private spinnerService: LoaderService, private masterService: MasterServiceService, private router: Router, private activatedRoute: ActivatedRoute, private loginService: LoginService, private notify: NotificationService) {
 
   }
-
 
   aspectRatio: number = 5 / 4;
   croppedImage: any = '';
@@ -83,6 +83,8 @@ export class EditmediaComponent implements OnInit {
   }
 
   updateMedia() {
+    this.spinnerService.show()
+
     this.updatemedia.base64file = this.croppedImage
     this.updatemedia.flag = 'U'
     this.updatemedia.customer_id = environment.CUSTOMER_ID
@@ -92,13 +94,17 @@ export class EditmediaComponent implements OnInit {
 
     this.masterService.createMedia(this.updatemedia).subscribe((res: any) => {
       if (res.code == "success") {
+        this.spinnerService.hide()
+
         this.notify.success(res.message);
         this.router.navigate(['/admin/media/view']);
       } else {
         this.notify.error(res.message)
+        this.spinnerService.hide()
       }
     }, (err: any) => {
       this.notify.error(err.message)
+      this.spinnerService.hide()
     })
   }
 

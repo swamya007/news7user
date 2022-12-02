@@ -18,15 +18,14 @@ export class LatestNewsHeaderComponent implements OnInit {
     this.getLatestNews()
     setTimeout(() => {
       this.showSlides(this.slideIndex);
-    }, 1500);
+    }, 1000);
   }
 
   getLatestNews() {
-    this.postserviceService.getLatestNews(1,environment.CUSTOMER_ID,'').subscribe((res: any) => {
+    this.postserviceService.getTrendingNews(environment.CUSTOMER_ID).subscribe((res: any) => {
       if (res.code == 'success') {
         var data = res.body;
         this.postarr = data.map((dt: any) => JSON.parse(dt));
-        
       } else {
         this.postarr = []
       }

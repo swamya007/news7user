@@ -14,8 +14,8 @@
 }
 
 .news-card img {
-  width: 100%;
-  height: 160px;
+  max-width: 100%;
+  height: auto;
 }
 
 .news-card p{

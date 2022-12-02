@@ -1,11 +1,29 @@
 <app-header></app-header>
 <app-latest-news-header></app-latest-news-header>
-
+<!-- <button mat-raised-button (click)="openDialog()">Open</button> -->
 <div class="home-ad-container">
-  <div id="carouselExampleControls1" class="carousel slide carousel-fade" data-ride="carousel">
+  <div id="carouselExampleControls3" class="carousel slide carousel-fade" data-ride="carousel">
     <div class="carousel-inner">
-      <div class="carousel-item"  *ngFor="let top_ad of ads_top; let i = index" [ngClass]="i === 0 ? 'active' : ''">
-        <img class="d-block w-100" src={{top_ad.ads_image}} alt={{top_ad.ads_image_alt_text}} (click)="openLink(top_ad.ads_image_link)">
+      <div class="carousel-item" *ngFor="let middle_ad of ads_middle;let i = index"
+        [ngClass]="i === 0 ? 'active' : ''">
+        <img class="d-block w-100" src={{middle_ad.ads_image}} alt={{middle_ad.ads_image_alt_text}}
+          (click)="openLink(middle_ad.ads_image_link)">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls3" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls3" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <!-- <div id="carouselExampleControls1" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item" *ngFor="let top_ad of ads_top; let i = index" [ngClass]="i === 0 ? 'active' : ''">
+        <img class="d-block w-100" src={{top_ad.ads_image}} alt={{top_ad.ads_image_alt_text}}
+          (click)="openLink(top_ad.ads_image_link)">
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleControls1" role="button" data-slide="prev">
@@ -16,7 +34,7 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
-  </div>
+  </div> -->
   <!-- <div style="background-image: url('assets/img/cover4.jpg')"></div> -->
 </div>
 
@@ -27,8 +45,10 @@
       <div class="advertisement-container-long">
         <div id="carouselExampleControls2" class="carousel slide carousel-fade" data-ride="carousel">
           <div class="carousel-inner">
-            <div class="carousel-item" *ngFor="let leftmiddle_ad of ads_leftmiddle;let i = index" [ngClass]="i === 0 ? 'active' : ''">
-              <img class="d-block w-100" src={{leftmiddle_ad.ads_image}} alt={{leftmiddle_ad.ads_image_alt_text}} (click)="openLink(leftmiddle_ad.ads_image_link)">
+            <div class="carousel-item" *ngFor="let leftmiddle_ad of ads_leftmiddle;let i = index"
+              [ngClass]="i === 0 ? 'active' : ''">
+              <img class="d-block w-100" src={{leftmiddle_ad.ads_image}} alt={{leftmiddle_ad.ads_image_alt_text}}
+                (click)="openLink(leftmiddle_ad.ads_image_link)">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleControls2" role="button" data-slide="prev">
@@ -52,8 +72,10 @@
           <div class="advertisement-space-container-first">
             <div id="carouselExampleControls4" class="carousel slide carousel-fade" data-ride="carousel">
               <div class="carousel-inner">
-                <div class="carousel-item" *ngFor="let rightupper_ad of ads_rightupper; let i = index" [ngClass]="i === 0 ? 'active' : ''">
-                  <img class="d-block w-100" src={{rightupper_ad.ads_image}} alt={{rightupper_ad.ads_image_alt_text}} (click)="openLink(rightupper_ad.ads_image_link)">
+                <div class="carousel-item" *ngFor="let rightupper_ad of ads_rightupper; let i = index"
+                  [ngClass]="i === 0 ? 'active' : ''">
+                  <img class="d-block w-100" src={{rightupper_ad.ads_image}} alt={{rightupper_ad.ads_image_alt_text}}
+                    (click)="openLink(rightupper_ad.ads_image_link)">
                 </div>
               </div>
               <a class="carousel-control-prev" href="#carouselExampleControls4" role="button" data-slide="prev">
@@ -66,32 +88,18 @@
               </a>
             </div>
           </div>
-          <div class="search-category">
+          <!-- <div class="search-category">
             <mat-form-field appearance="outline" class="form-group w-200">
               <input matInput type="text" name="cname" [(ngModel)]="searchval">
             </mat-form-field>
             <button mat-raised-button color="primary" class="search-btn" (click)="searchPost()">Search</button>
-          </div>
+          </div> -->
           <app-entertainment-news></app-entertainment-news>
         </div>
       </div>
-      <div class="home-ad-container-wide">
-        <div id="carouselExampleControls3" class="carousel slide carousel-fade" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item" *ngFor="let middle_ad of ads_middle;let i = index" [ngClass]="i === 0 ? 'active' : ''">
-              <img class="d-block w-100" src={{middle_ad.ads_image}} alt={{middle_ad.ads_image_alt_text}} (click)="openLink(middle_ad.ads_image_link)">
-            </div>
-          </div>
-          <a class="carousel-control-prev" href="#carouselExampleControls3" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleControls3" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
+      <!-- <div class="home-ad-container-wide">
+        
+      </div> -->
       <div class="row">
         <div class="col-md-6 col-sm-12 col-12">
           <app-business-news></app-business-news>
@@ -129,6 +137,35 @@
         </div>
         <div class="col-md-4 col-sm-12 col-12">
           <app-education-news></app-education-news>
+          <!-- <div class="row">
+            <div class="col-md-12  col-sm-12 col-12">
+            
+                <div class="frame">
+                  <div class="center">
+                    <div class="card-1">
+                      
+                      <div class="content">
+                        <div class="content-heading">Gold</div>
+                        <div class="price">Rs 54,385 </div>
+                      </div>
+                    </div>
+                    <div class="card-2">
+                      <div class="content-silver">
+                        <div class="content-heading">Silver</div>
+                       <div class="price">Rs 49,0000</div>
+                        
+                      </div>
+                    </div>
+                    <div class="card-3">
+                      <div class="content-powered">
+                        <div class="content-heading">Powered By</div>
+                        <div class="price">Khimji</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+            </div>
+          </div> -->
         </div>
       </div>
     </div>

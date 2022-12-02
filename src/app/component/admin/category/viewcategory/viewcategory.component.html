@@ -17,7 +17,7 @@
         <table id="view-table">
             <thead class="table-header">
                 <th class="first">
-                    <input type="checkbox" class="example-margin">
+                    <input type="checkbox" class="example-margin" >
                 </th>
                 <th class="content">Name</th>
                 <th class="content">Description</th>
@@ -30,12 +30,13 @@
                 <th class="content">Slug</th>
                 <th class="content">Count</th>
                 <th class="content">Action</th>
+                <th class="content">Delete</th>
             </thead>
             <tbody *ngIf="catarr &&  catarr.length; else elseblock">
                 <tr *ngFor="let data of catarr | paginate: { itemsPerPage: 10, currentPage: p } ">
                     <td class="first">
-                        <input type="checkbox" class="example-margin">
-                    </td>
+                        <input type="checkbox" [(ngModel)]="data.selected" >
+                      </td>
                     <td>{{ data.category_name }}</td>
                     <td class="description">{{ data.description }}</td>
                     <!-- <td class="circle-1">
@@ -51,6 +52,9 @@
                         <!-- <mat-icon class="mat-icon-cls" title="View" (click)="view(data.slug)">visibility</mat-icon> -->
                         <!-- <i class="fa fa-eye"></i> -->
                     </td>
+                    <td>
+                        <button class="del-btn" (click)="deleteCategory(data.category_id)"><mat-icon>delete_forever</mat-icon></button>  
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -64,11 +68,41 @@
             </tr>
         </tbody>
     </ng-template>
-    <div class="col-lg-12 col-md-12 col-12 w-100 d-flex justify-content-between flex-wrap"
+    <div class="d-flex" style="padding-left: 3%;">
+       
+      </div>
+    <div class="col-lg-12 col-md-12 col-12 w-100 d-flex justify-content-between flex-wrap centrify"
         style="padding-top:1vw;padding-bottom:1vw;">
-        <div class="d-flex" style="padding-left: 3%;">
+        <!-- <div class="d-flex" style="padding-left: 3%;">
             <!-- <button class="apply-btn" style="margin-left:1vw;">apply to selected items</button> -->
-        </div>
+        <!-- </div>  -->
+        <button mat-raised-button class="delete-btn" class="delete-button"  (click)="redirectfn()">Delete</button>
         <pagination-controls class="pagination-color" (pageChange)="p = $event"></pagination-controls>
     </div>
+</div>
+
+<div class="modal" id="exampleModal" #closebutton tabindex="-1" role="dialog"
+aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="dialog">
+  <div class="modal-content">
+    <div class="modal-title1" id="exampleModalLabel">Delete Category</div>
+
+    <div class="modal-body">
+      <p>{{((checkedList.length > "1") ? 'Are You Sure' : 'Are You Sures')}}
+        </p>
+    </div>
+
+    <footer>
+        <div class="text-center">
+            <button mat-raised-button type="button" class="cancel-delete-button" style="background-color:#e61333;" data-bs-dismiss="modal"
+              (click)="deletetours()">Yes
+            </button>
+            <button mat-raised-button type="button" class="cancel-delete-button" style="background-color:#1367e6;" data-bs-dismiss="modal"
+              (click)="cancelfn()">No
+            </button>
+          </div>
+    </footer>
+    
+  </div>
+</div>
 </div>

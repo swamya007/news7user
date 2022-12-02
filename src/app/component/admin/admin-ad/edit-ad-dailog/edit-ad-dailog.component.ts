@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AdmodelTopContent } from 'src/app/models/adModel';
 import { AdserviceService } from 'src/app/services/Adservice/adservice.service';
+import { LoaderService } from 'src/app/services/loaderService/loader.service';
 import { LoginService } from 'src/app/services/loginService/login.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { environment } from 'src/environments/environment';
@@ -32,7 +33,7 @@ export class EditAdDailogComponent implements OnInit {
   adsmiddlesec: any
   id: any
 
-  constructor(public dialogRef: MatDialogRef<EditAdDailogComponent>,
+  constructor(public dialogRef: MatDialogRef<EditAdDailogComponent>, private spinnerService: LoaderService,
     @Inject(MAT_DIALOG_DATA) public data: any, private notify: NotificationService, private loginService: LoginService, private router: Router, private adsservice: AdserviceService) { }
 
   ngOnInit(): void {
@@ -48,10 +49,6 @@ export class EditAdDailogComponent implements OnInit {
     this.adsrightuppersec = this.data.value
     this.adsleftmiddlesec = this.data.value
     this.adsmiddlesec = this.data.value
-
-    console.log(this.data.value)
-
-    console.log(this.adstopsec.ads_mulfile)
 
   }
 
@@ -82,7 +79,7 @@ export class EditAdDailogComponent implements OnInit {
         const height = path[0].height;
         const width = path[0].width;
         console.log(height, width);
-        if (height != 250 && width != 970) {
+        if (height != 250 || width != 970) {
           this.notify.error('Please choose image with given height and width which mentioned above.');
           this.adstopsec.ads_mulfile = ''
           bannerImg = document.querySelector('#thumbnailImage_topsec')
@@ -119,7 +116,7 @@ export class EditAdDailogComponent implements OnInit {
         const height = path[0].height;
         const width = path[0].width;
         console.log(height, width);
-        if (height != 200 && width != 300) {
+        if (height != 250 || width != 300) {
           this.notify.error('Please choose image with given height and width which mentioned above.');
           this.adsrightuppersec.ads_mulfile = ''
           bannerImg = document.querySelector('#thumbnailImage_rightuppersec')
@@ -156,7 +153,7 @@ export class EditAdDailogComponent implements OnInit {
         const height = path[0].height;
         const width = path[0].width;
         console.log(height, width);
-        if (height != 600 && width != 300) {
+        if (height != 600 || width != 300) {
           this.notify.error('Please choose image with given height and width which mentioned above.');
           this.adsleftmiddlesec.ads_mulfile = ''
           bannerImg = document.querySelector('#thumbnailImage_leftmiddlesec')
@@ -193,7 +190,7 @@ export class EditAdDailogComponent implements OnInit {
         const height = path[0].height;
         const width = path[0].width;
         console.log(height, width);
-        if (height != 90 && width != 728) {
+        if (height != 90 || width != 728) {
           this.notify.error('Please choose image with given height and width which mentioned above.');
           this.adsmiddlesec.ads_mulfile = ''
           bannerImg = document.querySelector('#thumbnailImage_middlesec')
@@ -209,6 +206,7 @@ export class EditAdDailogComponent implements OnInit {
 
 
   addtopsec() {
+    this.spinnerService.show()
 
     if (this.adstopsec.ads_mulfile) {
       var reader = new FileReader();
@@ -226,23 +224,29 @@ export class EditAdDailogComponent implements OnInit {
       if (this.adstopsec.ads_mulfile) {
         this.adstopsec.base64file = reader.result
       }
-      
+
       this.adsservice.addAd(this.adstopsec).subscribe((res: any) => {
         if (res.code === "success") {
+          this.spinnerService.hide()
+
           this.notify.success(res.message);
           this.dialogRef.close()
           // this.router.navigate(['/admin/ads/view']);
           location.reload()
         } else {
           this.notify.error(res.message)
+          this.spinnerService.hide()
         }
       }, (err: any) => {
         this.notify.error(err.message)
+        this.spinnerService.hide()
       })
     }, 1000);
   }
 
   addrightuppersec() {
+    this.spinnerService.show()
+
 
     if (this.adsrightuppersec.ads_mulfile) {
       var reader = new FileReader();
@@ -260,23 +264,29 @@ export class EditAdDailogComponent implements OnInit {
       if (this.adsrightuppersec.ads_mulfile) {
         this.adsrightuppersec.base64file = reader.result
       }
-      
+
       this.adsservice.addAd(this.adsrightuppersec).subscribe((res: any) => {
         if (res.code === "success") {
+          this.spinnerService.hide()
+
           this.notify.success(res.message);
           this.dialogRef.close()
           // this.router.navigate(['/admin/ads/view']);
           location.reload()
         } else {
           this.notify.error(res.message)
+          this.spinnerService.hide()
         }
       }, (err: any) => {
         this.notify.error(err.message)
+        this.spinnerService.hide()
       })
     }, 1000);
   }
 
   addleftmiddlesec() {
+    this.spinnerService.show()
+
 
     if (this.adsleftmiddlesec.ads_mulfile) {
       var reader = new FileReader();
@@ -294,23 +304,29 @@ export class EditAdDailogComponent implements OnInit {
       if (this.adsleftmiddlesec.ads_mulfile) {
         this.adsleftmiddlesec.base64file = reader.result
       }
-      
+
       this.adsservice.addAd(this.adsleftmiddlesec).subscribe((res: any) => {
         if (res.code === "success") {
+          this.spinnerService.hide()
+
           this.notify.success(res.message);
           this.dialogRef.close()
           // this.router.navigate(['/admin/ads/view']);
           location.reload()
         } else {
           this.notify.error(res.message)
+          this.spinnerService.hide()
         }
       }, (err: any) => {
         this.notify.error(err.message)
+        this.spinnerService.hide()
       })
     }, 1000);
   }
 
   addmiddlesec() {
+    this.spinnerService.show()
+
 
     if (this.adsmiddlesec.ads_mulfile) {
       var reader = new FileReader();
@@ -328,18 +344,22 @@ export class EditAdDailogComponent implements OnInit {
       if (this.adsmiddlesec.ads_mulfile) {
         this.adsmiddlesec.base64file = reader.result
       }
-     
+
       this.adsservice.addAd(this.adsmiddlesec).subscribe((res: any) => {
         if (res.code === "success") {
+          this.spinnerService.hide()
+
           this.notify.success(res.message);
           this.dialogRef.close()
           // this.router.navigate(['/admin/ads/view']);
           location.reload()
         } else {
           this.notify.error(res.message)
+          this.spinnerService.hide()
         }
       }, (err: any) => {
         this.notify.error(err.message)
+        this.spinnerService.hide()
       })
     }, 1000);
   }

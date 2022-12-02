@@ -10,7 +10,8 @@ import { environment } from 'src/environments/environment';
 export class HeaderComponent implements OnInit {
   headerarry: any[] = []
   customer_id: any;
-
+  morearray: any[] = []
+  newarray:any[] = []
   constructor(private masterAPI: MasterServiceService) { }
 
   ngOnInit(): void {
@@ -21,10 +22,11 @@ export class HeaderComponent implements OnInit {
     this.masterAPI.getAllheaders(environment.CUSTOMER_ID).subscribe((res: any) => {
       if (res.code == 'success') {
         var data = res.body;
-        //console.log(res.body);
         this.headerarry = data.map((dt: any) => JSON.parse(dt));
-
-        console.log(this.headerarry);
+        if(this.headerarry.length > 10) {
+          this.newarray = this.headerarry.slice(0,10)
+          this.morearray = this.headerarry.slice(10)
+        }
       } else {
         this.headerarry = []
       }

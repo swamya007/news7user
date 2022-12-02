@@ -1,9 +1,15 @@
 .navbar-bg {
   background: #000;
-  padding-left: 10px;
-  padding-right: 10px;
+  /* padding-left: 10px;
+  padding-right: 10px; */
 }
-
+:host ::ng-deep .navbar{
+  padding: 0;
+}
+.navbar-light .navbar-nav .nav-link
+{
+  padding: 22px 8px;
+}
 .navbar-brand img {
   height: 50px;
   width: 130px;
@@ -24,9 +30,31 @@
   border-radius: 5px;
   transition: all 0.4s ease;
 }
-
+:host::ng-deep .nav-link:hover {
+  color: #bbb !important;
+  background-color: rgba(255, 255, 255, 0.226) !important;
+  font-size: 17px;
+  border-radius: 0px !important;
+  flex-wrap: wrap
+}
 .nav-link:hover {
   color: #bbb;
   background-color: rgba(255, 255, 255, 0.226);
   border-radius: 5px;
+}
+.navbar-nav .dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.navbar-expand-lg .navbar-nav .dropdown-menu {
+  position: absolute;
+  background: var(--bs-dropdown-link-color);
+  color: #fff;
+  border-radius: 0 !important;
+}
+.dropdown-item {
+  color: #fff !important;
+}
+.navbar-nav i{
+  font-size: 22px;
 }

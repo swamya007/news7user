@@ -13,13 +13,17 @@ export class MainNewsComponent implements OnInit {
   slideIndex: number = 0;
   myTimer: any;
   postarr:any = []
+  slidearray:any = []
 
   constructor(private postserviceService: PostserviceService, private router:Router) { }
 
 
   ngOnInit(): void {
-    this.showImage(this.slideIndex);
+    // this.showImage(this.slideIndex);
     this.getLatestNews()
+    setTimeout(() => {
+      this.showImage(this.slideIndex);
+    }, 1500);
   }
 
   getShortName(user_name: any) {
@@ -27,12 +31,15 @@ export class MainNewsComponent implements OnInit {
   }
 
   getLatestNews() {
-    this.postserviceService.getLatestNews(1,environment.CUSTOMER_ID,News7_CONSTANTS.LOOKUPS.none).subscribe((res: any) => {
+    this.postserviceService.getLatestNews(1,environment.CUSTOMER_ID,'').subscribe((res: any) => {
       if (res.code == 'success') {
         var data = res.body;
         this.postarr = data.map((dt: any) => JSON.parse(dt));
-        if (this.postarr.length > 0) {
-          this.postarr = this.postarr.slice(0, 4)
+        if (this.postarr.length > 3) {
+          this.slidearray = this.postarr.slice(0, 3)
+        }
+        if (this.postarr.length > 7) {
+          this.postarr = this.postarr.slice(3, 7)
         }
       } else {
         this.postarr = []

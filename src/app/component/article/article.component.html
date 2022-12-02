@@ -37,7 +37,7 @@
 
                 </div>
             </div>
-            <div class="author-details-section">
+            <!-- <div class="author-details-section">
                 <div class="author-image">
                     <img [src]="news.author_image ? news.author_image : '/assets/img/default-profile.png'">
                 </div>
@@ -45,9 +45,9 @@
                     <div class="author-name-container">
                         <h4>{{news.author_name}}</h4>
                         <div class="d-flex">
-                            <div class="sharing-icon" (click)="openUrl(news.instagram)"><i class="fa-brands fa-instagram"></i></div>
-                            <div class="sharing-icon" (click)="openUrl(news.facebook)"><i class="fa-brands fa-facebook-f"></i></div>
-                            <div class="sharing-icon" (click)="openUrl(news.twitter)"><i class="fa-brands fa-twitter"></i></div>
+                            <div class="sharing-icon" (click)="createNavigationUrl(news.instagram)"><i class="fa-brands fa-instagram"></i></div>
+                            <div class="sharing-icon" (click)="createNavigationUrl(news.facebook)"><i class="fa-brands fa-facebook-f"></i></div>
+                            <div class="sharing-icon" (click)="createNavigationUrl(news.twitter)"><i class="fa-brands fa-twitter"></i></div>
                         </div>
                     </div>
                     <div class="author-desc-text">
@@ -56,7 +56,7 @@
                     </div>
                 </div>
 
-            </div>
+            </div> -->
             <div *ngIf="author_post.length > 0">
                 <div class="send-message-container more-from-author">
                     <div class="heading-container">
@@ -125,7 +125,9 @@
                             <mat-checkbox class="checkbox-margin" (change)="onChange($event)">Save my name, email, and website in this browser for the next time I
                                 comment.</mat-checkbox>
                         </section>
+                        
                         <button mat-raised-button (click)="savePostComment()">POST COMMENT</button>
+                        <div class="fb-comments" data-href="https://dev.prameyanews.com/" data-width="15" data-numposts=""></div>
                     </form>
                 </div>
             </div>
@@ -154,5 +156,5 @@
         </div>
     </div>
 </div>
-
+<app-search-sticky></app-search-sticky>
 <app-footer></app-footer>

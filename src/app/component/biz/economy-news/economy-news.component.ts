@@ -19,7 +19,7 @@ export class EconomyNewsComponent implements OnInit {
 
 
   getLatestNews() {
-    this.postserviceService.getLatestNews(1,environment.CUSTOMER_ID,News7_CONSTANTS.LOOKUPS.campus_muse).subscribe((res: any) => {
+    this.postserviceService.getLatestNews(1,environment.CUSTOMER_ID,News7_CONSTANTS.LOOKUPS.economics).subscribe((res: any) => {
       if (res.code == 'success') {
         var data = res.body;
         this.postarr = data.map((dt: any) => JSON.parse(dt));

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MasterServiceService } from 'src/app/services/masterservice/master-service.service';
 import { LoginService } from 'src/app/services/loginService/login.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
+import { LoaderService } from 'src/app/services/loaderService/loader.service';
 
 @Component({
   selector: 'app-manage-header',
@@ -13,7 +14,7 @@ import { NotificationService } from 'src/app/services/notification/notification.
 })
 export class ManageHeaderComponent implements OnInit {
 
-  constructor(private loginService: LoginService, private notify: NotificationService, private Categorydata: CategoryServiceService, private router: Router, private masterAPI: MasterServiceService) { }
+  constructor(private spinnerService: LoaderService, private loginService: LoginService, private notify: NotificationService, private Categorydata: CategoryServiceService, private router: Router, private masterAPI: MasterServiceService) { }
   catarr: any[] = []
   categorySearch: any = '';
   catadata: any[] = []
@@ -58,7 +59,7 @@ export class ManageHeaderComponent implements OnInit {
     console.log([...new Set(this.headerarry)])
   }
   getallcategory() {
-    this.Categorydata.getAllCategory(this.catid, this.categorySearch,this.currentuser.customer_id).subscribe((res: any) => {
+    this.Categorydata.getAllCategory(this.catid, this.categorySearch, this.currentuser.customer_id).subscribe((res: any) => {
       if (res.code == 'success') {
         var data = res.body;
         //console.log(res.body);
@@ -92,7 +93,7 @@ export class ManageHeaderComponent implements OnInit {
     })
   }
   updateHeader() {
-    console.log(this.headerarry)
+    this.spinnerService.show()
     let payload = {
       headers: this.headerarry,
       customer_id: this.currentuser.customer_id,
@@ -100,13 +101,18 @@ export class ManageHeaderComponent implements OnInit {
     }
     this.masterAPI.updateheader(payload).subscribe((res: any) => {
       if (res.code === "success") {
+        this.spinnerService.hide()
         this.notify.success(res.message);
         window.location.reload()
       } else {
         this.notify.error(res.message)
+        this.spinnerService.hide()
+
       }
     }, (err: any) => {
       this.notify.error(err.message)
+      this.spinnerService.hide()
+
     })
 
   }

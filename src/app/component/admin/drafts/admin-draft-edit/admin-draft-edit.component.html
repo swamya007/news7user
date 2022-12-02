@@ -5,11 +5,28 @@
     <div class="add-post-form">
         <div class="add-post-text-field-container">
             <div class="add-post-form-field row">
-                <div class="col-md-12 col-12">
+                <div class="col-md-6 col-sm-12 col-12">
                     <mat-label class="add-post-title">Title</mat-label>
                     <mat-form-field appearance="outline">
                         <input matInput type="text" name="title" [(ngModel)]="updatepost.post_title" (keyup)="getSlug()"
                             required>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="add-post-form-field row">
+                <div class="col-md-6 col-sm-12 col-12">
+                    <mat-label class="add-post-title">Slug</mat-label>
+                    <mat-form-field appearance="outline">
+                        <input matInput type="text" name="slug" [(ngModel)]="updatepost.slug" required (keyup)="getPermalink()">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="add-post-form-field row">
+                <div class="col-md-6 col-sm-12 col-12">
+                    <mat-label class="add-post-title">Permalink</mat-label>
+                    <mat-form-field appearance="outline">
+                        <input matInput type="text" name="canonical-url" [(ngModel)]="updatepost.permalink" required
+                            readonly>
                     </mat-form-field>
                 </div>
             </div>
@@ -22,34 +39,7 @@
                 </div>
             </div>
         </div>
-        <div class="add-post-seo-field-container">
-            <h2 class="add-post-sub-heading">SEO</h2>
-            <div class="add-post-form-field row">
-                <div class="col-md-6 col-sm-12 col-12">
-                    <mat-label class="add-post-title">Slug</mat-label>
-                    <mat-form-field appearance="outline">
-                        <input matInput type="text" name="slug" [(ngModel)]="updatepost.slug" required readonly>
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="add-post-form-field row">
-                <div class="col-md-6 col-sm-12 col-12">
-                    <mat-label class="add-post-title">Meta Description</mat-label>
-                    <mat-form-field appearance="outline">
-                        <input matInput type="text" name="meta-description" [(ngModel)]="updatepost.meta_description"
-                            >
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="add-post-form-field row">
-                <div class="col-md-6 col-sm-12 col-12">
-                    <mat-label class="add-post-title">Canonical Url</mat-label>
-                    <mat-form-field appearance="outline">
-                        <input matInput type="text" name="canonical-url" [(ngModel)]="updatepost.canonical_url" >
-                    </mat-form-field>
-                </div>
-            </div>
-        </div>
+
         <div class="add-post-post-field-container">
             <h2 class="add-post-sub-heading">Post</h2>
             <div class="add-post-form-field row">
@@ -64,10 +54,16 @@
                 </div>
             </div>
             <div class="add-post-form-field row">
-                <div class="col-md-6 col-sm-12 col-12">
-                    <mat-label class="add-post-title">Publish Date</mat-label>
+                <div class="col-md-3 col-sm-12 col-12">
+                    <mat-label class="add-post-title">Publish Date & Time (required)</mat-label>
                     <mat-form-field appearance="outline">
                         <input matInput type="date" [(ngModel)]="updatepost.post_date" required>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-3 col-sm-12 col-12 time-field">
+                    <mat-form-field name="stime" appearance="fill" class="form-field">
+                        <input matInput type="time" name="stime" name="stime" class="time"
+                            [(ngModel)]="updatepost.post_time">
                     </mat-form-field>
                 </div>
             </div>
@@ -93,14 +89,7 @@
                     </mat-form-field>
                 </div>
             </div>
-            <div class="add-post-form-field row">
-                <div class="col-md-6 col-sm-12 col-12">
-                    <mat-label class="add-post-title">Permalink</mat-label>
-                    <mat-form-field appearance="outline">
-                        <input matInput type="text" name="canonical-url" [(ngModel)]="updatepost.permalink" required readonly>
-                    </mat-form-field>
-                </div>
-            </div>
+
             <div class="add-post-form-field row">
                 <div class="col-md-6 col-sm-12 col-12">
                     <mat-label class="add-post-title">Category</mat-label>
@@ -132,8 +121,7 @@
                     </div>
                 </div>
                 <div class="col-md-2 col-sm-12 col-12">
-                    <img [src]="updatepost.guid" id="bannerImage"
-                        class="img-fluid">
+                    <img [src]="updatepost.guid" id="bannerImage" class="img-fluid">
                 </div>
             </div>
             <div class="add-post-form-field row">
@@ -158,9 +146,30 @@
                 </div>
             </div>
         </div>
+        <div class="add-post-seo-field-container">
+            <h2 class="add-post-sub-heading">SEO</h2>
+
+            <div class="add-post-form-field row">
+                <div class="col-md-6 col-sm-12 col-12">
+                    <mat-label class="add-post-title">Meta Description</mat-label>
+                    <mat-form-field appearance="outline">
+                        <input matInput type="text" name="meta-description" [(ngModel)]="updatepost.meta_description">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="add-post-form-field row">
+                <div class="col-md-6 col-sm-12 col-12">
+                    <mat-label class="add-post-title">Canonical Url</mat-label>
+                    <mat-form-field appearance="outline">
+                        <input matInput type="text" name="canonical-url" [(ngModel)]="updatepost.canonical_url">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
         <div class="submit-button-container">
             <button mat-raised-button color="primary" (click)="modifypost()">Update as Post</button>
-            <button mat-raised-button color="accent" (click)="saveas_draft()" style="margin-left: 5px">Save As Draft</button>
+            <button mat-raised-button color="accent" (click)="saveas_draft()" style="margin-left: 5px">Save As
+                Draft</button>
 
         </div>
     </div>

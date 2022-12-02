@@ -1,4 +1,4 @@
-import { Component,  Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,13 +8,13 @@ import { Router } from '@angular/router';
 })
 export class SearchStickyComponent implements OnInit {
 
-  constructor(private router:Router) { }
-
   @Input()
   searchval:any
+
+  constructor(private router:Router) { }
+
   ngOnInit(): void {
   }
-
 
   onKeydown(event: any) {
     event.preventDefault();
@@ -25,4 +25,5 @@ export class SearchStickyComponent implements OnInit {
       this.router.navigate([`/search/${this.searchval}`]);
     }
   }
+
 }

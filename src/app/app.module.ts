@@ -115,7 +115,12 @@ import { SearchPostComponent } from './component/search-post/search-post.compone
 import { SearchNewsComponent } from './component/search-post/search-news/search-news.component';
 import { AdminEditPostDraftComponent } from './component/admin/admin-Post/admin-edit-post-draft/admin-edit-post-draft.component';
 import { SearchStickyComponent } from './component/search-sticky/search-sticky.component';
-import { DeleteConfirmationModalComponent } from './component/common/delete-confirmation-modal/delete-confirmation-modal.component';
+import { ForgotpassdialogComponent } from './component/login/forgotpassdialog/forgotpassdialog.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { AdminChangePasswordComponent } from './component/admin/user/view-users/admin-change-password/admin-change-password.component';
+import { EntryPopupComponent } from './component/entry-popup/entry-popup.component';
+import { TrendingnewsComponent } from './component/admin/trendingnews/trendingnews.component';
+import { PrivacyPolicyComponent } from './component/privacy-policy/privacy-policy.component';
 
 @NgModule({
   declarations: [
@@ -203,7 +208,11 @@ import { DeleteConfirmationModalComponent } from './component/common/delete-conf
     SearchNewsComponent,
     AdminEditPostDraftComponent,
     SearchStickyComponent,
-    DeleteConfirmationModalComponent
+    ForgotpassdialogComponent,
+    AdminChangePasswordComponent,
+    EntryPopupComponent,
+    TrendingnewsComponent,
+    PrivacyPolicyComponent
 
   ],
   imports: [
@@ -237,8 +246,7 @@ import { DeleteConfirmationModalComponent } from './component/common/delete-conf
     MatSlideToggleModule,
     IvyCarouselModule,
     DragDropModule,
-    
-    
+    NgxSpinnerModule,
   ],
   providers: [
     {

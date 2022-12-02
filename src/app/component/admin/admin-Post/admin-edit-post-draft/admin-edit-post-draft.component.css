@@ -76,3 +76,15 @@
 .or-div {
     margin: 10px 30px;
 }
+
+.time-field {
+    align-self: flex-end;
+}
+:host ::ng-deep .mat-form-field-underline
+{
+    display: none;
+}
+:host ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    border-radius: 4px 4px 0 0;
+    padding: 0em 0.75em 0 0.75em;
+}

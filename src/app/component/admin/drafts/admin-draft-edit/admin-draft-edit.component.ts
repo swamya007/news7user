@@ -12,6 +12,7 @@ import { TagserviceService } from 'src/app/services/tagservice/tagservice.servic
 import { UserService } from 'src/app/services/userService/user.service';
 import { environment } from 'src/environments/environment';
 import { ChoosemediaComponent } from 'src/app/component/admin/admin-Post/choosemedia/choosemedia.component';
+import { LoaderService } from 'src/app/services/loaderService/loader.service';
 @Component({
   selector: 'app-admin-draft-edit',
   templateUrl: './admin-draft-edit.component.html',
@@ -52,7 +53,7 @@ export class AdminDraftEditComponent implements OnInit {
     { "name": "Yes", "key": "1", "checked": false },
     { "name": "No", "key": "2", "checked": true }
   ]
-  constructor(private userService: UserService, private loginService: LoginService,
+  constructor(private spinnerService: LoaderService,private userService: UserService, private loginService: LoginService,
     private viewstag: TagserviceService, private post: PostserviceService,
     private notify: NotificationService, private router: Router, private tagserivce: TagserviceService,
     private categoryService: CategoryServiceService, public dialog: MatDialog, private activatedRoute: ActivatedRoute) { }
@@ -62,8 +63,7 @@ export class AdminDraftEditComponent implements OnInit {
       this.draft_id = Number(routeParams.get('id'));
       this.cust_id = environment.CUSTOMER_ID
       this.currentuser = this.loginService.getCurrentUser();
-      this.getallcategory();
-      this.getalltag();
+      
       this.getalluser();
       this.getallpost();
   
@@ -110,6 +110,18 @@ export class AdminDraftEditComponent implements OnInit {
         if (res.code == 'success') {
           var data = res.body;
           this.catarr = data.map((dt: any) => JSON.parse(dt));
+
+          if (this.updatepost.category !== null && this.updatepost.category !== undefined) {
+            let arr: any = [];
+            let split_arr = this.updatepost.category.split(",");
+            for (var i = 0; i < split_arr.length; i++) {
+              let obj: any = {};
+              obj.category_id = parseInt(split_arr[i]);
+              arr.push(obj)
+            }
+            let value = this.catarr.filter((d: any) => arr.map((v: any) => v.category_id).includes(d.category_id));
+            this.updatepost.category = value;
+          }
         } else {
           this.catarr = []
         }
@@ -120,6 +132,11 @@ export class AdminDraftEditComponent implements OnInit {
   
     getSlug() {
       this.updatepost.slug = this.updatepost.post_title.replace(/[^\w\s]/gi, "").replaceAll(" ", "-").toLowerCase();
+      this.updatepost.permalink = environment.POST_URL + this.updatepost.slug;
+    }
+
+    getPermalink() {
+      this.updatepost.slug = this.updatepost.slug.replace(" ","-");
       this.updatepost.permalink = environment.POST_URL + this.updatepost.slug;
     }
   
@@ -170,36 +187,7 @@ export class AdminDraftEditComponent implements OnInit {
         if (res.code == 'success') {
           var data = res.body;
           this.tagarray = data.map((dt: any) => JSON.parse(dt));
-        } else {
-          this.tagarray = []
-        }
-      }, (err) => {
-        this.tagarray = []
-      })
-    }
-  
-    getallpost() {
-      this.post.getDraftDetails(this.draft_id,  this.currentuser.customer_id).subscribe((res: any) => {
-        if (res.code == 'success') {
-          var data = res.body;
-          this.postarr = data.map((dt: any) => JSON.parse(dt));
-          this.updatepost = this.postarr && this.postarr.length ?
-            this.postarr[0] : {};
-          this.updatepost.post_author = parseInt(this.updatepost.post_author)
-          this.updatepost.author_name = this.updatepost.post_author
-  
-          if (this.updatepost.category !== null && this.updatepost.category !== undefined) {
-            let arr: any = [];
-            let split_arr = this.updatepost.category.split(",");
-            for (var i = 0; i < split_arr.length; i++) {
-              let obj: any = {};
-              obj.category_id = parseInt(split_arr[i]);
-              arr.push(obj)
-            }
-            let value = this.catarr.filter((d: any) => arr.map((v: any) => v.category_id).includes(d.category_id));
-            this.updatepost.category = value;
-          }
-  
+
           if (this.updatepost.tags !== null && this.updatepost.tags !== undefined) {
             let arr: any = [];
             let split_arr = this.updatepost.tags.split(",");
@@ -211,15 +199,53 @@ export class AdminDraftEditComponent implements OnInit {
             let value = this.tagarray.filter((d: any) => arr.map((v: any) => v.tag_name).includes(d.tag_name));
             this.updatepost.tags = value;
           }
+        } else {
+          this.tagarray = []
+        }
+      }, (err) => {
+        this.tagarray = []
+      })
+    }
   
+    getallpost() {
+      this.spinnerService.show()
+
+      this.post.getDraftDetails(this.currentuser.user_id,this.draft_id,  this.currentuser.customer_id,'').subscribe((res: any) => {
+        if (res.code == 'success') {
+          this.spinnerService.hide()
+
+          var data = res.body;
+          this.postarr = data.map((dt: any) => JSON.parse(dt));
+          this.updatepost = this.postarr && this.postarr.length ?
+            this.postarr[0] : {};
+          this.updatepost.post_author = parseInt(this.updatepost.post_author)
+          this.updatepost.author_name = this.updatepost.post_author
+          
           this.updatepost.immidiate_publish = this.updatepost.post_immidiate_publish;
           this.updatepost.visibility = this.updatepost.post_visibility;
+
+          if(this.updatepost.post_date) {
+            var split_data = this.updatepost.post_date.split(" ");
+            this.updatepost.post_date = split_data[0]
+            if(split_data.length > 1) {
+              this.updatepost.post_time = split_data[1]
+            } else {
+              this.updatepost.post_time = '00:00'
+            }
+          }
+
+          this.getallcategory();
+          this.getalltag();
   
         } else {
           this.postarr = []
+          this.spinnerService.hide()
+
         }
       }, (err) => {
         this.postarr = []
+        this.spinnerService.hide()
+
       })
     }
   
@@ -242,6 +268,8 @@ export class AdminDraftEditComponent implements OnInit {
     }
   
     modifypost() {
+      this.spinnerService.show()
+
       this.updatepost.createdby = this.currentuser.user_id;
       this.updatepost.flag = 'I';
       this.updatepost.tag_id = null;
@@ -271,18 +299,40 @@ export class AdminDraftEditComponent implements OnInit {
   
         };
       }
+
+      if(this.updatepost.post_date) {
+        if(this.updatepost.post_time) {
+          this.updatepost.post_date = this.updatepost.post_date + " " + this.updatepost.post_time;
+        } else {
+          this.updatepost.post_date = this.updatepost.post_date + " 00:00";
+        }
+      }
   
       setTimeout(() => {
         if (this.updatepost.Multiimage) {
           this.updatepost.base64file = reader.result
+        } else {
+          if (this.updatepost.guid) {
+            this.updatepost.post_img = this.updatepost.guid;
+          }
         }
         
         this.post.addpost(this.updatepost).subscribe((res: any) => {
           if (res.code == "success") {
+            this.spinnerService.hide()
+
             this.notify.success('Post updated successfully');
             this.router.navigate(['/admin/post/view']);
           } else {
             this.notify.error(res.message)
+            this.spinnerService.hide()
+
+            if(this.updatepost.post_date) {
+              var data = this.updatepost.post_date.split(" ");
+              this.updatepost.post_date = data[0];
+              this.updatepost.post_time = data[1];
+            }
+
             if (this.updatepost.category !== null && this.updatepost.category !== undefined) {
               let arr: any = [];
               let split_arr = this.updatepost.category.split(",");
@@ -304,11 +354,19 @@ export class AdminDraftEditComponent implements OnInit {
                 arr.push(obj)
               }
               let value = this.tagarray.filter((d: any) => arr.map((v: any) => v.tag_name).includes(d.tag_name));
-              this.updatepost.addtags = value;
+              this.updatepost.tags = value;
             }
           }
         }, (err: any) => {
           this.notify.error(err.message)
+          this.spinnerService.hide()
+
+          if(this.updatepost.post_date) {
+            var data = this.updatepost.post_date.split(" ");
+            this.updatepost.post_date = data[0];
+            this.updatepost.post_time = data[1];
+          }
+
           if (this.updatepost.category !== null && this.updatepost.category !== undefined) {
             let arr: any = [];
             let split_arr = this.updatepost.category.split(",");
@@ -330,7 +388,7 @@ export class AdminDraftEditComponent implements OnInit {
               arr.push(obj)
             }
             let value = this.tagarray.filter((d: any) => arr.map((v: any) => v.tag_name).includes(d.tag_name));
-            this.updatepost.addtags = value;
+            this.updatepost.tags = value;
           }
         })
       }, 1000)
@@ -338,7 +396,7 @@ export class AdminDraftEditComponent implements OnInit {
   
     openDialog() {
       const dialogRef = this.dialog.open(ChoosemediaComponent, {
-        height: '540px',
+        height: '550px',
         width: '900px',
       });
   
@@ -351,6 +409,8 @@ export class AdminDraftEditComponent implements OnInit {
       });
     }
     saveas_draft() {
+      this.spinnerService.show()
+
       this.updatepost.createdby = this.currentuser.user_id;
       this.updatepost.flag = 'U';
       this.updatepost.tag_id = null;
@@ -380,23 +440,96 @@ export class AdminDraftEditComponent implements OnInit {
   
         };
       }
+
+      if(this.updatepost.post_date) {
+        if(this.updatepost.post_time) {
+          this.updatepost.post_date = this.updatepost.post_date + " " + this.updatepost.post_time;
+        } else {
+          this.updatepost.post_date = this.updatepost.post_date + " 00:00";
+        }
+      }
   
       setTimeout(() => {
         if (this.updatepost.Multiimage) {
           this.updatepost.base64file = reader.result
-        }
-        if(this.updatepost.guid) {
-          this.updatepost.post_img = this.updatepost.guid
+        } else {
+          if (this.updatepost.guid) {
+            this.updatepost.post_img = this.updatepost.guid;
+          }
         }
         this.post.draftpost(this.updatepost).subscribe((res: any) => {
           if (res.code == "success") {
+            this.spinnerService.hide()
+
             this.notify.success(res.message);
              this.router.navigate(['/admin/drafts/view']);
           } else {
             this.notify.error(res.message)
+            this.spinnerService.hide()
+
+            if(this.updatepost.post_date) {
+              var data = this.updatepost.post_date.split(" ");
+              this.updatepost.post_date = data[0];
+              this.updatepost.post_time = data[1];
+            }
+
+            if (this.updatepost.category !== null && this.updatepost.category !== undefined) {
+              let arr: any = [];
+              let split_arr = this.updatepost.category.split(",");
+              for (var i = 0; i < split_arr.length; i++) {
+                let obj: any = {};
+                obj.category_id = parseInt(split_arr[i]);
+                arr.push(obj)
+              }
+              let value = this.catarr.filter((d: any) => arr.map((v: any) => v.category_id).includes(d.category_id));
+              this.updatepost.category = value;
+            }
+      
+            if (this.updatepost.addtags !== null && this.updatepost.addtags !== undefined) {
+              let arr: any = [];
+              let split_arr = this.updatepost.addtags.split(",");
+              for (var i = 0; i < split_arr.length; i++) {
+                let obj: any = {};
+                obj.tag_name = split_arr[i];
+                arr.push(obj)
+              }
+              let value = this.tagarray.filter((d: any) => arr.map((v: any) => v.tag_name).includes(d.tag_name));
+              this.updatepost.tags = value;
+            }
           }
         }, (err: any) => {
           this.notify.error(err.message)
+          this.spinnerService.hide()
+
+          if(this.updatepost.post_date) {
+            var data = this.updatepost.post_date.split(" ");
+            this.updatepost.post_date = data[0];
+            this.updatepost.post_time = data[1];
+          }
+
+          if (this.updatepost.category !== null && this.updatepost.category !== undefined) {
+            let arr: any = [];
+            let split_arr = this.updatepost.category.split(",");
+            for (var i = 0; i < split_arr.length; i++) {
+              let obj: any = {};
+              obj.category_id = parseInt(split_arr[i]);
+              arr.push(obj)
+            }
+            let value = this.catarr.filter((d: any) => arr.map((v: any) => v.category_id).includes(d.category_id));
+            this.updatepost.category = value;
+          }
+    
+          if (this.updatepost.addtags !== null && this.updatepost.addtags !== undefined) {
+            let arr: any = [];
+            let split_arr = this.updatepost.addtags.split(",");
+            for (var i = 0; i < split_arr.length; i++) {
+              let obj: any = {};
+              obj.tag_name = split_arr[i];
+              arr.push(obj)
+            }
+            let value = this.tagarray.filter((d: any) => arr.map((v: any) => v.tag_name).includes(d.tag_name));
+            this.updatepost.tags = value;
+          }
         })
       }, 1000)
     }

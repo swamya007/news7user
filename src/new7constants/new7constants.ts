@@ -25,7 +25,8 @@ export const News7_CONSTANTS = {
         twin_City:'ଟ୍ୱିନ୍_ସିଟି',
         campus_muse: 'କ୍ୟାମ୍ପସ୍_ମ୍ୟୁଜ୍',
         odisha:'ଓଡ଼ିଶା',
-        none: 'None'
+        none: 'None',
+        economics:'ଅର୍ଥନୀତି'
     },
     ERRORS: {
         global_error: 'Something went wrong, please try after sometime!'

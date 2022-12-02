@@ -30,7 +30,7 @@
     </div>
 </div>
 <div *ngIf="viewdata">
-    <div class="gallery" *ngFor="let row of mediadetails">
+    <div class="gallery" *ngFor="let row of mediadetails | paginate: { itemsPerPage: 20, currentPage: p }">
         <a href="javascript:void(0)">
             <img [src]="row.media_url" [alt]="row.media_alt_text" width="600" height="400" (click)="editmedia(row)">
         </a>
@@ -46,24 +46,33 @@
             <th class="content">Description</th>
             <th class="content">Caption</th>
             <th class="content">Action</th>
+            <th class="content">Delete</th>
         </thead>
         <tbody>
-            <tr *ngFor="let row of mediadetails | paginate: { itemsPerPage: 5, currentPage: p }">
+            <tr *ngFor="let row of mediadetails | paginate: { itemsPerPage: 10, currentPage: p }">
                 <td class="first">
                     <input type="checkbox" class="example-margin">
                 </td>
                 <td>{{row.media_title}}</td>
                 <td class="description">{{row.media_desc}}</td>
                 <td class="description">{{row.media_caption}}</td>
-                <td><button (click)="editmedia(row)">Edit</button></td>
+                <td>
+                    <mat-icon class="mat-icon-cls" (click)="editmedia(row)" title="Edit"> edit</mat-icon>
+                </td>
+                <!-- <td><button (click)="editmedia(row)">Edit</button></td> -->
+                <td>
+                    <button class="del-btn" (click)="deleteMedia(row)">
+                        <mat-icon>delete_forever</mat-icon>
+                    </button>
+                </td>
             </tr>
         </tbody>
     </table>
 </div>
 <div class="col-lg-12 col-md-12 col-12 w-100 d-flex justify-content-between flex-wrap"
-      style="padding-top:1vw;padding-bottom:1vw;">
-      <div class="d-flex" style="padding-left: 3%;">
+    style="padding-top:1vw;padding-bottom:1vw;" >
+    <div class="d-flex" style="padding-left: 3%;">
         <!-- <button class="apply-btn" style="margin-left:1vw;">apply to selected items</button> -->
-      </div>
-      <pagination-controls class="pagination-color" (pageChange)="p = $event"></pagination-controls>
     </div>
+    <pagination-controls class="pagination-color" (pageChange)="p = $event"></pagination-controls>
+</div>

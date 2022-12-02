@@ -1,4 +1,10 @@
 <app-header></app-header>
-<div *ngIf="postarr && postarr.length">
-    <app-category [ads_list]="allAdsList" [post_array_upper]="post_array_upper" [post_array_lower]="post_array_lower"></app-category>
+<div *ngIf="postarr && postarr.length;else other_content">
+    <app-category [ads_list]="allAdsList" [post_array_upper]="post_array_upper" [post_array_lower]="post_array_lower">
+    </app-category>
 </div>
+<ng-template #other_content>
+    <div class="other_content">
+        No news found for this category...!!!
+    </div>
+</ng-template>

@@ -3,6 +3,7 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 import { Router } from '@angular/router';
 import { IDropdownSettings } from 'ng-multiselect-dropdown/multiselect.model';
 import { ModeluserDetails } from 'src/app/models/modeluserdetails';
+import { LoaderService } from 'src/app/services/loaderService/loader.service';
 import { LoginService } from 'src/app/services/loginService/login.service';
 import { MasterServiceService } from 'src/app/services/masterservice/master-service.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
@@ -25,7 +26,7 @@ export class AddUserComponent implements OnInit {
   currentuser: any = {};
 
   constructor(private userService: UserService, private router: Router, private loginService:LoginService,
-    private notify: NotificationService, private masterService: MasterServiceService) { }
+    private notify: NotificationService, private masterService: MasterServiceService,private spinnerService: LoaderService) { }
 
   ngOnInit(): void {
    
@@ -42,6 +43,13 @@ export class AddUserComponent implements OnInit {
       itemsShowLimit: 1000,
       allowSearchFilter: true
     };
+  }
+
+  removeSpace() {
+    this.userData.user_login = this.userData.user_login.replace(/\s/g, '');
+    if(this.userData.user_login) {
+      this.userData.user_login = this.userData.user_login.slice(0,50)
+    }
   }
 
   generatePassword() {
@@ -64,29 +72,67 @@ export class AddUserComponent implements OnInit {
   }
 
   userFormData(form: any) {
+    this.spinnerService.show()
+
     this.userData.user_status = 1;
     this.userData.flag = 'I';
-    this.userData.customer_id = 2;
-    let roles = '';
+    this.userData.customer_id = environment.CUSTOMER_ID
+
+    if(this.userData.user_email) {
+      var mail_format = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
+      if (!this.userData.user_email.match(mail_format)) {
+        this.spinnerService.hide()
+        this.notify.error('Please input valid email')
+        return
+      }
+    }
+
     if(this.userData.role !== null && this.userData.role !== undefined && this.userData.role !== '') {
-      var result = this.userData?.role?.map(function(val: any) {
+      var result = this.userData.role.map(function(val: any) {
         return val.id;
       }).join(',');
-      roles = result;
+      this.userData.role = result;
     }
-    const payload = { ...this.userData, role: roles};
-    this.userService.createUser(payload).subscribe((res: any) => {
+    this.userService.createUser(this.userData).subscribe((res: any) => {
       if (res.code == "success") {
+        this.spinnerService.hide()
+
         this.notify.success(res.message);
         form.reset();
         this.router.navigate(['/admin/user/view']);
       } else {
-        this.notify.error(res.message);
-        // this.userData.role = [];
+        this.notify.error(res.message)
+        this.spinnerService.hide()
+
+        if(this.userData.role !== null && this.userData.role !== undefined) {
+          let arr:any = [];
+          let split_arr = this.userData.role.split(",");
+          for(var i = 0; i < split_arr.length; i++) {
+            let obj:any = {};
+            obj.id = parseInt(split_arr[i]);
+            arr.push(obj)
+          }
+  
+          let value = this.role.filter((d:any) => arr.map((v:any) => v.id).includes(d.id));
+          this.userData.role = value;
+        }
       }
     }, (err: any) => {
       this.notify.error(err.message)
-      // this.userData.role = [];
+      this.spinnerService.hide()
+
+      if(this.userData.role !== null && this.userData.role !== undefined) {
+        let arr:any = [];
+        let split_arr = this.userData.role.split(",");
+        for(var i = 0; i < split_arr.length; i++) {
+          let obj:any = {};
+          obj.id = parseInt(split_arr[i]);
+          arr.push(obj)
+        }
+
+        let value = this.role.filter((d:any) => arr.map((v:any) => v.id).includes(d.id));
+        this.userData.role = value;
+      }
     })
   }
 

@@ -29,7 +29,7 @@ export class EntertainmentNewsComponent implements OnInit {
         var data = res.body;
         this.postarr = data.map((dt: any) => JSON.parse(dt));
         if (this.postarr.length > 0) {
-          this.postarr = this.postarr.slice(0, 8)
+          this.postarr = this.postarr.slice(0, 10)
         }
       } else {
         this.postarr = []

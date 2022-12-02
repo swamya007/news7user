@@ -2,25 +2,64 @@
   <div class="view-category">
     <div class="search-category">
       <mat-form-field appearance="outline">
-        <mat-select [(ngModel)]="categorysearch" disableRipple [ngModelOptions]="{standalone: true}">
-          <mat-option value="">Select Category</mat-option>
+        <mat-select [(ngModel)]="categorysearch" disableRipple [ngModelOptions]="{standalone: true}"
+          (selectionChange)="searchCategory()">
+          <mat-option value="">Category</mat-option>
           <mat-option *ngFor="let gm of catarr" [value]="gm.category_id">{{ gm.category_name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <button mat-raised-button color="primary" class="search-btn" (click)="searchCategory()">Search Category</button>
-      <button mat-raised-button color="primary" class="search-btn" (click)="postbyauthor()">Mine</button>/
-      <button mat-raised-button color="primary" class="search-btn" (click)="getallpost()">All Post</button>/
-        &nbsp;&nbsp;
+      <!-- <button mat-raised-button color="primary" class="search-btn" (click)="searchCategory()">Search Category</button> -->
+      
+      &nbsp;
+      <mat-form-field appearance="outline">
+        <mat-select [(ngModel)]="yearSearch" (selectionChange)="searchByValue('YEAR')" disableRipple [ngModelOptions]="{standalone: true}">
+          <mat-option value="">Year</mat-option>
+          <mat-option *ngFor="let gm of year" [value]="gm.val">{{ gm.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="outline">
+        <mat-select [(ngModel)]="monthSearch" (selectionChange)="searchByValue('MONTH')" disableRipple [ngModelOptions]="{standalone: true}">
+          <mat-option value="">Month</mat-option>
+          <mat-option *ngFor="let gm of month" [value]="gm.val">{{ gm.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="outline" class="form-group w-200">
+        <input matInput type="date" name="cname" [(ngModel)]="dateSearch">
+      </mat-form-field>
+      <button mat-raised-button color="primary" class="search-btn" (click)="searchByValue('DATE')">Search Date</button>
+
+    </div>
+    <div class="search-category mt-10">
+      <mat-form-field appearance="outline">
+        <mat-select [(ngModel)]="authorsearch" (selectionChange)="searchByValue('AUTHOR')" disableRipple [ngModelOptions]="{standalone: true}">
+          <mat-option value="">Author</mat-option>
+          <mat-option *ngFor="let gm of allUser" [value]="gm.user_id">{{ gm.user_nicename }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      &nbsp;
       <mat-form-field appearance="outline" class="form-group w-200">
         <input matInput type="text" name="cname" [(ngModel)]="searchval">
       </mat-form-field>
-      <button mat-raised-button color="primary" class="search-btn" (click)="searchPost()">Search
+      <button mat-raised-button color="primary" style="background-color:#1883a3;" class="search-btn" (click)="searchPost()">Search
         Post</button>
-      <button mat-raised-button color="primary" class="search-btn" (click)="viewdraft()">View Drafts
-        Post</button>
-
+      <button mat-raised-button color="primary" style="background-color:#a31879;" class="search-btn"
+        (click)="viewdraft()">Drafts</button>
+      <button mat-raised-button color="primary" style="background-color:#a39518;" class="search-btn"
+        (click)="postbyauthor()">Mine</button>
+      <button mat-raised-button color="primary" style="background-color:#18a352;" class="search-btn" (click)="trending()">View Trending</button>
+      <button mat-raised-button color="primary" style="background-color:#e61333;" class="search-btn"
+        (click)="redirectfn()">Delete</button>
+      <button mat-raised-button color="warning" class="search-btn warning" (click)="getallpost()">Clear</button>
     </div>
+    <button mat-raised-button color="primary" style="background-color:#e61333;" class="search-btn"
+    (click)="redirectfntred()">Add To Trending</button>
+
     <div class="header">
       <div>
       </div>
@@ -31,20 +70,23 @@
           </th>
           <th class="content">Post Title</th>
           <th class="content">Post Date</th>
+          <th class="content">Author</th>
           <th class="content">Action</th>
-          <th class="content">Delete</th>
+          <!-- <th class="content">Delete</th> -->
         </thead>
-        <tbody *ngIf="postarr &&  postarr.length; else elseblock">
+        <tbody *ngIf="postarr && postarr.length else elseblock">
           <tr *ngFor="let data of postarr | paginate: { itemsPerPage: 10, currentPage: p } ">
             <td class="first">
-              <input type="checkbox" class="example-margin">
+              <input type="checkbox" class="example-margin" [(ngModel)]="data.selected">
             </td>
             <td>{{data.post_title}}</td>
             <td>{{data.post_date | date:'dd-MM-yyyy'}}</td>
-            <td><button (click)="editUser(data.id)" >Edit</button></td>
+            <td>{{data.author_name}}</td>
             <td>
-              <button class="del-btn" (click)="deletePost(data.id)"><mat-icon>delete_forever</mat-icon></button>  
-          </td>
+              <mat-icon class="mat-icon-cls" (click)="editPost(data.id)" title="Edit"> edit</mat-icon>
+              <mat-icon class="mat-icon-cls" (click)="quickedit(data)" title="Quick Edit"> remove_red_eye</mat-icon>
+              <mat-icon class="mat-icon-cls" (click)="deletePost(data.id)" title="Delete">delete_forever</mat-icon>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -52,18 +94,127 @@
     <ng-template #elseblock>
       <tbody>
         <tr>
-          <td colspan="6" class="text-center" style="color: black;">
+          <td colspan="5" class="text-center" style="color: black;">
             No record Found
           </td>
         </tr>
       </tbody>
     </ng-template>
-    <div class="col-lg-12 col-md-12 col-12 w-100 d-flex justify-content-between flex-wrap"
-      style="padding-top:1vw;padding-bottom:1vw;">
-      <div class="d-flex" style="padding-left: 3%;">
-        <!-- <button class="apply-btn" style="margin-left:1vw;">apply to selected items</button> -->
-      </div>
+    <div class="col-lg-12 col-md-12 col-12 w-100" style="padding-top:1vw;padding-bottom:1vw;">
       <pagination-controls class="pagination-color" (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal" id="exampleModal" #closebutton tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-title1" id="exampleModalLabel">Delete Post</div>
+
+      <div class="modal-body">
+        <p>{{((checkedList.length > "1") ? 'adminViewTour.areYouSure1' : 'adminViewTour.areYouSure')
+        </p>
+      </div>
+
+      <div class="text-center">
+        <button type="button" class="cancel-delete-button" style="background-color:#e61333;" data-bs-dismiss="modal"
+          (click)="deletetours()">Yes
+        </button>
+        <button type="button" class="cancel-delete-button" style="background-color:#1367e6;" data-bs-dismiss="modal"
+          (click)="cancelfn()">No
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" id="exampleModaltred" #closebutton tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-title1" id="exampleModalLabel">Trending Post</div>
+      <div class="modal-body">
+        <p> Do You Want To Add This Post As Treanding
+        </p>
+      </div>
+      <div class="text-center">
+        <button type="button" class="cancel-delete-button" style="background-color:#e61333;" data-bs-dismiss="modal"
+          (click)="addtrending()">Yes
+        </button>
+        <button type="button" class="cancel-delete-button" style="background-color:#1367e6;" data-bs-dismiss="modal"
+          (click)="cancelfntred()">No
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<button type="button" class="btn btn-primary" id="quickeditModal" data-toggle="modal" data-target="#exampleModal1"
+  style="display:none">
+</button>
+<div class="modal" id="exampleModal1" #closebutton tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Quick Edit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="add-post-form-field row">
+          <div class="col-md-6 col-12">
+            <mat-label class="add-post-title">Title (required)</mat-label>
+            <mat-form-field appearance="outline">
+              <input matInput type="text" name="title" [(ngModel)]="updatepost.post_title" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6 col-sm-6 col-12">
+            <mat-label class="add-post-title">Category (required)</mat-label>
+            <div class="selecttag">
+              <ng-multiselect-dropdown [placeholder]="'Select Category'" [settings]="dropdownSettingsCat"
+                [data]="catarr" [(ngModel)]="updatepost.category">
+              </ng-multiselect-dropdown>
+            </div>
+          </div>
+          <div class="col-md-12 col-12">
+            <mat-label class="add-post-title">Publish Date & Time (required)</mat-label>
+          </div>
+          <div class="col-md-6 ">
+            <mat-form-field appearance="outline">
+              <input matInput type="date" [(ngModel)]="updatepost.post_date" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6 ">
+            <mat-form-field name="stime" appearance="outline" class="form-field">
+              <input matInput type="time" name="stime" name="stime" class="time" [(ngModel)]="updatepost.post_time">
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-6 col-sm-6 col-12">
+            <mat-label class="add-post-title">Tags</mat-label>
+            <div class="selecttag">
+              <ng-multiselect-dropdown [placeholder]="'Select Tag'" [settings]="dropdownSettings" [data]="tagarray"
+                [(ngModel)]="updatepost.tags">
+              </ng-multiselect-dropdown>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <mat-label class="add-post-title">Author</mat-label>
+            <mat-form-field appearance="outline">
+              <mat-select [(ngModel)]="updatepost.post_author" disableRipple [ngModelOptions]="{standalone: true}">
+                <mat-option *ngFor="let gm of allUser" [value]="gm.user_id">{{ gm.user_nicename }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="modifypost()">Save Changes</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

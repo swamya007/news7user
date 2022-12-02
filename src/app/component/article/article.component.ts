@@ -8,6 +8,7 @@ import { NotificationService } from 'src/app/services/notification/notification.
 import { PostserviceService } from 'src/app/services/postservice/postservice.service';
 import { environment } from 'src/environments/environment';
 import { Title, Meta } from '@angular/platform-browser';  
+import { LoaderService } from 'src/app/services/loaderService/loader.service';
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
@@ -31,7 +32,7 @@ export class ArticleComponent implements OnInit {
   comment_obj: any
   comment_count: number = 0;
   navUrl!: string;
-  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private router: Router, private notify: NotificationService, private post: PostserviceService, private adsService: AdserviceService,   private titleService: Title,  
+  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private router: Router, private notify: NotificationService, private post: PostserviceService, private adsService: AdserviceService,   private titleService: Title,  private spinnerService: LoaderService,
     private meta: Meta ) {
     activatedRoute.params.subscribe(val => {
       const routeParams = this.activatedRoute.snapshot.paramMap;
@@ -58,6 +59,7 @@ export class ArticleComponent implements OnInit {
     this.getAllAdsList();
     this.getIPAddress();
     this.getBrowserName()
+    console.log( this.id,'lion')
   }
 
   getIPAddress() {
@@ -94,7 +96,7 @@ export class ArticleComponent implements OnInit {
   getAllAdsList() {
     this.ads_id = ''
     this.img_size = ''
-    this.adsService.getAllAds(this.ads_id, this.img_size, environment.CUSTOMER_ID).subscribe((res: any) => {
+    this.adsService.getAllAds(this.ads_id, this.img_size, environment.CUSTOMER_ID,'U').subscribe((res: any) => {
       this.allAdsList = res.body;
       this.allAdsList = this.allAdsList.map((dt: any) => JSON.parse(dt));
       /** Right Upper */
@@ -115,6 +117,8 @@ export class ArticleComponent implements OnInit {
   }
 
   savePostComment() {
+    this.spinnerService.show()
+
     this.comment_obj.flag = 'I'
     this.comment_obj.customer_id = environment.CUSTOMER_ID
     this.post.savePostComment(this.comment_obj).subscribe((res: any) => {
@@ -125,7 +129,9 @@ export class ArticleComponent implements OnInit {
         this.comment_obj.comment_author_url = ''
         this.comment_obj.remember_me = false
         this.getCommentsByPost(this.news.id);
+        this.spinnerService.hide()
       } else {
+        this.spinnerService.hide()
         this.notify.error(res.message)
       }
     }, (err: any) => {
@@ -134,25 +140,33 @@ export class ArticleComponent implements OnInit {
   }
 
   getallpost() {
+    this.spinnerService.show()
     this.post.getPostBySlug(this.id, environment.CUSTOMER_ID).subscribe((res: any) => {
       if (res.code == 'success') {
         var data = res.body;
         this.postarr = data?.map((dt: any) => JSON.parse(dt));
         this.news = this.postarr && this.postarr.length ?
           this.postarr[0] : {};
+        if(this.news.tags) {
+          this.news.tags = this.news.tags.replaceAll(',',', ')
+        }
+        
         this.titleService.setTitle(this.news.post_title); 
         this.comment_obj.comment_post_id = this.news.id
         this.getCommentsByPost(this.news.id);
         this.getPostByAuthor(this.news.id);
+        this.spinnerService.hide()
       } else {
         this.postarr = []
       }
     }, (err) => {
+      this.spinnerService.hide()
       this.postarr = []
     })
   }
 
   getPostByAuthor(post_id: any) {
+    
     this.post.getPostByAuthor(this.news.post_author, post_id, environment.CUSTOMER_ID).subscribe((res: any) => {
       if (res.code == 'success') {
         var data = res.body;
@@ -201,8 +215,8 @@ export class ArticleComponent implements OnInit {
   }
 
   public createNavigationUrl(type: string) {
-    let shareUrl = 'https://prameya/post/';
-    //  `${environment.PLATFORM_BASEURL}/media-articles/${this.id}`;
+    //let shareUrl = 'https://prameya/post/';
+     let shareUrl =`${environment.PLATFORM_BASEURL}/post/${this.id}`;
     let searchParams = new URLSearchParams();
 
     switch (type) {

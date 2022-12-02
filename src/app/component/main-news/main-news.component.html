@@ -1,18 +1,18 @@
 <div class="news-section">
     <div class="slideshow-container">
-        <div class="myImages image-bg">
-            <img src="assets/img/cover2.jpg" />
-            <div class="category">Business</div>
+        <div class="myImages image-bg" *ngFor="let row of slidearray" (click)="opennewsSec(row.slug)">
+            <img [src]="row.guid" />
+            <!-- <div class="category">Business</div> -->
             <div class="heading-container">
-                <h1>The Magic Money Tree Does Exist, According To Modern Monetary Theory</h1>
+                <h1>{{row.post_title}}}</h1>
                 <div class="news-date-section d-flex">
-                    <div class="author-name">james</div>
+                    <div class="author-name">{{row.author_name}}}</div>
                     <div> <i class="fa-solid fa-circle news-circle-icon"></i></div>
-                    <div class="news-date"> August 26, 2020</div>
+                    <div class="news-date"> {{row.post_date | date:'MMMM dd, yyyy'}}</div>
                 </div>
             </div>
         </div>
-        <div class="myImages image-bg">
+        <!-- <div class="myImages image-bg">
             <img src="assets/img/slider1.jpg" />
             <div class="category">Entertainment</div>
             <div class="heading-container">
@@ -35,7 +35,7 @@
                     <div class="news-date"> August 26, 2020</div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <br>
     <!-- The dots/circles -->

@@ -27,7 +27,15 @@ export class SearchPostComponent implements OnInit {
   p:number = 1
 
   constructor(private adsService:AdserviceService,private router:Router,
-    private postService:PostserviceService,private activatedRoute:ActivatedRoute) { }
+    private postService:PostserviceService,private activatedRoute:ActivatedRoute) {
+      activatedRoute.params.subscribe(val => {
+        this.customer_id = environment.CUSTOMER_ID
+        const routeParams = this.activatedRoute.snapshot.paramMap;
+        this.searchval = routeParams.get('value');
+        this.getAllAdsList();
+        this.getSearchedPost();
+    }) 
+  }
 
   ngOnInit(): void {
     this.customer_id = environment.CUSTOMER_ID
@@ -62,7 +70,7 @@ export class SearchPostComponent implements OnInit {
   getAllAdsList() {
     this.ads_id = ''
     this.img_size = ''
-    this.adsService.getAllAds(this.ads_id,this.img_size,this.customer_id).subscribe((res: any) => {
+    this.adsService.getAllAds(this.ads_id,this.img_size,this.customer_id,'U').subscribe((res: any) => {
       this.allAdsList = res.body;
       this.allAdsList = this.allAdsList.map((dt: any) => JSON.parse(dt));
 

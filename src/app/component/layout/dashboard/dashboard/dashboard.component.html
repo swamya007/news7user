@@ -15,9 +15,9 @@
               <mat-label class="tag-info">Content</mat-label>
               <mat-form-field appearance="outline" class="form-group content-form ht-120">
                 <textarea matInput type="text" class="context-textarea" [(ngModel)]="draft.post_content" name="title"
-                  placeholder="whats on your mind?" required></textarea>
+                  placeholder="Whats on your mind?" required></textarea>
               </mat-form-field>
-              <button class="btn btn-primary" (click)="saveDraft()">Save Draft</button>
+              <button mat-raised-button color="primary" (click)="saveDraft()">Save Draft</button>
               <div class="draft-sec">
                 <div>
                   Your Recent Drafts
@@ -26,7 +26,8 @@
               </div>
               <div *ngIf="draftarr && draftarr.length ; else elseblock">
                 <div *ngFor="let d of draftarr">
-                  <div class="desc"><span class="draft-sub">{{d.post_title}}</span> {{d.created_on | date}}</div>
+                  <div class="desc"><span class="draft-sub" (click)="editdraft(d.draft_id)">{{d.post_title}}</span>
+                    {{d.created_on | date}}</div>
                   <!-- <div>{{d.post_content}}</div> -->
                 </div>
               </div>
@@ -47,13 +48,13 @@
               <div class="row" *ngFor="let p of publishingarr">
                 <div class="col-md-6">
                   <div class="mb-10">
-                    <div class="">{{p.post_date | date}}, 7.07pm</div>
+                    <div class="">{{p.post_date | date}}, {{formatAMPM(p.post_date)}}</div>
                     <!-- <div class="">crore loan</div> -->
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="mb-10">
-                    <div class="view-drafts">{{p.post_title}}</div>
+                    <div class="view-drafts" (click)="opennewsSec(p.slug)">{{p.post_title}}</div>
                   </div>
                 </div>
               </div>
@@ -68,10 +69,10 @@
             <div *ngIf="publishedarr &&  publishedarr.length; else elseblock">
               <div class="row" *ngFor="let p of publishedarr">
                 <div class="col-md-6">
-                  <div class="mb-10">{{p.post_date | date}}, 7.07pm</div>
+                  <div class="mb-10">{{p.post_date | date}}, {{formatAMPM(p.post_date)}}</div>
                 </div>
                 <div class="col-md-6">
-                  <div class="view-drafts mb-10">{{p.post_title}}</div>
+                  <div class="view-drafts mb-10" (click)="opennewsSec(p.slug)">{{p.post_title}}</div>
                   <!-- <div class="view-drafts mb-10">Active covid cases in</div> -->
                 </div>
               </div>
@@ -82,16 +83,17 @@
               </div>
             </ng-template>
             <div class="margin-divider"></div>
-              <div class="tag-info mb-10 mt-10">Recent Comments </div>
-            <div *ngIf = "commentarr && commentarr.length ; else elseblock">
-             <div class="comment-section" *ngFor = "let c of commentarr">              
+            <div class="tag-info mb-10 mt-10">Recent Comments </div>
+            <div *ngIf="commentarr && commentarr.length ; else elseblock">
+              <div class="comment-section" *ngFor="let c of commentarr">
                 <div class="author-image"><img src="/assets/img/default-avatar.png"></div>
-                <div class="ml-10">From {{c.user_nicename}} on <span class="post-title">{{c.post_title}} </span>
-                <div>{{c.comment_content}}</div>
+                <div class="ml-10">From {{c.comment_author}} on <span class="post-title"
+                    (click)="openDialog(c)">{{c.post_title}} </span>
+                  <div>{{c.comment_content}}</div>
                 </div>
                 <!-- <div>{{c.comment_content}}</div> -->
-              </div>           
-            </div> 
+              </div>
+            </div>
             <ng-template #elseblock>
               <div class="elseblock">
                 No record Found
@@ -156,14 +158,17 @@
           <div class="quick-drf">Trending Now</div>
           <div class="margin-divider">
             <div *ngIf="postarr &&  postarr.length; else elseblock">
-              <div (click)="opennewsSec(post.slug)" class="trend-inner" *ngFor="let post of postarr ; index as i">
+              <div class="trend-inner" *ngFor="let post of postarr ; index as i">
                 <div class="mb-10">
-                  <div>{{i+1}}. <span class="treading-blue">{{post.post_title}}</span></div>
-                  <div class="view-num">22 views, 0 comments</div>
+                  <div>{{i+1}}. <span class="treading-blue" (click)="opennewsSec(post.slug)">{{post.post_title}}</span>
+                  </div>
+                  <div class="view-num">{{post.post_views ? post.post_views/2 : 0}} views, 0 comments</div>
                 </div>
                 <div class="divider"></div>
               </div>
-              <div class="view-more" (click)="viewMore()">View More</div>
+              <div class="view-more">
+                <button mat-raised-button color="primary" (click)="viewMore()">View More</button>
+              </div>
             </div>
             <ng-template #elseblock>
               <div class="elseblock">

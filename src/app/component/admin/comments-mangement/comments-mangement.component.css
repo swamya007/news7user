@@ -24,7 +24,9 @@
 .w-200 {
     width: 200px !important;
 }
-
+.commentcount{
+    text-align: center;
+}
 .apply-btn {
     height: 33px;
     margin-left: 10px;
@@ -83,7 +85,9 @@ tr:nth-child(odd) {
     display: flex;
     justify-content: flex-end;
 }
-
+.commentcount{
+    text-align:"center"
+}
 .description {
     width: 20%;
     color: #545454;
@@ -95,4 +99,9 @@ tr:nth-child(odd) {
 
 .pagination-color {
     margin-top: 20px;
+}
+
+.open-modal {
+    cursor: pointer;
+    font-weight: bold;
 }

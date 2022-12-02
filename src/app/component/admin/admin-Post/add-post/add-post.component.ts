@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-// import Adapter from 'src/ckeditor'
 import { postModel } from 'src/app/models/postModel';
 import { IDropdownSettings } from 'ng-multiselect-dropdown/multiselect.model';
 import { TagserviceService } from 'src/app/services/tagservice/tagservice.service';
@@ -14,6 +13,7 @@ import { CategoryServiceService } from 'src/app/services/categoryservice/categor
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ChoosemediaComponent } from 'src/app/component/admin/admin-Post/choosemedia/choosemedia.component';
+import { LoaderService } from 'src/app/services/loaderService/loader.service';
 
 @Component({
   selector: 'app-add-post',
@@ -31,7 +31,7 @@ export class AddPostComponent implements OnInit {
   dataList: any = [];
   tagarray: any[] = []
   comment_status!: boolean
-
+  title=""
   currentuser: any = {};
 
   @ViewChild("myckeditor") ckeditor: any;
@@ -42,7 +42,7 @@ export class AddPostComponent implements OnInit {
   tag: any
   checkedval: boolean = true
   catarr: any = []
-  
+  selected:any = true
 
   list = [
     { "name": "Yes", "key": "opened", "checked": true },
@@ -57,7 +57,7 @@ export class AddPostComponent implements OnInit {
   constructor(private userService: UserService, private loginService: LoginService, 
     private viewstag: TagserviceService, private post: PostserviceService, 
     private notify: NotificationService, private router: Router, private tagserivce: TagserviceService,
-    private categoryService:CategoryServiceService,public dialog: MatDialog) { }
+    private categoryService:CategoryServiceService,public dialog: MatDialog,private spinnerService: LoaderService) { }
 
   ngOnInit(): void {
 
@@ -109,8 +109,10 @@ export class AddPostComponent implements OnInit {
     this.tag = new tagModel()
     this.addPost.comment_status = "opened"
     this.addPost.immidiate_publish = "2"
-
-    this.getDraftedPost();
+    this.addPost.visibility = "0"
+    var currentdate = new Date();
+    this.addPost.post_date = currentdate.getFullYear()+"-"+('0' + (currentdate.getMonth()+1)).slice(-2)+"-"+('0' + (currentdate.getDate())).slice(-2);
+    this.addPost.post_time = ('0' + (currentdate.getHours())).slice(-2)+":"+('0' + (currentdate.getMinutes())).slice(-2);
   }
 
   getDraftedPost() {
@@ -135,7 +137,7 @@ export class AddPostComponent implements OnInit {
           let value = this.tagarray.filter((d: any) => arr.map((v: any) => v.tag_name).includes(d.tag_name));
           this.addPost.addtags = value;
         }
-        console.log('this.addPost.category===',this.addPost.category)
+        
         if (this.addPost.category !== null && this.addPost.category !== undefined) {
           let arr: any = [];
           let split_arr = this.addPost.category.split(",");
@@ -144,10 +146,7 @@ export class AddPostComponent implements OnInit {
             obj.category_id = parseInt(split_arr[i]);
             arr.push(obj)
           }
-          console.log('arr===',arr)
-          console.log()
           let value = this.catarr.filter((d: any) => arr.map((v: any) => v.category_id).includes(d.category_id));
-          console.log('value====',value)
           this.addPost.category = value;
         }
 
@@ -176,7 +175,11 @@ export class AddPostComponent implements OnInit {
   getSlug() {
     this.addPost.slug = this.addPost.post_title.replace(/[^\w\s]/gi, "").replaceAll(" ", "-").toLowerCase();
     this.addPost.permalink = environment.POST_URL + this.addPost.slug;
-    console.log(this.addPost.permalink = environment.POST_URL + this.addPost.slug,"dd")
+  }
+
+  getPermalink() {
+    this.addPost.slug = this.addPost.slug.replace(" ","-");
+    this.addPost.permalink = environment.POST_URL + this.addPost.slug;
   }
 
   onFilterChange(event: any) {
@@ -256,6 +259,8 @@ export class AddPostComponent implements OnInit {
 
 
   addpost() {
+    this.spinnerService.show()
+
     this.addPost.createdby = this.currentuser.user_id;
     this.addPost.flag = 'I';
     this.addPost.tag_id = null;
@@ -286,23 +291,101 @@ export class AddPostComponent implements OnInit {
       };
     }
 
+    if(this.addPost.post_date) {
+      if(this.addPost.post_time) {
+        this.addPost.post_date = this.addPost.post_date + " " + this.addPost.post_time;
+      } else {
+        this.addPost.post_date = this.addPost.post_date + " 00:00";
+      }
+    }
+
     setTimeout(() => {
       if (this.addPost.Multiimage) {
         this.addPost.base64file = reader.result
+      } else {
+        if (this.addPost.guid) {
+          this.addPost.post_img = this.addPost.guid;
+        }
       }
       this.post.addpost(this.addPost).subscribe((res: any) => {
         if (res.code == "success") {
+          this.spinnerService.hide()
+
           this.notify.success(res.message);
           this.router.navigate(['/admin/post/view']);
         } else {
           this.notify.error(res.message)
+          this.spinnerService.hide()
+
+          if(this.addPost.post_date) {
+            var data = this.addPost.post_date.split(" ");
+            this.addPost.post_date = data[0];
+            this.addPost.post_time = data[1];
+          }
+
+          if (this.addPost.category !== null && this.addPost.category !== undefined) {
+            let arr: any = [];
+            let split_arr = this.addPost.category.split(",");
+            for (var i = 0; i < split_arr.length; i++) {
+              let obj: any = {};
+              obj.category_id = parseInt(split_arr[i]);
+              arr.push(obj)
+            }
+            let value = this.catarr.filter((d: any) => arr.map((v: any) => v.category_id).includes(d.category_id));
+            this.addPost.category = value;
+          }
+  
+          if (this.addPost.addtags !== null && this.addPost.addtags !== undefined) {
+            let arr: any = [];
+            let split_arr = this.addPost.addtags.split(",");
+            for (var i = 0; i < split_arr.length; i++) {
+              let obj: any = {};
+              obj.tag_name = split_arr[i];
+              arr.push(obj)
+            }
+            let value = this.tagarray.filter((d: any) => arr.map((v: any) => v.tag_name).includes(d.tag_name));
+            this.addPost.addtags = value;
+          }
         }
       }, (err: any) => {
         this.notify.error(err.message)
+        this.spinnerService.hide()
+
+        if(this.addPost.post_date) {
+          var data = this.addPost.post_date.split(" ");
+          this.addPost.post_date = data[0];
+          this.addPost.post_time = data[1];
+        }
+
+        if (this.addPost.category !== null && this.addPost.category !== undefined) {
+          let arr: any = [];
+          let split_arr = this.addPost.category.split(",");
+          for (var i = 0; i < split_arr.length; i++) {
+            let obj: any = {};
+            obj.category_id = parseInt(split_arr[i]);
+            arr.push(obj)
+          }
+          let value = this.catarr.filter((d: any) => arr.map((v: any) => v.category_id).includes(d.category_id));
+          this.addPost.category = value;
+        }
+
+        if (this.addPost.addtags !== null && this.addPost.addtags !== undefined) {
+          let arr: any = [];
+          let split_arr = this.addPost.addtags.split(",");
+          for (var i = 0; i < split_arr.length; i++) {
+            let obj: any = {};
+            obj.tag_name = split_arr[i];
+            arr.push(obj)
+          }
+          let value = this.tagarray.filter((d: any) => arr.map((v: any) => v.tag_name).includes(d.tag_name));
+          this.addPost.addtags = value;
+        }
       })
     }, 1000)
   }
   saveas_draft() {
+    this.spinnerService.show()
+
     this.addPost.createdby = this.currentuser.user_id;
     this.addPost.flag = 'I';
     this.addPost.tag_id = null;
@@ -333,34 +416,109 @@ export class AddPostComponent implements OnInit {
       };
     }
 
+    if(this.addPost.post_date) {
+      if(this.addPost.post_time) {
+        this.addPost.post_date = this.addPost.post_date + " " + this.addPost.post_time;
+      } else {
+        this.addPost.post_date = this.addPost.post_date + " 00:00";
+      }
+    }
+
     setTimeout(() => {
       if (this.addPost.Multiimage) {
         this.addPost.base64file = reader.result
-      }
-      if(this.addPost.guid) {
-        this.addPost.post_img = this.addPost.guid
+      } else {
+        if (this.addPost.guid) {
+          this.addPost.post_img = this.addPost.guid;
+        }
       }
       this.post.draftpost(this.addPost).subscribe((res: any) => {
         if (res.code == "success") {
+          this.spinnerService.hide()
+
           this.notify.success(res.message);
-          // this.router.navigate(['/admin/post/view']);
+          this.router.navigate(['/admin/drafts/view']);
         } else {
           this.notify.error(res.message)
+          this.spinnerService.hide()
+
+          if(this.addPost.post_date) {
+            var data = this.addPost.post_date.split(" ");
+            this.addPost.post_date = data[0];
+            this.addPost.post_time = data[1];
+          }
+
+          if (this.addPost.category !== null && this.addPost.category !== undefined) {
+            let arr: any = [];
+            let split_arr = this.addPost.category.split(",");
+            for (var i = 0; i < split_arr.length; i++) {
+              let obj: any = {};
+              obj.category_id = parseInt(split_arr[i]);
+              arr.push(obj)
+            }
+            let value = this.catarr.filter((d: any) => arr.map((v: any) => v.category_id).includes(d.category_id));
+            this.addPost.category = value;
+          }
+  
+          if (this.addPost.addtags !== null && this.addPost.addtags !== undefined) {
+            let arr: any = [];
+            let split_arr = this.addPost.addtags.split(",");
+            for (var i = 0; i < split_arr.length; i++) {
+              let obj: any = {};
+              obj.tag_name = split_arr[i];
+              arr.push(obj)
+            }
+            let value = this.tagarray.filter((d: any) => arr.map((v: any) => v.tag_name).includes(d.tag_name));
+            this.addPost.addtags = value;
+          }
         }
       }, (err: any) => {
         this.notify.error(err.message)
+        this.spinnerService.hide()
+
+        if(this.addPost.post_date) {
+          var data = this.addPost.post_date.split(" ");
+          this.addPost.post_date = data[0];
+          this.addPost.post_time = data[1];
+        }
+
+        if (this.addPost.category !== null && this.addPost.category !== undefined) {
+          let arr: any = [];
+          let split_arr = this.addPost.category.split(",");
+          for (var i = 0; i < split_arr.length; i++) {
+            let obj: any = {};
+            obj.category_id = parseInt(split_arr[i]);
+            arr.push(obj)
+          }
+          let value = this.catarr.filter((d: any) => arr.map((v: any) => v.category_id).includes(d.category_id));
+          this.addPost.category = value;
+        }
+
+        if (this.addPost.addtags !== null && this.addPost.addtags !== undefined) {
+          let arr: any = [];
+          let split_arr = this.addPost.addtags.split(",");
+          for (var i = 0; i < split_arr.length; i++) {
+            let obj: any = {};
+            obj.tag_name = split_arr[i];
+            arr.push(obj)
+          }
+          let value = this.tagarray.filter((d: any) => arr.map((v: any) => v.tag_name).includes(d.tag_name));
+          this.addPost.addtags = value;
+        }
       })
     }, 1000)
   }
   openDialog() {
     const dialogRef = this.dialog.open(ChoosemediaComponent, {
-      height: '540px',
+      height: '550px',
       width: '900px',
       
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if(result.media_url){     
+        this.addPost.Multiimage = ''
+        this.tourBanner.nativeElement.value = '';
         let postImg:any = document.querySelector('#bannerImage');
         postImg.src = result.media_url;
         this.addPost.post_img=result.media_url;

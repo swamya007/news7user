@@ -21,7 +21,7 @@ export class AdserviceService {
     return this.HTTP.post<any>(Masterapi + `/add-ads`, { ...ads });
   }
 
-  getAllAds(ads_id:any,img_size:any,customer_id:any) {
-    return this.HTTP.get<any>(Masterapi + `/get-ads-details?ads_id=${ads_id}&img_size=${img_size}&customer_id=${customer_id}`);
+  getAllAds(ads_id:any,img_size:any,customer_id:any,type:any) {
+    return this.HTTP.get<any>(Masterapi + `/get-ads-details?ads_id=${ads_id}&img_size=${img_size}&customer_id=${customer_id}&type=${type}`);
   }
 }

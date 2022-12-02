@@ -1,0 +1,18 @@
+.btn-pstn{
+    justify-content: right;
+}
+.close-btn{
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    padding: 0px;
+    min-width: auto;
+    background: #ccc;
+    position: relative;
+    right: -12px;
+    top: -14px;
+    font-size: 20px;
+}
+.close-btn i{
+    margin-top: -8px;
+}

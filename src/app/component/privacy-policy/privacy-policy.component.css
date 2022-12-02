@@ -1,0 +1,39 @@
+.article-section-container {
+    background: var(--white);
+    padding: 1.3rem;
+    border: 1px rgb(215, 215, 215) solid;
+  }
+  .body-content
+  {
+    color: #333;
+    line-height: 24px;
+    font-family: inherit;
+    background: #fff;
+    border: 1px rgb(215, 215, 215) solid;
+    padding: 1.3rem;
+    margin: 20px 0px;
+  }
+  h1{
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 20px;
+  }
+  .list-item
+  {
+    margin-left: 30px;
+    line-height: 30px;
+  }
+  .bc-heading-container .news-sub {
+    color: #da0000;
+    font-size: 20px;
+}
+.bc-heading-container .grey-line {
+    background-color: #bbb;
+    height: 10px;
+    flex-grow: 1;
+    margin-left: 10px;
+}
+.bc-heading-container {
+    display: flex;
+    align-items: center;
+}

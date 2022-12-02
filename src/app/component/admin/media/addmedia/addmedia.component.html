@@ -12,10 +12,21 @@
 			</div>
 		</div>
 	</div>
+	
 	<div class="upload-btn" *ngIf="upload_status">
 		<button mat-raised-button color="primary" (click)="uploadFile()">Upload</button>
 	</div>
-	<div class="upload-btn" *ngIf="upload_status">
-		<img src="" id="media_img_id" class="media-img">
+	<div class="upload-img">
+		<div class="upload-btn" *ngIf="localUrl">
+			<input type="radio" name="imgType" class="tocheck"  value="original" [(ngModel)]="uploadImgType">
+			<img [src]="localUrl" id="media_img_id" class="media-img">
+		</div>
+		<div class="upload-btn second" *ngIf="imgResultAfterCompress" >
+			<input type="radio" name="imgType" class="tocheck" value="compressed" [(ngModel)]="uploadImgType" >
+			<img [src]="localCompressedURl" id="media_img_id" class="media-img">
+			<p>*image after compreesed</p>
+		</div>
 	</div>
-</div>
+	<div class="upload-btn" *ngIf="upload_status">
+		<button (click)="compress()">compress Image</button>
+	</div>

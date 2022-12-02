@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-5 col-sm-12 col-12">
           <mat-form-field appearance="outline" class="form-group w-400">
-            <input matInput type="text" name="userName" [(ngModel)]="userData.user_login">
+            <input matInput type="text" name="userName" [(ngModel)]="userData.user_login" (keyup)="removeSpace()">
           </mat-form-field>
         </div>
       </div>
@@ -23,7 +23,7 @@
       </div>
       <div class="row">
         <div class="col-md-3 col-sm-12 col-12">
-          <mat-label class="User-info">Full Name</mat-label>
+          <mat-label class="User-info">Full Name (required)</mat-label>
         </div>
         <div class="col-md-5 col-sm-12 col-12">
           <mat-form-field appearance="outline" class="form-group w-400">
@@ -53,7 +53,7 @@
       </div>
       <div class="row" style="display: none">
         <div class="col-md-3 col-sm-12 col-12">
-          <mat-label class="User-info">Password</mat-label>
+          <mat-label class="User-info">Password (required)</mat-label>
         </div>
         <div class="col-md-5 col-sm-12 col-12">
           <button mat-stroked-button class="pass-btn">Generate Password</button>
@@ -79,7 +79,7 @@
       </div>
       <div class="row role-part">
         <div class="col-md-3 col-sm-12 col-12 role-">
-          <mat-label class="User-info">Role</mat-label>
+          <mat-label class="User-info">Role (required)</mat-label>
         </div>
         <div class="col-md-5 col-sm-12 col-12">
           <ng-multiselect-dropdown [ngModelOptions]="{standalone: true}" [placeholder]="'Select Role'" [settings]="dropdownSettings" [data]="role"

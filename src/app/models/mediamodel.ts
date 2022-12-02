@@ -12,4 +12,6 @@
         media_ext:any
         filetype:any
         base64file!:any
+        funct!:any
+        delete_id!:any
     }

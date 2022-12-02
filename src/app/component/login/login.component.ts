@@ -6,6 +6,7 @@ import { NotificationService } from 'src/app/services/notification/notification.
 import { MatDialog } from '@angular/material/dialog';
 import { ForgetpasswordComponent } from 'src/app/forgetpassword/forgetpassword.component';
 import { environment } from 'src/environments/environment';
+import { ForgotpassdialogComponent } from './forgotpassdialog/forgotpassdialog.component';
 
 @Component({
   selector: 'app-login',
@@ -56,7 +57,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('currentUser', JSON.stringify(res.body))
             this.Notification.success('Login Successful.');
             this.loginService.setLoginState('true', JSON.stringify(res.body));
-            this.router.navigate(['/admin']).then((r: any) => { });
+            this.router.navigate(['/admin']);
           } else {
             // this.spinnerService.hide()
             // this.loginService.setLoggedInStatus(false);
@@ -76,5 +77,7 @@ export class LoginComponent implements OnInit {
   opendialog() {
     const dialogRef = this.dialog.open(ForgetpasswordComponent);
   }
-
+  forgotPassword(){
+    const dialogRef = this.dialog.open(ForgotpassdialogComponent);
+  }
 }

@@ -1,9 +1,9 @@
 .page-content {
-    background-color: #f4f4f4;
+    background-color: var(--site-background);
     min-height: 100vh;
 }
 .user-container {
-    background-color: #f4f4f4;
+    background-color: var(--site-background);
     padding: 2% 5%;
   }
 
@@ -18,7 +18,7 @@
 }
 
 .add-profile-form-field{
-    background-color: #f4f4f4;
+    background-color: var(--site-background);
 }
 
 .user-card-full {

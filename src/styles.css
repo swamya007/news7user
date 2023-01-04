@@ -2,8 +2,8 @@
 
 :root {
   --white: #ffffff;
-  --site-background: #f4f4f4;
-  --red: #e10505;
+  --site-background: #d2d2d2;
+  --red: #af0000;
   --black: #000000;
   --blue: #3f51b5;
 }
@@ -67,7 +67,7 @@ body {
 }
 
 .news-text-container p {
-  font-size: 14px;
+  font-size: 17px;
   font-weight: bold;
   margin-bottom: 0px;
 }
@@ -79,7 +79,8 @@ body {
 h4.news-sub {
   font-weight: bold;
   margin: 0px;
-  font-size: 20px;
+  font-size: 28px;
+  color: var(--white);
 }
 /* <-----------------ADD USER FORM--------------------> */
 .add-user-form .mat-form-field-wrapper {
@@ -542,3 +543,20 @@ h4.news-sub {
 }
 
 /* ------------------------search modal end---------------------------- */
+
+/* --------------------------------pagination---------------------------------- */
+
+.ngx-pagination li {
+  display: inline-block;
+  border: 1px solid #cccccc;
+}
+
+.ngx-pagination li a{
+  text-decoration: none;
+  color: #4e4e4e;
+}
+
+.ngx-pagination .current {
+  background: #000000 !important;
+}
+/* --------------------------------pagination---------------------------------- */

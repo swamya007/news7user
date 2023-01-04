@@ -30,7 +30,7 @@
 
 .contact-us-container {
     padding: 2% 3.9%;
-    background-color: #f4f4f4;
+    background-color: var(--site-background);
 }
 
 .contact-info-container {

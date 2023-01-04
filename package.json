@@ -42,7 +42,7 @@
     "ngx-image-compress": "^13.1.13",
     "ngx-image-cropper": "^6.2.2",
     "ngx-magic-social-share": "^0.1.2",
-    "ngx-pagination": "^6.0.2",
+    "ngx-pagination": "^6.0.3",
     "ngx-skeleton-loader": "^6.0.0",
     "ngx-spinner": "^13.1.1",
     "rxjs": "~6.6.0",

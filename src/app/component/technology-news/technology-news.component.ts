@@ -25,7 +25,7 @@ export class TechnologyNewsComponent implements OnInit {
         this.postarr = data?.map((dt: any) => JSON.parse(dt)) ;
         this.firstpostbussiness=this.postarr && this.postarr.length ? 
         this.postarr[0] : {};
-        this.nextthree = this.postarr?.slice(1, 3);
+        this.nextthree = this.postarr?.slice(1, 4);
 
       } else {
         this.postarr = []

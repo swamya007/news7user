@@ -12,11 +12,19 @@ import { News7_CONSTANTS } from 'src/new7constants/new7constants';
 export class LatestNewsComponent implements OnInit {
   postarr:any = [];
   nextthree: any = [];
+  page = 1;
+  count = 0;
+  tableSize = 8;
+  tableSizes = [3, 6, 9, 12];
 
   constructor(private postserviceService: PostserviceService, private router:Router) { }
 
   ngOnInit(): void {
     this.getLatestNews()
+  }
+
+  onTableDataChange(event: any) {
+    this.page = event;
   }
 
   getShortName(user_name: any) {
@@ -28,7 +36,7 @@ export class LatestNewsComponent implements OnInit {
       if (res.code == 'success') {
         var data = res.body;
         this.postarr = data.map((dt: any) => JSON.parse(dt));
-        this.nextthree = this.postarr?.slice(0, 7);
+        this.nextthree = this.postarr;
       } else {
         this.postarr = []
       }

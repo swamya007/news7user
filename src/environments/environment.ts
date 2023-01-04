@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   POST_URL: 'https://dev.prameyanews.com/post/',
-  // BASE_URL: 'https://api-dev.prameyanews.com/prameya/api',
-  BASE_URL: 'http://192.168.0.147:8072/prameya/api',
+  BASE_URL: 'https://api-dev.prameyanews.com/prameya/api',
+  //BASE_URL: 'http://192.168.0.147:8072/prameya/api',
 
   CUSTOMER_ID : 2,
   CUSTOMER_NAME :'PRAMEYA_ODIA',

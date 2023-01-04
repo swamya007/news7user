@@ -23,13 +23,17 @@ export class EntertainmentNewsComponent implements OnInit {
     return user_name.slice(0, 46).trim() + (user_name.length > 45 ? "..." : "");
   }
 
+  getShortAuthorName(user_name: any) {
+    return user_name.slice(0, 14).trim() + (user_name.length > 13 ? "..." : "");
+  }
+
   getLatestNews() {
     this.postserviceService.getLatestNews(1, environment.CUSTOMER_ID, News7_CONSTANTS.LOOKUPS.entertainment).subscribe((res: any) => {
       if (res.code == 'success') {
         var data = res.body;
         this.postarr = data.map((dt: any) => JSON.parse(dt));
         if (this.postarr.length > 0) {
-          this.postarr = this.postarr.slice(0, 10)
+          this.postarr = this.postarr.slice(0, 5)
         }
       } else {
         this.postarr = []

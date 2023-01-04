@@ -23,7 +23,10 @@
   .heading-container {
     display: flex;
     align-items: center;
-  }
+    justify-content: center;
+    background: var(--red);
+    padding: 10px;
+}
   .heading-container .grey-line {
     background-color: #bbb;
     height: 10px;

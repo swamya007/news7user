@@ -4,7 +4,7 @@
 }
 
 .view-user-container {
-    background-color: #f4f4f4;
+    background-color: var(--site-background);
     min-height: 100vh;
     padding: 2% 3%;
 }
@@ -24,7 +24,7 @@
     padding-bottom: 10px;
     padding-left: 10px;
     text-align: left;
-    background-color: #f4f4f4;
+    background-color: var(--site-background);
 }
 
 .view-table td {

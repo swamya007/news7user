@@ -1,21 +1,5 @@
-.home-ad-container {
-  display: flex;
-  justify-content: center;
-  background-color: #f4f4f4;
-  padding: 0rem 1rem;
-  padding-top: 1rem;
-}
-.home-ad-container div{
-  width: 728px;
-  height: 90px;
-  /* margin-top: 2%; */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 .home-ad-container-wide {
-  background-color: #f4f4f4;
+  background-color: var(--site-background);
   padding: 2% 0%;
 }
 .home-ad-container-wide div{
@@ -35,16 +19,32 @@
 }
 
 .home-first-container {
-  background-color: #f4f4f4;
-  padding: 2% 3.9%;
+  background-color: var(--site-background);
+  padding: 2% 2%;
 }
 .home-second-container{
-  background-color: #f4f4f4;
-  padding: 2% 3.9%;
+  background-color: #f3f3f3;
+  padding: 2% 2%;
+}
+.home-second-cards-container {
+  background-color: #ffffff;
+  margin-bottom: 7px;
 }
 .home-third-container{
-  background-color: #f4f4f4;
-  padding: 0% 3.9% 2% 3.9%;
+  background-color: #f3f3f3;
+}
+.recent-news-heading {
+  background-color: var(--red);
+  display: flex;
+  justify-content: center;
+  padding: 6px;
+  margin: 0% 1%;
+}
+.recent-news-heading h1 {
+  margin-bottom: 0;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--white);
 }
 
 .advertisement-space-container-first {
@@ -122,7 +122,7 @@
 }
 
 .home-wide-container {
-  background-color: #f4f4f4;
+  background-color: var(--site-background);
   padding: 0% 3.9%;
 }
 
@@ -324,5 +324,4 @@
     transform: translate3d(100px, 0, -05px);
   }
 }
-
 

@@ -1,7 +1,6 @@
-<div class="news-section">
+<!-- <div class="news-section">
   <div class="heading-container">
     <h4 class="news-sub">ଓଡ଼ିଶା</h4>
-    <div class="grey-line"></div>
   </div>
   <div class="news-card" *ngFor="let post of postarr; let i = index" (click)="opennewsSec(post.slug)"  [ngClass]="i !== 0 ? 'divider' : ''">
     <img [src]="post.guid">
@@ -11,7 +10,24 @@
         <div> <i class="fa-solid fa-circle news-circle-icon"></i></div>
         <div class="news-date"> {{post.post_date | date:'MMMM dd, yyyy'}}</div>
       </div>
-  </div>
+  </div> -->
+
+  <div class="news-section">
+    <div class="heading-container">
+      <h4 class="news-sub">ଓଡ଼ିଶା</h4>
+      <!-- <div class="grey-line"></div> -->
+    </div>
+    <div class="row news-box" (click)="opennewsSec(post.slug)" *ngFor="let post of postarr">
+        <!-- <a (click)="opennewsSec(post.id)"> -->
+        <div class="col-md-4 col-sm-12 col-12 news-img-container">
+          <img [src]="post.guid">
+        </div>
+        <div class="col-md-8 col-sm-12 col-12 news-text-container">
+          <p>{{post.post_title ? getShortName(post.post_title) : ''}}</p>
+          <div class="news-date"> {{post.post_date | date :'short'}}</div>
+        </div>
+    </div>
+</div>
   
   <!-- <div class="news-card divider">
     <img src="assets/img/news.jpg">
@@ -43,4 +59,4 @@
       <div class="news-date"> August 26, 2020</div>
     </div>
   </div> -->
-</div>
+<!-- </div> -->

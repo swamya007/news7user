@@ -1,6 +1,6 @@
 .article-container {
   padding: 2% 7.9%;
-  background-color: #f4f4f4;
+  background-color: var(--site-background);
 }
 
 .article-section-container {

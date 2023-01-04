@@ -61,3 +61,63 @@
   color: white;
   border: none;
 }
+
+
+.custom-ticker {
+  max-width: 1740px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 18px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.custom-ticker-header {
+  position: absolute;
+  background-color: #000;
+  color: #fff;
+  border-bottom: 5px solid #c80000;
+  border-top: 5px solid #c80000;
+  padding: 9px 25px;
+  font-size: 19px;
+}
+
+.custom-ticker-header-span {
+  width: 0;
+  position: absolute;
+  right: -10px;
+  top: 9px;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 0 10px 10px;
+  bottom: 0;
+  border-color: transparent transparent transparent #000;
+}
+
+.custom-marquee-style {
+  /* background-color: #d3d3d321; */
+  padding: 10px;
+  margin-left: 145px;
+}
+
+.custom-marquee {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+}
+
+.custom-marquee-title {
+  color: #ff3209;
+  text-align: center;
+  text-decoration: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 20px;
+}
+
+.custom-marquee span{
+  color: #781804;}

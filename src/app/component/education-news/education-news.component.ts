@@ -29,7 +29,7 @@ export class EducationNewsComponent implements OnInit {
         var data = res.body;
         this.postarr = data.map((dt: any) => JSON.parse(dt));
         if (this.postarr.length > 0) {
-          this.postarr = this.postarr.slice(0, 4)
+          this.postarr = this.postarr.slice(0, 5)
         }
       } else {
         this.postarr = []

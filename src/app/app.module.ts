@@ -121,6 +121,7 @@ import { AdminChangePasswordComponent } from './component/admin/user/view-users/
 import { EntryPopupComponent } from './component/entry-popup/entry-popup.component';
 import { TrendingnewsComponent } from './component/admin/trendingnews/trendingnews.component';
 import { PrivacyPolicyComponent } from './component/privacy-policy/privacy-policy.component';
+import { FeaturedStoriesComponent } from './component/featured-stories/featured-stories.component';
 
 @NgModule({
   declarations: [
@@ -212,7 +213,8 @@ import { PrivacyPolicyComponent } from './component/privacy-policy/privacy-polic
     AdminChangePasswordComponent,
     EntryPopupComponent,
     TrendingnewsComponent,
-    PrivacyPolicyComponent
+    PrivacyPolicyComponent,
+    FeaturedStoriesComponent
 
   ],
   imports: [

@@ -56,3 +56,14 @@
     border-radius: 10px;
     color: #bbb;
 }
+
+.social-icon {
+    height: 40px;
+    width: 40px;
+    margin: 0 5px;
+}
+
+.social-links a:hover {
+    background: transparent !important;
+    text-decoration: none !important;
+}

@@ -1,0 +1,40 @@
+.news-section {
+  background: var(--white);
+}
+
+.news-box {
+  padding: 8px 14px;
+}
+
+.news-img-container {
+    display: flex;
+    padding: 10px 5px;
+}
+
+.news-img-container img {
+  max-width: 116px;
+  height: 116px;
+}
+
+.news-text-container {
+    margin-left: 10px;
+}
+
+.news-text-container p {
+    margin-bottom: 10px;
+}
+
+.heading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--red);
+  padding: 10px;
+}
+
+.heading-container .grey-line {
+  background-color: #bbb;
+  height: 10px;
+  flex-grow: 1;
+  margin-left: 10px;
+}

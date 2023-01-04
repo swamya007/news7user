@@ -5,35 +5,38 @@ import { environment } from 'src/environments/environment';
 import { News7_CONSTANTS } from 'src/new7constants/new7constants';
 
 @Component({
-  selector: 'app-entertainment-news',
-  templateUrl: './entertainment-news.component.html',
-  styleUrls: ['./entertainment-news.component.css']
+  selector: 'app-featured-stories',
+  templateUrl: './featured-stories.component.html',
+  styleUrls: ['./featured-stories.component.css']
 })
-export class EntertainmentNewsComponent implements OnInit {
+export class FeaturedStoriesComponent implements OnInit {
+  postarr:any = [];
+  nextthree: any = [];
+  page = 1;
+  count = 0;
+  tableSize = 8;
+  tableSizes = [3, 6, 9, 12];
 
-  postarr: any = []
-
-  constructor(private postserviceService: PostserviceService,private router: Router) { }
-
+  constructor(private postserviceService: PostserviceService, private router:Router) { }
   ngOnInit(): void {
     this.getLatestNews()
   }
 
+  onTableDataChange(event: any) {
+    this.page = event;
+  }
+
   getShortName(user_name: any) {
-    return user_name.slice(0, 46).trim() + (user_name.length > 45 ? "..." : "");
+    return user_name.slice(0, 70).trim() + (user_name.length > 69 ? "..." : "");
   }
-
-  getShortAuthorName(user_name: any) {
-    return user_name.slice(0, 14).trim() + (user_name.length > 13 ? "..." : "");
-  }
-
+  
   getLatestNews() {
-    this.postserviceService.getLatestNews(1, environment.CUSTOMER_ID, News7_CONSTANTS.LOOKUPS.entertainment).subscribe((res: any) => {
+    this.postserviceService.getLatestNews(1,environment.CUSTOMER_ID,'').subscribe((res: any) => {
       if (res.code == 'success') {
         var data = res.body;
         this.postarr = data.map((dt: any) => JSON.parse(dt));
         if (this.postarr.length > 0) {
-          this.postarr = this.postarr.slice(0, 3)
+          this.postarr = this.postarr.slice(0, 6)
         }
       } else {
         this.postarr = []
@@ -47,3 +50,4 @@ export class EntertainmentNewsComponent implements OnInit {
     this.router.navigate(['/post/' + id]);
   }
 }
+

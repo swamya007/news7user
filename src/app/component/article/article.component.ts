@@ -25,6 +25,7 @@ export class ArticleComponent implements OnInit {
   img_size: any
   allAdsList: any = []
   ads_rightupper: any = []
+  ads_leftmiddle:any = []
   comments: any = []
   author_post: any = []
   comment_page_no: number = 1
@@ -102,6 +103,8 @@ export class ArticleComponent implements OnInit {
       this.allAdsList = this.allAdsList.map((dt: any) => JSON.parse(dt));
       /** Right Upper */
       this.ads_rightupper = this.allAdsList.filter((data: any) => data.ads_img_size === "2");
+      /** Left Middle */
+      this.ads_leftmiddle = this.allAdsList.filter((data: any) => data.ads_img_size === "3");
     })
   }
 

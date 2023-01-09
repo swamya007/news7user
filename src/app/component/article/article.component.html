@@ -7,10 +7,10 @@
                 <div class="col-md-8 col-12">
                     <div class="article-section-container" *ngIf="news">
                         <h1 class="article-heading">
-                           {{news.post_title}}
+                            {{news.post_title}}
                         </h1>
                         <div class="author-cat-section">
-                                <p>{{news.post_date | date:'short'}}</p>
+                            <p>{{news.post_date | date:'short'}}</p>
                         </div>
                         <div class="social-section">
                             <div class="share-section">
@@ -23,11 +23,11 @@
                                     </p>
                                 </div>
                                 <div (click)="createNavigationUrl('facebook')" class="facebook-icon share-box">
-                                    <i class="fa-brands fa-facebook-f" ></i>
+                                    <i class="fa-brands fa-facebook-f"></i>
                                     <p>Share</p>
-                                    
+
                                 </div>
-                                <div class="twitter-icon share-box"  (click)="createNavigationUrl('twitter')">
+                                <div class="twitter-icon share-box" (click)="createNavigationUrl('twitter')">
                                     <i class="fa-brands fa-twitter"></i>
                                     <p>Tweet</p>
                                 </div>
@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                         </div>
-                        <img class="article-image" [src]="news.guid">     
+                        <img class="article-image" [src]="news.guid">
                         <div class="article-text-section">
                             <div class="article-text" [innerHTML]="news.post_content"></div>
                             <div *ngIf="news.comment_status === 'opened'">
@@ -55,14 +55,15 @@
                                     </div>
                                     <div class="comment-image d-flex" *ngFor="let cmt of comments">
                                         <img src="/assets/img/default.jpg" class="img-width">
-                
+
                                         <div class="comment-name">
-                                            <h4 class="name-user">{{cmt.comment_author}} <span class="says">Says</span></h4>
+                                            <h4 class="name-user">{{cmt.comment_author}} <span class="says">Says</span>
+                                            </h4>
                                             <p>{{cmt.comment_content}}</p>
                                         </div>
                                     </div>
                                     <div class="add-comment-container">
-                                        <div class="user-image"><img src="assets/img/user-default.jpg"/></div>
+                                        <div class="user-image"><img src="assets/img/user-default.jpg" /></div>
                                         <div class="add-comment">
                                             <textarea placeholder="Add a comment..."></textarea>
                                             <div class="login-button-holder">
@@ -83,13 +84,14 @@
                                 <div class="related-content-section-cards">
                                     <div class="news-section">
                                         <div class="row news-box">
-                                            <div class="col-md-4 col-sm-12 col-12 news-img-container" *ngFor="let post of nextthree" (click)="opennewsSec(post.slug)">
+                                            <div class="col-md-4 col-sm-12 col-12 news-img-container"
+                                                *ngFor="let post of nextthree" (click)="opennewsSec(post.slug)">
                                                 <img [src]="post.guid">
                                                 <p>{{post.post_title}}</p>
                                                 <div class="news-date"> {{post.post_date | date :'short'}}</div>
                                             </div>
                                         </div>
-                                      </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -167,28 +169,33 @@
                 </div>
                 <div class="col-md-4 col-12">
                     <div class="prameya-epaper">
-                        <img class="prameya-epaper-image" src="assets/img/prameya-epaper-link.jpeg"/>
+                        <img class="prameya-epaper-image" src="assets/img/prameya-epaper-link.jpeg" />
                     </div>
                     <div class="prameya-epaper">
-                    <div class="advertisement-space-container-first">
-                        <div id="carouselExampleControls4" class="carousel slide carousel-fade" data-ride="carousel">
-                          <div class="carousel-inner">
-                            <div class="carousel-item" *ngFor="let rightupper_ad of ads_rightupper; let i = index"
-                              [ngClass]="i === 0 ? 'active' : ''">
-                              <img class="d-block w-100" src={{rightupper_ad.ads_image}} alt={{rightupper_ad.ads_image_alt_text}}
-                                (click)="openLink(rightupper_ad.ads_image_link)">
+                        <div class="advertisement-space-container-first">
+                            <div id="carouselExampleControls4" class="carousel slide carousel-fade"
+                                data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item"
+                                        *ngFor="let rightupper_ad of ads_rightupper; let i = index"
+                                        [ngClass]="i === 0 ? 'active' : ''">
+                                        <img class="d-block w-100" src={{rightupper_ad.ads_image}}
+                                            alt={{rightupper_ad.ads_image_alt_text}}
+                                            (click)="openLink(rightupper_ad.ads_image_link)">
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleControls4" role="button"
+                                    data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleControls4" role="button"
+                                    data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
                             </div>
-                          </div>
-                          <a class="carousel-control-prev" href="#carouselExampleControls4" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                          </a>
-                          <a class="carousel-control-next" href="#carouselExampleControls4" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                          </a>
                         </div>
-                      </div>
                     </div>
                     <div class="prameya-epaper">
                         <app-politics-news></app-politics-news>
@@ -196,6 +203,33 @@
                     <div class="prameya-epaper">
                         <app-entertainment-news></app-entertainment-news>
                     </div>
+                    <div class="prameya-epaper">
+                        <div class="advertisement-container-long">
+                            <div id="carouselExampleControls2" class="carousel slide carousel-fade"
+                                data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item"
+                                        *ngFor="let leftmiddle_ad of ads_leftmiddle;let i = index"
+                                        [ngClass]="i === 0 ? 'active' : ''">
+                                        <img class="d-block w-100" src={{leftmiddle_ad.ads_image}}
+                                            alt={{leftmiddle_ad.ads_image_alt_text}}
+                                            (click)="openLink(leftmiddle_ad.ads_image_link)">
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleControls2" role="button"
+                                    data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleControls2" role="button"
+                                    data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="prameya-epaper">
                         <app-sports-news></app-sports-news>
                     </div>

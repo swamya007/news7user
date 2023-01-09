@@ -32,6 +32,7 @@ export class ArticleComponent implements OnInit {
   comment_obj: any
   comment_count: number = 0;
   navUrl!: string;
+  nextthree: any = [];
   constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private router: Router, private notify: NotificationService, private post: PostserviceService, private adsService: AdserviceService,   private titleService: Title,  private spinnerService: LoaderService,
     private meta: Meta ) {
     activatedRoute.params.subscribe(val => {
@@ -155,7 +156,7 @@ export class ArticleComponent implements OnInit {
         this.comment_obj.comment_post_id = this.news.id
         this.getCommentsByPost(this.news.id);
         this.getPostByAuthor(this.news.id);
-        this.spinnerService.hide()
+        this.spinnerService.hide();
       } else {
         this.postarr = []
       }
@@ -171,6 +172,7 @@ export class ArticleComponent implements OnInit {
       if (res.code == 'success') {
         var data = res.body;
         this.author_post = data?.map((dt: any) => JSON.parse(dt));
+        this.nextthree = this.author_post?.slice(0, 6);
         console.log('this.author_post==',this.author_post)
       } else {
         this.author_post = []

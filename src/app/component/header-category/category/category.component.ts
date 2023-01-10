@@ -130,7 +130,7 @@ export class CategoryComponent implements OnInit {
   }
 
   getShortPostContent(user_name: any) {
-    return user_name.slice(0, 150).trim() + (user_name.length > 149 ? "..." : "");
+    return user_name.slice(0, 130).trim() + (user_name.length > 129 ? "..." : "");
   }
 
   opennewsSec(id: any) {

@@ -16,10 +16,14 @@ export class CategoryComponent implements OnInit {
   customer_id: any
   ads_id: any
   img_size: any
+  page = 1;
+  count = 0;
+  tableSize = 10;
+  // tableSizes = [3, 6, 9, 12];
 
   // postarr: any = []
-  firstpostbussiness: any = {}
-  nextthree: any = [];
+  // firstpostbussiness: any = {}
+  // nextthree: any = [];
 
   ads_rightupper: any = []
   ads_leftmiddle: any = []
@@ -69,7 +73,10 @@ export class CategoryComponent implements OnInit {
   @Input()
   post_array_lower: any = []
 
+  @Input()
   post_array: any = []
+
+  
 
   ngOnInit(): void {
     this.customer_id = environment.CUSTOMER_ID
@@ -93,6 +100,8 @@ export class CategoryComponent implements OnInit {
     //   this.category_three = this.post_array_upper[4].category_name.split(",");
     //   console.log('Category====', this.category_three)
     // }
+
+    console.log(this.post_array);
   }
 
   getWithoutHeaderCategory() {
@@ -118,6 +127,10 @@ export class CategoryComponent implements OnInit {
 
   getShortAuthorName(user_name: any) {
     return user_name.slice(0, 14).trim() + (user_name.length > 13 ? "..." : "");
+  }
+
+  getShortPostContent(user_name: any) {
+    return user_name.slice(0, 150).trim() + (user_name.length > 149 ? "..." : "");
   }
 
   opennewsSec(id: any) {

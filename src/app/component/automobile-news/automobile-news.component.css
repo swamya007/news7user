@@ -18,6 +18,11 @@
     color:#474747;
     transition: all .4s ease;
   }
+  .news-text-container p {
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 0px;
+  }
   .news-box:hover .news-text-container p {
     color: #da0000;
   }

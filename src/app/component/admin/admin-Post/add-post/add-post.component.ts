@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { postModel } from 'src/app/models/postModel';
 import { IDropdownSettings } from 'ng-multiselect-dropdown/multiselect.model';
@@ -57,14 +57,16 @@ export class AddPostComponent implements OnInit {
   constructor(private userService: UserService, private loginService: LoginService, 
     private viewstag: TagserviceService, private post: PostserviceService, 
     private notify: NotificationService, private router: Router, private tagserivce: TagserviceService,
-    private categoryService:CategoryServiceService,public dialog: MatDialog,private spinnerService: LoaderService) { }
+    private categoryService:CategoryServiceService,public dialog: MatDialog,private spinnerService: LoaderService,
+    private cdr:ChangeDetectorRef) { }
 
   ngOnInit(): void {
 
     this.cust_id = environment.CUSTOMER_ID
     this.currentuser = this.loginService.getCurrentUser();
 
-    this.getallcategory();
+    // this.getallcategory();
+    this.getCategory();
     this.getalltag()
 
     this.checkedval = true
@@ -115,6 +117,43 @@ export class AddPostComponent implements OnInit {
     this.addPost.post_time = ('0' + (currentdate.getHours())).slice(-2)+":"+('0' + (currentdate.getMinutes())).slice(-2);
   }
 
+  currentItem: any;
+  data:any = []
+  selectedItem(item: any) {
+    this.currentItem = item;
+  }
+
+  checkedItems(items: any) {
+    this.data = items.checked;
+  }
+
+  getCategory() {
+    this.categoryService.getCategory(this.currentuser.customer_id).subscribe((res: any) => {
+      if (res.code == 'success') {
+        var data = res.body;
+        this.catarr = data.map((dt: any) => JSON.parse(dt));
+        // this.editData()
+        this.cdr.detectChanges();
+      } else {
+        this.catarr = []
+      }
+    }, (err) => {
+      this.catarr = []
+    })
+  }
+  
+  newspreview(addPost:any) {
+    console.log(addPost)
+    let postImg:any;
+    if(this.addPost.Multiimage) {
+      postImg = document.querySelector('#previewImage');
+      postImg.src = URL.createObjectURL(this.addPost.Multiimage);
+    }
+
+    const exampleModal1 = document.getElementById('quickeditModal');
+    if (exampleModal1) exampleModal1.click();
+
+  }
   getDraftedPost() {
     this.post.getDraftedPostByAuthor(this.currentuser.user_id,this.currentuser.customer_id).subscribe((res: any) => {
       if (res.code == 'success') {
@@ -240,6 +279,7 @@ export class AddPostComponent implements OnInit {
 
   onfileselected(event: any) {
     this.addPost.Multiimage = <File>event.target.files[0];
+    
     let postImg!: any;
     if ((this.addPost.Multiimage.type != 'image/jpeg') && (this.addPost.Multiimage.type != 'image/png')) {
       // this.Notification.error('This is not valid file format. Please upload jpg/png file only.');
@@ -248,11 +288,13 @@ export class AddPostComponent implements OnInit {
       postImg = document.querySelector('#bannerImage')
       postImg.src = 'assets/img/image-preview-icon-picture-placeholder-vector-31284806.jpg';
       this.tourBanner.nativeElement.value = '';
+      this.addPost.image_name = ''
     }
     else {
       this.addPost.post_mime_type = this.addPost.Multiimage.type
       postImg = document.querySelector('#bannerImage');
       postImg.src = URL.createObjectURL(this.addPost.Multiimage);
+      this.addPost.image_name = this.addPost.Multiimage.name
     }
   }
   
@@ -269,9 +311,9 @@ export class AddPostComponent implements OnInit {
       this.addPost.media_ext = this.addPost.post_mime_type.split("/")[1];
     }
 
-    if (this.addPost.category !== null && this.addPost.category !== undefined && this.addPost.category !== '') {
-      var result = this.addPost.category.map(function (val: any) {
-        return val.category_id;
+    if (this.data !== null && this.data !== undefined && this.data !== '' && this.data.length > 0) {
+      var result = this.data.map(function (val: any) {
+        return val.key;
       }).join(',');
       this.addPost.category = result;
     }
@@ -307,6 +349,8 @@ export class AddPostComponent implements OnInit {
           this.addPost.post_img = this.addPost.guid;
         }
       }
+      console.log(this.addPost);
+      
       this.post.addpost(this.addPost).subscribe((res: any) => {
         if (res.code == "success") {
           this.spinnerService.hide()
@@ -321,18 +365,6 @@ export class AddPostComponent implements OnInit {
             var data = this.addPost.post_date.split(" ");
             this.addPost.post_date = data[0];
             this.addPost.post_time = data[1];
-          }
-
-          if (this.addPost.category !== null && this.addPost.category !== undefined) {
-            let arr: any = [];
-            let split_arr = this.addPost.category.split(",");
-            for (var i = 0; i < split_arr.length; i++) {
-              let obj: any = {};
-              obj.category_id = parseInt(split_arr[i]);
-              arr.push(obj)
-            }
-            let value = this.catarr.filter((d: any) => arr.map((v: any) => v.category_id).includes(d.category_id));
-            this.addPost.category = value;
           }
   
           if (this.addPost.addtags !== null && this.addPost.addtags !== undefined) {
@@ -355,18 +387,6 @@ export class AddPostComponent implements OnInit {
           var data = this.addPost.post_date.split(" ");
           this.addPost.post_date = data[0];
           this.addPost.post_time = data[1];
-        }
-
-        if (this.addPost.category !== null && this.addPost.category !== undefined) {
-          let arr: any = [];
-          let split_arr = this.addPost.category.split(",");
-          for (var i = 0; i < split_arr.length; i++) {
-            let obj: any = {};
-            obj.category_id = parseInt(split_arr[i]);
-            arr.push(obj)
-          }
-          let value = this.catarr.filter((d: any) => arr.map((v: any) => v.category_id).includes(d.category_id));
-          this.addPost.category = value;
         }
 
         if (this.addPost.addtags !== null && this.addPost.addtags !== undefined) {
@@ -394,9 +414,9 @@ export class AddPostComponent implements OnInit {
       this.addPost.media_ext = this.addPost.post_mime_type.split("/")[1];
     }
 
-    if (this.addPost.category !== null && this.addPost.category !== undefined && this.addPost.category !== '') {
-      var result = this.addPost.category.map(function (val: any) {
-        return val.category_id;
+    if (this.data !== null && this.data !== undefined && this.data !== '' && this.data.length > 0) {
+      var result = this.data.map(function (val: any) {
+        return val.key;
       }).join(',');
       this.addPost.category = result;
     }
@@ -447,18 +467,6 @@ export class AddPostComponent implements OnInit {
             this.addPost.post_date = data[0];
             this.addPost.post_time = data[1];
           }
-
-          if (this.addPost.category !== null && this.addPost.category !== undefined) {
-            let arr: any = [];
-            let split_arr = this.addPost.category.split(",");
-            for (var i = 0; i < split_arr.length; i++) {
-              let obj: any = {};
-              obj.category_id = parseInt(split_arr[i]);
-              arr.push(obj)
-            }
-            let value = this.catarr.filter((d: any) => arr.map((v: any) => v.category_id).includes(d.category_id));
-            this.addPost.category = value;
-          }
   
           if (this.addPost.addtags !== null && this.addPost.addtags !== undefined) {
             let arr: any = [];
@@ -480,18 +488,6 @@ export class AddPostComponent implements OnInit {
           var data = this.addPost.post_date.split(" ");
           this.addPost.post_date = data[0];
           this.addPost.post_time = data[1];
-        }
-
-        if (this.addPost.category !== null && this.addPost.category !== undefined) {
-          let arr: any = [];
-          let split_arr = this.addPost.category.split(",");
-          for (var i = 0; i < split_arr.length; i++) {
-            let obj: any = {};
-            obj.category_id = parseInt(split_arr[i]);
-            arr.push(obj)
-          }
-          let value = this.catarr.filter((d: any) => arr.map((v: any) => v.category_id).includes(d.category_id));
-          this.addPost.category = value;
         }
 
         if (this.addPost.addtags !== null && this.addPost.addtags !== undefined) {

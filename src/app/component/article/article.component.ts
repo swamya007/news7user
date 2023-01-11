@@ -9,6 +9,7 @@ import { PostserviceService } from 'src/app/services/postservice/postservice.ser
 import { environment } from 'src/environments/environment';
 import { Title, Meta } from '@angular/platform-browser';  
 import { LoaderService } from 'src/app/services/loaderService/loader.service';
+import { LoginService } from 'src/app/services/loginService/login.service';
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
@@ -34,8 +35,10 @@ export class ArticleComponent implements OnInit {
   comment_count: number = 0;
   navUrl!: string;
   nextthree: any = [];
+  cat: any;
+  catname: any;
   constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private router: Router, private notify: NotificationService, private post: PostserviceService, private adsService: AdserviceService,   private titleService: Title,  private spinnerService: LoaderService,
-    private meta: Meta ) {
+    private meta: Meta ,private loginservice: LoginService) {
     activatedRoute.params.subscribe(val => {
       const routeParams = this.activatedRoute.snapshot.paramMap;
       this.id = routeParams.get('Id');
@@ -49,10 +52,12 @@ export class ArticleComponent implements OnInit {
       this.getBrowserName()
     })
   }
+  isLoggedIn = false;
 
   ngOnInit(): void {
     const routeParams = this.activatedRoute.snapshot.paramMap;
     this.id = routeParams.get('Id');
+    this.isLoggedIn = this.loginservice.isLoggedIn();
     this.comment_page_no = 1
     this.post_page_no = 1
     this.comment_count = 0
@@ -63,6 +68,33 @@ export class ArticleComponent implements OnInit {
     this.getBrowserName()
     console.log( this.id,'lion')
   }
+  getPostBycategory() {
+    console.log(this.postarr[0].category,'dkkd')
+    // this.postarr[0].category= this.cat.replace(/,/g, "")
+    if(this.postarr[0].category) {
+      this.cat = this.postarr[0].category.split(",",)[0]
+    }
+
+    if(this.postarr[0].category_name) {
+      this.catname = this.postarr[0].category_name.split(",",)[0]
+    }
+    console.log(this.cat,'k')
+        this.post.getPostByCategoryID(1,  this.cat, environment.CUSTOMER_ID).subscribe((res: any) => {
+          if (res.code == 'success') {
+            var data = res.body;
+            this.author_post = data?.map((dt: any) => JSON.parse(dt));
+            this.author_post = this.author_post.filter((a:any) => a.slug !== this.id);
+            console.log('this.author_post==',this.author_post)
+            this.nextthree = this.author_post?.slice(1, 7);
+            console.log(this.nextthree,'king')
+          } else {
+            this.author_post = []
+          }
+        }, (err) => {
+          this.author_post = []
+        })
+      }
+    
 
   getIPAddress() {
     this.http.get("http://api.ipify.org/?format=json").subscribe((res: any) => {
@@ -112,6 +144,10 @@ export class ArticleComponent implements OnInit {
     window.open(url);
   }
 
+  edit(uid: any) {
+    this.router.navigate([`/admin/post/edit/${uid}`]);
+  }
+
   onChange(ob: MatCheckboxChange) {
     if (ob.checked) {
       this.comment_obj.remember_me = true
@@ -158,8 +194,9 @@ export class ArticleComponent implements OnInit {
         this.titleService.setTitle(this.news.post_title); 
         this.comment_obj.comment_post_id = this.news.id
         this.getCommentsByPost(this.news.id);
-        this.getPostByAuthor(this.news.id);
-        this.spinnerService.hide();
+        // this.getPo(this.news.id);
+        this.getPostBycategory()
+        this.spinnerService.hide()
       } else {
         this.postarr = []
       }
@@ -169,21 +206,40 @@ export class ArticleComponent implements OnInit {
     })
   }
 
-  getPostByAuthor(post_id: any) {
+  // getPostByAuthor(post_id: any) {
     
-    this.post.getPostByAuthor(this.news.post_author, post_id, environment.CUSTOMER_ID).subscribe((res: any) => {
-      if (res.code == 'success') {
-        var data = res.body;
-        this.author_post = data?.map((dt: any) => JSON.parse(dt));
-        this.nextthree = this.author_post?.slice(0, 6);
-        console.log('this.author_post==',this.author_post)
-      } else {
-        this.author_post = []
-      }
-    }, (err) => {
-      this.author_post = []
-    })
-  }
+  //   this.post.getPostByAuthor(this.news.post_author, post_id, environment.CUSTOMER_ID).subscribe((res: any) => {
+  //     if (res.code == 'success') {
+  //       var data = res.body;
+  //       this.author_post = data?.map((dt: any) => JSON.parse(dt));
+  //       console.log('this.author_post==',this.author_post)
+  //     } else {
+  //       this.author_post = []
+  //     }
+  //   }, (err) => {
+  //     this.author_post = []
+  //   })
+  // }
+
+  // getPostByAuthor() {
+   
+  //   console.log(this.postarr[0].category,'dkkd')
+     
+  //       this.post.getPostByCategoryID(1,  this.postarr[0].category, environment.CUSTOMER_ID).subscribe((res: any) => {
+  //         if (res.code == 'success') {
+  //           var data = res.body;
+  //           this.author_post = data?.map((dt: any) => JSON.parse(dt));
+  //           this.author_post = this.author_post.filter((a:any) => a.slug !== this.id);
+  //           this.nextthree = this.author_post?.slice(0, 7);
+  //           console.log('time',this.nextthree)
+
+  //         } else {
+  //           this.author_post = []
+  //         }
+  //       }, (err) => {
+  //         this.author_post = []
+  //       })
+  //     }
 
   getCommentsByPost(post_id: any) {
     this.post.getCommentByPost(this.comment_page_no, post_id, environment.CUSTOMER_ID).subscribe((res: any) => {

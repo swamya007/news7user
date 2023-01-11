@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
@@ -44,7 +44,8 @@ export class EditPostComponent implements OnInit {
   catarr: any = []
   pid: any
   updatepost: any = {}
-
+  selected: any = []
+  editdata:any = []
   list = [
     { "name": "Yes", "key": "opened", "checked": true },
     { "name": "No", "key": "closed", "checked": false }
@@ -58,7 +59,8 @@ export class EditPostComponent implements OnInit {
   constructor(private userService: UserService, private loginService: LoginService,
     private viewstag: TagserviceService, private post: PostserviceService,
     private notify: NotificationService, private router: Router, private tagserivce: TagserviceService,
-    private categoryService: CategoryServiceService, public dialog: MatDialog, private activatedRoute: ActivatedRoute,private spinnerService: LoaderService) { }
+    private categoryService: CategoryServiceService, public dialog: MatDialog, private activatedRoute: ActivatedRoute,
+    private spinnerService: LoaderService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     const routeParams = this.activatedRoute.snapshot.paramMap;
@@ -141,7 +143,7 @@ export class EditPostComponent implements OnInit {
   }
 
   getPermalink() {
-    this.updatepost.slug = this.updatepost.slug.replace(" ","-");
+    this.updatepost.slug = this.updatepost.slug.replace(" ", "-");
     this.updatepost.permalink = environment.POST_URL + this.updatepost.slug;
   }
 
@@ -212,6 +214,27 @@ export class EditPostComponent implements OnInit {
     })
   }
 
+  newspreview(addPost: any) {
+    let postImg: any;
+    if (this.updatepost.Multiimage) {
+      postImg = document.querySelector('#previewImage');
+      postImg.src = URL.createObjectURL(this.updatepost.Multiimage);
+    } else {
+      if (this.updatepost.post_img) {
+        postImg = document.querySelector('#previewImage');
+        postImg.src = this.updatepost.post_img;
+      } else {
+        postImg = document.querySelector('#previewImage');
+        postImg.src = this.updatepost.guid;
+      }
+
+    }
+
+    const exampleModal1 = document.getElementById('quickeditModal');
+    if (exampleModal1) exampleModal1.click();
+
+  }
+
   getallpost() {
     this.spinnerService.show()
     this.post.getpostall(this.pid, this.post_name, this.currentuser.customer_id).subscribe((res: any) => {
@@ -228,17 +251,18 @@ export class EditPostComponent implements OnInit {
         this.updatepost.immidiate_publish = this.updatepost.post_immidiate_publish;
         this.updatepost.visibility = this.updatepost.post_visibility;
 
-        if(this.updatepost.post_date) {
+        if (this.updatepost.post_date) {
           var split_data = this.updatepost.post_date.split(" ");
           this.updatepost.post_date = split_data[0]
-          if(split_data.length > 1) {
+          if (split_data.length > 1) {
             this.updatepost.post_time = split_data[1]
           } else {
             this.updatepost.post_time = '00:00'
           }
         }
 
-        this.getallcategory();
+        // this.getallcategory();
+        this.getPostEditCategory(this.updatepost.id);
         this.getalltag();
 
       } else {
@@ -253,6 +277,51 @@ export class EditPostComponent implements OnInit {
     })
   }
 
+  currentItem: any;
+  data: any = []
+  selectedItem(item: any) {
+    console.log('item==',item);
+    
+    this.currentItem = item;
+  }
+
+  checkedItems(items: any) {
+    console.log('items===',items);
+    
+    this.data = items.checked;
+    console.log(items.unchecked);
+    
+    console.log(this.editdata);
+    
+    this.data = this.data.concat(this.editdata)
+    console.log(this.data);
+    
+  }
+
+  getPostEditCategory(post_id: any) {
+    this.categoryService.getEditCategory(post_id, this.currentuser.customer_id).subscribe((res: any) => {
+      if (res.code == 'success') {
+        var data = res.body;
+        this.catarr = data.map((dt: any) => JSON.parse(dt));
+        const a: any = []
+        this.catarr.forEach((d: any) => {
+          a.push({ key: d.key, name: d.name, checked: d.checked, children: null, bnTreeUUID: null })
+          if (d.children) {
+            d.children.forEach((p: any) => {
+              a.push({ key: p.key, name: p.name, checked: p.checked, children: null, bnTreeUUID: null })
+            })
+          }
+        })
+        this.editdata = a.filter((f: any) => f.checked == true)
+        this.cdr.detectChanges();
+      } else {
+        this.catarr = []
+      }
+    }, (err) => {
+      this.catarr = []
+    })
+  }
+
   onfileselected(event: any) {
     this.updatepost.Multiimage = <File>event.target.files[0];
     let postImg!: any;
@@ -263,11 +332,13 @@ export class EditPostComponent implements OnInit {
       postImg = document.querySelector('#bannerImage')
       postImg.src = 'assets/img/image-preview-icon-picture-placeholder-vector-31284806.jpg';
       this.tourBanner.nativeElement.value = '';
+      this.updatepost.image_name = ''
     }
     else {
       this.updatepost.post_mime_type = this.updatepost.Multiimage.type
       postImg = document.querySelector('#bannerImage');
       postImg.src = URL.createObjectURL(this.updatepost.Multiimage);
+      this.updatepost.image_name = this.updatepost.Multiimage.name
     }
   }
 
@@ -281,9 +352,9 @@ export class EditPostComponent implements OnInit {
       this.updatepost.media_ext = this.updatepost.post_mime_type.split("/")[1];
     }
 
-    if (this.updatepost.category !== null && this.updatepost.category !== undefined && this.updatepost.category !== '') {
-      var result = this.updatepost.category.map(function (val: any) {
-        return val.category_id;
+    if (this.data !== null && this.data !== undefined && this.data !== '' && this.data.length > 0) {
+      var result = this.data.map(function (val: any) {
+        return val.key;
       }).join(',');
       this.updatepost.category = result;
     }
@@ -304,8 +375,8 @@ export class EditPostComponent implements OnInit {
       };
     }
 
-    if(this.updatepost.post_date) {
-      if(this.updatepost.post_time) {
+    if (this.updatepost.post_date) {
+      if (this.updatepost.post_time) {
         this.updatepost.post_date = this.updatepost.post_date + " " + this.updatepost.post_time;
       } else {
         this.updatepost.post_date = this.updatepost.post_date + " 00:00";
@@ -326,27 +397,15 @@ export class EditPostComponent implements OnInit {
           this.spinnerService.hide()
 
           this.notify.success('Post updated successfully');
-          this.router.navigate(['/admin/post/view']);
+          // this.router.navigate(['/admin/post/view']);
         } else {
           this.notify.error(res.message)
           this.spinnerService.hide()
 
-          if(this.updatepost.post_date) {
+          if (this.updatepost.post_date) {
             var data = this.updatepost.post_date.split(" ");
             this.updatepost.post_date = data[0];
             this.updatepost.post_time = data[1];
-          }
-
-          if (this.updatepost.category !== null && this.updatepost.category !== undefined) {
-            let arr: any = [];
-            let split_arr = this.updatepost.category.split(",");
-            for (var i = 0; i < split_arr.length; i++) {
-              let obj: any = {};
-              obj.category_id = parseInt(split_arr[i]);
-              arr.push(obj)
-            }
-            let value = this.catarr.filter((d: any) => arr.map((v: any) => v.category_id).includes(d.category_id));
-            this.updatepost.category = value;
           }
 
           if (this.updatepost.addtags !== null && this.updatepost.addtags !== undefined) {
@@ -365,22 +424,10 @@ export class EditPostComponent implements OnInit {
         this.notify.error(err.message)
         this.spinnerService.hide()
 
-        if(this.updatepost.post_date) {
+        if (this.updatepost.post_date) {
           var data = this.updatepost.post_date.split(" ");
           this.updatepost.post_date = data[0];
           this.updatepost.post_time = data[1];
-        }
-
-        if (this.updatepost.category !== null && this.updatepost.category !== undefined) {
-          let arr: any = [];
-          let split_arr = this.updatepost.category.split(",");
-          for (var i = 0; i < split_arr.length; i++) {
-            let obj: any = {};
-            obj.category_id = parseInt(split_arr[i]);
-            arr.push(obj)
-          }
-          let value = this.catarr.filter((d: any) => arr.map((v: any) => v.category_id).includes(d.category_id));
-          this.updatepost.category = value;
         }
 
         if (this.updatepost.addtags !== null && this.updatepost.addtags !== undefined) {
@@ -427,9 +474,9 @@ export class EditPostComponent implements OnInit {
       this.updatepost.media_ext = this.updatepost.post_mime_type.split("/")[1];
     }
 
-    if (this.updatepost.category !== null && this.updatepost.category !== undefined && this.updatepost.category !== '') {
-      var result = this.updatepost.category.map(function (val: any) {
-        return val.category_id;
+    if (this.data !== null && this.data !== undefined && this.data !== '' && this.data.length > 0) {
+      var result = this.data.map(function (val: any) {
+        return val.key;
       }).join(',');
       this.updatepost.category = result;
     }
@@ -449,8 +496,8 @@ export class EditPostComponent implements OnInit {
       };
     }
 
-    if(this.updatepost.post_date) {
-      if(this.updatepost.post_time) {
+    if (this.updatepost.post_date) {
+      if (this.updatepost.post_time) {
         this.updatepost.post_date = this.updatepost.post_date + " " + this.updatepost.post_time;
       } else {
         this.updatepost.post_date = this.updatepost.post_date + " 00:00";
@@ -475,24 +522,12 @@ export class EditPostComponent implements OnInit {
           this.notify.error(res.message)
           this.spinnerService.hide()
 
-          if(this.updatepost.post_date) {
+          if (this.updatepost.post_date) {
             var data = this.updatepost.post_date.split(" ");
             this.updatepost.post_date = data[0];
             this.updatepost.post_time = data[1];
           }
 
-          if (this.updatepost.category !== null && this.updatepost.category !== undefined) {
-            let arr: any = [];
-            let split_arr = this.updatepost.category.split(",");
-            for (var i = 0; i < split_arr.length; i++) {
-              let obj: any = {};
-              obj.category_id = parseInt(split_arr[i]);
-              arr.push(obj)
-            }
-            let value = this.catarr.filter((d: any) => arr.map((v: any) => v.category_id).includes(d.category_id));
-            this.updatepost.category = value;
-          }
-  
           if (this.updatepost.addtags !== null && this.updatepost.addtags !== undefined) {
             let arr: any = [];
             let split_arr = this.updatepost.addtags.split(",");
@@ -509,22 +544,10 @@ export class EditPostComponent implements OnInit {
         this.notify.error(err.message)
         this.spinnerService.hide()
 
-        if(this.updatepost.post_date) {
+        if (this.updatepost.post_date) {
           var data = this.updatepost.post_date.split(" ");
           this.updatepost.post_date = data[0];
           this.updatepost.post_time = data[1];
-        }
-
-        if (this.updatepost.category !== null && this.updatepost.category !== undefined) {
-          let arr: any = [];
-          let split_arr = this.updatepost.category.split(",");
-          for (var i = 0; i < split_arr.length; i++) {
-            let obj: any = {};
-            obj.category_id = parseInt(split_arr[i]);
-            arr.push(obj)
-          }
-          let value = this.catarr.filter((d: any) => arr.map((v: any) => v.category_id).includes(d.category_id));
-          this.updatepost.category = value;
         }
 
         if (this.updatepost.addtags !== null && this.updatepost.addtags !== undefined) {
@@ -544,5 +567,9 @@ export class EditPostComponent implements OnInit {
 
   viewdraft(uid: any) {
     this.router.navigate([`/admin/post/drafts/edit/${uid}`]);
+  }
+
+  viewupdatedpost(slug:any){
+  this.router.navigate(['/post/'+slug]);
   }
 }

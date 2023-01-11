@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MasterServiceService } from 'src/app/services/masterservice/master-service.service';
 import { PostserviceService } from 'src/app/services/postservice/postservice.service';
 import { environment } from 'src/environments/environment';
 import { News7_CONSTANTS } from 'src/new7constants/new7constants';
@@ -16,10 +17,12 @@ export class FeaturedStoriesComponent implements OnInit {
   count = 0;
   tableSize = 8;
   tableSizes = [3, 6, 9, 12];
-
-  constructor(private postserviceService: PostserviceService, private router:Router) { }
+  slidearray: any = []
+  slidearrayfeature: any = []
+  constructor(private postserviceService: PostserviceService, private router:Router,private master: MasterServiceService) { }
   ngOnInit(): void {
     this.getLatestNews()
+    this.getslide();
   }
 
   onTableDataChange(event: any) {
@@ -48,6 +51,23 @@ export class FeaturedStoriesComponent implements OnInit {
 
   opennewsSec(id: any) {
     this.router.navigate(['/post/' + id]);
+  }
+
+  getslide() {
+    this.master.getslider(environment.CUSTOMER_ID).subscribe((res: any) => {
+      if (res.code == 'success') {
+        var data = res.body;
+        this.slidearrayfeature = data.map((dt: any) => JSON.parse(dt));
+        console.log(this.slidearrayfeature, 'kkk')
+        if (this.slidearrayfeature.length > 3) {
+          this.slidearray = this.slidearrayfeature.slice(5)
+        }
+      } else {
+        this.slidearrayfeature = []
+      }
+    }, (err) => {
+      this.slidearrayfeature = []
+    })
   }
 }
 

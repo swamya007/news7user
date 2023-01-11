@@ -6,12 +6,22 @@
             <div class="row">
                 <div class="col-md-8 col-12">
                     <div class="article-section-container" *ngIf="news">
+                        
+
                         <h1 class="article-heading">
-                            {{news.post_title}}
+                           {{news.post_title}}
+                           <mat-icon class="mat-icon-cls" (click)="edit(news.id)" title="Edit"> edit</mat-icon>
                         </h1>
+                        
                         <div class="author-cat-section">
-                            <p>{{news.post_date | date:'short'}}</p>
+                                <p>{{news.post_date | date:'short'}}</p>
+                                <div class="category-section">
+                                    {{catname}}
+                                </div>
                         </div>
+                        <!-- <div class="category-section">
+                            {{news.tags}}
+                        </div> -->
                         <div class="social-section">
                             <div class="share-section">
                                 <div class="share-cont">
@@ -46,6 +56,7 @@
                             </div>
                         </div>
                         <img class="article-image" [src]="news.guid">
+                        
                         <div class="article-text-section">
                             <div class="article-text" [innerHTML]="news.post_content"></div>
                             <div *ngIf="news.comment_status === 'opened'">

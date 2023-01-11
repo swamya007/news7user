@@ -18,18 +18,17 @@
                     
                 </th>
                 <th class="content">Slug</th>
-                <th class="content">Action</th>
                 <th class="content">Delete</th>
             </thead>
 
             <tr *ngFor="let data of trendingarray | paginate: { itemsPerPage: 10, currentPage: p } ">
                 <td class="first">
-                    <input type="checkbox" class="example-margin">
+                    <input type="checkbox" class="example-margin" [(ngModel)]="data.selected">
                 </td>
                 <td>{{data.post_title}}</td>
                 <td class="description">{{data.author_name}}</td>
                 <td>{{data.slug}}</td>
-                <td><mat-icon class="mat-icon-cls" title="Edit"> edit</mat-icon></td>
+                <td><mat-icon class="mat-icon-cls" title="Edit" (click)="postDelete(data.id,data.post_trend)">delete</mat-icon></td>
                 <!-- <td><button (click)="edittag(data)">Edit</button></td> -->
                 
             </tr>

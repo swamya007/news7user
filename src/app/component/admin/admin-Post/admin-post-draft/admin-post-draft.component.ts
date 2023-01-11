@@ -32,6 +32,7 @@ export class AdminPostDraftComponent implements OnInit {
 
     this.post.getdraftdetailsbypost(this.post_id,this.draft_id,this.currentuser.customer_id).subscribe((res: any) => {
       if (res.code == 'success') {
+        this.spinnerService.hide()
         var data = res.body;
         this.draftarrpost = data.map((dt: any) => JSON.parse(dt));
       } else {

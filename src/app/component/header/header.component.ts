@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AdserviceService } from 'src/app/services/Adservice/adservice.service';
 import { LoaderService } from 'src/app/services/loaderService/loader.service';
 import { EntryPopupComponent } from '../entry-popup/entry-popup.component';
+import { LoginService } from 'src/app/services/loginService/login.service';
 
 @Component({
   selector: 'app-header',
@@ -22,16 +23,18 @@ export class HeaderComponent implements OnInit {
   allAdsList:any = []
 
   ads_middle:any = []
+  isLoggedIn = false;
 
 
-
-  constructor(private masterAPI: MasterServiceService, private adsService:AdserviceService,private router:Router,private spinnerService: LoaderService,) { }
+  constructor(private loginService:LoginService,private masterAPI: MasterServiceService, private adsService:AdserviceService,private router:Router,private spinnerService: LoaderService,) { }
 
   ngOnInit(): void {
+    this.isLoggedIn = this.loginService.isLoggedIn();
     this.customer_id = environment.CUSTOMER_ID;
     this.getallheaders();
     this.getAllAdsList();
   }
+
 
   getallheaders() {
     this.masterAPI.getAllheaders(environment.CUSTOMER_ID).subscribe((res: any) => {

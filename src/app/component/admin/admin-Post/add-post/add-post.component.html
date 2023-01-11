@@ -8,8 +8,8 @@
                 <div class="col-md-6 col-sm-12 col-12">
                     <mat-label class="add-post-title">Title (required)</mat-label>
                     <mat-form-field appearance="outline">
-                        <input matInput type="text" name="title" [value]="title" [(ngModel)]="addPost.post_title" (keyup)="getSlug()"
-                            required>
+                        <input matInput type="text" name="title" [value]="title" [(ngModel)]="addPost.post_title"
+                            (keyup)="getSlug()" required>
                     </mat-form-field>
                 </div>
             </div>
@@ -17,7 +17,8 @@
                 <div class="col-md-6 col-sm-12 col-12">
                     <mat-label class="add-post-title">Slug</mat-label>
                     <mat-form-field appearance="outline">
-                        <input matInput type="text" name="slug" [(ngModel)]="addPost.slug" required (keyup)="getPermalink()">
+                        <input matInput type="text" name="slug" [(ngModel)]="addPost.slug" required
+                            (keyup)="getPermalink()">
                     </mat-form-field>
                 </div>
             </div>
@@ -25,20 +26,23 @@
                 <div class="col-md-6 col-sm-12 col-12">
                     <mat-label class="add-post-title">Permalink</mat-label>
                     <mat-form-field appearance="outline">
-                        <input matInput type="text" name="canonical-url" [(ngModel)]="addPost.permalink" required readonly>
+                        <input matInput type="text" name="canonical-url" [(ngModel)]="addPost.permalink" required
+                            readonly>
                     </mat-form-field>
                 </div>
             </div>
             <div class="add-post-form-field row">
-                <div class="col-md-12 col-12">
+                <!-- <div class="col-md-12 col-12">
                     <mat-label class="add-post-title">Post (required)</mat-label>
                     <ckeditor #editor id="description" [config]="ckeConfig" [(ngModel)]="addPost.post_content"
                         #myckeditor="ngModel" name="ckdescription">
                     </ckeditor>
-                </div>
+                </div> -->
+                <ngx-wig [(ngModel)]="addPost.post_content"></ngx-wig>
+
             </div>
         </div>
-     
+
         <div class="add-post-post-field-container">
             <h2 class="add-post-sub-heading">Post</h2>
             <div class="add-post-form-field row">
@@ -56,15 +60,15 @@
                 <div class="col-md-3 col-sm-12 col-12">
                     <mat-label class="add-post-title">Publish Date & Time (required)</mat-label>
                     <mat-form-field appearance="outline">
-                        <input matInput type="date" [(ngModel)]="addPost.post_date" required  onkeydown="return false">
+                        <input matInput type="date" [(ngModel)]="addPost.post_date" required onkeydown="return false">
                     </mat-form-field>
                 </div>
                 <div class="col-md-3 col-sm-12 col-12 time-field">
                     <mat-form-field name="stime" appearance="fill" class="form-field">
-                      <input matInput type="time" name="stime"  name="stime" class="time"
-                        [(ngModel)]="addPost.post_time" onkeydown="return false">
+                        <input matInput type="time" name="stime" name="stime" class="time"
+                            [(ngModel)]="addPost.post_time" onkeydown="return false">
                     </mat-form-field>
-                  </div>
+                </div>
             </div>
             <div class="add-post-form-field row">
                 <div class="col-md-6 col-sm-12 col-12">
@@ -91,10 +95,21 @@
             <div class="add-post-form-field row">
                 <div class="col-md-6 col-sm-12 col-12">
                     <mat-label class="add-post-title">Category (required)</mat-label>
-                    <div class="selecttag">
+                    <!-- <div class="selecttag">
                         <ng-multiselect-dropdown [placeholder]="'Select Category'" [settings]="dropdownSettingsCat"
-                            [data]="catarr" [(ngModel)]="addPost.category" (keyup.enter)="onFilterChange($event)" >
+                            [data]="catarr" [(ngModel)]="addPost.category" (keyup.enter)="onFilterChange($event)">
                         </ng-multiselect-dropdown>
+                    </div> -->
+                    <div tabindex="0" class="multiselect-dropdown-1" data-toggle="collapse" data-target="#demo">
+                        <div><span tabindex="-1" class="dropdown-btn-1"><span>Select
+                                    Category</span>
+                                    <span style="float: right !important; padding-right: 4px;" >
+                                        <span class="dropdown-multiselect__caret-1"></span></span></span></div>
+                    </div>
+                    <div id="demo" class="collapse scroll-div">
+                        <bn-ng-tree [(ngModel)]="selected" [show-checkbox]="true" [show-counts]="true" [style-class]="'my-tree'"
+                            [show-search]="true" [items]="catarr" (onChange)="selectedItem($event)"
+                            (onChecked)="checkedItems($event)"></bn-ng-tree>
                     </div>
                 </div>
             </div>
@@ -114,12 +129,13 @@
                     <div class="upload_txt"><input #tourBanner type="file" id="file-select"
                             accept="image/png, image/jpeg" (change)="onfileselected($event)"
                             [(ngModel)]="addPost.media_url"></div>
-                            <div class="or-div">or</div>
-                            <div class="upload_txt"><button mat-raised-button (click)="openDialog()">Choose from Media</button></div>
+                    <div class="or-div">or</div>
+                    <div class="upload_txt"><button mat-raised-button (click)="openDialog()">Choose from Media</button>
+                    </div>
                 </div>
                 <div class="col-md-2 col-sm-12 col-12">
-                    <img [src]="addPost.guid ? addPost.guid : 'assets/img/image-preview-icon-picture-placeholder-vector-31284806.jpg'" id="bannerImage"
-                        class="img-fluid">
+                    <img [src]="addPost.guid ? addPost.guid : 'assets/img/image-preview-icon-picture-placeholder-vector-31284806.jpg'"
+                        id="bannerImage" class="img-fluid">
                 </div>
             </div>
             <div class="add-post-form-field row">
@@ -145,7 +161,15 @@
         </div>
         <div class="add-post-seo-field-container">
             <h2 class="add-post-sub-heading">SEO</h2>
-          
+
+            <div class="add-post-form-field row">
+                <div class="col-md-6 col-sm-12 col-12">
+                    <mat-label class="add-post-title">SEO Title</mat-label>
+                    <mat-form-field appearance="outline">
+                        <input matInput type="text" name="seo-title" [(ngModel)]="addPost.seo_title" required>
+                    </mat-form-field>
+                </div>
+            </div>
             <div class="add-post-form-field row">
                 <div class="col-md-6 col-sm-12 col-12">
                     <mat-label class="add-post-title">Meta Description</mat-label>
@@ -166,8 +190,51 @@
         </div>
         <div class="submit-button-container">
             <button mat-raised-button color="primary" (click)="addpost()">Publish</button>
-            <button mat-raised-button color="accent" (click)="saveas_draft()" style="margin-left: 5px">Save As Draft</button>
+            <button mat-raised-button color="accent" (click)="saveas_draft()" style="margin-left: 5px">Save As
+                Draft</button>
+            <button mat-raised-button (click)="newspreview(addPost)"
+                style="margin-left: 5px;background-color: #1883a3;color: white;">Preview</button>
 
+
+        </div>
+    </div>
+</div>
+<button type="button" class="btn btn-primary" id="quickeditModal" data-toggle="modal" data-target="#exampleModal1"
+    style="display:none">
+</button>
+<div class="modal" id="exampleModal1" #closebutton tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Preview Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="article-section-container mdl-ht" *ngIf="addPost">
+                <h1 class="article-heading">
+                    {{addPost.post_title}} <span target="_blank">
+                        <!-- <mat-icon class="mat-icon-cls" title="Edit"> edit</mat-icon> -->
+                    </span>
+
+                </h1>
+                <div class="author-cat-section">
+                    <div class="author-section">
+                        <p>Last Updated on <span>{{addPost.post_date | date:'MMMM
+                                dd, yyyy'}}</span></p>
+                    </div>
+                    <!-- <div class="category-section">
+                        {{addPost.tags}}
+                    </div> -->
+                </div>
+                <img class="article-image" id="previewImage" [src]="addPost.post_img">
+                <div [innerHTML]="addPost.post_content">
+                </div>
+                <div class="article-text-section">
+
+                </div>
+            </div>
         </div>
     </div>
 </div>

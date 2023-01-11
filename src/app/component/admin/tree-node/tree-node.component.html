@@ -1,0 +1,12 @@
+
+<bn-ng-tree
+[(ngModel)]="selected"
+[show-checkbox]="true"
+[show-counts]="true"
+[show-search]="true"
+[items]="catarr"
+(onChange)="selectedItem($event)"
+(onChecked)="checkedItems($event)"
+></bn-ng-tree>
+
+<button (click)="view()">Click</button>

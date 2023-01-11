@@ -84,5 +84,8 @@ export class PostserviceService {
     return this.HTTP.get<any>(Masterapi + `/get-draft-details-by-post?post_id=${post_id}&draft_id=${draft_id}&customer_id=${cust_id}`);
   }
   
+  getsilder(customer_id:any){
+    return this.HTTP.get<any>(Masterapi + `/get-silde?customer_id=${customer_id}`);
+  }
 
 }

@@ -122,6 +122,8 @@ import { EntryPopupComponent } from './component/entry-popup/entry-popup.compone
 import { TrendingnewsComponent } from './component/admin/trendingnews/trendingnews.component';
 import { PrivacyPolicyComponent } from './component/privacy-policy/privacy-policy.component';
 import { FeaturedStoriesComponent } from './component/featured-stories/featured-stories.component';
+import { BnNgTreeModule } from 'bn-ng-tree-lib';
+import { DEFAULT_LIBRARY_BUTTONS, NgxWigModule } from 'ngx-wig';
 
 @NgModule({
   declarations: [
@@ -249,6 +251,10 @@ import { FeaturedStoriesComponent } from './component/featured-stories/featured-
     IvyCarouselModule,
     DragDropModule,
     NgxSpinnerModule,
+    BnNgTreeModule,
+    NgxWigModule.forRoot({ buttonsConfig: DEFAULT_LIBRARY_BUTTONS } )
+
+
   ],
   providers: [
     {

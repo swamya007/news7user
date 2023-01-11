@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MasterServiceService } from 'src/app/services/masterservice/master-service.service';
 import { PostserviceService } from 'src/app/services/postservice/postservice.service';
 import { environment } from 'src/environments/environment';
 import { News7_CONSTANTS } from 'src/new7constants/new7constants';
@@ -12,26 +13,47 @@ import { News7_CONSTANTS } from 'src/new7constants/new7constants';
 export class MainNewsComponent implements OnInit {
   slideIndex: number = 0;
   myTimer: any;
-  postarr:any = []
-  slidearray:any = []
+  postarr: any = []
+  slidearray1: any = []
+  slidearrayfeature: any = []
+  slidearray: any = []
 
-  constructor(private postserviceService: PostserviceService, private router:Router) { }
+
+  constructor(private postserviceService: PostserviceService, private router: Router, private master: MasterServiceService) { }
 
 
   ngOnInit(): void {
     // this.showImage(this.slideIndex);
-    this.getLatestNews()
+    this.getLatestNews();
+    this.getslide();
     setTimeout(() => {
       this.showImage(this.slideIndex);
     }, 1500);
   }
 
+
+  getslide() {
+    this.master.getslider(environment.CUSTOMER_ID).subscribe((res: any) => {
+      if (res.code == 'success') {
+        var data = res.body;
+        this.slidearrayfeature = data.map((dt: any) => JSON.parse(dt));
+        console.log(this.slidearrayfeature, 'kkk')
+        if (this.slidearrayfeature.length > 3) {
+          this.slidearray1 = this.slidearrayfeature.slice(0, 5)
+        }
+      } else {
+        this.slidearrayfeature = []
+      }
+    }, (err) => {
+      this.slidearrayfeature = []
+    })
+  }
   getShortName(user_name: any) {
     return user_name.slice(0, 61).trim() + (user_name.length > 60 ? "..." : "");
   }
 
   getLatestNews() {
-    this.postserviceService.getLatestNews(1,environment.CUSTOMER_ID,'').subscribe((res: any) => {
+    this.postserviceService.getLatestNews(1, environment.CUSTOMER_ID, '').subscribe((res: any) => {
       if (res.code == 'success') {
         var data = res.body;
         this.postarr = data.map((dt: any) => JSON.parse(dt));
@@ -49,7 +71,7 @@ export class MainNewsComponent implements OnInit {
     })
   }
 
-  currentImage(n: number){
+  currentImage(n: number) {
     clearInterval(this.myTimer);
     this.myTimer = setTimeout(() => {
       this.plusSlides(n + 1);
@@ -76,9 +98,9 @@ export class MainNewsComponent implements OnInit {
     }, 4000);
   }
 
-  plusSlides(n: number){
+  plusSlides(n: number) {
     clearInterval(this.myTimer);
-    if (n < 0){
+    if (n < 0) {
       this.showImage(this.slideIndex -= 1);
     } else {
       this.showImage(this.slideIndex += 1);

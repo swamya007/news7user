@@ -86,7 +86,7 @@ export class ManageHeaderComponent implements OnInit {
         });
         console.log(this.headerarry);
       } else {
-        this.catarr = []
+        this.headerarry = []
       }
     }, (err) => {
       this.headerarry = []

@@ -2,7 +2,7 @@
     margin: 1px;
 }
 .viewcategory-container {
-    background-color: var(--site-background);
+    background-color: var #f8f9fa(--site-background);
     min-height: 100vh;
     padding: 2% 3%;
 }
@@ -145,7 +145,7 @@ tr:nth-child(odd) {
   
 /* -----------------form-field---------------- */
  :host::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
-    padding: 4px 0 10px 0 !important;
+    padding: 0px 0 0px 0 !important;
 }
 :host::ng-deep .multiselect-dropdown .dropdown-btn {
     padding: 7px 12px !important;

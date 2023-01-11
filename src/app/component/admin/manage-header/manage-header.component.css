@@ -94,5 +94,5 @@
     margin-top: 10px;
   }
   .category:nth-child(odd) {
-    background-color: var(--site-background);
+    background-color: #f4f4f4;
   }

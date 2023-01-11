@@ -17,6 +17,7 @@ export class TwinCityNewsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getLatestNews()
+    console.log('twincity')
   }
 
   getShortName(user_name: any) {

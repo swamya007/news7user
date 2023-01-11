@@ -1,5 +1,5 @@
 .viewtag-container {
-    background-color: var(--site-background);;
+    background-color: var #f8f9fa(--site-background);;
     min-height: 100vh;
     padding: 2% 3%;
 }

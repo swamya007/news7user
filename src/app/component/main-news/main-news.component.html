@@ -1,5 +1,5 @@
 <div class="news-section">
-    <div class="slideshow-container">
+    <!-- <div class="slideshow-container">
         <div class="myImages image-bg" *ngFor="let row of slidearray" (click)="opennewsSec(row.slug)">
             <img [src]="row.guid" />
             <div class="heading-container">
@@ -9,27 +9,36 @@
                 </div>
             </div>
         </div>
-    </div>
-    <br>
-    <!-- The dots/circles -->
-    <div style="text-align:center">
-        <span class="dot" (click)="currentImage(1)"></span>
-        <span class="dot" (click)="currentImage(2)"></span>
-        <span class="dot" (click)="currentImage(3)"></span>
-    </div>
-    <!-- <div class="main-news-container">
-        <div class="row main-news-section">
-            <div class="col-md-6 " *ngFor="let post of postarr" (click)="opennewsSec(post.slug)">
-                <div class="news-card main-news-border">
-                    <img [src]="post.guid">
-                    <div class="news-date-section d-flex">
-                        <div class="author-name">{{post.author_name}}</div>
-                        <div> <i class="fa-solid fa-circle news-circle-icon "></i></div>
-                        <div class="news-date"> {{post.post_date | date:'MMMM dd, yyyy'}}</div>
+    </div> -->
+
+    <div id="carouselExampleControls7" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item" *ngFor="let row of slidearray1;let i = index"
+                [ngClass]="i === 0 ? 'active' : ''">
+                <img class="d-block w-100" src={{row.guid}} (click)="opennewsSec(row.slug)">
+                <div class="heading-container">
+                    <h1>{{row.post_title ? getShortName(row.post_title) : ''}}</h1>
+                    <div class="news-date-section">
+                        <div class="news-date"> {{row.post_date | date:'short'}}</div>
                     </div>
-                    <p>{{post.post_title ? getShortName(post.post_title) : ''}}</p>
                 </div>
             </div>
+
         </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls7" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls7" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <!-- The dots/circles -->
+    <!-- <div style="text-align:center">
+        <span class="next" (click)="currentImage(1)"></span>
+        <span class="dot" (click)="currentImage(2)"></span>
+        <span class="dot" (click)="currentImage(3)"></span>
     </div> -->
+
 </div>

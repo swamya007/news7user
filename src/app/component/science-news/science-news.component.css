@@ -41,8 +41,9 @@
 
 .news-section {
     /* padding: 1rem; */
-    background: var(--white);
+    /* background: var(--white); */
     /* border: 1px rgb(215, 215, 215) solid; */
+    
   }
   
   .news-box {
@@ -55,8 +56,9 @@
   }
   
   .news-text-container p {
-    color: rgb(71, 71, 71);
+    color:#FFF;
     transition: all .4s ease;
+    
   }
   
   .news-box:hover .news-text-container p {

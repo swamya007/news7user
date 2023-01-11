@@ -1,0 +1,17 @@
+:host::ng-deep .node__icon {
+    display: none;
+}
+
+:host::ng-deep .search-container {
+    width: 300px;
+}
+
+:host::ng-deep .node-checkbox {
+    float: left;
+    margin-top: 2px !important;
+    margin-left: -18px;
+}
+
+:host::ng-deep .node__apps {
+    padding: 0 !important;
+}

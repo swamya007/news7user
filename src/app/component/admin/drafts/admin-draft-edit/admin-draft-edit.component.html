@@ -17,7 +17,8 @@
                 <div class="col-md-6 col-sm-12 col-12">
                     <mat-label class="add-post-title">Slug</mat-label>
                     <mat-form-field appearance="outline">
-                        <input matInput type="text" name="slug" [(ngModel)]="updatepost.slug" required (keyup)="getPermalink()">
+                        <input matInput type="text" name="slug" [(ngModel)]="updatepost.slug" required
+                            (keyup)="getPermalink()">
                     </mat-form-field>
                 </div>
             </div>
@@ -148,7 +149,14 @@
         </div>
         <div class="add-post-seo-field-container">
             <h2 class="add-post-sub-heading">SEO</h2>
-
+            <div class="add-post-form-field row">
+                <div class="col-md-6 col-sm-12 col-12">
+                    <mat-label class="add-post-title">SEO Title</mat-label>
+                    <mat-form-field appearance="outline">
+                        <input matInput type="text" name="seo-title" [(ngModel)]="updatepost.seo_title">
+                    </mat-form-field>
+                </div>
+            </div>
             <div class="add-post-form-field row">
                 <div class="col-md-6 col-sm-12 col-12">
                     <mat-label class="add-post-title">Meta Description</mat-label>
@@ -170,7 +178,46 @@
             <button mat-raised-button color="primary" (click)="modifypost()">Update as Post</button>
             <button mat-raised-button color="accent" (click)="saveas_draft()" style="margin-left: 5px">Save As
                 Draft</button>
+            <button mat-raised-button (click)="newspreview(updatepost)"
+                style="margin-left: 5px;background-color: #1883a3;color: white;">Preview</button>
+        </div>
+    </div>
+</div>
+<button type="button" class="btn btn-primary" id="quickeditModal" data-toggle="modal" data-target="#exampleModal1"
+    style="display:none">
+</button>
+<div class="modal" id="exampleModal1" #closebutton tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Preview Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="article-section-container mdl-ht" *ngIf="updatepost">
+                <h1 class="article-heading">
+                    {{updatepost.post_title}} <span target="_blank">
+                        <!-- <mat-icon class="mat-icon-cls" title="Edit"> edit</mat-icon> -->
+                    </span>
 
+                </h1>
+                <div class="author-cat-section">
+                    <div class="author-section">
+                        <p>Last Updated on <span>{{updatepost.post_date | date:'MMMM
+                                dd, yyyy'}}</span></p>
+                    </div>
+                    <!-- <div class="category-section">
+                    </div> -->
+                </div>
+                <img class="article-image" id="previewImage" [src]="updatepost.guid">
+                <div [innerHTML]="updatepost.post_content">
+                </div>
+                <div class="article-text-section">
+
+                </div>
+            </div>
         </div>
     </div>
 </div>

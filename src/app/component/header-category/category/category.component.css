@@ -362,18 +362,25 @@
     }
   } */
 
+  .innerheader{
+    /* margin-left: 80px; */
+    margin-top: 20px;
+    font-weight: bold;
+  }
+
   .top-stories {
     background: #f7f7f7;
 }
   .news-section {
     background: #f7f7f7;
-    padding: 0 15px;
+    /* padding: 0 15px; */
   }
   
   .news-box {
     background: #ffffff !important;
-    margin: 20px 0 20px 20px;
+    /* margin: 20px 0 20px 20px; */
     height: 300px;
+    margin: 20px 0px;
   }
   
   .news-img-container {

@@ -24,7 +24,31 @@ export class AddUserComponent implements OnInit {
 
   dropdownSettings: IDropdownSettings = {};
   currentuser: any = {};
+  // modules!: {
+  //   toolbar: [
+  //     ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+  //     ['blockquote'],
 
+  //     // [{'header': 1}, {'header': 2}],               // custom button values
+  //     [{'list': 'ordered'}, {'list': 'bullet'}],
+  //     [{'script': 'sub'}, {'script': 'super'}],      // superscript/subscript
+  //     [{'indent': '-1'}, {'indent': '+1'}],          // outdent/indent
+  //     [{'direction': 'rtl'}],                         // text direction
+
+  //     // [{'size': ['small', false, 'large', 'huge']}],  // custom dropdown
+  //     // [{'header': [1, 2, 3, 4, 5, 6, false]}],
+
+  //     // [{'color': []}, {'background': []}],          // dropdown with defaults from theme
+  //     // [{'font': []}],
+  //     [{'align': []}],
+
+  //     ['clean'],                                       // remove formatting button
+
+  //      ['link', 'image', 'video',]     ,              // link and image, video
+  //     ['link']                                         // link
+
+  //   ]
+  // };
   constructor(private userService: UserService, private router: Router, private loginService:LoginService,
     private notify: NotificationService, private masterService: MasterServiceService,private spinnerService: LoaderService) { }
 
@@ -76,7 +100,7 @@ export class AddUserComponent implements OnInit {
 
     this.userData.user_status = 1;
     this.userData.flag = 'I';
-    this.userData.customer_id = environment.CUSTOMER_ID
+    this.userData.customer_id = 1
 
     if(this.userData.user_email) {
       var mail_format = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';

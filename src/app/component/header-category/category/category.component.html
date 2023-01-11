@@ -1,4 +1,6 @@
+<!-- <app-latest-news-header></app-latest-news-header> -->
 <!-- <div class="gallery-news-holder-container">
+  
   <div class="row" *ngIf="post_array_upper.length > 0">
     <div class="col-md-5 col-sm-12 col-12 np" *ngIf="post_array_upper[0]">
       <div class="image-bg first-img" (click)="opennewsSec(post_array_upper[0].slug)">
@@ -78,7 +80,7 @@
   </div>
 </div> -->
 
-<div class="top-stories">
+<div class="container top-stories">
   <div class="row">
     <!-- <div class="col-md-3 col-sm-12 col-12">
       <app-opinions></app-opinions>
@@ -105,7 +107,11 @@
         </div>
       </div>
     </div> -->
+   
     <div class="col-md-8 col-sm-12 col-12">
+      <h1 class="innerheader">
+        {{post_array[0].category_list[0]}}
+      </h1>
       <!-- <div class="browse-categories-container">
         <div class="bc-heading-container">
           <h4 class="news-sub">Browsing Category</h4>
@@ -144,7 +150,7 @@
         </div>
       </div> -->
       
-      <div class="news-section">
+      <div class="news-section cointainer">
         <div class="row news-box" (click)="opennewsSec(post.slug)" *ngFor="let post of post_array | paginate : {
           itemsPerPage: tableSize,
           currentPage: page,

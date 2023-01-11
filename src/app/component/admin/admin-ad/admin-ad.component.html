@@ -156,6 +156,8 @@
             <mat-label class="category-info">Upload Ads</mat-label>
             <div class="upload_txt  mt-10"><input type="file" #artThumbCheckRightUpperSec (change)="onfileselectedrightuppersec($event)"
                 accept="image/png, image/jpeg" id="file-select"></div>
+                <div class="upload_txt"><button mat-raised-button (click)="openDialog()">Choose from Media</button>
+                </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6 col-12">
             <img src="assets/img/no-img.png" id="thumbnailImage_rightuppersec" class="img-sec">

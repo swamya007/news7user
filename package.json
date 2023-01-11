@@ -29,6 +29,7 @@
     "angular-responsive-carousel": "^2.1.2",
     "angular2-multiselect-dropdown": "^5.0.4",
     "axios": "^0.27.2",
+    "bn-ng-tree-lib": "^1.6.3",
     "bootstrap": "^5.2.1",
     "bootstrap-icons": "^1.8.3",
     "ckeditor4-angular": "^3.2.0",
@@ -45,6 +46,7 @@
     "ngx-pagination": "^6.0.3",
     "ngx-skeleton-loader": "^6.0.0",
     "ngx-spinner": "^13.1.1",
+    "ngx-wig": "^13.2.6",
     "rxjs": "~6.6.0",
     "tslib": "^2.4.0",
     "zone.js": "~0.11.4"

@@ -29,6 +29,20 @@ export class TrendingnewsComponent implements OnInit {
       this.cust_id = environment.CUSTOMER_ID
       this.getalltrending()
     }
+
+    postDelete(id: any ,post_trend:any) {
+      var funct = 'POST';
+      post_trend=0
+
+      this.masterService.deletetrending( id,this.cust_id).subscribe(res => {
+        if (res.code === "success") {
+          this.notification.success("Post deleted successfully");
+          this.getalltrending();
+        } else {
+          this.notification.error(res.message);
+        }
+      })
+    }
     getalltrending() {
 
       this.spinnerService.show()

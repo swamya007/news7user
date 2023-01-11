@@ -33,6 +33,7 @@ export class CategoryComponent implements OnInit {
   category_one: any = []
   category_two: any = []
   category_three: any = []
+  catname: any;
 
   constructor(private adsService: AdserviceService, private postserviceService: PostserviceService, private router: Router,
     private masterservice: MasterServiceService, private activatedRoute: ActivatedRoute) {
@@ -62,6 +63,7 @@ export class CategoryComponent implements OnInit {
       //   console.log('Category Three====', this.category_three)
       // }
     })
+   
   }
 
   @Input()
@@ -102,7 +104,20 @@ export class CategoryComponent implements OnInit {
     // }
 
     console.log(this.post_array);
+
+
+    
+
   }
+
+getcategoryname(){
+
+
+   if(this.post_array.category_name) {
+      this.catname = this.post_array.category_name.split(",",)[0]
+    }
+}
+
 
   getWithoutHeaderCategory() {
     this.masterservice.getWithoutHeaderCategory(environment.CUSTOMER_ID).subscribe((res: any) => {

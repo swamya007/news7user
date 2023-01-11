@@ -42,7 +42,7 @@
 #view-table th {
     padding: 15px 0px 15px 10px;
     text-align: left;
-    background-color: var(--site-background);
+    background-color: #f4f4f4;
 }
 #view-table td {
     padding: 15px 0px 15px 10px;

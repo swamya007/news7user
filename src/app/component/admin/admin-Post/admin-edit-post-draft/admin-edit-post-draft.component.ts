@@ -114,6 +114,7 @@ export class AdminEditPostDraftComponent implements OnInit {
   getallcategory() {
     this.categoryService.getAllCategory('', '', this.currentuser.customer_id).subscribe((res: any) => {
       if (res.code == 'success') {
+        this.spinnerService.hide()
         var data = res.body;
         this.catarr = data.map((dt: any) => JSON.parse(dt));
 
@@ -129,9 +130,11 @@ export class AdminEditPostDraftComponent implements OnInit {
           this.updatepost.category = value;
         }
       } else {
+        this.spinnerService.hide()
         this.catarr = []
       }
     }, (err) => {
+      this.spinnerService.hide()
       this.catarr = []
     })
   }
@@ -144,6 +147,27 @@ export class AdminEditPostDraftComponent implements OnInit {
   getPermalink() {
     this.updatepost.slug = this.updatepost.slug.replace(" ","-");
     this.updatepost.permalink = environment.POST_URL + this.updatepost.slug;
+  }
+
+  newspreview(addPost:any) {
+    let postImg:any;
+    if(this.updatepost.Multiimage) {
+      postImg = document.querySelector('#previewImage');
+      postImg.src = URL.createObjectURL(this.updatepost.Multiimage);
+    } else {
+      if(this.updatepost.post_img) {
+        postImg = document.querySelector('#previewImage');
+        postImg.src = this.updatepost.post_img;
+      } else {
+        postImg = document.querySelector('#previewImage');
+        postImg.src = this.updatepost.guid;
+      }
+      
+    }
+
+    const exampleModal1 = document.getElementById('quickeditModal');
+    if (exampleModal1) exampleModal1.click();
+
   }
 
   onFilterChange(event: any) {
@@ -191,6 +215,7 @@ export class AdminEditPostDraftComponent implements OnInit {
   getalltag() {
     this.viewstag.getalltag(this.tagid, this.tag_name, this.cust_id).subscribe((res: any) => {
       if (res.code == 'success') {
+        this.spinnerService.hide()
         var data = res.body;
         this.tagarray = data.map((dt: any) => JSON.parse(dt));
 
@@ -207,9 +232,11 @@ export class AdminEditPostDraftComponent implements OnInit {
         }
 
       } else {
+        this.spinnerService.hide()
         this.tagarray = []
       }
     }, (err) => {
+      this.spinnerService.hide()
       this.tagarray = []
     })
   }
@@ -261,6 +288,8 @@ export class AdminEditPostDraftComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result.media_url) {
+        this.updatepost.Multiimage = ''
+        this.tourBanner.nativeElement.value = '';
         let postImg: any = document.querySelector('#bannerImage');
         postImg.src = result.media_url;
         this.updatepost.post_img = result.media_url;
@@ -278,11 +307,13 @@ export class AdminEditPostDraftComponent implements OnInit {
       postImg = document.querySelector('#bannerImage')
       postImg.src = 'assets/img/image-preview-icon-picture-placeholder-vector-31284806.jpg';
       this.tourBanner.nativeElement.value = '';
+      this.updatepost.image_name = ''
     }
     else {
       this.updatepost.post_mime_type = this.updatepost.Multiimage.type
       postImg = document.querySelector('#bannerImage');
       postImg.src = URL.createObjectURL(this.updatepost.Multiimage);
+      this.updatepost.image_name = this.updatepost.Multiimage.name
     }
   }
   modifypost() {

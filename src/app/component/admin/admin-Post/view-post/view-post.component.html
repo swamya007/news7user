@@ -10,10 +10,11 @@
         </mat-select>
       </mat-form-field>
       <!-- <button mat-raised-button color="primary" class="search-btn" (click)="searchCategory()">Search Category</button> -->
-      
+
       &nbsp;
       <mat-form-field appearance="outline">
-        <mat-select [(ngModel)]="yearSearch" (selectionChange)="searchByValue('YEAR')" disableRipple [ngModelOptions]="{standalone: true}">
+        <mat-select [(ngModel)]="yearSearch" (selectionChange)="searchByValue('YEAR')" disableRipple
+          [ngModelOptions]="{standalone: true}">
           <mat-option value="">Year</mat-option>
           <mat-option *ngFor="let gm of year" [value]="gm.val">{{ gm.name }}
           </mat-option>
@@ -21,7 +22,8 @@
       </mat-form-field>
       &nbsp;
       <mat-form-field appearance="outline">
-        <mat-select [(ngModel)]="monthSearch" (selectionChange)="searchByValue('MONTH')" disableRipple [ngModelOptions]="{standalone: true}">
+        <mat-select [(ngModel)]="monthSearch" (selectionChange)="searchByValue('MONTH')" disableRipple
+          [ngModelOptions]="{standalone: true}">
           <mat-option value="">Month</mat-option>
           <mat-option *ngFor="let gm of month" [value]="gm.val">{{ gm.name }}
           </mat-option>
@@ -36,7 +38,8 @@
     </div>
     <div class="search-category mt-10">
       <mat-form-field appearance="outline">
-        <mat-select [(ngModel)]="authorsearch" (selectionChange)="searchByValue('AUTHOR')" disableRipple [ngModelOptions]="{standalone: true}">
+        <mat-select [(ngModel)]="authorsearch" (selectionChange)="searchByValue('AUTHOR')" disableRipple
+          [ngModelOptions]="{standalone: true}">
           <mat-option value="">Author</mat-option>
           <mat-option *ngFor="let gm of allUser" [value]="gm.user_id">{{ gm.user_nicename }}
           </mat-option>
@@ -46,20 +49,25 @@
       <mat-form-field appearance="outline" class="form-group w-200">
         <input matInput type="text" name="cname" [(ngModel)]="searchval">
       </mat-form-field>
-      <button mat-raised-button color="primary" style="background-color:#1883a3;" class="search-btn" (click)="searchPost()">Search
+      <button mat-raised-button color="primary" style="background-color:#1883a3;" class="search-btn"
+        (click)="searchPost()">Search
         Post</button>
       <button mat-raised-button color="primary" style="background-color:#a31879;" class="search-btn"
         (click)="viewdraft()">Drafts</button>
       <button mat-raised-button color="primary" style="background-color:#a39518;" class="search-btn"
         (click)="postbyauthor()">Mine</button>
-      <button mat-raised-button color="primary" style="background-color:#18a352;" class="search-btn" (click)="trending()">View Trending</button>
+      <button mat-raised-button color="primary" style="background-color:#18a352;" class="search-btn"
+        (click)="trending()">View Trending</button>
       <button mat-raised-button color="primary" style="background-color:#e61333;" class="search-btn"
         (click)="redirectfn()">Delete</button>
       <button mat-raised-button color="warning" class="search-btn warning" (click)="getallpost()">Clear</button>
     </div>
+    <div class="search-category mt-10">
     <button mat-raised-button color="primary" style="background-color:#e61333;" class="search-btn"
     (click)="redirectfntred()">Add To Trending</button>
-
+    <button mat-raised-button color="primary" style="background-color:#997dbdd2;" class="search-btn"
+    (click)="refirectfn()">Add To Featured Slider</button>
+  </div>
     <div class="header">
       <div>
       </div>
@@ -79,7 +87,7 @@
             <td class="first">
               <input type="checkbox" class="example-margin" [(ngModel)]="data.selected">
             </td>
-            <td>{{data.post_title}}</td>
+            <td><a href="/post/{{data.slug}}" target="_blank">{{data.post_title}}</a></td>
             <td>{{data.post_date | date:'dd-MM-yyyy'}}</td>
             <td>{{data.author_name}}</td>
             <td>
@@ -106,7 +114,7 @@
   </div>
 </div>
 
-
+<!--Modal for delete-->
 <div class="modal" id="exampleModal" #closebutton tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -129,6 +137,30 @@
     </div>
   </div>
 </div>
+
+<div class="modal" id="exampleModalnew" #closebutton tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-title1" id="exampleModalLabel">Featured silder</div>
+      <div class="modal-body">
+        <p> Do You Want To Add This Post to Featured silder
+        </p>
+      </div>
+      <div class="text-center">
+        <button type="button" class="cancel-delete-button" style="background-color:#e61333;" data-bs-dismiss="modal"
+          (click)="addFeaturedsilder()">Yes
+        </button>
+        <button type="button" class="cancel-delete-button" style="background-color:#1367e6;" data-bs-dismiss="modal"
+          (click)="cancel()">No
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <div class="modal" id="exampleModaltred" #closebutton tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">

@@ -599,6 +599,70 @@ export class ViewPostComponent implements OnInit {
     }
   }
 
+  addFeaturedsilder(){
+    var funct = 'POST';
+    const exampleModalnew = document.getElementById('exampleModalnew');
+    this.spinnerService.show();
+    this.checkedList = [];
+    for (let i = 0; i < this.postarr.length; i++) {
+      if (this.postarr[i].selected) {
+        this.checkedList.push(this.postarr[i].id);
+      }
+    }
+    if (this.checkedList.length == 0) {
+      this.notification.error('Please select ');
+      this.spinnerService.hide();
+      return;
+    }
+
+    this.masterService.addtoslider(this.checkedList?.join(','), this.currentuser.customer_id)
+      .subscribe(
+        (res: any) => {
+          this.checkedList = [];
+          if (res.code === 'success') {
+            this.spinnerService.hide();
+            this.notification.success(' successful');
+
+            this.getallpost();
+          } else {
+            this.spinnerService.hide();
+            this.notification.error(res.message);
+          }
+        },
+        (err: any) => {
+          this.spinnerService.hide();
+          this.notification.error(err.message);
+        }
+      );
+
+    if (exampleModalnew) {
+      exampleModalnew.style.display = 'none';
+    }
+  }
+  
+
+
+
+  refirectfn(){
+    const exampleModalnew = document.getElementById('exampleModalnew');
+    this.checkedList = [];
+  
+    for (let i = 0; i < this.postarr.length; i++) {
+      if (this.postarr[i].selected)
+        this.checkedList.push(this.postarr[i].id);
+    }
+    console.log(this.checkedList)
+    if (this.checkedList.length == 0) {
+      this.notification.error('Please select atleast one .');
+    }
+
+    if (this.checkedList.length != 0) {
+      if (exampleModalnew) {
+        exampleModalnew.style.display = 'inline';
+      }
+    }
+  }
+
   cancelfn() {
     const exampleModal = document.getElementById('exampleModal');
 
@@ -607,6 +671,14 @@ export class ViewPostComponent implements OnInit {
     }
   }
 
+
+  cancel(){
+    const exampleModalnew = document.getElementById('exampleModalnew');
+
+    if (exampleModalnew) {
+      exampleModalnew.style.display = 'none';
+    }
+  }
   cancelfntred() {
     const exampleModaltred = document.getElementById('exampleModaltred');
 

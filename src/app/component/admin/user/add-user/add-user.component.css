@@ -3,7 +3,7 @@
   }
   
   .add-user-form .mat-form-field-outline {
-    background: var(--white) !important;
+    background: var (--white) !important;
     border: 1px solid gray !important;
     border-radius: 5px;
   }
@@ -13,7 +13,7 @@
   }
   
   .user-container {
-    background-color: var(--site-background);
+    background-color: #f8f9fa;
     padding: 2% 5%;
   }
   

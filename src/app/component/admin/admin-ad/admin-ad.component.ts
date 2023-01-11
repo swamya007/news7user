@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AdmodelTopContent } from 'src/app/models/adModel';
 import { AdserviceService } from 'src/app/services/Adservice/adservice.service';
@@ -8,6 +9,7 @@ import { MasterServiceService } from 'src/app/services/masterservice/master-serv
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { environment } from 'src/environments/environment';
 import { News7_CONSTANTS } from 'src/new7constants/new7constants';
+import { ChoosemediaComponent } from '../admin-Post/choosemedia/choosemedia.component';
 
 @Component({
   selector: 'app-admin-ad',
@@ -15,7 +17,8 @@ import { News7_CONSTANTS } from 'src/new7constants/new7constants';
   styleUrls: ['./admin-ad.component.css']
 })
 export class AdminAdComponent implements OnInit {
-
+  @ViewChild('tourBanner')
+  tourBanner!: ElementRef;
   @ViewChild('artThumbCheckTopSec')
   artThumbCheckTopSec!: ElementRef;
   @ViewChild('artThumbCheckRightUpperSec')
@@ -33,7 +36,7 @@ export class AdminAdComponent implements OnInit {
   currentuser: any = {}
   username: any
 
-  constructor(private spinnerService: LoaderService, private masterService: MasterServiceService, private loginService: LoginService, private Notification: NotificationService, private router: Router, private notify: NotificationService, private adsservice: AdserviceService) { }
+  constructor(public dialog: MatDialog,private spinnerService: LoaderService, private masterService: MasterServiceService, private loginService: LoginService, private Notification: NotificationService, private router: Router, private notify: NotificationService, private adsservice: AdserviceService) { }
 
   adstopsec: any
   adsrightuppersec: any
@@ -53,7 +56,23 @@ export class AdminAdComponent implements OnInit {
     this.username = this.currentuser.user_nicename;
     this.getAdsSizeList();
   }
+  openDialog() {
+    const dialogRef = this.dialog.open(ChoosemediaComponent, {
+      height: '550px',
+      width: '900px',
+      
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      if(result.media_url){     
+        this.adstopsec.Multiimage = ''
+        this.artThumbCheckTopSec.nativeElement.value = '';
+        let postImg:any = document.querySelector('#bannerImage');
+        postImg.src = result.media_url;
+        this.adstopsec.ads_mulfile=result.media_url;
+      }
+    });
+  }
   getAdsSizeList() {
     this.masterService.getDropDownList(News7_CONSTANTS.LOOKUPS.adsize, environment.CUSTOMER_ID).subscribe((res: any) => {
       this.adsizelist = res.body;

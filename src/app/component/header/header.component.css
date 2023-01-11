@@ -10,6 +10,21 @@
 .home-ad-container {
   padding: 10px;
 }
+.header-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.header-flex{
+ justify-content: space-between;
+}
+.dashboard{
+  display: flex;
+  
+  align-items: center;
+  padding-right: 10px;
+}
+
 .home-ad-container div{
   width: 728px;
   height: 90px;

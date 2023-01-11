@@ -151,14 +151,9 @@
       </div> -->
       
       <div class="news-section cointainer">
-        <div class="row news-box" (click)="opennewsSec(post.slug)" *ngFor="let post of post_array | paginate : {
-          itemsPerPage: tableSize,
-          currentPage: page,
-          totalItems: count
-        };
-  let i = index">
+        <div class="row news-box" (click)="opennewsSec(post.slug)" *ngFor="let post of post_array |  paginate: { itemsPerPage: 10, currentPage: p } ">
           <div class="col-md-6 col-sm-12 col-12 news-img-container">
-            <img [src]="post.guid">
+            <img [src]="post.guid"> 
           </div>
           <div class="col-md-6 col-sm-12 col-12 news-text-container">
             <p class="post-heading">{{post.post_title ? getShortName(post.post_title) : ''}}</p>
@@ -167,8 +162,11 @@
           </div>
         </div>
       </div>
-
+      <div class="col-lg-12 col-md-12 col-12 w-100" style="padding-top:1vw;padding-bottom:1vw;">
+        <pagination-controls class="pagination-color" (pageChange)="p = $event"></pagination-controls>
+      </div>
     </div>
+    
     <div class="col-md-4 col-sm-12 col-12">
       <!-- <div class="advertisement-space-container-first">
         <div id="carouselExampleControls4" class="carousel slide carousel-fade" data-ride="carousel">

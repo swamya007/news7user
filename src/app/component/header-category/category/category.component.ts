@@ -19,6 +19,7 @@ export class CategoryComponent implements OnInit {
   page = 1;
   count = 0;
   tableSize = 10;
+  p: number = 1;
   // tableSizes = [3, 6, 9, 12];
 
   // postarr: any = []
@@ -110,13 +111,7 @@ export class CategoryComponent implements OnInit {
 
   }
 
-getcategoryname(){
-
-
-   if(this.post_array.category_name) {
-      this.catname = this.post_array.category_name.split(",",)[0]
-    }
-}
+getcategoryname(){}
 
 
   getWithoutHeaderCategory() {

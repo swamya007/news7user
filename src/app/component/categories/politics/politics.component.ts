@@ -20,6 +20,10 @@ export class PoliticsComponent implements OnInit {
   ads_leftmiddle: any = []
   firstpostbussiness: any = {}
   nextthree: any = [];
+  page = 1;
+  count = 0;
+  tableSize = 8;
+  tableSizes = [3, 6, 9, 12];
 
   constructor(private adsService: AdserviceService,private postserviceService: PostserviceService,private router: Router) { }
 

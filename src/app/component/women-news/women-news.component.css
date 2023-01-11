@@ -3,7 +3,10 @@
     background: transparent;
     color:var(--white);
 }
-
+.news-section img{
+    height: 60px;
+    width: 80px;
+}
 .news-box {
     padding: 1rem 0rem;
 }

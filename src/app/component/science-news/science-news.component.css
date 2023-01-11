@@ -37,7 +37,9 @@
     border-top: 1px dotted #bbbbbb;
 } */
 
-
+.divider {
+  border-top: 1px dotted #bbbbbb;
+}
 
 .news-section {
     /* padding: 1rem; */
@@ -45,7 +47,10 @@
     /* border: 1px rgb(215, 215, 215) solid; */
     
   }
-  
+  .news-section img{
+    height: 60px;
+    width: 80px;
+} 
   .news-box {
     padding: 8px 0;
   }

@@ -223,3 +223,44 @@
 .scroll-div {
     height: 250px;
 }
+
+
+.uploadFile {
+    margin: 0px;
+    line-height: 0;
+    padding: 0;
+  }
+  /* input[type='file'] {
+    visibility: hidden;
+  } */
+  
+  .avatar {
+    display: block;
+    height: 200px;
+    border-radius: 10px;
+    background: #f1f1f1;
+    width: 100%;
+  }
+  
+  .imagePreview {
+    margin: 20px 0px 30px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .imagePreview__container {
+    width: 140px;
+    height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: auto;
+  }
+  .imagePreview__container img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+  }
+  

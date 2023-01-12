@@ -100,6 +100,17 @@
                             [data]="catarr" [(ngModel)]="addPost.category" (keyup.enter)="onFilterChange($event)">
                         </ng-multiselect-dropdown>
                     </div> -->
+                    <!-- <div tabindex="0" class="multiselect-dropdown-1" data-toggle="collapse" data-target="#demo">
+                        <div><span tabindex="-1" class="dropdown-btn-1"><span>Select
+                                    Category</span>
+                                    <span style="float: right !important; padding-right: 4px;" >
+                                        <span class="dropdown-multiselect__caret-1"></span></span></span></div>
+                    </div>
+                    <div id="demo" class="collapse scroll-div">
+                        <bn-ng-tree [(ngModel)]="selected" [show-checkbox]="true" [show-counts]="true" [style-class]="'my-tree'"
+                            [show-search]="true" [items]="catarr" (onChange)="selectedItem($event)"
+                            (onChecked)="checkedItems($event)"></bn-ng-tree>
+                    </div> -->
                     <div tabindex="0" class="multiselect-dropdown-1" data-toggle="collapse" data-target="#demo">
                         <div><span tabindex="-1" class="dropdown-btn-1"><span>Select
                                     Category</span>

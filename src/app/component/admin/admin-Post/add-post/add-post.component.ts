@@ -200,7 +200,7 @@ export class AddPostComponent implements OnInit {
   }
 
   getallcategory() {
-    this.categoryService.getAllCategory('', '',this.currentuser.customer_id).subscribe((res: any) => {
+    this.categoryService.getCategory(environment.CUSTOMER_ID).subscribe((res: any) => {
       if (res.code == 'success') {
         var data = res.body;
         this.catarr = data.map((dt: any) => JSON.parse(dt));

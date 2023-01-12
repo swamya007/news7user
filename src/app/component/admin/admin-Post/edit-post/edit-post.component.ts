@@ -113,7 +113,7 @@ export class EditPostComponent implements OnInit {
   }
 
   getallcategory() {
-    this.categoryService.getAllCategory('', '', this.currentuser.customer_id).subscribe((res: any) => {
+    this.categoryService.getAllCategory('', '', environment.CUSTOMER_ID).subscribe((res: any) => {
       if (res.code == 'success') {
         var data = res.body;
         this.catarr = data.map((dt: any) => JSON.parse(dt));
@@ -397,7 +397,7 @@ export class EditPostComponent implements OnInit {
           this.spinnerService.hide()
 
           this.notify.success('Post updated successfully');
-          // this.router.navigate(['/admin/post/view']);
+          this.router.navigate(['/admin/post/view']);
         } else {
           this.notify.error(res.message)
           this.spinnerService.hide()
@@ -567,9 +567,5 @@ export class EditPostComponent implements OnInit {
 
   viewdraft(uid: any) {
     this.router.navigate([`/admin/post/drafts/edit/${uid}`]);
-  }
-
-  viewupdatedpost(slug:any){
-  this.router.navigate(['/post/'+slug]);
   }
 }

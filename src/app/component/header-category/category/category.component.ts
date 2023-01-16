@@ -35,10 +35,13 @@ export class CategoryComponent implements OnInit {
   category_two: any = []
   category_three: any = []
   catname: any;
+  cat_name: any;
 
   constructor(private adsService: AdserviceService, private postserviceService: PostserviceService, private router: Router,
     private masterservice: MasterServiceService, private activatedRoute: ActivatedRoute) {
     activatedRoute.params.subscribe(val => {
+      const routeParams = this.activatedRoute.snapshot.paramMap;
+      this.cat_name = (routeParams.get('slug'));
 
       // console.log('Here')
 
@@ -64,7 +67,7 @@ export class CategoryComponent implements OnInit {
       //   console.log('Category Three====', this.category_three)
       // }
     })
-   
+
   }
 
   @Input()
@@ -79,10 +82,13 @@ export class CategoryComponent implements OnInit {
   @Input()
   post_array: any = []
 
-  
+
 
   ngOnInit(): void {
     this.customer_id = environment.CUSTOMER_ID
+    console.log(this.cat_name, 'jimes')
+    const routeParams = this.activatedRoute.snapshot.paramMap;
+    this.cat_name = (routeParams.get('slug'));
     if (this.ads_list.length > 0) {
       /** Right Upper */
       this.ads_rightupper = this.ads_list.filter((data: any) => data.ads_img_size === "2");
@@ -104,14 +110,14 @@ export class CategoryComponent implements OnInit {
     //   console.log('Category====', this.category_three)
     // }
 
-    console.log(this.post_array);
+    console.log(this.post_array, 'console');
 
 
-    
+
 
   }
 
-getcategoryname(){}
+  getcategoryname() { }
 
 
   getWithoutHeaderCategory() {

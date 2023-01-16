@@ -37,6 +37,7 @@ export class HeaderComponent implements OnInit {
 
 
   getallheaders() {
+    alert('here')
     this.masterAPI.getAllheaders(environment.CUSTOMER_ID).subscribe((res: any) => {
       if (res.code == 'success') {
         var data = res.body;
@@ -44,6 +45,9 @@ export class HeaderComponent implements OnInit {
         if(this.headerarry.length > 10) {
           this.newarray = this.headerarry.slice(0,10)
           this.morearray = this.headerarry.slice(10)
+          console.log(this.newarray,'head')
+        } else {
+          this.newarray = this.headerarry
         }
       } else {
         this.headerarry = []

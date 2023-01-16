@@ -6,7 +6,20 @@
 .logo-container {
   padding: 10px 13px;
 }
+.dropdown-menu
+{
+    padding: 0px!important;
+    box-shadow: none!important;
+    border:none;
+    width: 100%!important;
+}
 
+.submenu
+{
+  width:120px;
+  margin:5px 10px;
+  float: left;
+}
 .home-ad-container {
   padding: 10px;
 }

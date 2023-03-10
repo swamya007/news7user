@@ -46,12 +46,15 @@ import { SidenavComponent } from './component/layout/sidenav/sidenav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
+import {
+  MatRadioModule,
+  MAT_RADIO_DEFAULT_OPTIONS,
+} from '@angular/material/radio';
 import { CKEditorModule } from 'ckeditor4-angular';
-import { BrowserModule } from '@angular/platform-browser'
+import { BrowserModule } from '@angular/platform-browser';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatCardModule } from "@angular/material/card";
-import { MatSelectModule } from "@angular/material/select";
+import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
 import { PasswordComponent } from './password/password.component';
 import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
 import { ViewUsersComponent } from './component/admin/user/view-users/view-users.component';
@@ -70,7 +73,7 @@ import { ViewTagComponent } from './component/admin/admin-tag/view-tag/view-tag.
 import { EditTagComponent } from './component/admin/admin-tag/edit-tag/edit-tag.component';
 
 import { CommonModule } from '@angular/common';
-import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AdminAdComponent } from './component/admin/admin-ad/admin-ad.component';
 
 import { AddmediaComponent } from './component/admin/media/addmedia/addmedia.component';
@@ -98,7 +101,7 @@ import { CommentModalComponent } from './component/admin/comments-mangement/comm
 import { CommentsMangementComponent } from './component/admin/comments-mangement/comments-mangement.component';
 import { ChoosemediaComponent } from './component/admin/admin-Post/choosemedia/choosemedia.component';
 import { ManageHeaderComponent } from './component/admin/manage-header/manage-header.component';
-import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
 import { ChangePasswordComponent } from './component/user-profile/change-password/change-password.component';
@@ -124,6 +127,7 @@ import { PrivacyPolicyComponent } from './component/privacy-policy/privacy-polic
 import { FeaturedStoriesComponent } from './component/featured-stories/featured-stories.component';
 import { BnNgTreeModule } from 'bn-ng-tree-lib';
 import { DEFAULT_LIBRARY_BUTTONS, NgxWigModule } from 'ngx-wig';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   declarations: [
@@ -194,7 +198,7 @@ import { DEFAULT_LIBRARY_BUTTONS, NgxWigModule } from 'ngx-wig';
     EditAdDailogComponent,
     CommentModalComponent,
     CommentsMangementComponent,
-    ChoosemediaComponent,  
+    ChoosemediaComponent,
     ChoosemediaComponent,
     ManageHeaderComponent,
     EditProfileComponent,
@@ -216,8 +220,7 @@ import { DEFAULT_LIBRARY_BUTTONS, NgxWigModule } from 'ngx-wig';
     EntryPopupComponent,
     TrendingnewsComponent,
     PrivacyPolicyComponent,
-    FeaturedStoriesComponent
-
+    FeaturedStoriesComponent,
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),
@@ -252,16 +255,15 @@ import { DEFAULT_LIBRARY_BUTTONS, NgxWigModule } from 'ngx-wig';
     DragDropModule,
     NgxSpinnerModule,
     BnNgTreeModule,
-    NgxWigModule.forRoot({ buttonsConfig: DEFAULT_LIBRARY_BUTTONS } )
-
-
+    NgxWigModule.forRoot({ buttonsConfig: DEFAULT_LIBRARY_BUTTONS }),
+    AngularEditorModule,
   ],
   providers: [
     {
       provide: MAT_RADIO_DEFAULT_OPTIONS,
-      useValue: { color: 'primary' }
-    }
+      useValue: { color: 'primary' },
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

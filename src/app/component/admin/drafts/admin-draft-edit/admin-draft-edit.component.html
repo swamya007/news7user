@@ -31,12 +31,10 @@
                     </mat-form-field>
                 </div>
             </div>
-            <div class="add-post-form-field row">
-                <div class="col-md-12 col-12">
-                    <mat-label class="add-post-title">Post</mat-label>
-                    <ckeditor #editor id="description" [config]="ckeConfig" [(ngModel)]="updatepost.post_content"
-                        #myckeditor="ngModel" name="ckdescription">
-                    </ckeditor>
+            <div class="add-post-post-field-container">
+                <h2 class="add-post-sub-heading">Post</h2>
+                <div class="col-12" style="background-color: #fff; padding: 0px;">
+                    <quill-editor [(ngModel)]="updatepost.post_content"></quill-editor>
                 </div>
             </div>
         </div>

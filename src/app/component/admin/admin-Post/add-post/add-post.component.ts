@@ -6,6 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
+// import Adapter from 'src/ckeditor';
 import { postModel } from 'src/app/models/postModel';
 import { IDropdownSettings } from 'ng-multiselect-dropdown/multiselect.model';
 import { TagserviceService } from 'src/app/services/tagservice/tagservice.service';
@@ -20,6 +21,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ChoosemediaComponent } from 'src/app/component/admin/admin-Post/choosemedia/choosemedia.component';
 import { LoaderService } from 'src/app/services/loaderService/loader.service';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 @Component({
   selector: 'app-add-post',
@@ -41,7 +43,6 @@ export class AddPostComponent implements OnInit {
   currentuser: any = {};
   showHideList: boolean = true;
   showlist: boolean = true;
-
   @ViewChild('myckeditor') ckeditor: any;
   @ViewChild('tourBanner')
   tourBanner!: ElementRef;
@@ -62,6 +63,7 @@ export class AddPostComponent implements OnInit {
     { name: 'No', key: '2', checked: true },
   ];
   config: any;
+  twiteredit = false;
 
   constructor(
     private userService: UserService,
@@ -86,7 +88,6 @@ export class AddPostComponent implements OnInit {
     this.getalltag();
 
     this.checkedval = true;
-
     this.config = {
       editable: true,
       spellcheck: true,
@@ -114,7 +115,7 @@ export class AddPostComponent implements OnInit {
       ],
     };
 
-    this.config = {
+    this.ckeConfig = {
       extraPlugins:
         'easyimage,dialogui,dialog,a11yhelp,about,basicstyles,bidi,blockquote,clipboard,' +
         'button,panelbutton,panel,floatpanel,colorbutton,colordialog,menu,' +
@@ -279,19 +280,21 @@ export class AddPostComponent implements OnInit {
   }
 
   getallcategory() {
-    this.categoryService.getCategory(environment.CUSTOMER_ID).subscribe(
-      (res: any) => {
-        if (res.code == 'success') {
-          var data = res.body;
-          this.catarr = data.map((dt: any) => JSON.parse(dt));
-        } else {
+    this.categoryService
+      .getAllCategory('', '', this.currentuser.customer_id)
+      .subscribe(
+        (res: any) => {
+          if (res.code == 'success') {
+            var data = res.body;
+            this.catarr = data.map((dt: any) => JSON.parse(dt));
+          } else {
+            this.catarr = [];
+          }
+        },
+        (err) => {
           this.catarr = [];
         }
-      },
-      (err) => {
-        this.catarr = [];
-      }
-    );
+      );
   }
   getSlug() {
     this.addPost.slug = this.addPost.post_title
@@ -457,8 +460,6 @@ export class AddPostComponent implements OnInit {
           this.addPost.post_img = this.addPost.guid;
         }
       }
-      console.log(this.addPost);
-
       this.post.addpost(this.addPost).subscribe(
         (res: any) => {
           if (res.code == 'success') {

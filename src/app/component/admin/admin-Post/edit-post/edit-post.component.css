@@ -1,5 +1,5 @@
 .add-post-container {
-    background-color: var #f8f9fa(--site-background);
+    background-color: var(--site-background);
     padding: 2% 3.9%;
 }
 
@@ -12,6 +12,10 @@
     display: block;
 }
 
+
+:host ::ng-deep .ql-editor{
+    height: 500px!important;
+}
 .add-post-container .add-post-form mat-form-field {
     width: 100%;
 }

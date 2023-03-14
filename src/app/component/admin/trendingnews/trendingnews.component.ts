@@ -20,6 +20,7 @@ export class TrendingnewsComponent implements OnInit {
     private masterService:MasterServiceService,private spinnerService: LoaderService) { }
 
     trendingarray: any[] = []
+    todaysnewsarray:any[] = []
     tagid:any=''
     tag_name:any = ''
     cust_id:any
@@ -28,6 +29,7 @@ export class TrendingnewsComponent implements OnInit {
     ngOnInit(): void {
       this.cust_id = environment.CUSTOMER_ID
       this.getalltrending()
+      this.getallnewstoday()
     }
 
     postDelete(id: any ,post_trend:any) {
@@ -60,6 +62,26 @@ export class TrendingnewsComponent implements OnInit {
       }, (err) => {
         this.trendingarray = []
         this.spinnerService.hide()
+  
+      })
+    }
+
+
+    getallnewstoday() {
+
+      this.viewstreanding.gettodaysnews(this.cust_id).subscribe((res: any) => {
+        if (res.code == 'success') {
+          this.spinnerService.hide()
+  
+          var data = res.body;
+          this.todaysnewsarray = data.map((dt: any) => JSON.parse(dt));
+          console.log(this.todaysnewsarray,'today')
+        } else {
+          this.todaysnewsarray = []
+  
+        }
+      }, (err) => {
+        this.todaysnewsarray = []
   
       })
     }

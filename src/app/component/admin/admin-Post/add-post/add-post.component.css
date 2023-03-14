@@ -1,5 +1,5 @@
 .add-post-container {
-    background-color: var f8f9fa(--site-background);
+    background-color: var(--site-background);
     padding: 2% 3.9%;
 }
 
@@ -14,6 +14,10 @@
 
 .add-post-container .add-post-form mat-form-field {
     width: 100%;
+}
+
+:host ::ng-deep .ql-editor{
+    height: 500px!important;
 }
 
 .add-post-form .add-post-form-field mat-radio-group {
@@ -95,7 +99,13 @@
     padding: 1.3rem;
     border: 1px rgb(215, 215, 215) solid;
 }
-
+.ttl
+{
+    background-color: #FFF;
+}
+.search-btn {
+    margin-left: 10px;
+}
 .modal-content {
     position: relative;
     display: flex !important;
@@ -224,43 +234,7 @@
     height: 250px;
 }
 
-
-.uploadFile {
-    margin: 0px;
-    line-height: 0;
-    padding: 0;
-  }
-  /* input[type='file'] {
-    visibility: hidden;
-  } */
-  
-  .avatar {
-    display: block;
-    height: 200px;
-    border-radius: 10px;
-    background: #f1f1f1;
-    width: 100%;
-  }
-  
-  .imagePreview {
-    margin: 20px 0px 30px 0px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .imagePreview__container {
-    width: 140px;
-    height: 140px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    margin: auto;
-  }
-  .imagePreview__container img {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-  }
-  
+.content-btn {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}

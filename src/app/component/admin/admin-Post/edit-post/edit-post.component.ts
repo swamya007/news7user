@@ -45,7 +45,7 @@ export class EditPostComponent implements OnInit {
   pid: any
   updatepost: any = {}
   selected: any = []
-  editdata:any = []
+  editdata: any = []
   list = [
     { "name": "Yes", "key": "opened", "checked": true },
     { "name": "No", "key": "closed", "checked": false }
@@ -55,6 +55,7 @@ export class EditPostComponent implements OnInit {
     { "name": "Yes", "key": "1", "checked": false },
     { "name": "No", "key": "2", "checked": true }
   ]
+  config: any;
 
   constructor(private userService: UserService, private loginService: LoginService,
     private viewstag: TagserviceService, private post: PostserviceService,
@@ -74,7 +75,32 @@ export class EditPostComponent implements OnInit {
     this.getallpost();
 
     this.checkedval = true
-
+    this.config = {
+      editable: true,
+      spellcheck: true,
+      height: '15rem',
+      minHeight: '5rem',
+      placeholder: 'Enter text here...',
+      translate: 'no',
+      defaultParagraphSeparator: 'p',
+      defaultFontName: 'Arial',
+      toolbarHiddenButtons: [['bold']],
+      customClasses: [
+        {
+          name: 'quote',
+          class: 'quote',
+        },
+        {
+          name: 'redText',
+          class: 'redText',
+        },
+        {
+          name: 'titleText',
+          class: 'titleText',
+          tag: 'h1',
+        },
+      ],
+    };
     this.ckeConfig = {
       extraPlugins:
         "easyimage,dialogui,dialog,a11yhelp,about,basicstyles,bidi,blockquote,clipboard," +
@@ -113,7 +139,7 @@ export class EditPostComponent implements OnInit {
   }
 
   getallcategory() {
-    this.categoryService.getAllCategory('', '', environment.CUSTOMER_ID).subscribe((res: any) => {
+    this.categoryService.getAllCategory('', '', this.currentuser.customer_id).subscribe((res: any) => {
       if (res.code == 'success') {
         var data = res.body;
         this.catarr = data.map((dt: any) => JSON.parse(dt));
@@ -280,24 +306,15 @@ export class EditPostComponent implements OnInit {
   currentItem: any;
   data: any = []
   selectedItem(item: any) {
-    console.log('item==',item);
-    
+    console.log('item set==', item);
+
     this.currentItem = item;
   }
 
   checkedItems(items: any) {
-    console.log('items===',items);
-    
-    this.data = items.checked;
-    console.log(items.unchecked);
-    
-    console.log(this.editdata);
-    
-    this.data = this.data.concat(this.editdata)
-    console.log(this.data);
-    
-  }
 
+  }
+  arr_data: any = []
   getPostEditCategory(post_id: any) {
     this.categoryService.getEditCategory(post_id, this.currentuser.customer_id).subscribe((res: any) => {
       if (res.code == 'success') {
@@ -313,6 +330,7 @@ export class EditPostComponent implements OnInit {
           }
         })
         this.editdata = a.filter((f: any) => f.checked == true)
+        this.arr_data = a;
         this.cdr.detectChanges();
       } else {
         this.catarr = []
@@ -351,13 +369,32 @@ export class EditPostComponent implements OnInit {
     if (this.updatepost.post_mime_type) {
       this.updatepost.media_ext = this.updatepost.post_mime_type.split("/")[1];
     }
+    let new_arr: any = document.getElementsByClassName("node__name");
+    var element:any = document.getElementsByClassName('node-checkbox__label');
+    let ar: any = [];
+    for (var i = 0; i < element.length; i++) {
+      let styles:any = window.getComputedStyle(element[i],':after')
+      if(styles.content != 'none') {
+        let b = new_arr[i].innerHTML.trim();
+        let c = this.arr_data.filter((f: any) => f.name === b)[0];
+        ar.push(c);
+      }
+      // let a = new_arr[i].getAttribute("ng-reflect-model");
+      // if (a === 'true') {
+      //   let b = new_arr[i].getAttribute("ng-reflect-name");
+      //   let c = this.arr_data.filter((f: any) => f.name === b)[0];
+      //   ar.push(c);
+      // }
+    }
 
-    if (this.data !== null && this.data !== undefined && this.data !== '' && this.data.length > 0) {
-      var result = this.data.map(function (val: any) {
+    if (ar.length > 0) {
+      var result = ar.map(function (val: any) {
         return val.key;
       }).join(',');
       this.updatepost.category = result;
     }
+    // console.log(ar);
+    // console.log(this.updatepost.category);
 
     if (this.updatepost.tags !== null && this.updatepost.tags !== undefined && this.updatepost.tags !== '') {
       var result = this.updatepost.tags.map(function (val: any) {
@@ -382,6 +419,8 @@ export class EditPostComponent implements OnInit {
         this.updatepost.post_date = this.updatepost.post_date + " 00:00";
       }
     }
+
+    console.log(this.updatepost.category);
 
     setTimeout(() => {
       if (this.updatepost.Multiimage) {
@@ -474,8 +513,26 @@ export class EditPostComponent implements OnInit {
       this.updatepost.media_ext = this.updatepost.post_mime_type.split("/")[1];
     }
 
-    if (this.data !== null && this.data !== undefined && this.data !== '' && this.data.length > 0) {
-      var result = this.data.map(function (val: any) {
+    let new_arr: any = document.getElementsByClassName("node__name");
+    var element:any = document.getElementsByClassName('node-checkbox__label');
+    let ar: any = [];
+    for (var i = 0; i < element.length; i++) {
+      let styles:any = window.getComputedStyle(element[i],':after')
+      if(styles.content != 'none') {
+        let b = new_arr[i].innerHTML.trim();
+        let c = this.arr_data.filter((f: any) => f.name === b)[0];
+        ar.push(c);
+      }
+      // let a = new_arr[i].getAttribute("ng-reflect-model");
+      // if (a === 'true') {
+      //   let b = new_arr[i].getAttribute("ng-reflect-name");
+      //   let c = this.arr_data.filter((f: any) => f.name === b)[0];
+      //   ar.push(c);
+      // }
+    }
+
+    if (ar.length > 0) {
+      var result = ar.map(function (val: any) {
         return val.key;
       }).join(',');
       this.updatepost.category = result;

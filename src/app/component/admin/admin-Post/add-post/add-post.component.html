@@ -8,20 +8,13 @@
         <div class="col-md-6 col-sm-12 col-12">
           <mat-label class="add-post-title">Title (required)</mat-label>
           <!-- <mat-form-field appearance="outline">
-              <input matInput type="text" name="title" [value]="title" [(ngModel)]="addPost.post_title"
-                (keyup)="getSlug()" required />
-            </mat-form-field> -->
+            <input matInput type="text" name="title" [value]="title" [(ngModel)]="addPost.post_title"
+              (keyup)="getSlug()" required />
+          </mat-form-field> -->
 
           <mat-form-field class="outline">
-            <textarea
-              matInput
-              class="textarea-add-post"
-              name="title"
-              [value]="title"
-              [(ngModel)]="addPost.post_title"
-              (keyup)="getSlug()"
-              required
-            ></textarea>
+            <textarea matInput class="textarea-add-post" name="title" [value]="title" [(ngModel)]="addPost.post_title"
+            (keyup)="getSlug()" required ></textarea>
           </mat-form-field>
         </div>
       </div>
@@ -29,14 +22,7 @@
         <div class="col-md-6 col-sm-12 col-12">
           <mat-label class="add-post-title">Slug</mat-label>
           <mat-form-field appearance="outline">
-            <input
-              matInput
-              type="text"
-              name="slug"
-              [(ngModel)]="addPost.slug"
-              required
-              (keyup)="getPermalink()"
-            />
+            <input matInput type="text" name="slug" [(ngModel)]="addPost.slug" required (keyup)="getPermalink()" />
           </mat-form-field>
         </div>
       </div>
@@ -44,25 +30,18 @@
         <div class="col-md-6 col-sm-12 col-12">
           <mat-label class="add-post-title">Permalink</mat-label>
           <mat-form-field appearance="outline">
-            <input
-              matInput
-              type="text"
-              name="canonical-url"
-              [(ngModel)]="addPost.permalink"
-              required
-              readonly
-            />
+            <input matInput type="text" name="canonical-url" [(ngModel)]="addPost.permalink" required readonly />
           </mat-form-field>
         </div>
       </div>
 
       <!-- <div class="add-post-form-field row"> -->
       <!-- <div class="col-md-12 col-12">
-                      <mat-label class="add-post-title">Post (required)</mat-label>
-                      <ckeditor #editor id="description" [config]="ckeConfig" [(ngModel)]="addPost.post_content"
-                          #myckeditor="ngModel" name="ckdescription">
-                      </ckeditor>
-                  </div> -->
+                    <mat-label class="add-post-title">Post (required)</mat-label>
+                    <ckeditor #editor id="description" [config]="ckeConfig" [(ngModel)]="addPost.post_content"
+                        #myckeditor="ngModel" name="ckdescription">
+                    </ckeditor>
+                </div> -->
       <!-- <ngx-wig [(ngModel)]="addPost.post_content"></ngx-wig> -->
 
       <!-- <quill-editor></quill-editor> -->
@@ -71,35 +50,19 @@
       <div class="add-post-form-field row">
         <div class="col-md-6 col-sm-12 col-12">
           <div class="content-btn">
-            <button
-              mat-raised-button
-              color="primary"
-              style="background-color: #18a352"
-              (click)="twiter()"
-              [(ngModel)]="addPost.twiteredit"
-            >
-              Twitter
-            </button>
-            <button
-              mat-raised-button
-              color="primary"
-              style="background-color: #18a352; margin-left: 5px"
-              (click)="Others()"
-              [(ngModel)]="addPost.twiteredit"
-            >
-              Others
-            </button>
-          </div>
-        </div>
+        <button mat-raised-button color="primary" style="background-color:#18a352 " (click)="twiter()"
+          [(ngModel)]="addPost.twiteredit">Twitter</button>
+        <button mat-raised-button color="primary" style="background-color:#18a352; margin-left: 5px" (click)="Others()"
+          [(ngModel)]="addPost.twiteredit">Others</button></div></div>
       </div>
       <!-- <div>
-          <mat-slide-toggle
-            class="example-margin"
-            [checked]="checked"
-          >
-          Slide me!
-        </mat-slide-toggle>
-        </div> -->
+        <mat-slide-toggle
+          class="example-margin"
+          [checked]="checked"
+        >
+        Slide me!
+      </mat-slide-toggle>
+      </div> -->
       <div [hidden]="showHideList">
         <div class="add-post-post-field-container">
           <h2 class="add-post-sub-heading">Post</h2>
@@ -108,13 +71,9 @@
           </div>
         </div>
       </div>
-
       <div [hidden]="showlist">
         <h2>Twitter</h2>
-        <angular-editor
-          [config]="config"
-          [(ngModel)]="addPost.post_content"
-        ></angular-editor>
+        <angular-editor [config]="config" [(ngModel)]="addPost.post_content"></angular-editor>
       </div>
       <div class="add-post-post-field-container">
         <h2 class="add-post-sub-heading">Post</h2>
@@ -131,49 +90,24 @@
         </div>
         <div class="add-post-form-field row">
           <div class="col-md-3 col-sm-12 col-12">
-            <mat-label class="add-post-title"
-              >Publish Date & Time (required)</mat-label
-            >
+            <mat-label class="add-post-title">Publish Date & Time (required)</mat-label>
             <mat-form-field appearance="outline">
-              <input
-                matInput
-                type="date"
-                [(ngModel)]="addPost.post_date"
-                required
-                onkeydown="return false"
-              />
+              <input matInput type="date" [(ngModel)]="addPost.post_date" required onkeydown="return false" />
             </mat-form-field>
           </div>
           <div class="col-md-3 col-sm-12 col-12 time-field">
             <mat-form-field name="stime" appearance="fill" class="form-field">
-              <input
-                matInput
-                type="time"
-                name="stime"
-                name="stime"
-                class="time"
-                [(ngModel)]="addPost.post_time"
-                onkeydown="return false"
-              />
+              <input matInput type="time" name="stime" name="stime" class="time" [(ngModel)]="addPost.post_time"
+                onkeydown="return false" />
             </mat-form-field>
           </div>
         </div>
         <div class="add-post-form-field row">
           <div class="col-md-6 col-sm-12 col-12">
             <mat-label class="add-post-title">Immediate Publish</mat-label>
-            <mat-radio-group
-              aria-label="Select an option"
-              name="oplist1"
-              [(ngModel)]="addPost.immidiate_publish"
-            >
-              <mat-radio-button
-                *ngFor="let k of list1"
-                [value]="k.key"
-                name="oplist1"
-                [checked]="k.checked"
-              >
-                {{ k.name }}</mat-radio-button
-              >
+            <mat-radio-group aria-label="Select an option" name="oplist1" [(ngModel)]="addPost.immidiate_publish">
+              <mat-radio-button *ngFor="let k of list1" [value]="k.key" name="oplist1" [checked]="k.checked">
+                {{ k.name }}</mat-radio-button>
             </mat-radio-group>
           </div>
         </div>
@@ -181,13 +115,8 @@
           <div class="col-md-6 col-sm-12 col-12">
             <mat-label class="add-post-title">Author</mat-label>
             <mat-form-field appearance="outline">
-              <mat-select
-                [(ngModel)]="addPost.post_author"
-                disableRipple
-                [ngModelOptions]="{ standalone: true }"
-              >
-                <mat-option *ngFor="let gm of allUser" [value]="gm.user_id"
-                  >{{ gm.user_nicename }}
+              <mat-select [(ngModel)]="addPost.post_author" disableRipple [ngModelOptions]="{ standalone: true }">
+                <mat-option *ngFor="let gm of allUser" [value]="gm.user_id">{{ gm.user_nicename }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -197,35 +126,20 @@
           <div class="col-md-6 col-sm-12 col-12">
             <mat-label class="add-post-title">Category (required)</mat-label>
             <!-- <div class="selecttag">
-                          <ng-multiselect-dropdown [placeholder]="'Select Category'" [settings]="dropdownSettingsCat"
-                              [data]="catarr" [(ngModel)]="addPost.category" (keyup.enter)="onFilterChange($event)">
-                          </ng-multiselect-dropdown>
-                      </div> -->
-            <div
-              tabindex="0"
-              class="multiselect-dropdown-1"
-              data-toggle="collapse"
-              data-target="#demo"
-            >
-              <div>
-                <span tabindex="-1" class="dropdown-btn-1"
-                  ><span>Select Category</span>
-                  <span style="float: right !important; padding-right: 4px">
-                    <span class="dropdown-multiselect__caret-1"></span></span
-                ></span>
-              </div>
+                        <ng-multiselect-dropdown [placeholder]="'Select Category'" [settings]="dropdownSettingsCat"
+                            [data]="catarr" [(ngModel)]="addPost.category" (keyup.enter)="onFilterChange($event)">
+                        </ng-multiselect-dropdown>
+                    </div> -->
+            <div tabindex="0" class="multiselect-dropdown-1" data-toggle="collapse" data-target="#demo">
+              <div><span tabindex="-1" class="dropdown-btn-1"><span>Select
+                    Category</span>
+                  <span style="float: right !important; padding-right: 4px;">
+                    <span class="dropdown-multiselect__caret-1"></span></span></span></div>
             </div>
             <div id="demo" class="collapse scroll-div">
-              <bn-ng-tree
-                [(ngModel)]="selected"
-                [show-checkbox]="true"
-                [show-counts]="true"
-                [style-class]="'my-tree'"
-                [show-search]="true"
-                [items]="catarr"
-                (onChange)="selectedItem($event)"
-                (onChecked)="checkedItems($event)"
-              ></bn-ng-tree>
+              <bn-ng-tree [(ngModel)]="selected" [show-checkbox]="true" [show-counts]="true" [style-class]="'my-tree'"
+                [show-search]="true" [items]="catarr" (onChange)="selectedItem($event)"
+                (onChecked)="checkedItems($event)"></bn-ng-tree>
             </div>
           </div>
         </div>
@@ -233,62 +147,36 @@
           <div class="col-md-6 col-sm-12 col-12">
             <mat-label class="add-post-title">Tags</mat-label>
             <div class="selecttag">
-              <ng-multiselect-dropdown
-                [placeholder]="'Select Tag'"
-                [settings]="dropdownSettings"
-                [data]="tagarray"
-                [(ngModel)]="addPost.addtags"
-                (keyup.enter)="onFilterChange($event)"
-              >
+              <ng-multiselect-dropdown [placeholder]="'Select Tag'" [settings]="dropdownSettings" [data]="tagarray"
+                [(ngModel)]="addPost.addtags" (keyup.enter)="onFilterChange($event)">
               </ng-multiselect-dropdown>
             </div>
           </div>
         </div>
         <div class="add-post-form-field row">
           <div class="col-md-6 col-sm-12 col-12">
-            <mat-label class="add-post-title"
-              >Featured Image (required)</mat-label
-            >
-            <div class="upload_txt">
-              <input
-                #tourBanner
-                type="file"
-                id="file-select"
-                accept="image/png, image/jpeg"
-                (change)="onfileselected($event)"
-                [(ngModel)]="addPost.media_url"
-              />
-            </div>
+            <mat-label class="add-post-title">Featured Image (required)</mat-label>
+            <div class="upload_txt"><input #tourBanner type="file" id="file-select" accept="image/png, image/jpeg"
+                (change)="onfileselected($event)" [(ngModel)]="addPost.media_url"></div>
             <div class="or-div">or</div>
-            <div class="upload_txt">
-              <button mat-raised-button (click)="openDialog()">
-                Choose from Media
-              </button>
+            <div class="upload_txt"><button mat-raised-button (click)="openDialog()">Choose from
+                Media</button>
             </div>
           </div>
           <div class="col-md-2 col-sm-12 col-12">
             <img
-              [src]="
-                addPost.guid
-                  ? addPost.guid
-                  : 'assets/img/image-preview-icon-picture-placeholder-vector-31284806.jpg'
-              "
-              id="bannerImage"
-              class="img-fluid"
-            />
+              [src]="addPost.guid ? addPost.guid : 'assets/img/image-preview-icon-picture-placeholder-vector-31284806.jpg'"
+              id="bannerImage" class="img-fluid">
           </div>
         </div>
+
+
 
         <div class="add-tag-form-field row">
           <div class="col-md-6 col-sm-12 col-12">
             <mat-label class="add-post-title">Alternate Text</mat-label>
             <mat-form-field appearance="outline" class="form-group">
-              <input
-                matInput
-                type="text"
-                name="media_alt_text"
-                [(ngModel)]="addPost.media_alt_text"
-              />
+              <input matInput type="text" name="media_alt_text" [(ngModel)]="addPost.media_alt_text">
             </mat-form-field>
           </div>
         </div>
@@ -296,12 +184,7 @@
           <div class="col-md-6 col-sm-12 col-12">
             <mat-label class="add-post-title">Description</mat-label>
             <mat-form-field class="outline">
-              <textarea
-                matInput
-                name="desc"
-                class="textarea-add-post"
-                [(ngModel)]="addPost.media_desc"
-              ></textarea>
+              <textarea matInput name="desc" class="textarea-add-post" [(ngModel)]="addPost.media_desc"></textarea>
             </mat-form-field>
           </div>
         </div>
@@ -309,12 +192,7 @@
           <div class="col-md-6 col-sm-12 col-12">
             <mat-label class="add-post-title">Caption</mat-label>
             <mat-form-field class="outline">
-              <textarea
-                matInput
-                name="desc"
-                class="textarea-add-post"
-                [(ngModel)]="addPost.media_caption"
-              ></textarea>
+              <textarea matInput name="desc" class="textarea-add-post" [(ngModel)]="addPost.media_caption"></textarea>
             </mat-form-field>
           </div>
         </div>
@@ -322,11 +200,7 @@
           <div class="col-md-6 col-sm-12 col-12">
             <mat-label class="add-post-title">Excerpt</mat-label>
             <mat-form-field class="outline">
-              <textarea
-                matInput
-                class="textarea-add-post"
-                [(ngModel)]="addPost.post_excerpt"
-              ></textarea>
+              <textarea matInput class="textarea-add-post" [(ngModel)]="addPost.post_excerpt"></textarea>
             </mat-form-field>
           </div>
         </div>
@@ -336,11 +210,7 @@
         <div class="col-md-6 col-sm-12 col-12">
           <mat-label class="add-post-title">Excerpt</mat-label>
           <mat-form-field class="outline">
-            <textarea
-              matInput
-              class="textarea-add-post"
-              [(ngModel)]="addPost.post_excerpt"
-            ></textarea>
+            <textarea matInput class="textarea-add-post" [(ngModel)]="addPost.post_excerpt"></textarea>
           </mat-form-field>
         </div>
       </div>
@@ -350,19 +220,9 @@
       <div class="add-post-form-field row">
         <div class="col-md-6 col-sm-12 col-12">
           <mat-label class="add-post-title">Allow Comment</mat-label>
-          <mat-radio-group
-            aria-label="Select an option"
-            name="oplist"
-            [(ngModel)]="addPost.comment_status"
-          >
-            <mat-radio-button
-              *ngFor="let k of list"
-              [value]="k.key"
-              name="oplist"
-              [checked]="k.checked"
-            >
-              {{ k.name }}</mat-radio-button
-            >
+          <mat-radio-group aria-label="Select an option" name="oplist" [(ngModel)]="addPost.comment_status">
+            <mat-radio-button *ngFor="let k of list" [value]="k.key" name="oplist" [checked]="k.checked">
+              {{ k.name }}</mat-radio-button>
           </mat-radio-group>
         </div>
       </div>
@@ -374,13 +234,7 @@
         <div class="col-md-6 col-sm-12 col-12">
           <mat-label class="add-post-title">SEO Title</mat-label>
           <mat-form-field appearance="outline">
-            <input
-              matInput
-              type="text"
-              name="seo-title"
-              [(ngModel)]="addPost.seo_title"
-              required
-            />
+            <input matInput type="text" name="seo-title" [(ngModel)]="addPost.seo_title" required />
           </mat-form-field>
         </div>
       </div>
@@ -388,13 +242,7 @@
         <div class="col-md-6 col-sm-12 col-12">
           <mat-label class="add-post-title">Meta Description</mat-label>
           <mat-form-field appearance="outline">
-            <input
-              matInput
-              type="text"
-              name="meta-description"
-              [(ngModel)]="addPost.meta_description"
-              required
-            />
+            <input matInput type="text" name="meta-description" [(ngModel)]="addPost.meta_description" required />
           </mat-form-field>
         </div>
       </div>
@@ -402,13 +250,7 @@
         <div class="col-md-6 col-sm-12 col-12">
           <mat-label class="add-post-title">Canonical Url</mat-label>
           <mat-form-field appearance="outline">
-            <input
-              matInput
-              type="text"
-              name="canonical-url"
-              [(ngModel)]="addPost.canonical_url"
-              required
-            />
+            <input matInput type="text" name="canonical-url" [(ngModel)]="addPost.canonical_url" required />
           </mat-form-field>
         </div>
       </div>
@@ -417,51 +259,25 @@
       <button mat-raised-button color="primary" (click)="addpost()">
         Publish
       </button>
-      <button
-        mat-raised-button
-        color="accent"
-        (click)="saveas_draft()"
-        style="margin-left: 5px"
-      >
+      <button mat-raised-button color="accent" (click)="saveas_draft()" style="margin-left: 5px">
         Save As Draft
       </button>
-      <button
-        mat-raised-button
-        (click)="newspreview(addPost)"
-        style="margin-left: 5px; background-color: #1883a3; color: white"
-      >
+      <button mat-raised-button (click)="newspreview(addPost)"
+        style="margin-left: 5px; background-color: #1883a3; color: white">
         Preview
       </button>
     </div>
   </div>
 </div>
-<button
-  type="button"
-  class="btn btn-primary"
-  id="quickeditModal"
-  data-toggle="modal"
-  data-target="#exampleModal1"
-  style="display: none"
-></button>
-<div
-  class="modal"
-  id="exampleModal1"
-  #closebutton
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalLabel1"
-  aria-hidden="true"
->
+<button type="button" class="btn btn-primary" id="quickeditModal" data-toggle="modal" data-target="#exampleModal1"
+  style="display: none"></button>
+<div class="modal" id="exampleModal1" #closebutton tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+  aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Preview Post</h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -478,15 +294,15 @@
               Last Updated on
               <span>{{
                 addPost.post_date
-                  | date
-                    : "MMMM
-                  dd, yyyy"
-              }}</span>
+                | date
+                : "MMMM
+                dd, yyyy"
+                }}</span>
             </p>
           </div>
           <!-- <div class="category-section">
-                          {{addPost.tags}}
-                      </div> -->
+                        {{addPost.tags}}
+                    </div> -->
         </div>
         <img class="article-image" id="previewImage" [src]="addPost.post_img" />
         <div [innerHTML]="addPost.post_content"></div>

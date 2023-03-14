@@ -9,13 +9,12 @@ import { News7_CONSTANTS } from 'src/new7constants/new7constants';
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
-  styleUrls: ['./category.component.css']
+  styleUrls: ['./category.component.css'],
 })
 export class CategoryComponent implements OnInit {
-
-  customer_id: any
-  ads_id: any
-  img_size: any
+  customer_id: any;
+  ads_id: any;
+  img_size: any;
   page = 1;
   count = 0;
   tableSize = 10;
@@ -26,22 +25,27 @@ export class CategoryComponent implements OnInit {
   // firstpostbussiness: any = {}
   // nextthree: any = [];
 
-  ads_rightupper: any = []
-  ads_leftmiddle: any = []
+  ads_rightupper: any = [];
+  ads_leftmiddle: any = [];
 
-  category_arr: any = []
+  category_arr: any = [];
 
-  category_one: any = []
-  category_two: any = []
-  category_three: any = []
+  category_one: any = [];
+  category_two: any = [];
+  category_three: any = [];
   catname: any;
   cat_name: any;
 
-  constructor(private adsService: AdserviceService, private postserviceService: PostserviceService, private router: Router,
-    private masterservice: MasterServiceService, private activatedRoute: ActivatedRoute) {
-    activatedRoute.params.subscribe(val => {
+  constructor(
+    private adsService: AdserviceService,
+    private postserviceService: PostserviceService,
+    private router: Router,
+    private masterservice: MasterServiceService,
+    private activatedRoute: ActivatedRoute
+  ) {
+    activatedRoute.params.subscribe((val) => {
       const routeParams = this.activatedRoute.snapshot.paramMap;
-      this.cat_name = (routeParams.get('slug'));
+      this.cat_name = routeParams.get('slug');
 
       // console.log('Here')
 
@@ -66,34 +70,35 @@ export class CategoryComponent implements OnInit {
       //   this.category_three = this.post_array_upper[4].category_name.split(",");
       //   console.log('Category Three====', this.category_three)
       // }
-    })
-
+    });
   }
 
   @Input()
-  ads_list: any = []
+  ads_list: any = [];
 
   @Input()
-  post_array_upper: any = []
+  post_array_upper: any = [];
 
   @Input()
-  post_array_lower: any = []
+  post_array_lower: any = [];
 
   @Input()
-  post_array: any = []
-
-
+  post_array: any = [];
 
   ngOnInit(): void {
-    this.customer_id = environment.CUSTOMER_ID
-    console.log(this.cat_name, 'jimes')
+    this.customer_id = environment.CUSTOMER_ID;
+    console.log(this.cat_name, 'jimes');
     const routeParams = this.activatedRoute.snapshot.paramMap;
-    this.cat_name = (routeParams.get('slug'));
+    this.cat_name = routeParams.get('slug');
     if (this.ads_list.length > 0) {
       /** Right Upper */
-      this.ads_rightupper = this.ads_list.filter((data: any) => data.ads_img_size === "2");
+      this.ads_rightupper = this.ads_list.filter(
+        (data: any) => data.ads_img_size === '2'
+      );
       /** Left Middle */
-      this.ads_leftmiddle = this.ads_list.filter((data: any) => data.ads_img_size === "3");
+      this.ads_leftmiddle = this.ads_list.filter(
+        (data: any) => data.ads_img_size === '3'
+      );
     }
     this.getWithoutHeaderCategory();
 
@@ -111,26 +116,26 @@ export class CategoryComponent implements OnInit {
     // }
 
     console.log(this.post_array, 'console');
-
-
-
-
   }
 
-  getcategoryname() { }
-
+  getcategoryname() {}
 
   getWithoutHeaderCategory() {
-    this.masterservice.getWithoutHeaderCategory(environment.CUSTOMER_ID).subscribe((res: any) => {
-      if (res.code == 'success') {
-        var data = res.body;
-        this.category_arr = data.map((dt: any) => JSON.parse(dt));
-      } else {
-        this.category_arr = []
-      }
-    }, (err) => {
-      this.category_arr = []
-    })
+    this.masterservice
+      .getWithoutHeaderCategory(environment.CUSTOMER_ID)
+      .subscribe(
+        (res: any) => {
+          if (res.code == 'success') {
+            var data = res.body;
+            this.category_arr = data.map((dt: any) => JSON.parse(dt));
+          } else {
+            this.category_arr = [];
+          }
+        },
+        (err) => {
+          this.category_arr = [];
+        }
+      );
   }
 
   openLink(url: any) {
@@ -138,23 +143,24 @@ export class CategoryComponent implements OnInit {
   }
 
   getShortName(user_name: any) {
-    return user_name.slice(0, 46).trim() + (user_name.length > 45 ? "..." : "");
+    return user_name.slice(0, 46).trim() + (user_name.length > 45 ? '...' : '');
   }
 
   getShortAuthorName(user_name: any) {
-    return user_name.slice(0, 14).trim() + (user_name.length > 13 ? "..." : "");
+    return user_name.slice(0, 14).trim() + (user_name.length > 13 ? '...' : '');
   }
 
   getShortPostContent(user_name: any) {
-    return user_name.slice(0, 130).trim() + (user_name.length > 129 ? "..." : "");
+    return (
+      user_name.slice(0, 130).trim() + (user_name.length > 129 ? '...' : '')
+    );
   }
 
   opennewsSec(id: any) {
-    this.router.navigate(['/post/' + id]);
+    window.location.href = '/post/' + id;
   }
 
   openCategory(url: any) {
     this.router.navigate([url]);
   }
-
 }

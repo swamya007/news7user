@@ -1,5 +1,8 @@
-@import '~bootstrap/dist/css/bootstrap.css';
-
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~quill/dist/quill.core.css";
+@import "~quill/dist/quill.bubble.css";
+@import "~quill/dist/quill.snow.css";
 :root {
   --white: #ffffff;
   --site-background: #d2d2d2;
@@ -11,7 +14,7 @@
 body {
   box-sizing: border-box;
   overflow-x: hidden;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .navbar {
@@ -30,7 +33,7 @@ body {
   color: #797f85;
   font-style: italic;
   cursor: pointer;
-  transition: all .4s ease;
+  transition: all 0.4s ease;
 }
 
 .author-name:hover {
@@ -122,7 +125,7 @@ h4.news-sub {
 .view-category .mat-select-arrow-wrapper {
   height: 0px !important;
 }
-.view-category .mat-form-field-outline{
+.view-category .mat-form-field-outline {
   background-color: var(--white) !important;
   border-top: 1px solid #897c7c;
   border-radius: 5px;
@@ -130,28 +133,28 @@ h4.news-sub {
 .view-category .mat-form-field-wrapper {
   padding: 0px !important;
 }
-.view-category  mat-form-field.form-group {
+.view-category mat-form-field.form-group {
   margin-bottom: 0px !important;
 }
 /* <-------------------------- END VIEW CATEGORY--------------------------------> */
 
 /* <-------------------------- VIEW USER--------------------------------> */
-.view-user-container .mat-form-field-outline{
-  background-color:var(--white) !important;
+.view-user-container .mat-form-field-outline {
+  background-color: var(--white) !important;
   border-top: 1px solid #897c7c;
   border-radius: 5px;
 }
 .view-user-container .search-category .mat-form-field-flex {
   height: 36px !important;
 }
-.view-user-container .mat-form-field-appearance-outline .mat-form-field-infix{
+.view-user-container .mat-form-field-appearance-outline .mat-form-field-infix {
   padding: 0em 0 1em 0 !important;
 }
 .view-user-container .search-category mat-form-field.form-group {
   margin-bottom: 0px !important;
 }
-.view-user-container .search-category  .mat-form-field-wrapper {
-    padding: 0px !important;
+.view-user-container .search-category .mat-form-field-wrapper {
+  padding: 0px !important;
 }
 /* <--------------------------- END VIEW USER--------------------------------> */
 
@@ -160,14 +163,23 @@ h4.news-sub {
 .add-user-form .mat-checkbox-checked.mat-accent .mat-checkbox-background {
   background-color: var(--blue);
 }
-.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element, .mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element {
+.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent
+  .mat-ripple-element,
+.mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent
+  .mat-ripple-element {
   background: var(--blue);
 }
 
-.send-message-container .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+.send-message-container
+  .mat-checkbox-checked.mat-accent
+  .mat-checkbox-background {
   background-color: var(--red);
 }
-.send-message-container .mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element, .mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element {
+.send-message-container
+  .mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent
+  .mat-ripple-element,
+.mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent
+  .mat-ripple-element {
   background: var(--red);
 }
 
@@ -178,10 +190,13 @@ h4.news-sub {
   height: 40px !important;
 }
 .add-post-container .add-post-form-field .mat-form-field-outline {
-  background:var(--white)!important;
+  background: var(--white) !important;
   border-radius: 5px;
 }
-.add-post-container .add-post-form-field .mat-form-field-appearance-outline .mat-form-field-infix {
+.add-post-container
+  .add-post-form-field
+  .mat-form-field-appearance-outline
+  .mat-form-field-infix {
   padding: 3px 0 0 0 !important;
 }
 
@@ -189,8 +204,11 @@ h4.news-sub {
   height: 8px !important;
 }
 
-.add-post-container .add-post-form-field .mat-form-field-appearance-fill .mat-form-field-flex {
-  background-color:var(--white) !important;
+.add-post-container
+  .add-post-form-field
+  .mat-form-field-appearance-fill
+  .mat-form-field-flex {
+  background-color: var(--white) !important;
 }
 
 .add-post-container .add-post-form-field .mat-form-field-outline {
@@ -201,8 +219,11 @@ h4.news-sub {
   padding-bottom: 0em !important;
 }
 
-.add-post-container .add-post-form-field mat-form-field .textarea-add-post.mat-input-element {
-  background:var(--white);
+.add-post-container
+  .add-post-form-field
+  mat-form-field
+  .textarea-add-post.mat-input-element {
+  background: var(--white);
   border: 1px solid #dedede;
   border-radius: 3px;
   padding: 4px;
@@ -211,7 +232,10 @@ h4.news-sub {
   min-height: 50px;
 }
 
-.add-post-container .add-post-form-field .mat-form-field-appearance-legacy .mat-form-field-underline {
+.add-post-container
+  .add-post-form-field
+  .mat-form-field-appearance-legacy
+  .mat-form-field-underline {
   display: none;
 }
 
@@ -222,13 +246,16 @@ h4.news-sub {
   height: 40px !important;
 }
 .addcategory-container .add-category-form-field .mat-form-field-outline {
-  background:var(--white)!important;
+  background: var(--white) !important;
   border-radius: 5px;
 }
-.addcategory-container .add-category-form-field  .form-group{
+.addcategory-container .add-category-form-field .form-group {
   margin-bottom: 0rem !important;
 }
-.addcategory-container .add-category-form-field .mat-form-field-appearance-outline .mat-form-field-infix {
+.addcategory-container
+  .add-category-form-field
+  .mat-form-field-appearance-outline
+  .mat-form-field-infix {
   padding: 3px 0 0 0 !important;
 }
 
@@ -236,8 +263,11 @@ h4.news-sub {
   height: 8px !important;
 }
 
-.addcategory-container .add-category-form-field .mat-form-field-appearance-fill .mat-form-field-flex {
-  background-color:var(--white) !important;
+.addcategory-container
+  .add-category-form-field
+  .mat-form-field-appearance-fill
+  .mat-form-field-flex {
+  background-color: var(--white) !important;
 }
 
 .addcategory-container .add-category-form-field .mat-form-field-outline {
@@ -248,7 +278,10 @@ h4.news-sub {
   padding-bottom: 0em !important;
 }
 
-.add-category-form .add-category-form-field mat-form-field .textarea-add-category.mat-input-element {
+.add-category-form
+  .add-category-form-field
+  mat-form-field
+  .textarea-add-category.mat-input-element {
   background: var(--white);
   border: 1px solid #dedede;
   border-radius: 3px;
@@ -258,7 +291,10 @@ h4.news-sub {
   width: 98%;
 }
 
-.addcategory-container .add-category-form-field .mat-form-field-appearance-legacy .mat-form-field-underline {
+.addcategory-container
+  .add-category-form-field
+  .mat-form-field-appearance-legacy
+  .mat-form-field-underline {
   display: none;
 }
 /* <-----------------END ADD CATEGORY FORM-----------------> */
@@ -268,13 +304,16 @@ h4.news-sub {
   height: 40px !important;
 }
 .addtag-container .add-tag-form-field .mat-form-field-outline {
-  background:var(--white)!important;
+  background: var(--white) !important;
   border-radius: 5px;
 }
-.addtag-container .add-tag-form-field  .form-group{
+.addtag-container .add-tag-form-field .form-group {
   margin-bottom: 0rem !important;
 }
-.addtag-container .add-tag-form-field .mat-form-field-appearance-outline .mat-form-field-infix {
+.addtag-container
+  .add-tag-form-field
+  .mat-form-field-appearance-outline
+  .mat-form-field-infix {
   padding: 3px 0 0 0 !important;
 }
 
@@ -282,8 +321,11 @@ h4.news-sub {
   height: 8px !important;
 }
 
-.addtag-container .add-tag-form-field .mat-form-field-appearance-fill .mat-form-field-flex {
-  background-color:var(--white) !important;
+.addtag-container
+  .add-tag-form-field
+  .mat-form-field-appearance-fill
+  .mat-form-field-flex {
+  background-color: var(--white) !important;
 }
 
 .addtag-container .add-tag-form-field .mat-form-field-outline {
@@ -294,7 +336,10 @@ h4.news-sub {
   padding-bottom: 0em !important;
 }
 
-.add-tag-form .add-tag-form-field mat-form-field .textarea-add-tag.mat-input-element {
+.add-tag-form
+  .add-tag-form-field
+  mat-form-field
+  .textarea-add-tag.mat-input-element {
   background: var(--white);
   border: 1px solid #dedede;
   border-radius: 3px;
@@ -304,11 +349,13 @@ h4.news-sub {
   width: 98%;
 }
 
-.addtag-container .add-tag-form-field .mat-form-field-appearance-legacy .mat-form-field-underline {
+.addtag-container
+  .add-tag-form-field
+  .mat-form-field-appearance-legacy
+  .mat-form-field-underline {
   display: none;
 }
 /* <----------------- END ADD TAG FORM-----------------> */
-
 
 /* <-----------------VIEW TAG---------------------------> */
 .view-tag .mat-form-field-flex {
@@ -340,7 +387,9 @@ h4.news-sub {
 /* <----------------- END VIEW TAG---------------------------> */
 
 /* <----------------- VIEW MEDIA---------------------------> */
-.search-input-container .mat-form-field-appearance-outline .mat-form-field-wrapper {
+.search-input-container
+  .mat-form-field-appearance-outline
+  .mat-form-field-wrapper {
   margin: 0px !important;
   padding: 0px !important;
 }
@@ -365,26 +414,34 @@ h4.news-sub {
   margin-top: 25px !important;
 }
 
-
 /* <----------------- END VIEW MEDIA---------------------------> */
 
 /* <----------------- ADD AD ---------------------------> */
-.addcategory-container .add-category-form-field .time-field .mat-form-field-wrapper {
+.addcategory-container
+  .add-category-form-field
+  .time-field
+  .mat-form-field-wrapper {
   padding-bottom: 0em !important;
   border: 1px solid #dedede !important;
   border-radius: 4px !important;
 }
 
-.addcategory-container .add-category-form-field .time-field .mat-form-field-underline {
+.addcategory-container
+  .add-category-form-field
+  .time-field
+  .mat-form-field-underline {
   display: none !important;
 }
 
-.addcategory-container .add-category-form-field .time-field .mat-form-field-appearance-fill .mat-form-field-flex {
+.addcategory-container
+  .add-category-form-field
+  .time-field
+  .mat-form-field-appearance-fill
+  .mat-form-field-flex {
   padding: 0px 6px;
 }
 
 /* <----------------- END ADD AD---------------------------> */
-
 
 .dropdown-list {
   position: absolute;
@@ -406,7 +463,10 @@ h4.news-sub {
 .contact-details .mat-form-field-flex {
   height: 50px;
 }
-.contact-us-form .contact-details .mat-form-field-appearance-outline .mat-form-field-infix {
+.contact-us-form
+  .contact-details
+  .mat-form-field-appearance-outline
+  .mat-form-field-infix {
   padding: 0.25em 0 1em 0 !important;
 }
 .contact-us-form .contact-details .mat-form-field-wrapper {
@@ -422,7 +482,7 @@ h4.news-sub {
 /* --------------------------contact-us-------------------- */
 .contact-us-container .mat-form-field-wrapper {
   padding-bottom: 0em !important;
-} 
+}
 /* --------------------------contact-us-------------------- */
 /* --------------------Edit Profile------------------------ */
 .card-block .mat-form-field-flex {
@@ -431,17 +491,18 @@ h4.news-sub {
 .card-block .mat-form-field-appearance-outline .mat-form-field-infix {
   padding: 0.25em 0 1em 0 !important;
 }
-.card-block  .mat-form-field-wrapper {
+.card-block .mat-form-field-wrapper {
   padding-bottom: 0em !important;
 }
-.card-block .mat-form-field{
+.card-block .mat-form-field {
   width: 100% !important;
 }
 
 /* --------------------Edit Profile------------------------ */
 
 /* ---------------------more from author carousal--------------------- */
-.more-from-author .carousel-cells .carousel-cell img, .carousel-cells .carousel-cell video {
+.more-from-author .carousel-cells .carousel-cell img,
+.carousel-cells .carousel-cell video {
   width: 100%;
   height: 134px !important;
   position: unset !important;
@@ -454,19 +515,18 @@ h4.news-sub {
 
 /* ---------------------more from author carousal end--------------------- */
 /* ---------------------Change password------------------------------- */
-.panel-body  .mat-form-field-flex {
+.panel-body .mat-form-field-flex {
   height: 40px !important;
 }
-.panel-body  .mat-form-field-appearance-outline .mat-form-field-infix {
+.panel-body .mat-form-field-appearance-outline .mat-form-field-infix {
   padding: 0.25em 0 1em 0 !important;
 }
-.panel-body   .mat-form-field-wrapper {
+.panel-body .mat-form-field-wrapper {
   padding-bottom: 0em !important;
 }
-.panel-body  .mat-form-field{
+.panel-body .mat-form-field {
   width: 100% !important;
 }
-
 
 /*** Sagar CSS Starts ***/
 
@@ -488,7 +548,8 @@ h4.news-sub {
   font-weight: 500;
 }
 
-.pagination .ngx-pagination li:not(.disabled):hover,a:hover {
+.pagination .ngx-pagination li:not(.disabled):hover,
+a:hover {
   color: #fff !important;
   background-color: #000 !important;
 }
@@ -508,14 +569,18 @@ h4.news-sub {
   color: #cacaca;
 }
 
-.user-container .biographical-info mat-form-field .textarea-add-category .mat-input-element {
+.user-container
+  .biographical-info
+  mat-form-field
+  .textarea-add-category
+  .mat-input-element {
   border: 1px solid rgb(222, 222, 222);
-    border-radius: 3px;
-    padding: 4px;
-    margin-top: -18px;
-    min-height: 100px;
-    width: 98%;
-    height: 90px;
+  border-radius: 3px;
+  padding: 4px;
+  margin-top: -18px;
+  min-height: 100px;
+  width: 98%;
+  height: 90px;
 }
 
 .carousel a:hover {
@@ -533,7 +598,7 @@ h4.news-sub {
 
 /* ------------------------search modal---------------------------- */
 
-.search-modal .mat-form-field-wrapper  {
+.search-modal .mat-form-field-wrapper {
   padding-bottom: 0.2em;
   margin: 0px !important;
 }
@@ -551,7 +616,7 @@ h4.news-sub {
   border: 1px solid #cccccc;
 }
 
-.ngx-pagination li a{
+.ngx-pagination li a {
   text-decoration: none;
   color: #4e4e4e;
 }

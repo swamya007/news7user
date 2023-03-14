@@ -128,6 +128,7 @@ import { FeaturedStoriesComponent } from './component/featured-stories/featured-
 import { BnNgTreeModule } from 'bn-ng-tree-lib';
 import { DEFAULT_LIBRARY_BUTTONS, NgxWigModule } from 'ngx-wig';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -257,6 +258,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     BnNgTreeModule,
     NgxWigModule.forRoot({ buttonsConfig: DEFAULT_LIBRARY_BUTTONS }),
     AngularEditorModule,
+    QuillModule,
   ],
   providers: [
     {

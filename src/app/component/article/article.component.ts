@@ -44,9 +44,9 @@ export class ArticleComponent implements OnInit {
     private notify: NotificationService,
     private post: PostserviceService,
     private adsService: AdserviceService,
-    private titleService: Title,
+    private Title: Title,
     private spinnerService: LoaderService,
-    private meta: Meta,
+    private Meta: Meta,
     private loginservice: LoginService
   ) {
     activatedRoute.params.subscribe((val) => {
@@ -56,7 +56,51 @@ export class ArticleComponent implements OnInit {
       this.post_page_no = 1;
       this.comment_count = 0;
       this.comment_obj = new CommentModel();
-      this.getallpost();
+      //this.getallpost();
+      this.post.getPostBySlug(this.id, environment.CUSTOMER_ID).subscribe(
+        (res: any) => {
+          if (res.code == 'success') {
+            var data = res.body;
+            this.postarr = data?.map((dt: any) => JSON.parse(dt));
+            this.news =
+              this.postarr && this.postarr.length ? this.postarr[0] : {};
+            if (this.news.tags) {
+              this.news.tags = this.news.tags.replaceAll(',', ', ');
+            }
+  
+          this.Title.setTitle(this.news.post_title);
+          let imgURL = this.news.guid;
+          let newsTitle = this.news.post_title;
+          let newsDesc = this.news.post_title;
+          let postURL = this.news.permalink;
+          let tags = [
+            { name: 'twitter:card', content: 'summary' },
+            { name: 'twitter:image', content: imgURL },
+            { name: 'twitter:title', content: newsTitle },
+            { name: 'twitter:description', content: newsDesc },
+            { name: 'og:type', content: 'article' },
+            { name: 'og:title', content: newsTitle },
+            { name: 'og:description', content: newsDesc },
+            { name: 'og:url', content: postURL },
+            { name: 'og:image', content: imgURL }
+          ];
+          tags.forEach((tag: any) => {
+            this.Meta.updateTag(tag);
+          });
+            this.comment_obj.comment_post_id = this.news.id;
+            this.getCommentsByPost(this.news.id);
+            // this.getPo(this.news.id);
+            this.getPostBycategory();
+            this.spinnerService.hide();
+          } else {
+            this.postarr = [];
+          }
+        },
+        (err) => {
+          this.spinnerService.hide();
+          this.postarr = [];
+        }
+      );
       this.getAllAdsList();
       this.getIPAddress();
       this.getBrowserName();
@@ -72,11 +116,53 @@ export class ArticleComponent implements OnInit {
     this.post_page_no = 1;
     this.comment_count = 0;
     this.comment_obj = new CommentModel();
-    this.getallpost();
+    this.post.getPostBySlug(this.id, environment.CUSTOMER_ID).subscribe(
+      (res: any) => {
+        if (res.code == 'success') {
+          var data = res.body;
+          this.postarr = data?.map((dt: any) => JSON.parse(dt));
+          this.news =
+            this.postarr && this.postarr.length ? this.postarr[0] : {};
+          if (this.news.tags) {
+            this.news.tags = this.news.tags.replaceAll(',', ', ');
+          }
+          this.Title.setTitle(this.news.post_title);
+          let imgURL = this.news.guid;
+          let newsTitle = this.news.post_title;
+          let newsDesc = this.news.post_title;
+          let postURL = this.news.permalink;
+          let tags = [
+            { name: 'twitter:card', content: 'summary' },
+            { name: 'twitter:image', content: imgURL },
+            { name: 'twitter:title', content: newsTitle },
+            { name: 'twitter:description', content: newsDesc },
+            { name: 'og:type', content: 'article' },
+            { name: 'og:title', content: newsTitle },
+            { name: 'og:description', content: newsDesc },
+            { name: 'og:url', content: postURL },
+            { name: 'og:image', content: imgURL }
+          ];
+          tags.forEach((tag: any) => {
+            this.Meta.updateTag(tag);
+          });
+          this.comment_obj.comment_post_id = this.news.id;
+          this.getCommentsByPost(this.news.id);
+          // this.getPo(this.news.id);
+          this.getPostBycategory();
+          this.spinnerService.hide();
+        } else {
+          this.postarr = [];
+        }
+      },
+      (err) => {
+        this.spinnerService.hide();
+        this.postarr = [];
+      }
+    );
+    //this.getallpost();
     this.getAllAdsList();
     this.getIPAddress();
     this.getBrowserName();
-    console.log(this.id, 'lion');
   }
   getPostBycategory() {
     console.log(this.postarr[0].category, 'dkkd');
@@ -214,7 +300,7 @@ export class ArticleComponent implements OnInit {
             this.news.tags = this.news.tags.replaceAll(',', ', ');
           }
 
-          this.titleService.setTitle(this.news.post_title);
+          this.Title.setTitle(this.news.post_title);
           this.comment_obj.comment_post_id = this.news.id;
           this.getCommentsByPost(this.news.id);
           // this.getPo(this.news.id);

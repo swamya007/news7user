@@ -225,7 +225,7 @@ import { QuillModule } from 'ngx-quill';
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,

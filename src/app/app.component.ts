@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavigationEnd, Router ,ActivatedRoute} from '@angular/router';
 import { SeoServiceService } from './services/seoService/seo-service.service';
 import { filter, map, mergeMap } from 'rxjs/operators';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -13,7 +14,17 @@ export class AppComponent {
   title = 'prameya';
 
 
-constructor(private router : Router, public _seoService: SeoServiceService,private activatedRoute : ActivatedRoute ){}
+constructor(private router : Router, public _seoService: SeoServiceService,private activatedRoute : ActivatedRoute, private Title: Title ){
+  this.router.events.subscribe((event:any) => {
+    try{
+      if(!event?.url.includes('/post')) {
+        this.Title.setTitle('Prameya');
+      }
+    }catch(e) {
+      console.log(e);
+    }
+  })
+}
 
   ngOnInit(): void {
     // let titleArr = window.location.href.split('/');

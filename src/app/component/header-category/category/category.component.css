@@ -362,66 +362,65 @@
     }
   } */
 
-  .innerheader{
-    /* margin-left: 80px; */
-    margin-top: 20px;
-    font-weight: bold;
-  }
-
-  .top-stories {
-    background: #f7f7f7;
+.innerheader {
+  /* margin-left: 80px; */
+  margin-top: 20px;
+  font-weight: bold;
 }
-  .news-section {
-    background: #f7f7f7;
-    /* padding: 0 15px; */
-  }
-  
-  .news-box {
-    background: #ffffff !important;
-    /* margin: 20px 0 20px 20px; */
-    height: 300px;
-    margin: 20px 0px;
-  }
-  
-  .news-img-container {
-    padding-left: 0;
-  }
 
-  .news-img-container img {
-    width: -webkit-fill-available;
-    height: -webkit-fill-available;
-  }
+.top-stories {
+  background: #f7f7f7;
+}
+.news-section {
+  background: #f7f7f7;
+  /* padding: 0 15px; */
+}
 
-  .news-text-container {
-    padding: 20px 10px 0 0;
-  }
-  
-  .news-text-container .post-heading {
-    font-size: 25px;
-    line-height: normal;
-    margin-bottom: 15px;
-    font-weight: bold;
-  }
+.news-box {
+  background: #ffffff !important;
+  /* margin: 20px 0 20px 20px; */
+  height: 300px;
+  margin: 20px 0px;
+}
 
-  .news-text-container .post-content {
-    font-size: 20px;
-    margin-top: 15px;
-    line-height: 1.6;
-  }
+.news-img-container {
+  padding-left: 0;
+}
 
-  .news-text-container .post-content p {
-    margin: 0;
-  }
-  
-  .prameya-epaper{
-    background: #ffffff;
-    padding: 20px;
-    margin: 15px 0 15px 0;
-  }
-  
-  .prameya-epaper-image {
-    width: -webkit-fill-available;
-  }
-  
-  
-  
+.news-img-container img {
+  /* width: -webkit-fill-available;
+    height: -webkit-fill-available; */
+  height: -webkit-fill-available;
+  max-width: 100%;
+}
+
+.news-text-container {
+  padding: 20px 10px 0 0;
+}
+
+.news-text-container .post-heading {
+  font-size: 25px;
+  line-height: normal;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.news-text-container .post-content {
+  font-size: 20px;
+  margin-top: 15px;
+  line-height: 1.6;
+}
+
+.news-text-container .post-content p {
+  margin: 0;
+}
+
+.prameya-epaper {
+  background: #ffffff;
+  padding: 20px;
+  margin: 15px 0 15px 0;
+}
+
+.prameya-epaper-image {
+  width: -webkit-fill-available;
+}

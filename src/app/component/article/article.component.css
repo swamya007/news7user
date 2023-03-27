@@ -19,7 +19,7 @@
 
 .category-section {
   background-color: #b50000;
-  color:var(--white);
+  color: var(--white);
   padding: 7px 12px;
   text-transform: uppercase;
   font-weight: bold;
@@ -28,12 +28,9 @@
   align-items: center;
 }
 
-
-
-
 .article-text-section .article-text {
   font-size: 20px !important;
-  line-height: 30px;    
+  line-height: 30px;
   margin-bottom: 6px;
 }
 
@@ -134,7 +131,7 @@
   align-items: center;
 }
 
-.share-cont p{
+.share-cont p {
   margin: 0;
   color: #7b7b7b;
 }
@@ -148,8 +145,6 @@
   text-transform: capitalize;
   font-size: 10px;
 }
-
-
 
 .facebook-icon {
   height: 32px;
@@ -183,10 +178,10 @@
   transition: all 0.5s ease;
 }
 
-.messenger-icon{
+.messenger-icon {
   height: 32px;
   width: 100px;
-  background-color: #448AFF;
+  background-color: #448aff;
   color: var(--white);
   display: flex;
   align-items: center;
@@ -197,7 +192,7 @@
   margin: 0px 5px;
 }
 
-.whatsapp-icon{
+.whatsapp-icon {
   height: 32px;
   width: 100px;
   background-color: #25d366;
@@ -211,10 +206,10 @@
   margin: 0px 5px;
 }
 
-.share-icon{
+.share-icon {
   height: 32px;
   width: 100px;
-  background-color: #95D03A;
+  background-color: #95d03a;
   color: var(--white);
   display: flex;
   align-items: center;
@@ -243,7 +238,6 @@
     position: relative;
     bottom: 6px;
   }
-
 }
 
 .twitter-icon:hover {
@@ -344,12 +338,12 @@
   justify-content: flex-end;
 }
 
-.login-button-holder button  {
+.login-button-holder button {
   font-size: 15px;
   background-color: #2d5f9a;
   opacity: 0.5;
   color: #ffffff;
-  font-weight: bold;   
+  font-weight: bold;
   margin-right: 5px;
   height: 23px;
   display: flex;
@@ -440,7 +434,6 @@
   margin: 0.2rem 0px;
 }
 
-
 /** --------------------------comment form ends------------------------ **/
 
 /** --------------------might also like-------------------------- **/
@@ -518,13 +511,12 @@
   padding-top: 30px;
 }
 
-
 /** --------------------might also like end-------------------------- **/
 
 /* ------------------------related posts------------------------------- */
 .news-section {
   padding: 1rem;
-  background:var(--white);
+  background: var(--white);
   margin: 1%;
 }
 
@@ -546,11 +538,11 @@
   font-weight: bold;
 }
 
-.related-content-section-heading h1{
+.related-content-section-heading h1 {
   margin-bottom: 0;
 }
 
-.related-content-section-heading h1 span{
+.related-content-section-heading h1 span {
   margin-bottom: 0px;
   font-weight: bold;
   border-bottom: 2px solid red;
@@ -573,9 +565,9 @@ h4.news-sub {
   color: #000 !important;
 }
 
-.prameya-epaper{
+.prameya-epaper {
   background: #ffffff;
-  padding: 20px;
+  padding: 30px;
   margin-bottom: 20px;
 }
 
@@ -583,4 +575,125 @@ h4.news-sub {
   width: -webkit-fill-available;
 }
 
+.slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
 
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.top-slide-img {
+  height: 280px;
+}
+
+.slide {
+  flex: 1;
+  /* background-color: #ccc; */
+  /* height: auto; */
+  flex-direction: row;
+  display: flex;
+  gap: 0.1vw;
+}
+
+.controls {
+  position: absolute;
+  bottom: 40%;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.prev,
+.next {
+  color: #999;
+  border: none;
+  cursor: pointer;
+}
+
+.slider1 {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.slides1 {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.bottom-slide-img {
+  height: 600px;
+}
+.slide1 {
+  flex: 1;
+  /* background-color: #ccc; */
+  /* height: auto; */
+  flex-direction: row;
+  display: flex;
+  gap: 0.1vw;
+}
+
+.controls1 {
+  position: absolute;
+  bottom: 40%;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.prev,
+.next {
+  color: #999;
+  border: none;
+  cursor: pointer;
+}
+
+.slider {
+  width: 100%;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  width: 300%;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  width: 33.33%;
+}
+
+.slider:first-of-type .slide {
+  background-color: red;
+}
+
+.slider:nth-of-type(2) .slide {
+  background-color: blue;
+}
+
+.slider:last-of-type .slide {
+  background-color: green;
+}
+
+.slider-nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.slider-nav button {
+  background-color: #ddd;
+  border: none;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.slider-nav button.active {
+  background-color: #555;
+}

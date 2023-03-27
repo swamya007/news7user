@@ -37,6 +37,13 @@ export class ArticleComponent implements OnInit {
   nextthree: any = [];
   cat: any;
   catname: any;
+
+  currentSlide = 0;
+  translateValue = `-${this.currentSlide * 100}%`;
+
+  currentSlides = 0;
+  translateValues = `-${this.currentSlides * 100}%`;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
@@ -67,26 +74,26 @@ export class ArticleComponent implements OnInit {
             if (this.news.tags) {
               this.news.tags = this.news.tags.replaceAll(',', ', ');
             }
-  
-          this.Title.setTitle(this.news.post_title);
-          let imgURL = this.news.guid;
-          let newsTitle = this.news.post_title;
-          let newsDesc = this.news.post_title;
-          let postURL = this.news.permalink;
-          let tags = [
-            { name: 'twitter:card', content: 'summary' },
-            { name: 'twitter:image', content: imgURL },
-            { name: 'twitter:title', content: newsTitle },
-            { name: 'twitter:description', content: newsDesc },
-            { name: 'og:type', content: 'article' },
-            { name: 'og:title', content: newsTitle },
-            { name: 'og:description', content: newsDesc },
-            { name: 'og:url', content: postURL },
-            { name: 'og:image', content: imgURL }
-          ];
-          tags.forEach((tag: any) => {
-            this.Meta.updateTag(tag);
-          });
+
+            this.Title.setTitle(this.news.post_title);
+            let imgURL = this.news.guid;
+            let newsTitle = this.news.post_title;
+            let newsDesc = this.news.post_title;
+            let postURL = this.news.permalink;
+            let tags = [
+              { name: 'twitter:card', content: 'summary' },
+              { name: 'twitter:image', content: imgURL },
+              { name: 'twitter:title', content: newsTitle },
+              { name: 'twitter:description', content: newsDesc },
+              { name: 'og:type', content: 'article' },
+              { name: 'og:title', content: newsTitle },
+              { name: 'og:description', content: newsDesc },
+              { name: 'og:url', content: postURL },
+              { name: 'og:image', content: imgURL },
+            ];
+            tags.forEach((tag: any) => {
+              this.Meta.updateTag(tag);
+            });
             this.comment_obj.comment_post_id = this.news.id;
             this.getCommentsByPost(this.news.id);
             // this.getPo(this.news.id);
@@ -140,7 +147,7 @@ export class ArticleComponent implements OnInit {
             { name: 'og:title', content: newsTitle },
             { name: 'og:description', content: newsDesc },
             { name: 'og:url', content: postURL },
-            { name: 'og:image', content: imgURL }
+            { name: 'og:image', content: imgURL },
           ];
           tags.forEach((tag: any) => {
             this.Meta.updateTag(tag);
@@ -390,7 +397,14 @@ export class ArticleComponent implements OnInit {
       window.open(url);
     }
   }
-
+  moveSlide(direction: number) {
+    this.currentSlide += direction;
+    this.translateValue = `-${this.currentSlide * 100}%`;
+  }
+  moveSlide2(directions: number) {
+    this.currentSlides += directions;
+    this.translateValues = `-${this.currentSlide * 100}%`;
+  }
   public createNavigationUrl(type: string) {
     //let shareUrl = 'https://prameya/post/';
     let shareUrl = `${environment.PLATFORM_BASEURL}/post/${this.id}`;

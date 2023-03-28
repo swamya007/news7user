@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommentModel } from 'src/app/models/commentModel';
@@ -57,8 +57,7 @@ export class ArticleComponent implements OnInit {
     private Title: Title,
     private spinnerService: LoaderService,
     private Meta: Meta,
-    private loginservice: LoginService,
-    @Inject(PLATFORM_ID) platformId: Object
+    private loginservice: LoginService
   ) {
     activatedRoute.params.subscribe((val) => {
       const routeParams = this.activatedRoute.snapshot.paramMap;

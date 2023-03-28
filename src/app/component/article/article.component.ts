@@ -78,7 +78,7 @@ export class ArticleComponent implements OnInit {
             this.Title.setTitle(this.news.post_title);
             let imgURL = this.news.guid;
             let newsTitle = this.news.post_title;
-            let newsDesc = this.news.post_title;
+            let newsDesc = this.news.meta_description;
             let postURL = this.news.permalink;
             let tags = [
               { name: 'twitter:card', content: 'summary' },
@@ -136,7 +136,7 @@ export class ArticleComponent implements OnInit {
           this.Title.setTitle(this.news.post_title);
           let imgURL = this.news.guid;
           let newsTitle = this.news.post_title;
-          let newsDesc = this.news.post_title;
+          let newsDesc = this.news.meta_description;
           let postURL = this.news.permalink;
           let tags = [
             { name: 'twitter:card', content: 'summary' },

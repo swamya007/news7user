@@ -268,6 +268,27 @@ export class ArticleComponent implements OnInit {
     }
   }
 
+  updateSEO_Tags() {
+    this.Title.setTitle(this.news.post_title);
+    let imgURL = this.news.guid;
+    let newsTitle = this.news.post_title;
+    let newsDesc = this.news.post_title;
+    let postURL = this.news.permalink;
+    let tags = [
+      { name: 'twitter:card', content: 'summary' },
+      { name: 'twitter:image', content: imgURL },
+      { name: 'twitter:title', content: newsTitle },
+      { name: 'twitter:description', content: newsDesc },
+      { name: 'og:title', content: newsTitle },
+      { name: 'og:description', content: newsDesc },
+      { name: 'og:url', content: postURL },
+      { name: 'og:image', content: imgURL },
+    ];
+    tags.forEach((tag: any) => {
+      this.Meta.updateTag(tag);
+    });
+  }
+
   savePostComment() {
     this.spinnerService.show();
 

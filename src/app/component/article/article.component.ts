@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommentModel } from 'src/app/models/commentModel';
@@ -10,6 +10,9 @@ import { environment } from 'src/environments/environment';
 import { Title, Meta } from '@angular/platform-browser';
 import { LoaderService } from 'src/app/services/loaderService/loader.service';
 import { LoginService } from 'src/app/services/loginService/login.service';
+import { isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID } from '@angular/core';
+
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
@@ -54,7 +57,8 @@ export class ArticleComponent implements OnInit {
     private Title: Title,
     private spinnerService: LoaderService,
     private Meta: Meta,
-    private loginservice: LoginService
+    private loginservice: LoginService,
+    @Inject(PLATFORM_ID) platformId: Object
   ) {
     activatedRoute.params.subscribe((val) => {
       const routeParams = this.activatedRoute.snapshot.paramMap;
@@ -326,6 +330,12 @@ export class ArticleComponent implements OnInit {
             this.postarr && this.postarr.length ? this.postarr[0] : {};
           if (this.news.tags) {
             this.news.tags = this.news.tags.replaceAll(',', ', ');
+          }
+          if (isPlatformBrowser(PLATFORM_ID)) {
+            let div = document.querySelector('.article-text-section');
+            if (div) {
+              div.innerHTML = this.news.post_content;
+            }
           }
 
           this.Title.setTitle(this.news.post_title);

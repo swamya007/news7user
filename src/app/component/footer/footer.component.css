@@ -1,238 +1,243 @@
 .footer-container {
-    background: linear-gradient(1deg, #212121, #00000075);
-    /* padding: 0.5% 4%; */
+  background: linear-gradient(1deg, #212121, #00000075);
+  /* padding: 0.5% 4%; */
 }
 
 .credits-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 1.5%;
-    background: var(--black);
-    color: #ccc;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5%;
+  background: var(--black);
+  color: #ccc;
 }
 
 .credits-container p {
-    margin-bottom: 0px;
-    font-size: 15px;
-    color: #bbb;
+  margin-bottom: 0px;
+  font-size: 15px;
+  color: #bbb;
 }
 
 .credits-container p a {
-    text-decoration: none;
-    color: var(--white);
+  text-decoration: none;
+  color: var(--white);
 }
 
 .credits-container p a:hover {
-    color: rgb(233, 0, 0);
-    cursor: pointer;
+  color: rgb(233, 0, 0);
+  cursor: pointer;
 }
 
 .footer-links-container ul {
-    text-align: center;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    margin: 0rem 0rem;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  margin: 0rem 0rem;
 }
 
 .footer-links-container ul li {
-    float: none;
-    display: inline-block;
-    margin-right: 0px;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: var(--white);
-    transition: all .5s ease;
-    padding: 0px 15px;
-    cursor: pointer;
-    border-right: 2px solid #fff;
+  float: none;
+  display: inline-block;
+  margin-right: 0px;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--white);
+  transition: all 0.5s ease;
+  padding: 0px 15px;
+  cursor: pointer;
+  border-right: 2px solid #fff;
 }
 .footer-links-container ul li:last-child {
-    border-right: none;
+  border-right: none;
 }
 .footer-links-container ul li:hover {
-    border-radius: 0px;
-    color: #bbb;
+  border-radius: 0px;
+  color: #bbb;
 }
-.btn-section{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+.btn-section {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
-.btn-secondary{
+.btn-secondary {
+  background-color: #3f3f3f;
+  border: 1px solid #fff;
+  width: 196px;
+  margin: 0px 4px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.btn-secondary:hover {
+  background-color: #da0000;
+}
+.bg-grey {
+  background-color: #3f3f3f;
+  padding: 0.5% 4%;
+}
+.footer-header {
+  font-weight: bold;
+  margin: 0px;
+  font-size: 18px;
+  color: #fff;
+  border-bottom: 2px solid #4d4d4d;
+  padding-bottom: 12px;
+  margin-bottom: 10px;
+}
+footer ul li {
+  list-style: none;
+  display: block;
+  margin: 10px 0px;
+}
+footer ul {
+  padding-left: 0;
+}
+footer ul li a {
+  text-decoration: none;
+  color: #bbb;
+  text-decoration: none;
+}
+.download-app img {
+  height: 40px;
+  margin: 0px 5px;
+}
+.download-app {
+  background: #1c1c1c;
+  padding: 5px 0px;
+  display: flex;
+  display: table;
+  margin-bottom: 10px;
+}
+.bdr-rt {
+  border-right: 2px solid #4d4d4d;
+}
+.social-icon {
+  background: none;
+  padding: 5px 5px;
+  display: flex;
+}
+.social-icon .fa,
+.social-icon .fab {
+  padding: 8px 6px;
+  font-size: 15px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 4px;
+  border-radius: 50%;
+}
+
+.social-icon .fa:hover {
+  opacity: 0.7;
+}
+.fa-facebook {
+  background: #404ea7;
+  color: white;
+}
+
+.fa-twitter {
+  background: #5fafec;
+  color: white;
+}
+.fa-instagram {
+  background: #e44891;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #086294;
+  color: white;
+}
+
+.fa-telegram-plane {
+  background: #fff;
+  color: #2a9aca;
+  padding: 0px !important;
+  font-size: 31px !important;
+}
+.fa-snapchat-ghost {
+  background: #fbb70a;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.fa-youtube {
+  background: #fb4432;
+  color: white;
+}
+.bg-grey li a:hover {
+  color: #da0000;
+}
+.footer-links-container ul li:hover {
+  color: #da0000;
+}
+:host ::ng-deep .news-text-container p {
+  color: #fff !important;
+  transition: all 0.4s ease;
+}
+:host ::ng-deep .news-text-container p:hover {
+  color: #f00 !important;
+  transition: all 0.4s ease;
+}
+@media screen and (min-width: 280px) and (max-device-width: 479px) {
+  .btn-secondary {
     background-color: #3f3f3f;
     border: 1px solid #fff;
-    width: 196px;
+    width: 100%;
     margin: 0px 4px;
     text-transform: uppercase;
     margin-bottom: 10px;
-}
-.btn-secondary:hover{
-    background-color: #da0000;
-}
-.bg-grey{
-    background-color: #3f3f3f;
-    padding: 0.5% 4%;
-}
-.footer-header {
-    font-weight: bold;
-    margin: 0px;
-    font-size: 18px ;
-    color: #fff;
-    border-bottom: 2px solid #4d4d4d;
-    padding-bottom: 12px;
-    margin-bottom: 10px;
-}
-footer ul li {
-    list-style: none;
+  }
+  .bdr-rt {
+    border-right: none;
+  }
+  .credits-container {
     display: block;
-    margin: 10px 0px;
-}
-  footer ul  {
-   padding-left: 0;
-}
-footer ul  li a{
-  text-decoration: none;
-  color: #bbb;
-  text-decoration:none;
-}
-.download-app img{
-    height: 40px;
-    margin: 0px 5px;
-}
-.download-app{
-    background: #1c1c1c;
-    padding: 5px 0px;
-    display: flex;
-    display: table;
-    margin-bottom: 10px;
-}
-.bdr-rt{
-    border-right: 2px solid #4d4d4d;
-}
-.social-icon{
- background: none;
-    padding: 5px 5px;
-    display: flex;   
-}
-.social-icon .fa, .social-icon .fab {
-    padding: 8px 6px;
-    font-size: 15px;
-    width: 30px;
+  }
+  .credits-container p {
     text-align: center;
-    text-decoration: none;
-    margin: 5px 4px;
-    border-radius: 50%;
+    margin-bottom: 14px;
   }
-  
-  .social-icon .fa:hover {
-      opacity: 0.7;
-  }
-  .fa-facebook {
-    background: #404ea7;
-    color: white;
-  }
-  
-  .fa-twitter {
-    background: #5fafec;
-    color: white;
-  }
-  .fa-instagram {
-    background: #e44891;
-    color: white;
-  }
-
-  .fa-linkedin {
-    background: #086294;
-    color: white;
-  }
-  
-  .fa-telegram-plane {
-    background: #fff;
-    color: #2a9aca;
-    padding: 0px!important;
-    font-size: 31px !important;
-  }
-  .fa-snapchat-ghost {
-    background: #fbb70a;
-    color: white;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  }
-  .fa-youtube {
-    background: #fb4432;
-    color: white;
-  }
- .bg-grey li a:hover{
-    color: #da0000;
- }
- .footer-links-container ul li:hover {
-    color: #da0000;
 }
-  @media screen and (min-width:280px) and (max-device-width:479px) {
-    .btn-secondary{
-        background-color: #3f3f3f;
-        border: 1px solid #fff;
-        width: 100%;
-        margin: 0px 4px;
-        text-transform: uppercase;
-        margin-bottom: 10px;
-    }
-    .bdr-rt{
-        border-right: none;
-    }
-    .credits-container {
-        display: block;
-    }
-    .credits-container p {
-        text-align: center;
-        margin-bottom: 14px;
-    }
+
+@media screen and (min-width: 480px) and (max-device-width: 767px) {
+  .bdr-rt {
+    border-right: none;
   }
-  
-  @media screen and (min-width:480px) and (max-device-width:767px) {
-    .bdr-rt{
-        border-right: none;
-    }
-    .credits-container {
-        display: block;
-    }
-    .credits-container p {
-        text-align: center;
-        margin-bottom: 14px;
-    }
+  .credits-container {
+    display: block;
   }
-  
-  @media screen and (min-device-width:768px) and (max-device-width:1024px) {
-    .credits-container {
-        display: block;
-    }
-    .credits-container p {
-        text-align: center;
-        margin-bottom: 14px;
-    }
-    .download-app img {
+  .credits-container p {
+    text-align: center;
+    margin-bottom: 14px;
+  }
+}
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .credits-container {
+    display: block;
+  }
+  .credits-container p {
+    text-align: center;
+    margin-bottom: 14px;
+  }
+  .download-app img {
     height: 22px;
     margin: 0px 2px;
-    }
   }
-  
-  @media screen and (min-device-width:1025px) and (max-device-width:1280px) {
-    .download-app img {
-        height: 34px;
-        margin: 0px 2px;
-    }
+}
+
+@media screen and (min-device-width: 1025px) and (max-device-width: 1280px) {
+  .download-app img {
+    height: 34px;
+    margin: 0px 2px;
   }
-  
-  @media screen and (min-device-width:1281px) and (max-device-width:1919px) {
-  
-  }
-  
-  @media screen and (min-width:1920px) and (max-device-width:2500px) {
-  
-  }
-  
-  @media screen and (min-width:2501px) {
-  
-  }
-  
+}
+
+@media screen and (min-device-width: 1281px) and (max-device-width: 1919px) {
+}
+
+@media screen and (min-width: 1920px) and (max-device-width: 2500px) {
+}
+
+@media screen and (min-width: 2501px) {
+}

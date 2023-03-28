@@ -62,8 +62,11 @@
             </div>
             <img class="article-image" [src]="news.guid" />
 
-            <div class="article-text-section">
-              <div class="article-text" [innerHTML]="news.post_content"></div>
+            <div class="article-section-container">
+              <div
+                class="article-text-section"
+                [innerHTML]="news.post_content"
+              ></div>
               <div *ngIf="news.comment_status === 'opened'">
                 <div class="send-message-container">
                   <div class="heading-container">

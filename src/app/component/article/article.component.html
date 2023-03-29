@@ -19,13 +19,11 @@
 
             <div class="author-cat-section">
               <p>{{ news.post_date | date : "short" }}</p>
-              <div class="category-section">
-                {{ catname }}
-              </div>
+              <div class="category-section">{{ catname }} {{ news.tags }}</div>
             </div>
             <!-- <div class="category-section">
-                            {{news.tags}}
-                        </div> -->
+              {{ news.tags }}
+            </div> -->
             <div class="social-section">
               <div class="share-section">
                 <div class="share-cont">
@@ -62,11 +60,8 @@
             </div>
             <img class="article-image" [src]="news.guid" />
 
-            <div class="article-section-container">
-              <div
-                class="article-text-section"
-                [innerHTML]="news.post_content"
-              ></div>
+            <div class="article-text-section">
+              <div class="article-text" [innerHTML]="news.post_content"></div>
               <div *ngIf="news.comment_status === 'opened'">
                 <div class="send-message-container">
                   <div class="heading-container">

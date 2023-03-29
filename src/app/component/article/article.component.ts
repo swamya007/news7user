@@ -12,7 +12,7 @@ import { LoaderService } from 'src/app/services/loaderService/loader.service';
 import { LoginService } from 'src/app/services/loginService/login.service';
 import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
-
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
@@ -57,7 +57,8 @@ export class ArticleComponent implements OnInit {
     private Title: Title,
     private spinnerService: LoaderService,
     private Meta: Meta,
-    private loginservice: LoginService
+    private loginservice: LoginService,
+    private sanitizer: DomSanitizer
   ) {
     activatedRoute.params.subscribe((val) => {
       const routeParams = this.activatedRoute.snapshot.paramMap;
@@ -77,6 +78,8 @@ export class ArticleComponent implements OnInit {
             if (this.news.tags) {
               this.news.tags = this.news.tags.replaceAll(',', ', ');
             }
+            this.news.post_content_sanitized =
+              this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
 
             this.Title.setTitle(this.news.post_title);
             let imgURL = this.news.guid;
@@ -136,6 +139,7 @@ export class ArticleComponent implements OnInit {
           if (this.news.tags) {
             this.news.tags = this.news.tags.replaceAll(',', ', ');
           }
+
           this.Title.setTitle(this.news.post_title);
           let imgURL = this.news.guid;
           let newsTitle = this.news.post_title;

@@ -60,8 +60,11 @@
             </div>
             <img class="article-image" [src]="news.guid" />
 
-            <div class="article-text-section">
-              <div class="article-text" [innerHTML]="news.post_content"></div>
+            <div>
+              <div
+                class="article-text-section"
+                [innerHTML]="news.post_content_sanitized"
+              ></div>
               <div *ngIf="news.comment_status === 'opened'">
                 <div class="send-message-container">
                   <div class="heading-container">

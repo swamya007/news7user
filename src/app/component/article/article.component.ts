@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommentModel } from 'src/app/models/commentModel';
@@ -9,10 +9,13 @@ import { PostserviceService } from 'src/app/services/postservice/postservice.ser
 import { environment } from 'src/environments/environment';
 import { Title, Meta } from '@angular/platform-browser';
 import { LoaderService } from 'src/app/services/loaderService/loader.service';
-import { LoginService } from 'src/app/services/loginService/login.service';
+// import { LoginService } from 'src/app/services/loginService/login.service';
 import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+
+declare var $: any;
+
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
@@ -30,6 +33,7 @@ export class ArticleComponent implements OnInit {
   allAdsList: any = [];
   ads_rightupper: any = [];
   ads_leftmiddle: any = [];
+  nextthree: any = [];
   comments: any = [];
   author_post: any = [];
   comment_page_no: number = 1;
@@ -37,28 +41,28 @@ export class ArticleComponent implements OnInit {
   comment_obj: any;
   comment_count: number = 0;
   navUrl!: string;
-  nextthree: any = [];
-  cat: any;
-  catname: any;
-
+  currentIndex = 0;
   currentSlide = 0;
   translateValue = `-${this.currentSlide * 100}%`;
 
   currentSlides = 0;
   translateValues = `-${this.currentSlides * 100}%`;
-
+  cat: any;
+  catname: any;
   constructor(
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
     private router: Router,
     private notify: NotificationService,
     private post: PostserviceService,
+    private titleService: Title,
+
     private adsService: AdserviceService,
     private Title: Title,
     private spinnerService: LoaderService,
     private Meta: Meta,
-    private loginservice: LoginService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    @Inject(PLATFORM_ID) platformId: Object
   ) {
     activatedRoute.params.subscribe((val) => {
       const routeParams = this.activatedRoute.snapshot.paramMap;
@@ -67,7 +71,7 @@ export class ArticleComponent implements OnInit {
       this.post_page_no = 1;
       this.comment_count = 0;
       this.comment_obj = new CommentModel();
-      //this.getallpost();
+      this.getAllAdsList();
       this.post.getPostBySlug(this.id, environment.CUSTOMER_ID).subscribe(
         (res: any) => {
           if (res.code == 'success') {
@@ -80,7 +84,12 @@ export class ArticleComponent implements OnInit {
             }
             this.news.post_content_sanitized =
               this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
-
+            //if(isPlatformBrowser(PLATFORM_ID)) {
+            // let div = document.querySelector('.article-text-section');
+            // if (div) {
+            //   div.innerHTML = this.news.post_content;
+            // }
+            //}
             this.Title.setTitle(this.news.post_title);
             let imgURL = this.news.guid;
             let newsTitle = this.news.post_title;
@@ -94,6 +103,7 @@ export class ArticleComponent implements OnInit {
               { name: 'og:type', content: 'article' },
               { name: 'og:title', content: newsTitle },
               { name: 'og:description', content: newsDesc },
+              { name: 'description', content: newsDesc },
               { name: 'og:url', content: postURL },
               { name: 'og:image', content: imgURL },
             ];
@@ -102,33 +112,31 @@ export class ArticleComponent implements OnInit {
             });
             this.comment_obj.comment_post_id = this.news.id;
             this.getCommentsByPost(this.news.id);
-            // this.getPo(this.news.id);
-            this.getPostBycategory();
-            this.spinnerService.hide();
+            this.getPostByAuthor();
           } else {
             this.postarr = [];
           }
         },
         (err) => {
-          this.spinnerService.hide();
           this.postarr = [];
         }
       );
-      this.getAllAdsList();
-      this.getIPAddress();
-      this.getBrowserName();
     });
   }
   isLoggedIn = false;
 
   ngOnInit(): void {
+    //this.isLoggedIn = this.loginService.isLoggedIn();
     const routeParams = this.activatedRoute.snapshot.paramMap;
     this.id = routeParams.get('Id');
-    this.isLoggedIn = this.loginservice.isLoggedIn();
     this.comment_page_no = 1;
     this.post_page_no = 1;
     this.comment_count = 0;
     this.comment_obj = new CommentModel();
+    this.getallpost();
+    this.getAllAdsList();
+    // this.getIPAddress();
+    // this.getBrowserName();
     this.post.getPostBySlug(this.id, environment.CUSTOMER_ID).subscribe(
       (res: any) => {
         if (res.code == 'success') {
@@ -139,7 +147,14 @@ export class ArticleComponent implements OnInit {
           if (this.news.tags) {
             this.news.tags = this.news.tags.replaceAll(',', ', ');
           }
-
+          this.news.post_content_sanitized =
+            this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
+          //if(isPlatformBrowser(PLATFORM_ID)) {
+          // let div = document.querySelector('.article-text-section');
+          // if (div) {
+          //   div.innerHTML = this.news.post_content;
+          // }
+          //}
           this.Title.setTitle(this.news.post_title);
           let imgURL = this.news.guid;
           let newsTitle = this.news.post_title;
@@ -153,6 +168,7 @@ export class ArticleComponent implements OnInit {
             { name: 'og:type', content: 'article' },
             { name: 'og:title', content: newsTitle },
             { name: 'og:description', content: newsDesc },
+            { name: 'description', content: newsDesc },
             { name: 'og:url', content: postURL },
             { name: 'og:image', content: imgURL },
           ];
@@ -161,22 +177,40 @@ export class ArticleComponent implements OnInit {
           });
           this.comment_obj.comment_post_id = this.news.id;
           this.getCommentsByPost(this.news.id);
-          // this.getPo(this.news.id);
-          this.getPostBycategory();
-          this.spinnerService.hide();
+          this.getPostByAuthor();
         } else {
           this.postarr = [];
         }
       },
       (err) => {
-        this.spinnerService.hide();
         this.postarr = [];
       }
     );
-    //this.getallpost();
-    this.getAllAdsList();
-    this.getIPAddress();
-    this.getBrowserName();
+  }
+
+  getPostByAuthor() {
+    console.log(this.postarr[0].category, 'dkkd');
+
+    this.post
+      .getPostByCategoryID(1, this.postarr[0].category, environment.CUSTOMER_ID)
+      .subscribe(
+        (res: any) => {
+          if (res.code == 'success') {
+            var data = res.body;
+            this.author_post = data?.map((dt: any) => JSON.parse(dt));
+            this.author_post = this.author_post.filter(
+              (a: any) => a.slug !== this.id
+            );
+            this.nextthree = this.author_post?.slice(0, 7);
+            console.log('time', this.nextthree);
+          } else {
+            this.author_post = [];
+          }
+        },
+        (err) => {
+          this.author_post = [];
+        }
+      );
   }
   getPostBycategory() {
     console.log(this.postarr[0].category, 'dkkd');
@@ -275,27 +309,6 @@ export class ArticleComponent implements OnInit {
     }
   }
 
-  updateSEO_Tags() {
-    this.Title.setTitle(this.news.post_title);
-    let imgURL = this.news.guid;
-    let newsTitle = this.news.post_title;
-    let newsDesc = this.news.post_title;
-    let postURL = this.news.permalink;
-    let tags = [
-      { name: 'twitter:card', content: 'summary' },
-      { name: 'twitter:image', content: imgURL },
-      { name: 'twitter:title', content: newsTitle },
-      { name: 'twitter:description', content: newsDesc },
-      { name: 'og:title', content: newsTitle },
-      { name: 'og:description', content: newsDesc },
-      { name: 'og:url', content: postURL },
-      { name: 'og:image', content: imgURL },
-    ];
-    tags.forEach((tag: any) => {
-      this.Meta.updateTag(tag);
-    });
-  }
-
   savePostComment() {
     this.spinnerService.show();
 
@@ -358,6 +371,10 @@ export class ArticleComponent implements OnInit {
     );
   }
 
+  moveSlide2(directions: number) {
+    this.currentSlides += directions;
+    this.translateValues = `-${this.currentSlide * 100}%`;
+  }
   // getPostByAuthor(post_id: any) {
 
   //   this.post.getPostByAuthor(this.news.post_author, post_id, environment.CUSTOMER_ID).subscribe((res: any) => {
@@ -393,6 +410,26 @@ export class ArticleComponent implements OnInit {
   //       })
   //     }
 
+  public createNavigationUrl(type: string) {
+    //let shareUrl = 'https://prameya/post/';
+    let shareUrl = `${environment.PLATFORM_BASEURL}/post/${this.id}`;
+    let searchParams = new URLSearchParams();
+
+    switch (type) {
+      case 'facebook':
+        searchParams.set('u', shareUrl);
+        this.navUrl =
+          'https://www.facebook.com/sharer/sharer.php?' + searchParams;
+        window.open(this.navUrl);
+        break;
+      case 'twitter':
+        searchParams.set('url', shareUrl);
+        this.navUrl = 'https://twitter.com/share?' + searchParams;
+        window.open(this.navUrl);
+        break;
+    }
+  }
+
   getCommentsByPost(post_id: any) {
     this.post
       .getCommentByPost(this.comment_page_no, post_id, environment.CUSTOMER_ID)
@@ -421,44 +458,69 @@ export class ArticleComponent implements OnInit {
     this.comment_page_no = this.comment_page_no + 1;
     this.getCommentsByPost(this.news.id);
   }
+  // opennewsSec(id: any) {
+  //   window.location.href = '/post/' + id;
+  // }
 
-  opennewsSec(id: any) {
-    window.location.href = '/post/' + id;
+  moveSlide(direction: number) {
+    this.currentSlide += direction;
+    this.translateValue = `-${this.currentSlide * 100}%`;
   }
-
+  opennewsSec(id: any) {
+    this.router.navigate(['/post/' + id]);
+  }
   openUrl(url: any) {
     if (url) {
       window.open(url);
     }
   }
-  moveSlide(direction: number) {
-    this.currentSlide += direction;
-    this.translateValue = `-${this.currentSlide * 100}%`;
+
+  updateSEO_Tags() {
+    this.Title.setTitle(this.news.post_title);
+    let imgURL = this.news.guid;
+    let newsTitle = this.news.post_title;
+    let newsDesc = this.news.meta_description;
+    let postURL = this.news.permalink;
+    let tags = [
+      { name: 'twitter:card', content: 'summary' },
+      { name: 'twitter:image', content: imgURL },
+      { name: 'twitter:title', content: newsTitle },
+      { name: 'twitter:description', content: newsDesc },
+      { name: 'og:title', content: newsTitle },
+      { name: 'og:description', content: newsDesc },
+      { name: 'description', content: newsDesc },
+      { name: 'og:url', content: postURL },
+      { name: 'og:image', content: imgURL },
+    ];
+    tags.forEach((tag: any) => {
+      this.Meta.updateTag(tag);
+    });
   }
-  moveSlide2(directions: number) {
-    this.currentSlides += directions;
-    this.translateValues = `-${this.currentSlide * 100}%`;
-  }
-  public createNavigationUrl(type: string) {
-    //let shareUrl = 'https://prameya/post/';
-    let shareUrl = `${environment.PLATFORM_BASEURL}/post/${this.id}`;
-    let searchParams = new URLSearchParams();
 
-    switch (type) {
-      case 'facebook':
-        searchParams.set('u', shareUrl);
+  // ngAfterViewInit(): void {
+  //   $('#carousel-example').on(
+  //     'slide.bs.carousel',
+  //     function (e: { relatedTarget: any; direction: string }) {
+  //       /*
+  //         CC 2.0 License Iatek LLC 2018 - Attribution required
+  //     */
+  //       var $e = $(e.relatedTarget);
+  //       var idx = $e.index();
+  //       var itemsPerSlide = 5;
+  //       var totalItems = $('.carousel-item').length;
 
-        this.navUrl =
-          'https://www.facebook.com/sharer/sharer.php?' + searchParams;
-
-        window.open(this.navUrl);
-        break;
-      case 'twitter':
-        searchParams.set('url', shareUrl);
-
-        this.navUrl = 'https://twitter.com/share?' + searchParams;
-        window.open(this.navUrl);
-        break;
-    }
-  }
+  //       if (idx >= totalItems - (itemsPerSlide - 1)) {
+  //         var it = itemsPerSlide - (totalItems - idx);
+  //         for (var i = 0; i < it; i++) {
+  //           // append slides to end
+  //           if (e.direction == 'left') {
+  //             $('.carousel-item').eq(i).appendTo('.carousel-inner');
+  //           } else {
+  //             $('.carousel-item').eq(0).appendTo('.carousel-inner');
+  //           }
+  //         }
+  //       }
+  //     }
+  //   );
+  // }
 }

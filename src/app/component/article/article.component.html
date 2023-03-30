@@ -8,22 +8,117 @@
           <div class="article-section-container" *ngIf="news">
             <h1 class="article-heading">
               {{ news.post_title }}
-              <!-- <mat-icon
-                class="mat-icon-cls"
-                (click)="edit(news.id)"
-                title="Edit"
-              >
-                edit</mat-icon
-              > -->
+            </h1>
+            <div class="author-cat-section">
+              <div class="author-cat-section">
+                <p>{{ news.post_date | date : "short" }}</p>
+              </div>
+              <div class="category-section">
+                {{ news.tags }}
+              </div>
+            </div>
+            <div class="social-section">
+              <div class="share-section">
+                <div class="share-cont">
+                  <p class="share-number">161</p>
+                  <p class="share-text">shares</p>
+                </div>
+                <div
+                  (click)="createNavigationUrl('facebook')"
+                  class="facebook-icon share-box"
+                >
+                  <i class="fa-brands fa-facebook-f"></i>
+                  <p>Share</p>
+                </div>
+                <div
+                  class="twitter-icon share-box"
+                  (click)="createNavigationUrl('twitter')"
+                >
+                  <i class="fa-brands fa-twitter"></i>
+                  <p>Tweet</p>
+                </div>
+                <div class="messenger-icon share-box">
+                  <i class="fa-brands fa-facebook-messenger"></i>
+                  <p>Share</p>
+                </div>
+                <div class="whatsapp-icon share-box">
+                  <i class="fa-brands fa-whatsapp"></i>
+                  <p>Share</p>
+                </div>
+                <div class="share-icon share-box">
+                  <i class="fa-solid fa-share-nodes"></i>
+                  <p>Share</p>
+                </div>
+              </div>
+            </div>
+            <img class="article-image" [src]="news.guid" />
+
+            <div
+              class="article-text-section"
+              [innerHTML]="news.post_content_sanitized"
+            ></div>
+          </div>
+          <div *ngIf="news.comment_status === 'opened'">
+            <div class="send-message-container">
+              <div class="heading-container">
+                <h4 class="news-sub">{{ comment_count }} Comments</h4>
+              </div>
+              <div class="comment-image d-flex" *ngFor="let cmt of comments">
+                <img src="/assets/img/default.jpg" class="img-width" />
+
+                <div class="comment-name">
+                  <h4 class="name-user">
+                    {{ cmt.comment_author }} <span class="says">Says</span>
+                  </h4>
+                  <p>{{ cmt.comment_content }}</p>
+                </div>
+              </div>
+              <div class="add-comment-container">
+                <div class="user-image">
+                  <img src="assets/img/user-default.jpg" />
+                </div>
+                <div class="add-comment">
+                  <textarea placeholder="Add a comment..."></textarea>
+                  <div class="login-button-holder">
+                    <button disabled="true">Login to post</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="related-content-section">
+            <div class="related-content-section-heading">
+              <h1><span>ସମ୍ବନ୍ଧିତ ଖବର</span></h1>
+            </div>
+            <div class="related-content-section-cards">
+              <div class="news-section">
+                <div class="row news-box">
+                  <div
+                    class="col-md-4 col-sm-12 col-12 news-img-container"
+                    *ngFor="let post of nextthree"
+                    (click)="opennewsSec(post.slug)"
+                  >
+                    <img [src]="post.guid" />
+                    <p>{{ post.post_title }}</p>
+                    <div class="news-date">
+                      {{ post.post_date | date : "short" }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="article-section-container" *ngIf="news">
+            <h1 class="article-heading">
+              {{ news.post_title }}
+            
             </h1>
 
             <div class="author-cat-section">
               <p>{{ news.post_date | date : "short" }}</p>
               <div class="category-section">{{ catname }} {{ news.tags }}</div>
             </div>
-            <!-- <div class="category-section">
-              {{ news.tags }}
-            </div> -->
+            
             <div class="social-section">
               <div class="share-section">
                 <div class="share-cont">
@@ -94,10 +189,7 @@
                       </div>
                     </div>
                   </div>
-                  <!-- <div class="prev-next-container" *ngIf="comment_count > 0">
-                                        <button class="btn-previous active" [disabled]="comment_page_no === 1" (click)="prevComment()">&laquo; Prev</button>
-                                        <button class="btn-next active" [disabled]="0 > comment_page_no || comments.length !== 10" (click)="nextComment()">Next &raquo;</button>
-                                    </div> -->
+                  
                 </div>
               </div>
               <div class="related-content-section">
@@ -123,7 +215,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
           <!-- <div class="author-details-section">
                         <div class="author-image">
                             <img [src]="news.author_image ? news.author_image : '/assets/img/default-profile.png'">

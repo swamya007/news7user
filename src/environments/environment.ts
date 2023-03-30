@@ -12,7 +12,7 @@ export const environment = {
 
   CUSTOMER_ID: 2,
   CUSTOMER_NAME: 'PRAMEYA_ODIA',
-  PLATFORM_BASEURL: 'https://dev.prameyanews.co',
+  PLATFORM_BASEURL: 'https://dev.prameyanews.com',
 };
 /*
  * For easier debugging in development mode, you can import the following file

@@ -427,6 +427,10 @@ export class ArticleComponent implements OnInit {
         this.navUrl = 'https://twitter.com/share?' + searchParams;
         window.open(this.navUrl);
         break;
+      case 'whatsapps':
+        searchParams.set('url', shareUrl);
+        this.navUrl = 'https://api.whatsapp.com/send?text=' + searchParams;
+        window.open(this.navUrl);
     }
   }
 

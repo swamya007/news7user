@@ -697,3 +697,8 @@ h4.news-sub {
 .slider-nav button.active {
   background-color: #555;
 }
+@media (max-width: 767px) {
+  .article-container {
+    overflow-x: hidden;
+  }
+}

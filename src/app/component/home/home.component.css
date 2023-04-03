@@ -2,7 +2,7 @@
   background-color: var(--site-background);
   padding: 2% 0%;
 }
-.home-ad-container-wide div{
+.home-ad-container-wide div {
   width: 728px;
   height: 90px;
   background-size: cover;
@@ -22,7 +22,7 @@
   background-color: var(--site-background);
   padding: 2% 2%;
 }
-.home-second-container{
+.home-second-container {
   background-color: #f3f3f3;
   padding: 2% 2%;
 }
@@ -30,7 +30,7 @@
   background-color: #ffffff;
   margin-bottom: 7px;
 }
-.home-third-container{
+.home-third-container {
   background-color: #f3f3f3;
 }
 .recent-news-heading {
@@ -64,20 +64,20 @@
 .advertisement-space-container-first .carousel .carousel-item img {
   height: 250px;
 }
-.culture-section{
+.culture-section {
   margin-top: 20px;
 }
-.health-section{
+.health-section {
   margin-bottom: 20px;
   margin-top: 20px;
 }
 
 .advertisement-space-container-first .placeholder-text {
   margin: 0px;
-    color: #ffffff;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 12px;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
 }
 
 .advertisement-space-container-first .placeholder-size {
@@ -134,29 +134,37 @@
 .carousel-inner {
   cursor: pointer;
 }
-@media (max-width:992px)
-{
-.home-ad-container div{
-  width: 100%;
-  height: auto;
-  /* margin-top: 2%; */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+@media (max-width: 992px) {
+  .home-ad-container div {
+    width: 100%;
+    height: auto;
+    /* margin-top: 2%; */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 }
+@media (max-width: 767px) {
+  .home-ad-container div {
+    width: 100%;
+    height: auto;
+    /* margin-top: 2%; */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .home-first-container {
+    background-color: var(--site-background);
+    padding: 2% 2%;
+    overflow-x: hidden;
+  }
+  .home-second-container {
+    background-color: #f3f3f3;
+    padding: 2% 2%;
+    overflow-x: hidden;
+  }
 }
-@media (max-width:767px)
-{
-.home-ad-container div{
-  width: 100%;
-  height: auto;
-  /* margin-top: 2%; */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-}
- .frame {
+.frame {
   margin-top: 50px;
   position: absolute;
   /* top: 100%; */
@@ -168,7 +176,7 @@
   overflow: hidden;
   background: #919191;
   /* color: #333; */
-  font-family: 'Ibarra Real Nova', serif;
+  font-family: "Ibarra Real Nova", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transform: perspective(60px);
@@ -243,7 +251,7 @@
   padding: 10px 20px 10px 10px;
   background-color: #cdcdcd;
 }
-.content-silver{
+.content-silver {
   position: absolute;
   top: 40px;
   width: 95px;
@@ -255,7 +263,7 @@
   padding: 10px 20px 10px 10px;
   background: #b5f6ff;
 }
-.content-powered{
+.content-powered {
   position: absolute;
   top: 40px;
   width: 95px;
@@ -267,18 +275,17 @@
   padding: 10px 20px 10px 10px;
   background-color: burlywood;
 }
-.content h6{
+.content h6 {
   font-size: 12px;
 }
-.price{
+.price {
   font-size: 12px;
   color: #e10505;
 }
-.content-heading{
+.content-heading {
   font-size: 12px;
 }
 @keyframes card1-animation {
-
   0%,
   100% {
     transform: translate3d(0, 0, 0);
@@ -294,7 +301,6 @@
 }
 
 @keyframes card2-animation {
-
   0%,
   100% {
     transform: translate3d(100px, 0, -05px);
@@ -310,7 +316,6 @@
 }
 
 @keyframes card3-animation {
-
   0%,
   100% {
     transform: translate3d(-100px, 0, -05px);
@@ -324,4 +329,3 @@
     transform: translate3d(100px, 0, -05px);
   }
 }
-

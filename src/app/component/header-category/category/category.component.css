@@ -399,7 +399,7 @@
 }
 
 .news-text-container .post-heading {
-  font-size: 25px;
+  font-size: 30px;
   line-height: normal;
   margin-bottom: 15px;
   font-weight: bold;
@@ -423,4 +423,11 @@
 
 .prameya-epaper-image {
   width: -webkit-fill-available;
+}
+@media only screen and (max-width: 600px) {
+  .news-box {
+    background: #ffffff !important;
+    height: auto;
+    margin: 20px 0px;
+  }
 }

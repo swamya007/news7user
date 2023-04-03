@@ -625,3 +625,17 @@ a:hover {
   background: #000000 !important;
 }
 /* --------------------------------pagination---------------------------------- */
+
+@media only screen and (max-width: 600px) {
+  body {
+    overflow-x: hidden;
+  }
+  :host ::ng-deep .home-ad-container div {
+    width: 100% !important;
+    height: 90px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background: #f00;
+  }
+}

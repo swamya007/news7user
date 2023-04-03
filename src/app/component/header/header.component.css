@@ -6,39 +6,37 @@
 .logo-container {
   padding: 10px 13px;
 }
-.dropdown-menu
-{
-    padding: 0px!important;
-    box-shadow: none!important;
-    border:none;
-    width: 100%!important;
+.dropdown-menu {
+  padding: 0px !important;
+  box-shadow: none !important;
+  border: none;
+  width: 100% !important;
 }
 
-.submenu
-{
-  width:120px;
-  margin:5px 10px;
+.submenu {
+  width: 120px;
+  margin: 5px 10px;
   float: left;
 }
 .home-ad-container {
   padding: 10px;
+  /* background: #f00; */
 }
-.header-row{
+.header-row {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.header-flex{
- justify-content: space-between;
+.header-flex {
+  justify-content: space-between;
 }
-.dashboard{
+.dashboard {
   display: flex;
-  
   align-items: center;
   padding-right: 10px;
 }
 
-.home-ad-container div{
+.home-ad-container div {
   width: 728px;
   height: 90px;
   /* margin-top: 2%; */
@@ -53,11 +51,10 @@
   /* padding-left: 10px;
   padding-right: 10px; */
 }
-:host ::ng-deep .navbar{
+:host ::ng-deep .navbar {
   padding: 0;
 }
-.navbar-light .navbar-nav .nav-link
-{
+.navbar-light .navbar-nav .nav-link {
   padding: 15px;
 }
 
@@ -115,7 +112,7 @@
 .dropdown-item {
   color: #fff !important;
 }
-.navbar-nav i{
+.navbar-nav i {
   font-size: 22px;
 }
 
@@ -130,7 +127,7 @@
 
 .navbar ul li:after {
   position: absolute;
-  content: '';
+  content: "";
   width: 100%;
   height: 3px;
   bottom: 0;
@@ -153,30 +150,44 @@
   background-size: 100% 2px;
 }
 
-.navbar ul li:nth-child(7n+1):after {
-  background-color: #2196F3;
+.navbar ul li:nth-child(7n + 1):after {
+  background-color: #2196f3;
 }
 
-.navbar ul li:nth-child(7n+2):after {
+.navbar ul li:nth-child(7n + 2):after {
   background-color: #4caf50;
 }
 
-.navbar ul li:nth-child(7n+3):after {
+.navbar ul li:nth-child(7n + 3):after {
   background-color: #ffbf3f;
 }
 
-.navbar ul li:nth-child(7n+4):after {
+.navbar ul li:nth-child(7n + 4):after {
   background-color: #ff5722;
 }
 
-.navbar ul li:nth-child(7n+5):after {
+.navbar ul li:nth-child(7n + 5):after {
   background-color: #9c27b0;
 }
 
-.navbar ul li:nth-child(7n+6):after {
-  background-color: #2196F3;
+.navbar ul li:nth-child(7n + 6):after {
+  background-color: #2196f3;
 }
 
-.navbar ul li:nth-child(7n+7):after {
+.navbar ul li:nth-child(7n + 7):after {
   background-color: #8bc34a;
+}
+@media only screen and (max-width: 600px) {
+  body {
+    overflow-x: hidden;
+  }
+  :host ::ng-deep .header-container {
+    display: block !important;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .home-ad-container div {
+    width: auto !important;
+    height: 90px;
+  }
 }

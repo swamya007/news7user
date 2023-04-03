@@ -1,6 +1,6 @@
 .news-section {
   padding: 1rem;
-  background:var(--white);
+  background: var(--white);
   margin: 1%;
 }
 
@@ -20,7 +20,7 @@
 .news-img-container p {
   font-size: 18px;
   font-weight: bold;
-  transition: all .4s ease;
+  transition: all 0.4s ease;
   padding: 7px 5px 0 5px;
 }
 .news-box:hover .news-text-container p {
@@ -47,4 +47,5 @@
   font-size: 17px;
   font-weight: bold;
   margin-bottom: 0px;
+  line-height: 28px;
 }

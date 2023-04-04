@@ -190,4 +190,9 @@
     width: auto !important;
     height: 90px;
   }
+  .header-row {
+    display: block;
+    flex-direction: row;
+    align-items: flex-start !important;
+  }
 }

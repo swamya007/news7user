@@ -431,3 +431,9 @@
     margin: 20px 0px;
   }
 }
+@media (max-width: 440px) {
+  .news-img-container img {
+    height: -webkit-fill-available;
+    max-width: 100% !important;
+  }
+}

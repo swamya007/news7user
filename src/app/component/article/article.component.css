@@ -701,4 +701,25 @@ h4.news-sub {
   .article-container {
     overflow-x: hidden;
   }
+  .news-img-container img {
+    max-width: 100%;
+    height: 215px;
+  }
+}
+@media (max-width: 440px) {
+  .news-img-container img {
+    max-width: 100%;
+    height: 240px;
+  }
+  .news-img-container p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+}
+@media (max-width: 375px) {
+  .news-img-container img {
+    max-width: 100%;
+    height: 215px;
+  }
 }

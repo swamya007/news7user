@@ -46,7 +46,7 @@
   margin-bottom: 0px;
   font-weight: bold;
   color: rgb(71, 71, 71);
-  transition: all .4s ease;
+  transition: all 0.4s ease;
   text-align: center;
 }
 
@@ -164,7 +164,7 @@
 }
 
 .gallery-news-holder-container .image-bg img {
-  transition: transform .8s ease;
+  transition: transform 0.8s ease;
 }
 
 .gallery-news-holder-container .image-bg:hover img {
@@ -296,7 +296,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: rgb(62, 62, 62);
-  transition: all .5s ease;
+  transition: all 0.5s ease;
   padding: 5px 10px;
   cursor: pointer;
   border: 1px solid rgb(62, 62, 62);
@@ -342,7 +342,7 @@
   height: 600px;
 }
 
-@media screen and (max-device-width:767px) {
+@media screen and (max-device-width: 767px) {
   .row {
     --bs-gutter-x: 0 !important;
   }

@@ -1,8 +1,8 @@
 <div class="news-section">
-  <div class="news-box">
+  <div class="row news-box">
     <div
       class="col-md-4 col-sm-12 col-12 news-img-container"
-      *ngFor="let post of slidearray"
+      *ngFor="let post of slidearrayfeature"
       (click)="opennewsSec(post.slug)"
     >
       <img [src]="post.guid" />

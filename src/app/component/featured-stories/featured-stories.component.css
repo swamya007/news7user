@@ -7,8 +7,8 @@
 }
 
 .news-img-container {
-    display: flex;
-    padding: 10px 5px;
+  display: flex;
+  padding: 10px 5px;
 }
 
 .news-img-container img {
@@ -17,11 +17,11 @@
 }
 
 .news-text-container {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .news-text-container p {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .heading-container {
@@ -40,7 +40,7 @@
 }
 
 .news-text-container p {
-  font-size: 17px;
+  font-size: 20px;
   font-weight: bold;
   margin-bottom: 0px;
 }

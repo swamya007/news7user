@@ -47,6 +47,7 @@ export class FeaturedStoriesComponent implements OnInit {
             this.postarr = data.map((dt: any) => JSON.parse(dt));
             if (this.postarr.length > 0) {
               this.postarr = this.postarr.slice(0, 6);
+              console.log(this.postarr, 'swaaaa');
             }
           } else {
             this.postarr = [];
@@ -71,6 +72,7 @@ export class FeaturedStoriesComponent implements OnInit {
           console.log(this.slidearrayfeature, 'kkk');
           if (this.slidearrayfeature.length > 3) {
             this.slidearray = this.slidearrayfeature.slice(5);
+            console.log(this.slidearrayfeature, 'slidearray222');
           }
         } else {
           this.slidearrayfeature = [];

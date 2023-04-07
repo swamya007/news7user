@@ -78,7 +78,7 @@
 }
 
 .navbar-toggler {
-  background-color: rgb(137, 137, 137);
+  background-color: rgb(255, 255, 255);
   /* margin-right: 20px; */
 }
 
@@ -194,5 +194,15 @@
     display: block;
     flex-direction: row;
     align-items: flex-start !important;
+  }
+}
+@media only screen and (max-width: 575px) {
+  .navbar-bg {
+    background: var(--red);
+    height: auto;
+  }
+  .navbar-toggler {
+    margin: 5px;
+    font-size: 10px;
   }
 }

@@ -11,7 +11,9 @@
             </h1>
             <div class="author-cat-section">
               <div class="author-cat-section">
-                <p>{{ news.post_date | date : "short" }}</p>
+                <p>
+                  <time>{{ news.post_date | date : "short" }}</time>
+                </p>
               </div>
               <div class="category-section">
                 {{ news.tags }}

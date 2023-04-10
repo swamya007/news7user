@@ -15,7 +15,9 @@
     </div>
     <div class="col-md-8 col-sm-8 col-8 news-text-container">
       <p>{{ post.post_title ? getShortName(post.post_title) : "" }}</p>
-      <div class="news-date">{{ post.post_date | date : "short" }}</div>
+      <div class="news-date">
+        <time>{{ post.post_date | date : "short" }}</time>
+      </div>
     </div>
     <!-- </a> -->
   </div>

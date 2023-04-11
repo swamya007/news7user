@@ -17,7 +17,7 @@
     <h4 class="news-sub">ଓଡ଼ିଶା</h4>
     <!-- <div class="grey-line"></div> -->
   </div>
-  <div
+  <article
     class="row news-box"
     (click)="opennewsSec(post.slug)"
     *ngFor="let post of postarr"
@@ -32,7 +32,7 @@
         <time>{{ post.post_date | date : "short" }}</time>
       </div>
     </div>
-  </div>
+  </article>
 </div>
 
 <!-- <div class="news-card divider">

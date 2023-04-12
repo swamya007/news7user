@@ -96,6 +96,7 @@ import { BnNgTreeModule } from 'bn-ng-tree-lib';
 import { DEFAULT_LIBRARY_BUTTONS, NgxWigModule } from 'ngx-wig';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { QuillModule } from 'ngx-quill';
+import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -155,6 +156,7 @@ import { QuillModule } from 'ngx-quill';
     EntryPopupComponent,
     PrivacyPolicyComponent,
     FeaturedStoriesComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),

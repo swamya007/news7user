@@ -1,0 +1,28 @@
+.wrap-error {
+  background: #fff url(../../../assets/img/repeat-logo.png);
+  height: 100vh;
+}
+
+.wrap-error h1 {
+  font-size: 15vw;
+  letter-spacing: -13px;
+  line-height: 1em;
+  font-family: "Anton", fantasy;
+}
+
+.text-9xl {
+  font-size: 5.5rem;
+}
+
+.mb-4 {
+  font-size: 15px;
+}
+
+.page-black {
+  color: #333;
+}
+
+:host::ng-deep a {
+  text-decoration: none !important;
+  color: #fff !important;
+}

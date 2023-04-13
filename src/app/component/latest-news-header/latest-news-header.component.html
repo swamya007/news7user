@@ -1,31 +1,35 @@
-
 <!-- <div class="slideshow-container">
   <div class="trending">ଟ୍ରେଣ୍ଡିଂ</div>
   <div class="mySlides" *ngFor="let post of postarr" (click)="opennewsSec(post.slug)">
     <p>{{post.post_title}}</p>
   </div> -->
-  <!-- --------------------------------------------------- -->
-  <!-- <div class="mySlides">
+<!-- --------------------------------------------------- -->
+<!-- <div class="mySlides">
     <p>But man is not made for defeat. A man can be destroyed but not defeated.</p>
   </div>
   
   <div class="mySlides">
     <p>Trending news text to go here</p>
   </div> -->
-  <!-- ----------------------------------------------------- -->
-  <!-- <a class="prev" (click)="plusSlides(-1)">❮</a>
+<!-- ----------------------------------------------------- -->
+<!-- <a class="prev" (click)="plusSlides(-1)">❮</a>
   <a class="next" (click)="plusSlides(1)">❯</a>
   
   </div> -->
 
-
-
-  <div class="custom-ticker">
-		<div class="custom-ticker-header">ପ୍ରମୁଖ ଖବର <span class="custom-ticker-header-span"></span></div>		
-		<marquee behavior="scroll" direction="left" scrollamount="5" class="custom-marquee-style">
-			<ul class="custom-marquee" *ngFor="let post of postarr" (click)="opennewsSec(post.slug)">
-            		<li class="custom-marquee-title">{{post.post_title}}</li><span>||</span>
-			</ul>
-		</marquee>
-	</div>
-  
+<div class="custom-ticker">
+  <div class="custom-ticker-header">
+    ପ୍ରମୁଖ ଖବର <span class="custom-ticker-header-span"></span>
+  </div>
+  <marquee
+    behavior="scroll"
+    direction="left"
+    scrollamount="5"
+    class="custom-marquee-style"
+  >
+    <ul class="custom-marquee" *ngFor="let post of catarr">
+      <li class="custom-marquee-title">{{ post.ticker_name }}</li>
+      <span>||</span>
+    </ul>
+  </marquee>
+</div>

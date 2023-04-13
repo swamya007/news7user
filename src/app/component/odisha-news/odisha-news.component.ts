@@ -22,9 +22,9 @@ export class OdishaNewsComponent implements OnInit {
   }
 
   getShortName(user_name: any) {
-    if (user_name.length > 45) {
+    if (user_name.length > 35) {
       return (
-        user_name.slice(0, 46).trim() + (user_name.length > 45 ? '...' : '')
+        user_name.slice(0, 26).trim() + (user_name.length > 35 ? '...' : '')
       );
     } else {
       return user_name;

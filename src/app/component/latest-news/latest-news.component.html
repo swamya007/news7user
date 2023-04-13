@@ -1,23 +1,32 @@
 <div class="news-section">
-  <div class="row news-box">
-      <div class="col-md-3 col-sm-12 col-12 news-img-container" *ngFor="let post of nextthree | paginate : {
-        itemsPerPage: tableSize,
-        currentPage: page,
-        totalItems: count
-      };
-let i = index" (click)="opennewsSec(post.slug)">
-          <img [src]="post.guid">
-          <p>{{post.post_title}}</p>
-          <div class="news-date"> {{post.post_date | date :'short'}}</div>
-      </div>
-  </div>
+  <article class="row news-box">
+    <div
+      class="col-md-3 col-sm-12 col-12 news-img-container"
+      *ngFor="
+        let post of nextthree
+          | paginate
+            : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+              };
+        let i = index
+      "
+      (click)="opennewsSec(post.slug)"
+    >
+      <img [src]="post.guid" />
+      <p>{{ post.post_title }}</p>
+      <div class="news-date">{{ post.post_date | date : "short" }}</div>
+    </div>
+  </article>
 </div>
 
 <div class="d-flex justify-content-center">
-    <pagination-controls 
-      [responsive]="true" 
-      previousLabel="Previous" 
-      nextLabel="Next"
-      (pageChange)="onTableDataChange($event)">
-    </pagination-controls>
-  </div>
+  <pagination-controls
+    [responsive]="true"
+    previousLabel="Previous"
+    nextLabel="Next"
+    (pageChange)="onTableDataChange($event)"
+  >
+  </pagination-controls>
+</div>

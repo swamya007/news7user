@@ -101,7 +101,12 @@ export class PostserviceService {
       { context: withCache() }
     );
   }
-
+  getticker(ticker_id: any, customer_id: any) {
+    return this.HTTP.get<any>(
+      Masterapi +
+        `/get-ticker-details?ticker_id=${ticker_id}&&customer_id=${customer_id}`
+    );
+  }
   // gettodaysnews(customer_id:any) {
   //   return this.HTTP.get<any>(Masterapi + `/get-todays-news?customer_id=${customer_id}`);
   // }

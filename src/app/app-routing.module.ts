@@ -22,6 +22,7 @@ import { HeaderCategoryComponent } from './component/header-category/header-cate
 import { SearchPostComponent } from './component/search-post/search-post.component';
 import { AuthGuard } from './Guards/auth.guard';
 import { PrivacyPolicyComponent } from './component/privacy-policy/privacy-policy.component';
+import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -57,13 +58,19 @@ const routes: Routes = [
     path: 'PrivacyPolicy',
     component: PrivacyPolicyComponent,
   },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    scrollPositionRestoration: 'enabled',
-    initialNavigation: 'enabled'
-  })],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'enabled',
+      initialNavigation: 'enabled',
+    }),
+  ],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

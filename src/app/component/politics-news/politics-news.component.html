@@ -3,7 +3,7 @@
     <h4 class="news-sub">ରାଜନୀତି</h4>
     <!-- <div class="grey-line"></div> -->
   </div>
-  <div
+  <article
     class="row news-box"
     (click)="opennewsSec(post.slug)"
     *ngFor="let post of postarr"
@@ -16,5 +16,5 @@
       <p>{{ post.post_title ? getShortName(post.post_title) : "" }}</p>
       <div class="news-date">{{ post.post_date | date : "short" }}</div>
     </div>
-  </div>
+  </article>
 </div>

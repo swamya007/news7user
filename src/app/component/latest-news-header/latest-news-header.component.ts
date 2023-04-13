@@ -12,6 +12,8 @@ export class LatestNewsHeaderComponent implements OnInit {
   slideIndex: number = 1;
   myTimer: any;
   postarr: any = [];
+  ticker_id: any;
+  catarr: any;
   constructor(
     private postserviceService: PostserviceService,
     private router: Router
@@ -53,6 +55,23 @@ export class LatestNewsHeaderComponent implements OnInit {
     this.showSlides((this.slideIndex = n));
   }
 
+  getticker() {
+    this.ticker_id = '';
+    this.postserviceService
+      .getticker(this.ticker_id, environment.CUSTOMER_ID)
+      .subscribe(
+        (res: any) => {
+          if (res.code == 'success') {
+            var data = res.body;
+            this.catarr = data.map((dt: any) => JSON.parse(dt));
+            console.log(this.catarr, 'dfd');
+          } else {
+            this.catarr = [];
+          }
+        },
+        (err: any) => {}
+      );
+  }
   showSlides(n: number) {
     var i;
     let slides: any = document.getElementsByClassName('mySlides');

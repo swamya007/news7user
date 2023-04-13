@@ -3,7 +3,7 @@
     <h4 class="news-sub">କ୍ୟାମ୍ପସ୍ ମ୍ୟୁଜ୍ |</h4>
     <!-- <div class="grey-line"></div> -->
   </div>
-  <div
+  <article
     class="d-flex news-box"
     (click)="opennewsSec(post.slug)"
     *ngFor="let post of postarr; let i = index"
@@ -15,10 +15,12 @@
     </div>
     <div class="col-md-8 col-sm-8 col-7 news-text-container">
       <p>{{ post.post_title ? getShortName(post.post_title) : "" }}</p>
-      <div class="news-date">{{ post.post_date | date : "short" }}</div>
+      <div class="news-date">
+        <time>{{ post.post_date | date : "short" }}</time>
+      </div>
     </div>
     <!-- </a> -->
-  </div>
+  </article>
   <!-- <div class="row news-box divider">
         <div class="col-md-4 col-sm-4 col-5 news-img-container">
           <img src="assets/img/news.jpg">

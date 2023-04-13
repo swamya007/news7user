@@ -21,6 +21,7 @@ export class LatestNewsHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.getLatestNews();
+    this.getticker()
     setTimeout(() => {
       this.showSlides(this.slideIndex);
     }, 1000);

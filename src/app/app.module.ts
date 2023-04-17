@@ -97,6 +97,7 @@ import { DEFAULT_LIBRARY_BUTTONS, NgxWigModule } from 'ngx-wig';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { QuillModule } from 'ngx-quill';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
+import { OdiaTopstoriesComponent } from './component/odia-topstories/odia-topstories.component';
 
 @NgModule({
   declarations: [
@@ -157,6 +158,7 @@ import { PageNotFoundComponent } from './component/page-not-found/page-not-found
     PrivacyPolicyComponent,
     FeaturedStoriesComponent,
     PageNotFoundComponent,
+    OdiaTopstoriesComponent,
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),

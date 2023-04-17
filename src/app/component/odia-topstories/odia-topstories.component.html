@@ -1,0 +1,22 @@
+<div class="news-section">
+  <div class="heading-container">
+    <h4 class="news-sub">ପ୍ରମୁଖ ଖବର</h4>
+    <!-- <div class="grey-line"></div> -->
+  </div>
+  <article
+    class="row news-box"
+    (click)="opennewsSec(post.slug)"
+    *ngFor="let post of postarr"
+  >
+    <!-- <a (click)="opennewsSec(post.id)"> -->
+    <div class="col-md-4 col-sm-4 col-4 news-img-container">
+      <img [src]="post.guid" />
+    </div>
+    <div class="col-md-8 col-sm-8 col-8 news-text-container">
+      <p>{{ post.post_title ? getShortName(post.post_title) : "" }}</p>
+      <div class="news-date">
+        <time>{{ post.post_date | date : "short" }}</time>
+      </div>
+    </div>
+  </article>
+</div>

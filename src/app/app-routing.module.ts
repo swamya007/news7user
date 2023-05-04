@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ArticleComponent } from './component/article/article.component';
 import { CategoriesComponent } from './component/categories/categories.component';
@@ -23,11 +23,20 @@ import { SearchPostComponent } from './component/search-post/search-post.compone
 import { AuthGuard } from './Guards/auth.guard';
 import { PrivacyPolicyComponent } from './component/privacy-policy/privacy-policy.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
+import { SingleHomepageComponent } from './component/single-homepage/single-homepage.component';
+import { SinglesearchComponent } from './component/singlesearch/singlesearch.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+  },
+  {
+    path:'home',
+    component:SingleHomepageComponent
+  },{
+    path: 'newsearch',
+    component: SinglesearchComponent,
   },
   {
     path: 'search/:value',

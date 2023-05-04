@@ -98,6 +98,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { QuillModule } from 'ngx-quill';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { OdiaTopstoriesComponent } from './component/odia-topstories/odia-topstories.component';
+import { SingleHomepageComponent } from './component/single-homepage/single-homepage.component';
+import { SinglesearchComponent } from './component/singlesearch/singlesearch.component';
 
 @NgModule({
   declarations: [
@@ -159,6 +161,8 @@ import { OdiaTopstoriesComponent } from './component/odia-topstories/odia-topsto
     FeaturedStoriesComponent,
     PageNotFoundComponent,
     OdiaTopstoriesComponent,
+    SingleHomepageComponent,
+    SinglesearchComponent,
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),

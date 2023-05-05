@@ -1,29 +1,32 @@
 <app-header></app-header>
-<div  class="home-ad-container">
-    <div  id="carouselExampleControls1" data-ride="carousel" class="carousel slide carousel-fade">
-      <div  class="carousel-inner">
-        <div  class="carousel-item active ng-star-inserted">
-          <img  class="d-block w-100" src="https://api-dev.prameyanews.com/prameya/document/ads/2/2_103_1681783132314.jpg" alt="">
+<div class="top-center-add">
+
+  <div  class="home-ad-container">
+      <div  id="carouselExampleControls1" data-ride="carousel" class="carousel slide carousel-fade">
+        <div  class="carousel-inner">
+          <div  class="carousel-item active ng-star-inserted">
+            <img  class="d-block w-100" src="https://api-dev.prameyanews.com/prameya/document/ads/2/2_103_1681783132314.jpg" alt="">
+          </div>
+          <div  class="carousel-item ng-star-inserted">
+            <img  class="d-block w-100" src="https://api-dev.prameyanews.com/prameya/document/ads/2/2_103_1680589926027.jpg" alt="">
+          </div>
+          <!---->
         </div>
-        <div  class="carousel-item ng-star-inserted">
-          <img  class="d-block w-100" src="https://api-dev.prameyanews.com/prameya/document/ads/2/2_103_1680589926027.jpg" alt="">
-        </div>
-        <!---->
+        <a  href="#carouselExampleControls1" role="button" data-slide="prev" class="carousel-control-prev">
+          <span  aria-hidden="true" class="carousel-control-prev-icon"></span>
+          <span  class="sr-only">Previous</span>
+        </a>
+        <a  href="#carouselExampleControls1" role="button" data-slide="next" class="carousel-control-next">
+          <span  aria-hidden="true" class="carousel-control-next-icon"></span>
+          <span  class="sr-only">Next</span>
+        </a>
       </div>
-      <a  href="#carouselExampleControls1" role="button" data-slide="prev" class="carousel-control-prev">
-        <span  aria-hidden="true" class="carousel-control-prev-icon"></span>
-        <span  class="sr-only">Previous</span>
-      </a>
-      <a  href="#carouselExampleControls1" role="button" data-slide="next" class="carousel-control-next">
-        <span  aria-hidden="true" class="carousel-control-next-icon"></span>
-        <span  class="sr-only">Next</span>
-      </a>
     </div>
-  </div>
+</div>
   <div  class="home-first-container">
     <div  class="row">
       <div  class="col-md-3 col-sm-12 col-12">
-        <app-odisha-news  _nghost-sje-c69="">
+        <section>
           <div  class="news-section">
             <div  class="heading-container">
               <h4  class="news-sub">ଓଡ଼ିଶା</h4>
@@ -75,7 +78,7 @@
             </div>
             <!---->
           </div>
-        </app-odisha-news>
+        </section>
         <div  class="advertisement-container-long">
           <div  id="carouselExampleControls2" data-ride="carousel" class="carousel slide carousel-fade">
             <div  class="carousel-inner">
@@ -94,7 +97,7 @@
             </a>
           </div>
         </div>
-        <app-crime-news  _nghost-sje-c31="">
+        <section>
           <div  class="news-section">
             <div  class="heading-container">
               <h4  class="news-sub">ଅପରାଧ</h4>
@@ -128,14 +131,14 @@
             </div>
             <!---->
           </div>
-        </app-crime-news>
+        </section>
       </div>
       <div  class="col-md-9 col-sm-12 col-12">
         <div  class="row">
           <div  class="col-md-8 col-sm-12 col-12">
             <h1  class="page-title">Search results for: <span >ଘର ଭିତରୁ ମହିଳାଙ୍କ ଝୁଲନ୍ତା ମୃତଦେହ ଉଦ୍ଧାର</span>
             </h1>
-            <app-search-news  _nghost-sje-c165="" class="ng-star-inserted">
+            <app-search-news   class="ng-star-inserted">
               <div  class="news-section">
                 <div  class="main-news-container">
                   <div  class="row main-news-section">
@@ -229,7 +232,7 @@
                 </a>
               </div>
             </div>
-            <app-entertainment-news  _nghost-sje-c29="">
+            <section>
               <div  class="news-section">
                 <div  class="heading-container">
                   <h4  class="news-sub">ମନୋରଞ୍ଜନ</h4>
@@ -263,7 +266,7 @@
                 </div>
                 <!---->
               </div>
-            </app-entertainment-news>
+            </section>
           </div>
         </div>
         <div  class="home-ad-container-wide">
@@ -289,7 +292,7 @@
         </div>
         <div  class="row">
           <div  class="col-md-6 col-sm-12 col-12">
-            <app-business-news  _nghost-sje-c159="">
+            <section>
               <div  class="news-section">
                 <div  class="heading-container">
                   <h4  class="news-sub">ବ୍ୟବସାୟ</h4>
@@ -304,7 +307,6 @@
                     </span>
                   </div>
                 </div>
-                <!---->
                 <div  class="row news-box ng-star-inserted">
                   <div  class="col-md-5 col-sm-12 col-12 news-img-container">
                     <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1679917902924.jpg">
@@ -325,10 +327,10 @@
                 </div>
                 <!---->
               </div>
-            </app-business-news>
+            </section>
           </div>
           <div  class="col-md-6 col-sm-12 col-12">
-            <app-technology-news  _nghost-sje-c72="">
+            <section>
               <div  class="news-section">
                 <div  class="heading-container">
                   <h4  class="news-sub">ଟେକ୍ନୋଲୋଜି</h4>
@@ -360,16 +362,15 @@
                     <div  class="news-date">3/27/23, 5:25 PM</div>
                   </div>
                 </div>
-                <!---->
               </div>
-            </app-technology-news>
+            </section>
           </div>
         </div>
         <div  class="row">
           <div  class="col-md-8 col-sm-12 col-12">
             <div  class="row">
               <div  class="col-md-6 col-sm-12 col-12">
-                <app-politics-news  _nghost-sje-c28="">
+                <section>
                   <div  class="news-section">
                     <div  class="heading-container">
                       <h4  class="news-sub">ରାଜନୀତି</h4>
@@ -401,12 +402,11 @@
                         <div  class="news-date">3/27/23, 5:17 PM</div>
                       </div>
                     </div>
-                    <!---->
                   </div>
-                </app-politics-news>
+                </section>
               </div>
               <div  class="col-md-6 col-sm-12 col-12">
-                <app-sports-news  _nghost-sje-c30="">
+                <section>
                   <div  class="news-section">
                     <div  class="heading-container">
                       <h4  class="news-sub">କ୍ରୀଡା</h4>
@@ -440,34 +440,32 @@
                     </div>
                     <!---->
                   </div>
-                </app-sports-news>
+                </section>
               </div>
             </div>
             <div  class="row">
               <div  class="col-md-6 col-sm-12 col-12">
-                <app-nation-news  _nghost-sje-c160="">
+                <section>
                   <div  class="news-section">
                     <div  class="heading-container">
                       <h4  class="news-sub">ଜାତି</h4>
                     </div>
-                    <!---->
                   </div>
-                </app-nation-news>
+                </section>
               </div>
               <div  class="col-md-6 col-sm-12 col-12">
-                <app-automobile-news  _nghost-sje-c161="">
+                <section>
                   <div  class="news-section">
                     <div  class="heading-container">
                       <h4  class="news-sub">ଅଟୋମୋବାଇଲ୍ |</h4>
                     </div>
-                    <!---->
                   </div>
-                </app-automobile-news>
+                </section>
               </div>
             </div>
             <div  class="row">
               <div  class="col-md-6 col-sm-12 col-12">
-                <app-health-news  _nghost-sje-c162="">
+                <section>
                   <div  class="news-section">
                     <div  class="heading-container">
                       <h4  class="news-sub">ସ୍ୱାସ୍ଥ୍ୟ</h4>
@@ -482,10 +480,10 @@
                     </div>
                     <!---->
                   </div>
-                </app-health-news>
+                </section>
               </div>
               <div  class="col-md-6 col-sm-12 col-12">
-                <app-blog  _nghost-sje-c163="">
+                <section>
                   <div  class="news-section">
                     <div  class="heading-container">
                       <h4  class="news-sub">ବ୍ଲଗ୍</h4>
@@ -516,12 +514,12 @@
                     </div>
                     <!---->
                   </div>
-                </app-blog>
+                </section>
               </div>
             </div>
           </div>
           <div  class="col-md-4 col-sm-12 col-12">
-            <app-education-news  _nghost-sje-c164="">
+            <section>
               <div  class="news-section">
                 <div  class="heading-container">
                   <h4  class="news-sub">ଶିକ୍ଷା</h4>
@@ -573,17 +571,17 @@
                 </div>
                 <!---->
               </div>
-            </app-education-news>
+            </section>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <app-footer  _nghost-sje-c61="">
+  <app-footer  >
     <div  class="container-fluid footer-container">
       <div  class="row">
         <div  class="col-md-3 col-sm-6 col-12">
-          <app-campus-muse-news  _nghost-sje-c57="">
+          <section>
             <div  class="news-section">
               <div  class="heading-container">
                 <h4  class="news-sub">କ୍ୟାମ୍ପସ୍ ମ୍ୟୁଜ୍ |</h4>
@@ -626,10 +624,10 @@
               </div>
               <!---->
             </div>
-          </app-campus-muse-news>
+          </section>
         </div>
         <div  class="col-md-3 col-sm-6 col-12">
-          <app-women-news  _nghost-sje-c58="">
+          <section>
             <div  class="news-section">
               <div  class="heading-container">
                 <h4  class="news-sub">ମହିଳାମାନେ</h4>
@@ -672,10 +670,10 @@
               </div>
               <!---->
             </div>
-          </app-women-news>
+          </section>
         </div>
         <div  class="col-md-3 col-sm-6 col-12">
-          <app-science-news  _nghost-sje-c59="">
+          <section>
             <div  class="news-section">
               <div  class="heading-container">
                 <h4  class="news-sub">ବିଜ୍ଞାନ</h4>
@@ -709,10 +707,10 @@
               </div>
               <!---->
             </div>
-          </app-science-news>
+          </section>
         </div>
         <div  class="col-md-3 col-sm-6 col-12">
-          <app-twin-city-news  _nghost-sje-c60="">
+          <section>
             <div  class="news-section">
               <div  class="heading-container">
                 <h4  class="news-sub">ଟ୍ୱିନ୍ ସିଟି</h4>
@@ -755,7 +753,7 @@
               </div>
               <!---->
             </div>
-          </app-twin-city-news>
+          </section>
         </div>
       </div>
       <div  class="btn-section">

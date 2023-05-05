@@ -42,11 +42,10 @@
 }
 
 .news-section {
-  /* padding: 1rem; */
   background: var(--white);
   background: transparent;
 
-  /* border: 1px rgb(215, 215, 215) solid; */
+ 
 }
 
 .news-box {

@@ -48,13 +48,33 @@
     margin-bottom: 0px;
     line-height: 28px;
   }
-  
-
+  .home-first-container{
+    background-color: var(--site-background);
+    padding: 2% 2%;
+}
+.home-second-container {
+  background-color: #f3f3f3;
+  padding: 2% 2%;
+}
 /*footer start*/
 .footer-container {
     background: linear-gradient(1deg, #212121, #00000075);
   }
-  
+.footer-container .news-text-container p {
+    color: rgb(255, 255, 255);
+    transition: all 0.4s ease;
+  }
+  .footer-container  .news-section {
+    background: transparent;
+    color: var(--white);
+    border: 0;
+}
+
+
+.footer-container  .news-date {
+    font-size: 14px;
+    color: #FFF;
+}
   .credits-container {
     display: flex;
     justify-content: space-between;

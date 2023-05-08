@@ -189,8 +189,8 @@
     flex-wrap: wrap;
   }
   .home-ad-container div {
-    width: auto !important;
-    height: 90px;
+    max-width: 100% !important;
+    height: auto;
   }
   .header-row {
     display: block;

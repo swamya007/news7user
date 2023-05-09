@@ -35,13 +35,13 @@ const routes: Routes = [
     path:'home',
     component:SingleHomepageComponent
   },{
-    path: 'newsearch',
+    path: 'newsearch/:value',
     component: SinglesearchComponent,
   },
-  {
-    path: 'search/:value',
-    component: SearchPostComponent,
-  },
+  // {
+  //   path: 'search/:value',
+  //   component: SearchPostComponent,
+  // },
   {
     path: 'category/:slug',
     component: HeaderCategoryComponent,

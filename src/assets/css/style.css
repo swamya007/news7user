@@ -358,9 +358,25 @@
   color: var(--white);
 }
   
-
-
-
+.prameya-epaper {
+  background: #ffffff;
+  padding: 8px;
+  margin: 0px 0 15px 0;
+}
+.top-stories {
+  background: #f7f7f7;
+}
+.strong-txt{
+font-weight: bold!important;
+}
+.top-stories .news-img-container
+{
+  padding: 0!important;
+}
+.top-stories .news-text-container
+{
+  margin-top: 10px;
+}
   @media screen and (min-width: 280px) and (max-device-width: 479px) {
     .btn-secondary {
       background-color: #3f3f3f;
@@ -401,6 +417,9 @@
     {
       margin: 0px 4px!important;
     }
+    .top-stories .d-flex{
+      flex-wrap: wrap;
+    }
   }
   
   @media screen and (min-width: 480px) and (max-device-width: 767px) {
@@ -434,6 +453,9 @@
     .recent-stories
     {
       margin: 0px 4px!important;
+    }
+    .top-stories .d-flex{
+      flex-wrap: wrap;
     }
   }
   

@@ -189,4 +189,10 @@ export class PostserviceService {
       }
     );
   }
+
+  getallnews(){
+    return this.HTTP.get<any>(Masterapi + `/get-allodia-posts`);
+  }
+
+
 }

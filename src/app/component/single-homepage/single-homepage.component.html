@@ -8,49 +8,16 @@
    <div class="heading-container">
  <h4 class="news-sub">ଓଡ଼ିଶା</h4>
    </div>
-   <div class="d-flex news-box ng-star-inserted">
+   <div class="d-flex news-box ng-star-inserted" *ngFor="let post of odishaarr" (click)="opennewsSec(post.slug,post.twitter_exists)">
  <div class="col-md-4 col-sm-4 col-4 news-img-container">
-   <img src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1681546525778.jpg">
+   <img  src="{{ post.home_img != null && post.home_img != undefined ? post.home_img : post.guid }}" loading="lazy"
+   fetchPrirority="high" [attr.alt]="post.media_alt_text">
  </div>
  <div class="col-md-8 col-sm-8 col-8 news-text-container">
-   <p>ପୁଣି ଚାଷୀ ଆତ୍ମହତ୍ୟା :ଅଜଣା...</p>
-   <div class="news-date">4/15/23, 1:39 PM</div>
- </div>
-   </div>
-   <div class="d-flex news-box ng-star-inserted">
- <div class="col-md-4 col-sm-4 col-4 news-img-container">
-   <img src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1681281056716.jpg">
- </div>
- <div class="col-md-8 col-sm-8 col-8 news-text-container">
-   <p>ରାସ୍ତାରେ ଉଡ଼ିଲା ଯୁକ୍ତ ଦୁଇ ଇଣ୍ଟରନାଲ୍&zwnj; ଖାତା</p>
-   <div class="news-date">4/12/23, 11:50 AM</div>
- </div>
-   </div>
-   <div class="d-flex news-box ng-star-inserted">
- <div class="col-md-4 col-sm-4 col-4 news-img-container">
-   <img src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1681279854035.jpg">
- </div>
- <div class="col-md-8 col-sm-8 col-8 news-text-container">
-   <p>AMNS କମ୍ପାନୀର ଟ୍ରାଭେଲର ଦୁର...</p>
-   <div class="news-date">4/12/23, 11:38 AM</div>
- </div>
-   </div>
-   <div class="d-flex news-box ng-star-inserted">
- <div class="col-md-4 col-sm-4 col-4 news-img-container">
-   <img src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1680863239920.jpg">
- </div>
- <div class="col-md-8 col-sm-8 col-8 news-text-container">
-   <p>ତାମିଲନାଡୁ ସରକାରଙ୍କୁ ବଡ ଝଟକ...</p>
-   <div class="news-date">4/11/23, 12:52 PM</div>
- </div>
-   </div>
-   <div class="d-flex news-box ng-star-inserted">
- <div class="col-md-4 col-sm-4 col-4 news-img-container">
-   <img src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1680777138103.jpg">
- </div>
- <div class="col-md-8 col-sm-8 col-8 news-text-container">
-   <p>ଟ୍ରେଲର ଚାପାରେ ଚାରି ବର୍ଷର ଶ...</p>
-   <div class="news-date">4/6/23, 3:54 PM</div>
+   <p>{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
+   <div class="news-date"> <time class="news-date">{{
+    post.post_date | date : "MMMM dd, yyyy"
+    }}</time></div>
  </div>
    </div>
   </div>
@@ -180,31 +147,16 @@
  <div  class="heading-container">
    <h4  class="news-sub">ଅପରାଧ </h4>
  </div>
- <div class="d-flex news-box1 ng-star-inserted">
+ <div class="d-flex news-box1 ng-star-inserted" *ngFor="let post of crimesnews" (click)="opennewsSec(post.slug,post.twitter_exists)">
    <div class="col-md-4 col-sm-4 col-4 news-img-container">
- <img src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1680846705276.jpg">
+ <img src="{{ post.home_img != null && post.home_img != undefined ? post.home_img : post.guid }}"
+ [attr.alt]="post.media_alt_text" loading="lazy" fetchPrirority="high">
    </div>
    <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >ଘର ଭିତରୁ ମହିଳାଙ୍କ ଝୁଲନ୍ତା ମୃତଦେହ ଉଦ୍ଧାର</p>
- <div  class="news-date">4/11/23, 2:12 PM</div>
-   </div>
- </div>
- <div  class="d-flex news-box1 ng-star-inserted">
-   <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1680773581559.jpg">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >ଟ୍ରେଲର ଚାପାରେ ଚାରି ବର୍ଷର ଶିଶୁକନ୍ୟା ମୃତ, ଉତ୍ତ୍ୟ...</p>
- <div  class="news-date">4/10/23, 10:41 AM</div>
-   </div>
- </div>
- <div  class="d-flex news-box1 ng-star-inserted">
-   <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1680847260335.png">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >ବଡ଼ ଭାଇର ଆକ୍ରମଣରେ ସାନ ଭାଇ ମୃତ, ଥାନାରେ ଆତ୍ମସମର୍ପ...</p>
- <div  class="news-date">4/7/23, 11:28 AM</div>
+ <p >{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
+ <div class="news-date"><time class="news-date">{{
+  post.post_date | date : "MMMM dd, yyyy"
+  }}</time></div>
    </div>
  </div>
    </div>
@@ -217,33 +169,20 @@
    <h4  class="news-sub">ଟ୍ୱିନ୍ ସିଟି </h4>
  </div>
  
- <div  class="d-flex news-box1 ng-star-inserted">
-   <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1679920020799.jpg">
+ <div  class="d-flex news-box1 ng-star-inserted" *ngFor="let post of twinnews" (click)="opennewsSec(post.slug,post.twitter_exists)">
+   <div  class="col-md-4 col-sm-4 col-4 news-img-container"  >
+ <img  src="{{ post.home_img != null && post.home_img != undefined ? post.home_img : post.guid }}"
+ [attr.alt]="post.media_alt_text" loading="lazy" fetchPrirority="high">
    </div>
    <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p>ଆଇସିଏଆଇ ପକ୍ଷରୁ ଦିନିକିଆ କର୍ମଶାଳା</p>
- <div  class="news-date">3/27/23, 5:56 PM</div>
+ <p>{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
+ <div  class="news-date"><time class="news-date">{{
+  post.post_date | date : "MMMM dd, yyyy"
+  }}</time></div>
    </div>
  </div>
- <div class="d-flex news-box1 ng-star-inserted">
-   <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1679919888393.jpg">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >୫୦୦ ସହରରେ ଏୟାରଟେଲ୍&zwnj; ୫ଜି ପ୍ଲସ୍&zwnj;</p>
- <div  class="news-date">3/27/23, 5:53 PM</div>
-   </div>
- </div>
- <div  class="d-flex news-box1 ng-star-inserted">
-   <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1679919921693.jpg">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >କଂଗ୍ରେସର 'କଳା ପୋଷାକ' ବିରୋଧରେ ଟିଏମସିର ସରପ୍ରାଇସ୍...</p>
- <div  class="news-date">3/27/23, 5:50 PM</div>
-   </div>
- </div>
+ 
+
    </div>
   </section>
    </div>
@@ -253,31 +192,16 @@
  <div  class="heading-container">
    <h4  class="news-sub">ରାଜନୀତି</h4>
  </div>
- <div  class="d-flex news-box1 ng-star-inserted">
-   <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1679918033560.jpg">
+ <div  class="d-flex news-box1 ng-star-inserted" *ngFor="let post of polticesnews" (click)="opennewsSec(post.slug,post.twitter_exists)">
+   <div  class="col-md-4 col-sm-4 col-4 news-img-container" >
+ <img src="{{ post.home_img != null && post.home_img != undefined ? post.home_img : post.guid }}"
+ loading="lazy" fetchPrirority="high" [attr.alt]="post.media_alt_text">
    </div>
    <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >ଘୋଡ଼ାଦୌଡ଼ରେ ଭାଗ ନେବା ପାଇଁ ଆପଣ ଗଧ ଆଣୁଛନ୍ତି: ରାହ...</p>
- <div  class="news-date">3/27/23, 5:22 PM</div>
-   </div>
- </div>
- <div  class="d-flex news-box1 ng-star-inserted">
-   <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1679917902924.jpg">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >ଅରୁଣାଚଳ ପ୍ରଦେଶରେ ଅନୁଷ୍ଠିତ ‘ଜି୨୦’ ଗୋପନୀୟ ବୈଠକ...</p>
- <div  class="news-date">3/27/23, 5:20 PM</div>
-   </div>
- </div>
- <div  class="d-flex news-box1 ng-star-inserted">
-   <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1679917822339.jpg">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >ବୋମା ଫିଙ୍ଗି ପୁଡ୍ଡୁଚେରୀ ଗୃହମନ୍ତ୍ରୀଙ୍କ ଆତ୍ମୀୟଙ୍...</p>
- <div  class="news-date">3/27/23, 5:17 PM</div>
+ <p >{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
+ <div  class="news-date"><time class="news-date">{{
+  post.post_date | date : "MMMM dd, yyyy"
+  }}</time></div>
    </div>
  </div>
    </div>
@@ -293,31 +217,16 @@
  <div  class="heading-container">
    <h4  class="news-sub">କ୍ରୀଡା</h4>
  </div>
- <div  class="d-flex news-box1 ng-star-inserted">
+ <div  class="d-flex news-box1 ng-star-inserted" *ngFor="let post of sportsnews" (click)="opennewsSec(post.slug,post.twitter_exists)">
    <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1681386541003.jpg">
+ <img src="{{ post.home_img != null && post.home_img != undefined ? post.home_img : post.guid }}"
+ loading="lazy" fetchPrirority="high" [attr.alt]="post.media_alt_text">
    </div>
    <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >ଅତିକ୍&zwnj; ଅହମଦ ହତ୍ୟା ପରେ ସିଏମ୍ ଯୋଗୀ ଆଦିତ୍ୟନାଥଙ୍କ...</p>
- <div  class="news-date">4/18/23, 4:58 PM</div>
-   </div>
- </div>
- <div  class="d-flex news-box1 ng-star-inserted">
-   <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1681300556921.jpg">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >ଟସ୍&zwnj; ଜିତି ମୁମ୍ବାଇ ଇଣ୍ଡିଆନ୍ସର ବୋଲିଂ ନିଷ୍ପତ୍ତି,...</p>
- <div  class="news-date">4/16/23, 3:06 PM</div>
-   </div>
- </div>
- <div  class="d-flex news-box1 ng-star-inserted">
-   <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1681386541003.jpg">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >ସମ୍ବଲପୁରରେ ଗତକାଲି ହୋଇଥିବା ଦଙ୍ଗା ଏକ ସୁପରିକଳ୍ପିତ...</p>
- <div  class="news-date">4/13/23, 5:01 PM</div>
+ <p >{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
+ <div  class="news-date"><time class="news-date">{{
+  post.post_date | date : "MMMM dd, yyyy"
+  }}</time></div>
    </div>
  </div>
    </div>
@@ -329,33 +238,20 @@
  <div  class="heading-container">
    <h4  class="news-sub">ଟେକ୍ନୋଲୋଜି</h4>
  </div>
- <div  class="d-flex news-box1 ng-star-inserted">
+ <div  class="d-flex news-box1 ng-star-inserted" *ngFor="let post of technologynews" (click)="opennewsSec(post.slug,post.twitter_exists)">
    <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1679918729950.jpg">
+ <img src="{{ post.home_img != null && post.home_img != undefined ? post.home_img : post.guid }}"
+ loading="lazy" fetchPrirority="high" [attr.alt]="post.media_alt_text">
    </div>
    <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >ହାଇୱାକୁ ଧକ୍କ ଦେଲା ବସ୍:୨ ମୃତ, ୫ ଯାତ୍ରୀ ଆହତ</p>
- <div  class="news-date">3/27/23, 5:31 PM</div>
+ <p >{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
+ <div  class="news-date"><time class="news-date">{{
+  post.post_date | date : "MMMM dd, yyyy"
+  }}</time></div>
    </div>
  </div>
- <div  class="d-flex news-box1 ng-star-inserted">
-   <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1679918570673.jpg">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >କାବୁଲରେ ଭୟଙ୍କର ବୋମା ବିସ୍ଫୋରଣ, ଟ୍ରେଡ୍ ସେଣ୍ଟର ନିକଟରେ ବିସ୍ପୋରଣ କଲେ ଆତଙ୍କୀ</p>
- <div  class="news-date">3/27/23, 5:29 PM</div>
-   </div>
- </div>
- <div  class="d-flex news-box1 ng-star-inserted">
-   <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1679918371975.jpg">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >ମାଲ୍ୟାଙ୍କୁ ସୁପ୍ରିମକୋର୍ଟ ରୁ ବଡ଼ ଝଟକା, ଖାରଜ କଲେ ଏହି ଆବେଦନ</p>
- <div  class="news-date">3/27/23, 5:25 PM</div>
-   </div>
- </div>
+
+
    </div>
   </section>
    </div>
@@ -365,31 +261,16 @@
  <div  class="heading-container">
    <h4  class="news-sub">ମନୋରଞ୍ଜନ</h4>
  </div>
- <div  class="d-flex news-box1 ng-star-inserted">
+ <div  class="d-flex news-box1 ng-star-inserted" *ngFor="let post of entermentaarr" (click)="opennewsSec(post.slug,post.twitter_exists)">
    <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1681729749298.jpg">
+ <img  src="{{ post.home_img != null && post.home_img != undefined ? post.home_img : post.guid }}"
+ [attr.alt]="post.media_alt_text" loading="lazy" fetchPrirority="high">
    </div>
    <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >ଓଡ଼ିଆ ଫିଲ୍ମ ପ୍ରଯୋଜକ ନିଜେ ଫିଲ୍ମ କରୁଛନ୍ତି</p>
- <div  class="news-date">4/17/23, 4:37 PM</div>
-   </div>
- </div>
- <div  class="d-flex news-box1 ng-star-inserted">
-   <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1681205291316.jpg">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >୨୦୨୪ରେ ମୋଦି ତୃତୀୟ ଥର ପାଇଁ ହେବେ ପ୍ରଧାନମନ୍ତ୍ରୀ,...</p>
- <div  class="news-date">4/11/23, 3:48 PM</div>
-   </div>
- </div>
- <div  class="d-flex news-box1 ng-star-inserted">
-   <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1679921211837.jpg">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >ନିଖତ୍&zwnj;, ଲଭ୍&zwnj;ଲିନାଙ୍କୁ ସ୍ବର୍ଣ୍ଣ</p>
- <div  class="news-date">3/27/23, 6:16 PM</div>
+ <p >{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
+ <div  class="news-date"><time class="news-date">{{
+  post.post_date | date : "MMMM dd, yyyy"
+  }}</time></div>
    </div>
  </div>
    </div>
@@ -406,45 +287,11 @@
   <section>
    <div  class="recent-stories">
   <div  class="row">
-   <div  class="col-md-3 col-sm-12 col-12 news-img-container ng-star-inserted">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_81_1680764451768.jpg">
- <p >ଅସହ୍ୟ ତାତି: ଦେଶରେ ବ୍ଲାକଆଉଟ ହେବା ଆଶଙ୍କା ଘନେଇଲା.</p>
- <div  class="news-date">4/19/23, 2:06 PM</div>
-   </div>
-   <div  class="col-md-3 col-sm-12 col-12 news-img-container ng-star-inserted">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1681386541003.jpg">
- <p >ଅତିକ୍&zwnj; ଅହମଦ ହତ୍ୟା ପରେ ସିଏମ୍ ଯୋଗୀ ଆଦିତ୍ୟନାଥଙ୍କ କଡା ବୟାନ: 'କୌଣସି ମାଫିଆ କାହାରିକୁ ଧମକାଇ ପାରିବେନି' </p>
- <div  class="news-date">4/18/23, 4:58 PM</div>
-   </div>
-   <div  class="col-md-3 col-sm-12 col-12 news-img-container ng-star-inserted">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1681729749298.jpg">
- <p >ଓଡ଼ିଆ ଫିଲ୍ମ ପ୍ରଯୋଜକ ନିଜେ ଫିଲ୍ମ କରୁଛନ୍ତି</p>
- <div  class="news-date">4/17/23, 4:37 PM</div>
-   </div>
-   <div  class="col-md-3 col-sm-12 col-12 news-img-container ng-star-inserted">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1681300556921.jpg">
- <p >ଟସ୍&zwnj; ଜିତି ମୁମ୍ବାଇ ଇଣ୍ଡିଆନ୍ସର ବୋଲିଂ ନିଷ୍ପତ୍ତି, ବ୍ୟାଟିଂ କରିବ କୋଲକାତା ନାଇଟ୍&zwnj; ରାଇଡର୍ସ </p>
- <div  class="news-date">4/16/23, 3:06 PM</div>
-   </div>
-   <div  class="col-md-3 col-sm-12 col-12 news-img-container ng-star-inserted">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1681546525778.jpg">
- <p >ପୁଣି ଚାଷୀ ଆତ୍ମହତ୍ୟା :ଅଜଣା ରୋଗରେ ଚାଷ ନଷ୍ଟ ହେବାରୁ ଚାଷୀ କଲା ଆତ୍ମହତ୍ୟା </p>
- <div  class="news-date">4/15/23, 1:39 PM</div>
-   </div>
-   <div  class="col-md-3 col-sm-12 col-12 news-img-container ng-star-inserted">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1681386541003.jpg">
- <p >ସମ୍ବଲପୁରରେ ଗତକାଲି ହୋଇଥିବା ଦଙ୍ଗା ଏକ ସୁପରିକଳ୍ପିତ ଷଡଯନ୍ତ୍ର : ମନମୋହନ ସାମଲ</p>
- <div  class="news-date">4/13/23, 5:01 PM</div>
-   </div>
-   <div  class="col-md-3 col-sm-12 col-12 news-img-container ng-star-inserted">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1681385313874.jpg">
- <p >ମାଫିଆ ଅତୀକ ଅହମ୍ମଦର ପୁଅ ଏନକାଉଣ୍ଟରରେ ନିହତ</p>
- <div  class="news-date">4/13/23, 4:48 PM</div>
-   </div>
-   <div  class="col-md-3 col-sm-12 col-12 news-img-container ng-star-inserted">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1681296926094.jpg">
- <p >କୁଳଡିହା ଅଭୟାରଣ୍ୟରେ ପୁଣି ଦନ୍ତାହାତୀର ମୃତ୍ୟୁ, ବର୍ଷକରେ ମଲେଣି ୮ ହାତୀ</p>
- <div  class="news-date">4/12/23, 4:19 PM</div>
+   <div  class="col-md-3 col-sm-12 col-12 news-img-container ng-star-inserted" *ngFor="let post of homenews" (click)="opennewsSec(post.slug,post.twitter_exists)">
+ <img  alt="main-news" src="{{ post.guid }}" [attr.alt]="post.media_alt_text" loading="lazy"
+ fetchPrirority="high">
+ <p >{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
+ <div  class="news-date">{{ post.post_date | date : "MMMM dd, yyyy" }}</div>
    </div>
   </div>
    </div>
@@ -540,42 +387,18 @@
   <section>
   
  <div class="heading-container">
-   <h4 class="news-sub">କ୍ୟାମ୍ପସ୍ ମ୍ୟୁଜ୍ |</h4>
+   <h4 class="news-sub">କ୍ୟାମ୍ପସ୍ ମ୍ୟୁଜ୍ </h4>
  </div>
- <div class="d-flex news-box ng-star-inserted">
-   <div class="col-md-4 col-sm-4 col-5 news-img-container">
- <img src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1681386541003.jpg">
+ <div class="d-flex news-box ng-star-inserted" *ngFor="let post of campusnews" (click)="opennewsSec(post.slug,post.twitter_exists)">
+   <div class="col-md-4 col-sm-4 col-5 news-img-container" >
+ <img src="{{ post.home_img != null && post.home_img != undefined ? post.home_img : post.guid }}"
+ [attr.alt]="post.media_alt_text" loading="lazy" fetchPrirority="high">
    </div>
    <div class="col-md-8 col-sm-8 col-7 news-text-container">
- <p>ଅତିକ୍&zwnj; ଅହମଦ ହତ୍ୟା ପରେ ସିଏମ୍ ଯୋଗୀ ଆଦିତ୍ୟନାଥଙ୍କ...</p>
- <div class="news-date">4/18/23, 4:58 PM</div>
-   </div>
- </div>
- <div class="d-flex news-box divider ng-star-inserted">
-   <div class="col-md-4 col-sm-4 col-5 news-img-container">
- <img src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1681281056716.jpg">
-   </div>
-   <div class="col-md-8 col-sm-8 col-7 news-text-container">
- <p>ଡିଫେନ୍ସ କଲୋନୀ ସ୍କୁଲରେ ବୋମା ଆତଙ୍କ: ଇ-ମେଲରେ ଧମକ...</p>
- <div class="news-date">4/12/23, 2:41 PM</div>
-   </div>
- </div>
- <div class="d-flex news-box divider ng-star-inserted">
-   <div class="col-md-4 col-sm-4 col-5 news-img-container">
- <img src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1680181329881.jpg">
-   </div>
-   <div class="col-md-8 col-sm-8 col-7 news-text-container">
- <p >ଋଷିକୁଲ୍ୟା ମୁହାଁଣରେ ବିରଳ ପ୍ରଜାତିର ସାମୁଦ୍ରିକ କଇଁ...</p>
- <div class="news-date">3/30/23, 6:32 PM</div>
-   </div>
- </div>
- <div class="d-flex news-box divider ng-star-inserted">
-   <div class="col-md-4 col-sm-4 col-5 news-img-container">
- <img src="https://api-dev.prameyanews.com/prameya/document/post/2/2_81_1680162956360.jpg">
-   </div>
-   <div class="col-md-8 col-sm-8 col-7 news-text-container">
- <p>ଏପ୍ରିଲ ୧୯ରେ ନାକ୍&zwnj; ଟିମ୍&zwnj;ର ଉତ୍କଳ ବିଶ୍ୱବିଦ୍ୟାଳୟ ଗ...</p>
- <div class="news-date">3/30/23, 1:20 PM</div>
+ <p>{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
+ <div class="news-date"><time class="news-date">{{
+  post.post_date | date : "MMMM dd, yyyy"
+  }}</time></div>
    </div>
  </div>
   
@@ -587,42 +410,20 @@
  <div  class="heading-container">
    <h4  class="news-sub">ମହିଳାମାନେ</h4>
  </div>
- <div  class="d-flex news-box ng-star-inserted">
+ <div  class="d-flex news-box ng-star-inserted" *ngFor="let post of womensnews" (click)="opennewsSec(post.slug,post.twitter_exists)">
    <div  class="col-md-4 col-sm-4 col-5 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1680181329881.jpg">
+ <img  [src]="post.home_img != null && post.home_img != undefined ? post.home_img : post.guid" loading="lazy"
+ fetchPrirority="high" [attr.alt]="post.media_alt_text">
    </div>
    <div  class="col-md-8 col-sm-8 col-7 news-text-container">
- <p >ଋଷିକୁଲ୍ୟା ମୁହାଁଣରେ ବିରଳ ପ୍ରଜାତିର ସାମୁଦ୍ରିକ କଇଁ...</p>
- <div  class="news-date">3/30/23, 6:32 PM</div>
+ <p>{{ post.post_title ? getShortName(post.post_title) : ''}}</p>
+ <div  class="news-date"><time class="news-date">{{
+  post.post_date | date : "MMMM dd, yyyy"
+  }}</time></div>
    </div>
  </div>
- <div  class="d-flex news-box divider ng-star-inserted">
-   <div  class="col-md-4 col-sm-4 col-5 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1679920251294.jpg">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-7 news-text-container">
- <p >କଟକରେ ଟର୍ଟଲର ଏକ୍ସକ୍ଲୁସିଭ୍&zwnj; ଆଉଟ୍&zwnj;ଲେଟ</p>
- <div  class="news-date">3/27/23, 5:59 PM</div>
-   </div>
- </div>
- <div  class="d-flex news-box divider ng-star-inserted">
-   <div  class="col-md-4 col-sm-4 col-5 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1679920020799.jpg">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-7 news-text-container">
- <p >ଆଇସିଏଆଇ ପକ୍ଷରୁ ଦିନିକିଆ କର୍ମଶାଳା</p>
- <div  class="news-date">3/27/23, 5:56 PM</div>
-   </div>
- </div>
- <div  class="d-flex news-box divider ng-star-inserted">
-   <div  class="col-md-4 col-sm-4 col-5 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1679919888393.jpg">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-7 news-text-container">
- <p >୫୦୦ ସହରରେ ଏୟାରଟେଲ୍&zwnj; ୫ଜି ପ୍ଲସ୍&zwnj;</p>
- <div  class="news-date">3/27/23, 5:53 PM</div>
-   </div>
- </div>
+ 
+
  
   </section>
    </div>
@@ -632,33 +433,20 @@
  <div class="heading-container">
    <h4 class="news-sub">ବିଜ୍ଞାନ</h4>
  </div>
- <div class="row news-box ng-star-inserted">
+ <div class="row news-box ng-star-inserted" *ngFor="let post of scincenews" (click)="opennewsSec(post.slug,post.twitter_exists)">
    <div class="col-md-4 col-sm-4 col-4 news-img-container">
- <img src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1679920251294.jpg">
+ <img [src]="post.home_img != null && post.home_img != undefined ? post.home_img : post.guid" loading="lazy"
+ fetchPrirority="high" [attr.alt]="post.media_alt_text">
    </div>
    <div class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >କଟକରେ ଟର୍ଟଲର ଏକ୍ସକ୍ଲୁସିଭ୍&zwnj; ଆଉଟ୍&zwnj;ଲେଟ</p>
- <div class="news-date">3/27/23, 5:59 PM</div>
+ <p >{{ post.post_title ? getShortName(post.post_title) : ''}}</p>
+ <div class="news-date"><time class="news-date">{{
+  post.post_date | date : "MMMM dd, yyyy"
+  }}</time></div>
    </div>
  </div>
- <div class="row news-box divider ng-star-inserted">
-   <div class="col-md-4 col-sm-4 col-4 news-img-container">
- <img src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1679920020799.jpg">
-   </div>
-   <div class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >ଆଇସିଏଆଇ ପକ୍ଷରୁ ଦିନିକିଆ କର୍ମଶାଳା</p>
- <div class="news-date">3/27/23, 5:56 PM</div>
-   </div>
- </div>
- <div class="row news-box divider ng-star-inserted">
-   <div class="col-md-4 col-sm-4 col-4 news-img-container">
- <img src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1679919888393.jpg">
-   </div>
-   <div class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >୫୦୦ ସହରରେ ଏୟାରଟେଲ୍&zwnj; ୫ଜି ପ୍ଲସ୍&zwnj;</p>
- <div class="news-date">3/27/23, 5:53 PM</div>
-   </div>
- </div>
+ 
+ 
   
   </section>
    </div>
@@ -668,42 +456,21 @@
  <div  class="heading-container">
    <h4  class="news-sub">ଟ୍ୱିନ୍ ସିଟି</h4>
  </div>
- <div  class="row news-box ng-star-inserted">
+ <div  class="row news-box ng-star-inserted" *ngFor="let post of scincenews" (click)="opennewsSec(post.slug,post.twitter_exists)">
    <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1679920251294.jpg">
+ <img  [src]="post.home_img != null && post.home_img != undefined ? post.home_img : post.guid" loading="lazy"
+ fetchPrirority="high" [attr.alt]="post.media_alt_text">
    </div>
    <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p  >କଟକରେ ଟର୍ଟଲର ଏକ୍ସକ୍ଲୁସିଭ୍&zwnj; ଆଉଟ୍&zwnj;ଲେଟ</p>
- <div  class="news-date">3/27/23, 5:59 PM</div>
+ <p  >{{ post.post_title ? getShortName(post.post_title) : ''}}</p>
+ <div  class="news-date"><time class="news-date">{{
+  post.post_date | date : "MMMM dd, yyyy"
+  }}</time></div>
    </div>
  </div>
- <div  class="row news-box ng-star-inserted">
-   <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1679920020799.jpg">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p  >ଆଇସିଏଆଇ ପକ୍ଷରୁ ଦିନିକିଆ କର୍ମଶାଳା</p>
- <div  class="news-date">3/27/23, 5:56 PM</div>
-   </div>
- </div>
- <div  class="row news-box ng-star-inserted">
-   <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1679919888393.jpg">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p>୫୦୦ ସହରରେ ଏୟାରଟେଲ୍&zwnj; ୫ଜି ପ୍ଲସ୍&zwnj;</p>
- <div  class="news-date">3/27/23, 5:53 PM</div>
-   </div>
- </div>
- <div  class="row news-box ng-star-inserted">
-   <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img  src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1679919921693.jpg">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p>କଂଗ୍ରେସର 'କଳା ପୋଷାକ' ବିରୋଧରେ ଟିଏମସିର ସରପ୍ରାଇସ୍...</p>
- <div  class="news-date">3/27/23, 5:50 PM</div>
-   </div>
- </div>
+ 
+ 
+
  
   </section>
    </div>

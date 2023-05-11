@@ -27,12 +27,12 @@ import { SingleHomepageComponent } from './component/single-homepage/single-home
 import { SinglesearchComponent } from './component/singlesearch/singlesearch.component';
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   component: HomeComponent,
+  // },
   {
-    path: '',
-    component: HomeComponent,
-  },
-  {
-    path:'home',
+    path:'',
     component:SingleHomepageComponent
   },{
     path: 'newsearch/:value',

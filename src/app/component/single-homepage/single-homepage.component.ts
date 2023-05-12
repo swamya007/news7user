@@ -38,7 +38,10 @@ export class SingleHomepageComponent implements OnInit {
           this.data = res.body;
           this.data =  this.data?.map((dt: any) => JSON.parse(dt));
            this.odishaarr =  this.data[0].odisha || [];
+           console.log(this.odishaarr,'ss')
            this.crimesnews =  this.data[0].crime || [];
+           console.log(this.odishaarr,'ss')
+
            this.homenews =  this.data[0].home || [];
            this.womensnews =  this.data[0].women || [];
            this.sportsnews =  this.data[0].sports || [];

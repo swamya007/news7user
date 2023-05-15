@@ -52,7 +52,7 @@ export class BlogCategoryComponent implements OnInit {
     return user_name.slice(0, 14).trim() + (user_name.length > 13 ? "..." : "");
   }
   getLatestNews() {
-    this.postserviceService.getLatestNews(1, environment.CUSTOMER_ID, News7_CONSTANTS.LOOKUPS.blog).subscribe((res: any) => {
+    this.postserviceService.getLatestNewsodia(1, environment.CUSTOMER_ID, News7_CONSTANTS.LOOKUPS.blog).subscribe((res: any) => {
       if (res.code == 'success') {
         var data = res.body;
         this.postarr = data?.map((dt: any) => JSON.parse(dt));

@@ -67,7 +67,7 @@ export class CrimeComponent implements OnInit {
 
   getLatestNews() {
     this.postserviceService
-      .getLatestNews(1, environment.CUSTOMER_ID, News7_CONSTANTS.LOOKUPS.crime)
+      .getLatestNewsodia(1, environment.CUSTOMER_ID, News7_CONSTANTS.LOOKUPS.crime)
       .subscribe(
         (res: any) => {
           if (res.code == 'success') {

@@ -67,7 +67,7 @@ export class SportsComponent implements OnInit {
 
   getLatestNews() {
     this.postserviceService
-      .getLatestNews(1, environment.CUSTOMER_ID, News7_CONSTANTS.LOOKUPS.sports)
+      .getLatestNewsodia(1, environment.CUSTOMER_ID, News7_CONSTANTS.LOOKUPS.sports)
       .subscribe(
         (res: any) => {
           if (res.code == 'success') {

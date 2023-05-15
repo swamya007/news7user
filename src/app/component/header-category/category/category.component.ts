@@ -19,6 +19,9 @@ export class CategoryComponent implements OnInit {
   count = 0;
   tableSize = 10;
   p: number = 1;
+  data:any
+  crimesnews:any = [];
+  sportsnews:any = []
   // tableSizes = [3, 6, 9, 12];
 
   // postarr: any = []
@@ -35,7 +38,19 @@ export class CategoryComponent implements OnInit {
   category_three: any = [];
   catname: any;
   cat_name: any;
-
+  postarr: any;
+  polticesnews:any = [];
+  entermentaarr:any = []
+  odishaarr: any = [];
+  homenews: any = [];
+  womensnews: any = [];
+  // sportsnews: any = [];
+  technologynews: any = [];
+  // polticesnews: any = [];
+  // entermentaarr: any=[];
+  campusnews: any = []
+  scincenews:any = []
+  twinnews: any = [];
   constructor(
     private adsService: AdserviceService,
     private postserviceService: PostserviceService,
@@ -90,7 +105,7 @@ export class CategoryComponent implements OnInit {
     console.log(this.cat_name, 'jimes');
     const routeParams = this.activatedRoute.snapshot.paramMap;
     this.cat_name = routeParams.get('slug');
-    if (this.ads_list.length > 0) {
+    if (this.ads_list && this.ads_list.length > 0) {
       /** Right Upper */
       this.ads_rightupper = this.ads_list.filter(
         (data: any) => data.ads_img_size === '2'
@@ -101,7 +116,7 @@ export class CategoryComponent implements OnInit {
       );
     }
     this.getWithoutHeaderCategory();
-
+     this.getAllairticlenews()
     // if (this.post_array_upper && this.post_array_upper[0].category_name) {
     //   this.category_one = this.post_array_upper[0].category_name.split(",");
     //   console.log('Category====', this.category_one)
@@ -141,6 +156,62 @@ export class CategoryComponent implements OnInit {
   openLink(url: any) {
     window.open(url);
   }
+  opennewsSec(id: any,flag:any) {
+    if(flag === 'Y') {
+      window.location.href='/post/' + id;
+    } else {
+      this.router.navigate (['/post/' + id]) ;
+    }
+    
+  }
+
+
+
+  getAllairticlenews(){
+    this.postserviceService.getallairticle().subscribe(
+      (res: any) => {
+        if (res.code == 'success') {
+          this.data = res.body;
+          this.data =  this.data?.map((dt: any) => JSON.parse(dt));
+           this.crimesnews =  this.data[0].crime || [];
+           this.sportsnews =  this.data[0].sports || [];
+           this.polticesnews =  this.data[0].politics || [];
+           this.entermentaarr =  this.data[0].entertainment || [];
+           console.log(this.entermentaarr,'entermentaarr')
+           this.womensnews =  this.data[0].women || [];
+           console.log(this.womensnews,'womensnews')
+           this.sportsnews =  this.data[0].sports || [];
+           console.log(this.sportsnews,'sportsnews')
+           this.technologynews =  this.data[0].technology || [];
+           console.log(this.technologynews,'technologynews')
+           this.polticesnews =  this.data[0].politics || [];
+           console.log(this.polticesnews,'polticesnews')
+
+           this.entermentaarr =  this.data[0].entertainment || [];
+           console.log(this.entermentaarr,'entermentaarr')
+
+           this.campusnews =  this.data[0].campus_muse || [];
+           console.log(this.campusnews,'campusnews')
+
+           this.scincenews =  this.data[0].science || [];
+           console.log(this.scincenews,'scincenews')
+
+           this.twinnews =  this.data[0].twin_city || [];
+           console.log(this.twinnews,'twinnews')
+
+
+        } else {
+          this.postarr = [];
+        }
+      },
+      (err) => {
+        this.postarr = [];
+      }
+    );
+    
+  }
+
+
 
   getShortName(user_name: any) {
     return user_name.slice(0, 46).trim() + (user_name.length > 45 ? '...' : '');
@@ -156,7 +227,7 @@ export class CategoryComponent implements OnInit {
     );
   }
 
-  opennewsSec(id: any) {
+  opennewsSecss(id: any) {
     window.location.href = '/post/' + id;
   }
 

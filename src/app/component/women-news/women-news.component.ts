@@ -27,7 +27,7 @@ export class WomenNewsComponent implements OnInit {
 
   getLatestNews() {
     this.postserviceService
-      .getLatestNews(1, environment.CUSTOMER_ID, News7_CONSTANTS.LOOKUPS.women)
+      .getLatestNewsodia(1, environment.CUSTOMER_ID, News7_CONSTANTS.LOOKUPS.women)
       .subscribe(
         (res: any) => {
           if (res.code == 'success') {

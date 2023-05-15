@@ -153,7 +153,7 @@
       <div class="news-section cointainer">
         <div
           class="row news-box"
-          (click)="opennewsSec(post.slug)"
+          (click)="opennewsSecss(post.slug)"
           *ngFor="
             let post of post_array
               | paginate : { itemsPerPage: 10, currentPage: p }
@@ -265,10 +265,43 @@
         </div>
       </div>
       <div class="prameya-epaper">
-        <app-politics-news></app-politics-news>
+        <!-- <app-politics-news></app-politics-news> -->
+        <div>
+          <div class="news-section">
+            <div class="heading-container">
+              <h4 class="news-sub">ରାଜନୀତି</h4>
+            </div>
+            <div  class="row news-box ng-star-inserted" *ngFor="let post of polticesnews" (click)="opennewsSec(post.slug,post.twitter_exists)">
+              <div class="col-md-4 col-sm-4 col-4 news-img-container">
+                <img src="{{ post.home_img != null && post.home_img != undefined ? post.home_img : post.guid }}"
+                loading="lazy" fetchPrirority="high" [attr.alt]="post.media_alt_text">
+              </div>
+              <div class="col-md-8 col-sm-8 col-8 news-text-container">
+                <p>{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
+                <div class="news-date"><time class="news-date">{{
+                  post.post_date | date : "MMMM dd, yyyy"
+                  }}</time></div>
+              </div>
+            </div>
+          </div>
       </div>
       <div class="prameya-epaper">
-        <app-entertainment-news></app-entertainment-news>
+        <!-- <app-entertainment-news></app-entertainment-news> -->
+        <div class="heading-container">
+          <h4 class="news-sub">ମନୋରଞ୍ଜନ</h4>
+        </div>
+        <div class="row news-box ng-star-inserted" *ngFor="let post of entermentaarr" (click)="opennewsSec(post.slug,post.twitter_exists)">
+          <div class="col-md-4 col-sm-4 col-4 news-img-container">
+            <img src="{{ post.home_img != null && post.home_img != undefined ? post.home_img : post.guid }}"
+            [attr.alt]="post.media_alt_text" loading="lazy" fetchPrirority="high">
+          </div>
+          <div class="col-md-8 col-sm-8 col-8 news-text-container">
+            <p >{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
+            <div class="news-date"><time class="news-date">{{
+              post.post_date | date : "MMMM dd, yyyy"
+              }}</time></div>
+          </div>
+        </div>
       </div>
       <div class="prameya-epaper">
         <div class="advertisement-container-long">
@@ -320,14 +353,144 @@
       </div>
 
       <div class="prameya-epaper">
-        <app-sports-news></app-sports-news>
+        <!-- <app-sports-news></app-sports-news> -->
+        <div   class="news-section">
+          <div   class="heading-container">
+            <h4   class="news-sub">କ୍ରୀଡା</h4>
+          </div>
+          <div   class="row news-box ng-star-inserted" *ngFor="let post of sportsnews" (click)="opennewsSec(post.slug,post.twitter_exists)">
+            <div   class="col-md-4 col-sm-4 col-4 news-img-container">
+              <img   src="{{ post.home_img != null && post.home_img != undefined ? post.home_img : post.guid }}"
+              loading="lazy" fetchPrirority="high" [attr.alt]="post.media_alt_text">
+            </div>
+            <div   class="col-md-8 col-sm-8 col-8 news-text-container">
+              <p  >{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
+              <div   class="news-date"><time class="news-date">{{
+                post.post_date | date : "MMMM dd, yyyy"
+                }}</time></div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="prameya-epaper">
-        <app-crime-news></app-crime-news>
+        <!-- <app-crime-news></app-crime-news> -->
+        <div   class="news-section">
+          <div   class="heading-container">
+            <h4   class="news-sub">ଅପରାଧ</h4>
+          </div>
+          <div   class="row news-box ng-star-inserted" *ngFor="let post of crimesnews" (click)="opennewsSec(post.slug,post.twitter_exists)">
+            <div   class="col-md-4 col-sm-4 col-4 news-img-container">
+              <img   src="{{ post.home_img != null && post.home_img != undefined ? post.home_img : post.guid }}"
+              [attr.alt]="post.media_alt_text" loading="lazy" fetchPrirority="high">
+            </div>
+            <div   class="col-md-8 col-sm-8 col-8 news-text-container">
+              <p  >{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
+              <div   class="news-date"><time class="news-date">{{
+                post.post_date | date : "MMMM dd, yyyy"
+                }}</time></div>
+            </div>
+          </div>
+          
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <app-search-sticky></app-search-sticky>
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->
+<section>
+  <div class="footer-container">
+ <div class="row">
+  <div class="col-md-3 col-sm-6 col-12">
+ <section>
+ 
+<div class="heading-container">
+  <h4 class="news-sub">କ୍ୟାମ୍ପସ୍ ମ୍ୟୁଜ୍ </h4>
+</div>
+<div class="d-flex news-box ng-star-inserted" *ngFor="let post of campusnews" (click)="opennewsSec(post.slug,post.twitter_exists)">
+  <div class="col-md-4 col-sm-4 col-5 news-img-container" >
+<img src="{{ post.home_img != null && post.home_img != undefined ? post.home_img : post.guid }}"
+[attr.alt]="post.media_alt_text" loading="lazy" fetchPrirority="high">
+  </div>
+  <div class="col-md-8 col-sm-8 col-7 news-text-container">
+<p>{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
+<div class="news-date"><time class="news-date">{{
+ post.post_date | date : "MMMM dd, yyyy"
+ }}</time></div>
+  </div>
+</div>
+ 
+ </section>
+  </div>
+  <div class="col-md-3 col-sm-6 col-12">
+ <section>
+ 
+<div class="heading-container">
+  <h4 class="news-sub">ମହିଳାମାନେ</h4>
+</div>
+<div  class="d-flex news-box ng-star-inserted" *ngFor="let post of womensnews" (click)="opennewsSec(post.slug,post.twitter_exists)">
+  <div  class="col-md-4 col-sm-4 col-5 news-img-container">
+<img  [src]="post.home_img != null && post.home_img != undefined ? post.home_img : post.guid" loading="lazy"
+fetchPrirority="high" [attr.alt]="post.media_alt_text">
+  </div>
+  <div  class="col-md-8 col-sm-8 col-7 news-text-container">
+<p>{{ post.post_title ? getShortName(post.post_title) : ''}}</p>
+<div  class="news-date"><time class="news-date">{{
+ post.post_date | date : "MMMM dd, yyyy"
+ }}</time></div>
+  </div>
+</div>
+
+
+
+ </section>
+  </div>
+  <div class="col-md-3 col-sm-6 col-12">
+ <section>
+  
+<div class="heading-container">
+  <h4 class="news-sub">ବିଜ୍ଞାନ</h4>
+</div>
+<div class="row news-box ng-star-inserted" *ngFor="let post of scincenews" (click)="opennewsSec(post.slug,post.twitter_exists)">
+  <div class="col-md-4 col-sm-4 col-4 news-img-container">
+<img [src]="post.home_img != null && post.home_img != undefined ? post.home_img : post.guid" loading="lazy"
+fetchPrirority="high" [attr.alt]="post.media_alt_text">
+  </div>
+  <div class="col-md-8 col-sm-8 col-8 news-text-container">
+<p >{{ post.post_title ? getShortName(post.post_title) : ''}}</p>
+<div class="news-date"><time class="news-date">{{
+ post.post_date | date : "MMMM dd, yyyy"
+ }}</time></div>
+  </div>
+</div>
+
+
+ 
+ </section>
+  </div>
+  <div class="col-md-3 col-sm-6 col-12">
+ <section>
+ 
+<div  class="heading-container">
+  <h4  class="news-sub">ଟ୍ୱିନ୍ ସିଟି</h4>
+</div>
+<div  class="row news-box ng-star-inserted" *ngFor="let post of scincenews" (click)="opennewsSec(post.slug,post.twitter_exists)">
+  <div  class="col-md-4 col-sm-4 col-4 news-img-container">
+<img  [src]="post.home_img != null && post.home_img != undefined ? post.home_img : post.guid" loading="lazy"
+fetchPrirority="high" [attr.alt]="post.media_alt_text">
+  </div>
+  <div  class="col-md-8 col-sm-8 col-8 news-text-container">
+<p  >{{ post.post_title ? getShortName(post.post_title) : ''}}</p>
+<div  class="news-date"><time class="news-date">{{
+ post.post_date | date : "MMMM dd, yyyy"
+ }}</time></div>
+  </div>
+</div>
+
+
+
+
+ </section>
+  </div>
+ </div>

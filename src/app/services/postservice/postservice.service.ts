@@ -78,6 +78,16 @@ export class PostserviceService {
     );
   }
 
+  getLatestNewsodia(page_no: any, cust_id: any, category_name: any) {
+    return this.HTTP.get<any>(
+      Masterapi +
+        `/get-post-list-page-wise-odia?page_no=${page_no}&customer_id=${cust_id}&category_name=${category_name}`,
+      {
+        context: withCache(),
+      }
+    );
+  }
+
   getNewsForHome(limit: any, cust_id: any, category_name: any) {
     return this.HTTP.get<any>(
       Masterapi +
@@ -130,6 +140,17 @@ export class PostserviceService {
       }
     );
   }
+  getPostByCategoryIDodia(page_no: any, category_id: any, customer_id: any) {
+    return this.HTTP.get<any>(
+      Masterapi +
+        `/get-post-by-category-odia?page_no=${page_no}&category_id=${category_id}&customer_id=${customer_id}`,
+      {
+        context: withCache(),
+      }
+    );
+  }
+
+
 
   getPostBySlug(slug: any, customer_id: any) {
     return this.HTTP.get<any>(
@@ -139,10 +160,29 @@ export class PostserviceService {
       }
     );
   }
+  getPostBySlugodia(slug: any, customer_id: any) {
+    return this.HTTP.get<any>(
+      Masterapi + `/get-post-by-slug-odia?slug=${slug}&customer_id=${customer_id}`,
+      {
+        context: withCache(),
+      }
+    );
+  }
   getPostByCategorySlug(page_no: any, category_slug: any, customer_id: any) {
     return this.HTTP.get<any>(
       Masterapi +
         `/get-post-by-category-slug?page_no=${page_no}&category_slug=${category_slug}&customer_id=${customer_id}`,
+      {
+        context: withCache(),
+      }
+    );
+  }
+
+
+  getPostByCategorySlugodia(page_no: any, category_slug: any, customer_id: any) {
+    return this.HTTP.get<any>(
+      Masterapi +
+        `/get-post-by-category-slug-odia?page_no=${page_no}&category_slug=${category_slug}&customer_id=${customer_id}`,
       {
         context: withCache(),
       }
@@ -193,6 +233,10 @@ export class PostserviceService {
   getallnews(){
     return this.HTTP.get<any>(Masterapi + `/get-allodia-posts`);
   }
+  getallairticle(){
+    return this.HTTP.get<any>(Masterapi + `/get-allodia-posts-airticle`);
 
+  }
+  
 
 }

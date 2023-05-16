@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MasterServiceService } from 'src/app/services/masterservice/master-service.service';
 import { PostserviceService } from 'src/app/services/postservice/postservice.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-single-homepage',
@@ -22,16 +24,25 @@ export class SingleHomepageComponent implements OnInit {
   scincenews:any = []
   twinnews: any = [];
   latestnews:any = [];
+  page = 1;
+  count = 0;
+  tableSize = 8;
+  tableSizes = [3, 6, 9, 12];
+  slidearray: any = [];
+  slidearrayfeature: any = [];
 
-  constructor(    private postserviceService: PostserviceService,    private router: Router,
+  constructor(    private postserviceService: PostserviceService,    private router: Router,private master: MasterServiceService
 
     ) { }
 
   ngOnInit(): void {
     this.getAllnews();
+    this.getslide()
   }
 
-
+  onTableDataChange(event: any) {
+    this.page = event;
+  }
   getAllnews(){
     this.postserviceService.getallnews().subscribe(
       (res: any) => {
@@ -69,6 +80,27 @@ export class SingleHomepageComponent implements OnInit {
     return user_name.slice(0, 46).trim() + (user_name.length > 45 ? '...' : '');
   }
 
+
+  getslide() {
+    this.master.getsliderodia(environment.CUSTOMER_ID).subscribe(
+      (res: any) => {
+        if (res.code == 'success') {
+          var data = res.body;
+          this.slidearrayfeature = data.map((dt: any) => JSON.parse(dt));
+          console.log(this.slidearrayfeature, 'kkk');
+          if (this.slidearrayfeature.length > 3) {
+            this.slidearray = this.slidearrayfeature.slice(5);
+            console.log(this.slidearrayfeature,'array')
+          }
+        } else {
+          this.slidearrayfeature = [];
+        }
+      },
+      (err) => {
+        this.slidearrayfeature = [];
+      }
+    );
+  }
   opennewsSec(id: any,flag:any) {
     if(flag === 'Y') {
       window.location.href='/post/' + id;

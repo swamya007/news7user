@@ -68,7 +68,11 @@ export class MasterServiceService {
     return this.HTTP.post<any>(MasterAPI + `/trending?trendids=${trendids}&&customerid=${customerid}`, {});
   }
 
-
+  getsliderodia(customer_id: any) {
+    return this.HTTP.get<any>(
+      MasterAPI + `/get-silde-odia?customer_id=${customer_id}`
+    );
+  }
   getslider(customer_id: any) {
     return this.HTTP.get<any>(MasterAPI + `/get-silde?customer_id=${customer_id}`);
   }

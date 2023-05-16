@@ -21,6 +21,7 @@ export class SingleHomepageComponent implements OnInit {
   campusnews: any = []
   scincenews:any = []
   twinnews: any = [];
+  latestnews:any = [];
 
   constructor(    private postserviceService: PostserviceService,    private router: Router,
 
@@ -38,7 +39,7 @@ export class SingleHomepageComponent implements OnInit {
           this.data = res.body;
           this.data =  this.data?.map((dt: any) => JSON.parse(dt));
            this.odishaarr =  this.data[0].odisha || [];
-           console.log(this.odishaarr,'ss')
+           console.log(this.data,'ss')
            this.crimesnews =  this.data[0].crime || [];
            console.log(this.odishaarr,'ss')
 
@@ -51,7 +52,7 @@ export class SingleHomepageComponent implements OnInit {
            this.campusnews =  this.data[0].campus_muse || [];
            this.scincenews =  this.data[0].science || [];
            this.twinnews =  this.data[0].twin_city || [];
-
+          this.latestnews =this.data[0].latestnews || [];
         } else {
           this.postarr = [];
         }

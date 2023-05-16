@@ -19,6 +19,26 @@ export class PostserviceService {
     return this.HTTP.post<any>(Masterapi + `/add-post`, { ...post });
   }
 
+  addpostodia(post: any) {
+    console.log("Post Data===",post)
+    return this.HTTP.post<any>(Masterapi + `/add-post-odia`, { ...post });
+  }
+
+  addTicker(post: any) {
+    return this.HTTP.post<any>(Masterapi + `/add-ticker`, { ...post });
+  }
+
+  getTicker(ticker_id: any, customer_id: any) {
+    return this.HTTP.get<any>(
+      Masterapi +
+        `/get-ticker-details?ticker_id=${ticker_id}&customer_id=${customer_id}`
+    );
+  }
+
+  addnewtag(tag: any) {
+    return this.HTTP.post<any>(Masterapi + `/add-tag`, { ...tag });
+  }
+
   draftpost(post: any) {
     return this.HTTP.post<any>(Masterapi + `/draft-post`, { ...post });
   }
@@ -30,10 +50,20 @@ export class PostserviceService {
     );
   }
 
-  getpostall(post_id: any, post_name: any, cust_id: any) {
+  // getpostall(post_id: any, post_name: any, cust_id: any) {
+  //   return this.HTTP.get<any>(
+  //     Masterapi +
+  //       `/get-post-details?post_id=${post_id}&post_name=${post_name}&customer_id=${cust_id}`,
+  //     {
+  //       context: withCache(),
+  //     }
+  //   );
+  // }
+
+  getpostallodia(post_id: any, post_name: any, cust_id: any) {
     return this.HTTP.get<any>(
       Masterapi +
-        `/get-post-details?post_id=${post_id}&post_name=${post_name}&customer_id=${cust_id}`,
+        `/get-post-details-odia?post_id=${post_id}&post_name=${post_name}&customer_id=${cust_id}`,
       {
         context: withCache(),
       }
@@ -46,7 +76,7 @@ export class PostserviceService {
   // }
 
   postPagination(obj: any) {
-    return this.HTTP.post<any>(Masterapi + `/get-post-pagination`, { ...obj });
+    return this.HTTP.post<any>(Masterapi + `/get-post-pagination-odia`, { ...obj });
   }
   postPagination15(obj: any) {
     return this.HTTP.post<any>(Masterapi + `/get-post-pagination-15days`, {
@@ -111,12 +141,7 @@ export class PostserviceService {
       { context: withCache() }
     );
   }
-  getticker(ticker_id: any, customer_id: any) {
-    return this.HTTP.get<any>(
-      Masterapi +
-        `/get-ticker-details?ticker_id=${ticker_id}&&customer_id=${customer_id}`
-    );
-  }
+
   // gettodaysnews(customer_id:any) {
   //   return this.HTTP.get<any>(Masterapi + `/get-todays-news?customer_id=${customer_id}`);
   // }
@@ -140,17 +165,16 @@ export class PostserviceService {
       }
     );
   }
+
   getPostByCategoryIDodia(page_no: any, category_id: any, customer_id: any) {
     return this.HTTP.get<any>(
       Masterapi +
-        `/get-post-by-category-odia?page_no=${page_no}&category_id=${category_id}&customer_id=${customer_id}`,
+        `/get-post-by-category?page_no=${page_no}&category_id=${category_id}&customer_id=${customer_id}`,
       {
         context: withCache(),
       }
     );
   }
-
-
 
   getPostBySlug(slug: any, customer_id: any) {
     return this.HTTP.get<any>(
@@ -177,8 +201,6 @@ export class PostserviceService {
       }
     );
   }
-
-
   getPostByCategorySlugodia(page_no: any, category_slug: any, customer_id: any) {
     return this.HTTP.get<any>(
       Masterapi +
@@ -188,6 +210,8 @@ export class PostserviceService {
       }
     );
   }
+
+
   savePostComment(comment: any) {
     return this.HTTP.post<any>(Masterapi + `/save-post-comment`, {
       ...comment,
@@ -214,6 +238,7 @@ export class PostserviceService {
         `/get-draft-details?user_id=${user_id}&draft_id=${draft_id}&customer_id=${cust_id}&searchval=${searchval}`
     );
   }
+  
   getdraftdetailsbypost(post_id: any, draft_id: any, cust_id: any) {
     return this.HTTP.get<any>(
       Masterapi +
@@ -229,7 +254,6 @@ export class PostserviceService {
       }
     );
   }
-
   getallnews(){
     return this.HTTP.get<any>(Masterapi + `/get-allodia-posts`);
   }
@@ -237,6 +261,4 @@ export class PostserviceService {
     return this.HTTP.get<any>(Masterapi + `/get-allodia-posts-airticle`);
 
   }
-  
-
 }

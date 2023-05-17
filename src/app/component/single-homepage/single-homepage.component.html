@@ -58,54 +58,21 @@
    <section>
  <div class="news-section1">
    <div class="heading-container">
- <h4 class="news-sub">ପ୍ରମୁଖ ଖବର</h4>
+ <h4 class="news-sub">ବହୁ ଚର୍ଚ୍ଚିତ ଖବର</h4>
    </div>
-   <div class="d-flex news-box ng-star-inserted">
- <div class="col-md-4 col-sm-4 col-4 news-img-container">
-   <img src="https://api-dev.prameyanews.com/prameya/document/post/2/2_81_1680764451768.jpg">
- </div>
- <div class="col-md-8 col-sm-8 col-8 news-text-container">
-   <p >ଅସହ୍ୟ ତାତି: ଦେଶରେ ବ୍ଲାକଆଉଟ...</p>
-   <div class="news-date">4/19/23, 2:06 PM</div>
- </div>
-   </div>
-   <div class="d-flex news-box ng-star-inserted">
- <div class="col-md-4 col-sm-4 col-4 news-img-container">
-   <img src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1681386541003.jpg">
- </div>
- <div class="col-md-8 col-sm-8 col-8 news-text-container">
-   <p >ଅତିକ୍&zwnj; ଅହମଦ ହତ୍ୟା ପରେ ସିଏମ...</p>
-   <div class="news-date">4/18/23, 4:58 PM</div>
- </div>
-   </div>
-   <div class="d-flex news-box ng-star-inserted">
- <div class="col-md-4 col-sm-4 col-4 news-img-container">
-   <img src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1681729749298.jpg">
- </div>
- <div class="col-md-8 col-sm-8 col-8 news-text-container">
-   <p >ଓଡ଼ିଆ ଫିଲ୍ମ ପ୍ରଯୋଜକ ନିଜେ...</p>
-   <div class="news-date">4/17/23, 4:37 PM</div>
- </div>
-   </div>
-   <div class="d-flex news-box ng-star-inserted">
- <div class="col-md-4 col-sm-4 col-4 news-img-container">
-   <img src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1681300556921.jpg">
- </div>
- <div class="col-md-8 col-sm-8 col-8 news-text-container">
-   <p >ଟସ୍&zwnj; ଜିତି ମୁମ୍ବାଇ ଇଣ୍ଡିଆନ୍...</p>
-   <div class="news-date">4/16/23, 3:06 PM</div>
- </div>
-   </div>
-   <div class="d-flex news-box ng-star-inserted">
- <div class="col-md-4 col-sm-4 col-4 news-img-container">
-   <img src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1681546525778.jpg">
- </div>
- <div class="col-md-8 col-sm-8 col-8 news-text-container">
-   <p >ପୁଣି ଚାଷୀ ଆତ୍ମହତ୍ୟା :ଅଜଣା...</p>
-   <div class="news-date">4/15/23, 1:39 PM</div>
- </div>
-   </div>
-  
+   <div class="d-flex news-box1 ng-star-inserted" *ngFor="let post of bahu_charchita_khabar" (click)="opennewsSec(post.slug,post.twitter_exists)">
+    <div class="col-md-4 col-sm-4 col-4 news-img-container">
+  <img src="{{ post.home_img != null && post.home_img != undefined ? post.home_img : post.guid }}"
+  [attr.alt]="post.media_alt_text" loading="lazy" fetchPrirority="high">
+    </div>
+    <div  class="col-md-8 col-sm-8 col-8 news-text-container">
+  <p >{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
+  <div class="news-date"><time class="news-date">{{
+   post.post_date | date : "MMMM dd, yyyy"
+   }}</time></div>
+    </div>
+  </div>
+
  </div>
 </section>
   </div>

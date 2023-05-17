@@ -98,6 +98,13 @@ export class PostserviceService {
     );
   }
 
+  getSearchedPostodia(searchval: any, cust_id: any) {
+    return this.HTTP.get<any>(
+      Masterapi +
+        `/get-searched-post-odia?searchval=${searchval}&customer_id=${cust_id}`
+    );
+  }
+
   getLatestNews(page_no: any, cust_id: any, category_name: any) {
     return this.HTTP.get<any>(
       Masterapi +
@@ -169,7 +176,7 @@ export class PostserviceService {
   getPostByCategoryIDodia(page_no: any, category_id: any, customer_id: any) {
     return this.HTTP.get<any>(
       Masterapi +
-        `/get-post-by-category?page_no=${page_no}&category_id=${category_id}&customer_id=${customer_id}`,
+        `/get-post-by-category-odia?page_no=${page_no}&category_id=${category_id}&customer_id=${customer_id}`,
       {
         context: withCache(),
       }

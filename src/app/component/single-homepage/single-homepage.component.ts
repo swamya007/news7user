@@ -30,6 +30,7 @@ export class SingleHomepageComponent implements OnInit {
   tableSizes = [3, 6, 9, 12];
   slidearray: any = [];
   slidearrayfeature: any = [];
+  bahu_charchita_khabar:any = []
 
   constructor(    private postserviceService: PostserviceService,    private router: Router,private master: MasterServiceService
 
@@ -53,7 +54,7 @@ export class SingleHomepageComponent implements OnInit {
            console.log(this.data,'ss')
            this.crimesnews =  this.data[0].crime || [];
            console.log(this.odishaarr,'ss')
-
+          this.bahu_charchita_khabar = this.data[0].bahu_charchita_khabar || []
            this.homenews =  this.data[0].home || [];
            this.womensnews =  this.data[0].women || [];
            this.sportsnews =  this.data[0].sports || [];

@@ -22,7 +22,7 @@ export class SearchStickyComponent implements OnInit {
 
   searchPost() {
     if(this.searchval) {
-      this.router.navigate([`/search/${this.searchval}`]);
+      this.router.navigate([`/newsearch/${this.searchval}`]);
     }
   }
 

@@ -4,18 +4,19 @@
     <meta charset="utf-8" />
     <title>Prameya</title>
     <base href="/" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- open graph meta tags -->
     <meta name="og:type" content="website" />
     <meta name="og:title" content="" />
     <meta name="og:description" content="" />
     <meta name="og:url" content="" />
-    <meta name="og:image"
-      content="assets/img/Prameya.jpg" />
-    <meta name="image"
-      content="assets/img/Prameya.jpg" />
+    <meta name="og:image" content="assets/img/Prameya.jpg" />
+    <meta name="image" content="assets/img/Prameya.jpg" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="canonical" content="" />
+
     <!-- twitter meta tags -->
     <meta name="twitter:card" content="" />
     <meta name="twitter:site" content="" />
@@ -23,7 +24,11 @@
     <meta name="twitter:description" content="" />
     <meta name="twitter:url" content="" />
     <meta name="twitter:image" content="" />
+    <!-- <meta http-equiv="Content-Security-Policy" content="frame-src 'self' https://www.google.com data: blob:"> -->
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- <link rel="canonical" href="https://www.prameyanews.com/"> -->
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -68,11 +73,95 @@
       integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
       crossorigin="anonymous"
     ></script>
-    <script src="https://platform.twitter.com/widgets.js"></script>
-    <!-- <script src="assets/js/ck.js"></script> -->
+    <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+
+    <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> -->
+    <!-- <script src="https://platform.twitter.com/widgets.js"></script> -->
+    
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127312132-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-127312132-1');
+</script>
+    <meta
+      name="google-site-verification"
+      content="i85I6TdPo-LNpUNGTup8hV0kUEySlLG5OdRNoVW6hU0"
+    />
   </head>
 
   <body class="mat-typography">
+    <a id="button"></a>
+    <script>
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: "1304801413653323",
+          autoLogAppEvents: true,
+          xfbml: true,
+          version: "v15.0",
+        });
+      };
+    </script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script>
+      function closeNav() {
+        $(".navbar-collapse").collapse("hide");
+      }
+    </script>
+
+    <script>
+      $(".navbar-nav>li>a").on("click", function () {
+        $(".navbar-collapse").collapse("hide");
+      });
+    </script>
+
+    <script>
+      function openNav() {
+        document.getElementById("myNav").style.height = "100%";
+        //alert("This is an alert message!");
+      }
+
+      function closeNav() {
+        document.getElementById("myNav").style.height = "0%";
+      }
+    </script>
+    <script>
+      var btn = $("#button");
+
+      $(window).scroll(function () {
+        if ($(window).scrollTop() > 500) {
+          btn.addClass("show");
+        } else {
+          btn.removeClass("show");
+        }
+      });
+
+      btn.on("click", function (e) {
+        e.preventDefault();
+        $("html, body").animate({ scrollTop: 0 }, "300");
+      });
+    </script>
+    <script
+      async
+      defer
+      crossorigin="anonymous"
+      src="https://connect.facebook.net/en_US/sdk.js"
+    ></script>
+    <div id="fb-root"></div>
+    <script
+      async
+      defer
+      crossorigin="anonymous"
+      src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v15.0"
+      nonce="KtMdtrXW"
+    ></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script async defer src="https://www.instagram.com/embed.js"></script>
+    <!-- <script src="https://jsc.mgid.com/p/r/prameyanews7.com.1267206.js" async></script> -->
     <app-root></app-root>
   </body>
 </html>

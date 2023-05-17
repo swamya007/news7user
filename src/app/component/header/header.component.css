@@ -1,6 +1,8 @@
 .header-container {
   display: flex;
   justify-content: space-between;
+  width: 92%;
+  margin: 0 auto;
 }
 
 .logo-container {

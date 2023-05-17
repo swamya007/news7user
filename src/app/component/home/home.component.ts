@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.customer_id = environment.CUSTOMER_ID
-    this.getAllAdsList();
+    // this.getAllAdsList();
   }
 
   getAllAdsList() {

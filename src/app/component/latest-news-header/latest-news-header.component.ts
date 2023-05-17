@@ -60,7 +60,7 @@ export class LatestNewsHeaderComponent implements OnInit {
   getticker() {
     this.ticker_id = '';
     this.postserviceService
-      .getticker(this.ticker_id, environment.CUSTOMER_ID)
+      .getTicker(this.ticker_id, environment.CUSTOMER_ID)
       .subscribe(
         (res: any) => {
           if (res.code == 'success') {

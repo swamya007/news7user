@@ -27,7 +27,7 @@ export class BlogComponent implements OnInit {
 
   getLatestNews() {
     this.postserviceService
-      .getLatestNews(1, environment.CUSTOMER_ID, News7_CONSTANTS.LOOKUPS.blog)
+      .getLatestNewsodia(1, environment.CUSTOMER_ID, News7_CONSTANTS.LOOKUPS.blog)
       .subscribe(
         (res: any) => {
           if (res.code == 'success') {

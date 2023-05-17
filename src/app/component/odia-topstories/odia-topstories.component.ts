@@ -37,7 +37,7 @@ export class OdiaTopstoriesComponent implements OnInit {
   }
   getLatestNews() {
     this.postserviceService
-      .getLatestNews(1, environment.CUSTOMER_ID, '')
+      .getLatestNewsodia(1, environment.CUSTOMER_ID, '')
       .subscribe(
         (res: any) => {
           if (res.code == 'success') {

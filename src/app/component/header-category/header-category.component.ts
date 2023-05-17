@@ -39,7 +39,7 @@ export class HeaderCategoryComponent implements OnInit {
   }
 
   getNewsBySlug() {
-    this.postserviceService.getPostByCategorySlug(1,this.slug, environment.CUSTOMER_ID).subscribe((res: any) => {
+    this.postserviceService.getPostByCategorySlugodia(1,this.slug, environment.CUSTOMER_ID).subscribe((res: any) => {
       if (res.code == 'success') {
         var data = res.body;
 
@@ -76,7 +76,9 @@ export class HeaderCategoryComponent implements OnInit {
     this.img_size = ''
     this.adsService.getAllAds(this.ads_id, this.img_size, this.customer_id,'U').subscribe((res: any) => {
       this.allAdsList = res.body;
-      this.allAdsList = this.allAdsList.map((dt: any) => JSON.parse(dt));
+      if(this.allAdsList && this.allAdsList.length > 0) {
+        this.allAdsList = this.allAdsList.map((dt: any) => JSON.parse(dt));
+      }
     })
   }
 }

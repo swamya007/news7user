@@ -75,6 +75,11 @@ body {
   margin-bottom: 0px;
 } */
 
+.news-text-container .post-content[_ngcontent-ngc-c153] {
+  font-size: 20px;
+  margin-top: 15px;
+  line-height: 1.6;
+}
 .news-box {
   cursor: pointer;
 }

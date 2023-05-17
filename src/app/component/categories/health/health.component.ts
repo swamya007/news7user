@@ -66,7 +66,7 @@ export class HealthComponent implements OnInit {
 
   getLatestNews() {
     this.postserviceService
-      .getLatestNews(1, environment.CUSTOMER_ID, News7_CONSTANTS.LOOKUPS.health)
+      .getLatestNewsodia(1, environment.CUSTOMER_ID, News7_CONSTANTS.LOOKUPS.health)
       .subscribe(
         (res: any) => {
           if (res.code == 'success') {

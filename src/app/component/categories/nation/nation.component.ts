@@ -67,7 +67,7 @@ export class NationComponent implements OnInit {
 
   getLatestNews() {
     this.postserviceService
-      .getLatestNews(1, environment.CUSTOMER_ID, News7_CONSTANTS.LOOKUPS.nation)
+      .getLatestNewsodia(1, environment.CUSTOMER_ID, News7_CONSTANTS.LOOKUPS.nation)
       .subscribe(
         (res: any) => {
           if (res.code == 'success') {

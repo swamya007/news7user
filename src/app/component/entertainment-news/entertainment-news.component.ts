@@ -31,7 +31,7 @@ export class EntertainmentNewsComponent implements OnInit {
 
   getLatestNews() {
     this.postserviceService
-      .getLatestNews(
+      .getLatestNewsodia(
         1,
         environment.CUSTOMER_ID,
         News7_CONSTANTS.LOOKUPS.entertainment

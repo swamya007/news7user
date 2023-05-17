@@ -1,8 +1,6 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~bootstrap/dist/css/bootstrap.css";
-@import "~quill/dist/quill.core.css";
-@import "~quill/dist/quill.bubble.css";
-@import "~quill/dist/quill.snow.css";
+
 :root {
   --white: #ffffff;
   --site-background: #d2d2d2;

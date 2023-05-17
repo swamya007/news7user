@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /category/
+Disallow: /search/
+
+
+Sitemap: https://www.prameyanews.com/sitemap.xml

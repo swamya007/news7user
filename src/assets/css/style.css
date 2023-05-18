@@ -922,9 +922,12 @@ footer ul li a {
 
 .news-text-container p {
   font-size: 18px !important;
-  font-weight: bold;
+  /* font-weight: bold; */
   margin-bottom: 0px;
   line-height: 28px;
+}
+.prameya-epaper .news-section .news-text-container p {
+  font-weight: bold !important;
 }
 .recent-news-heading {
   background-color: var(--red);

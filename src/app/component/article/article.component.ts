@@ -39,11 +39,11 @@ export class ArticleComponent implements OnInit {
   comment_page_no: number = 1;
   post_page_no: number = 1;
   comment_obj: any;
-  data:any
-  polticesnews:any
-  entermentaarr:any
-  sportsnews:any
-  crimesnews:any
+  data: any;
+  polticesnews: any;
+  entermentaarr: any;
+  sportsnews: any;
+  crimesnews: any;
   comment_count: number = 0;
   navUrl!: string;
   currentIndex = 0;
@@ -194,11 +194,44 @@ export class ArticleComponent implements OnInit {
     );
   }
 
+  prevSlide() {
+    this.currentIndex =
+      this.currentIndex === 0
+        ? this.ads_rightupper.length - 1
+        : this.currentIndex - 1;
+  }
+
+  nextSlide() {
+    this.currentIndex =
+      this.currentIndex === this.ads_rightupper.length - 1
+        ? 0
+        : this.currentIndex + 1;
+  }
+
+  moveSlide(direction: any) {
+    if (this.ads_rightupper) {
+      if (direction === 'plus') {
+        if (this.currentSlide !== this.ads_rightupper.length - 1) {
+          this.currentSlide += 1;
+          this.translateValue = `-${this.currentSlide * 100}%`;
+        }
+      } else {
+        if (this.currentSlide !== 0) {
+          this.currentSlide -= 1;
+          this.translateValue = `-${this.currentSlide * 100}%`;
+        }
+      }
+    }
+  }
   getPostByAuthor() {
     console.log(this.postarr[0].category, 'dkkd');
 
     this.post
-      .getPostByCategoryIDodia(1, this.postarr[0].category, environment.CUSTOMER_ID)
+      .getPostByCategoryIDodia(
+        1,
+        this.postarr[0].category,
+        environment.CUSTOMER_ID
+      )
       .subscribe(
         (res: any) => {
           if (res.code == 'success') {
@@ -343,13 +376,12 @@ export class ArticleComponent implements OnInit {
       }
     );
   }
-  opennewsSec(id: any,flag:any) {
-    if(flag === 'Y') {
-      window.location.href='/post/' + id;
+  opennewsSec(id: any, flag: any) {
+    if (flag === 'Y') {
+      window.location.href = '/post/' + id;
     } else {
-      this.router.navigate (['/post/' + id]) ;
+      this.router.navigate(['/post/' + id]);
     }
-    
   }
   getallpost() {
     this.spinnerService.show();
@@ -425,7 +457,6 @@ export class ArticleComponent implements OnInit {
   //         this.author_post = []
   //       })
   //     }
-  
 
   public createNavigationUrl(type: string) {
     //let shareUrl = 'https://prameya/post/';
@@ -483,10 +514,6 @@ export class ArticleComponent implements OnInit {
   //   window.location.href = '/post/' + id;
   // }
 
-  moveSlide(direction: number) {
-    this.currentSlide += direction;
-    this.translateValue = `-${this.currentSlide * 100}%`;
-  }
   // opennewsSec(id: any) {
   //   this.router.navigate(['/post/' + id]);
   // }
@@ -496,18 +523,17 @@ export class ArticleComponent implements OnInit {
     }
   }
 
-  getAllairticlenews(){
+  getAllairticlenews() {
     this.postserviceService.getallairticle().subscribe(
       (res: any) => {
         if (res.code == 'success') {
           this.data = res.body;
-          this.data =  this.data?.map((dt: any) => JSON.parse(dt));
-           this.crimesnews =  this.data[0].crime || [];
-           this.sportsnews =  this.data[0].sports || [];
-           this.polticesnews =  this.data[0].politics || [];
-           this.entermentaarr =  this.data[0].entertainment || [];
-          console.log(this.entermentaarr,'data')
-
+          this.data = this.data?.map((dt: any) => JSON.parse(dt));
+          this.crimesnews = this.data[0].crime || [];
+          this.sportsnews = this.data[0].sports || [];
+          this.polticesnews = this.data[0].politics || [];
+          this.entermentaarr = this.data[0].entertainment || [];
+          console.log(this.entermentaarr, 'data');
         } else {
           this.postarr = [];
         }
@@ -516,11 +542,7 @@ export class ArticleComponent implements OnInit {
         this.postarr = [];
       }
     );
-    
-    
   }
-
-
 
   updateSEO_Tags() {
     this.Title.setTitle(this.news.post_title);

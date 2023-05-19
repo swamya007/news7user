@@ -655,7 +655,7 @@ a:hover {
 }
 .footer-container .news-date {
   font-size: 14px;
-  color: #fff;
+  color: #000;
   padding-left: 10px;
 }
 
@@ -919,10 +919,40 @@ footer ul li a {
   flex-grow: 1;
   margin-left: 10px;
 }
+.recent-stories p {
+  font-size: 20px;
+  font-weight: bold;
+  transition: all 0.4s ease;
+  padding: 7px 5px 0;
+}
+.news-section p {
+  font-size: 20px;
+  font-weight: bold;
+  transition: all 0.4s ease;
+  padding: 7px 5px 0;
+}
+.news-section1 .news-text-container p {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 0;
+  line-height: 28px;
+}
+
+.post-content {
+  font-weight: normal !important;
+  font-size: 20px !important;
+  margin-top: 15px;
+}
+.news-section .news-text-container p {
+  font-weight: normal !important ;
+}
+.nobold {
+  font-weight: normal !important;
+}
 
 .news-text-container p {
   font-size: 18px !important;
-  /* font-weight: bold; */
+  font-weight: bold !important;
   margin-bottom: 0px;
   line-height: 28px;
 }
@@ -1002,5 +1032,19 @@ footer ul li a {
   }
   .home-ad-container {
     width: 100%;
+  }
+  .d-flex {
+    flex-wrap: wrap;
+  }
+  .credits-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5%;
+    background: var(--black);
+    color: #ccc;
+    flex-wrap: wrap;
+  }
+  body {
+    overflow-x: hidden;
   }
 }

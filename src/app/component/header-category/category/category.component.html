@@ -14,9 +14,9 @@
             <img [src]="post.guid" />
           </div>
           <div class="col-md-6 col-sm-12 col-12 news-text-container">
-            <p class="post-heading">
+            <h1 class="post-heading">
               {{ post.post_title ? getShortName(post.post_title) : "" }}
-            </p>
+            </h1>
             <div class="news-date">
               <time>{{ post.post_date | date : "short" }}</time>
             </div>

@@ -70,7 +70,7 @@
               <span>ସମ୍ବନ୍ଧିତ ଖବର</span>
             </h1>
           </div>
-          <div class="related-content-section-cards">
+          <div class="related-content-section-cards prameya-epapers">
             <div class="news-section">
               <div class="row news-box">
                 <div
@@ -78,12 +78,17 @@
                   *ngFor="let post of nextthree"
                   (click)="opennewsSec(post.slug, post.twitter_exists)"
                 >
-                  <img [src]="post.guid" />
-                  <p>{{ post.post_title }}</p>
-                  <div class="news-date">
-                    {{ post.post_date | date : "short" }}
+                  <img class="news-images" [src]="post.guid" />
+                  <div class="news-text-container">
+                    <p>
+                      {{ post.post_title ? getShortName(post.post_title) : "" }}
+                    </p>
+                    <div class="news-date">
+                      {{ post.post_date | date : "short" }}
+                    </div>
                   </div>
                 </div>
+
                 <!---->
               </div>
             </div>

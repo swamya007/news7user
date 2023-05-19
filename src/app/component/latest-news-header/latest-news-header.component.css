@@ -121,3 +121,10 @@
 
 .custom-marquee span{
   color: #781804;}
+
+  @media only screen and (max-width: 767px){
+    .custom-ticker
+      {
+        padding-left: 13px!important;
+      }
+    }

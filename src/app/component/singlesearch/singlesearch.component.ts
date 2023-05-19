@@ -29,12 +29,25 @@ export class SinglesearchComponent implements OnInit {
 
   @Input()
   s!: number;
-
+  data: any;
+  odishaarr: any = [];
+  crimesnews: any = [];
+  homenews: any = [];
+  womensnews: any = [];
+  sportsnews: any = [];
+  technologynews: any = [];
+  polticesnews: any = [];
+  entermentaarr: any=[];
+  campusnews: any = []
+  scincenews:any = []
+  twinnews: any = [];
+  latestnews:any = [];
   constructor(
     private adsService: AdserviceService,
     private router: Router,
     private postService: PostserviceService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private postserviceService: PostserviceService, 
   ) {
     activatedRoute.params.subscribe((val) => {
       this.customer_id = environment.CUSTOMER_ID;
@@ -42,6 +55,7 @@ export class SinglesearchComponent implements OnInit {
       this.searchval = routeParams.get('value');
       this.getAllAdsList();
       this.getSearchedPost();
+      this.getAllnews();
     });
    }
 
@@ -56,7 +70,7 @@ export class SinglesearchComponent implements OnInit {
   getSearchedPost() {
     // this.searchval = 'am'
     this.postService
-      .getSearchedPost(this.searchval, environment.CUSTOMER_ID)
+      .getSearchedPostodia(this.searchval, environment.CUSTOMER_ID)
       .subscribe(
         (res: any) => {
           if (res.code == 'success') {
@@ -72,7 +86,7 @@ export class SinglesearchComponent implements OnInit {
       );
   }
 
-  opennewsSec(id: any) {
+  opennewsSecs(id: any) {
     window.location.href = '/post/' + id;
   }
 
@@ -112,7 +126,47 @@ export class SinglesearchComponent implements OnInit {
     window.open(url);
   }
 
+  getAllnews(){
+    this.postserviceService.getallnews().subscribe(
+      (res: any) => {
+        if (res.code == 'success') {
+          this.data = res.body;
+          this.data =  this.data?.map((dt: any) => JSON.parse(dt));
+           this.odishaarr =  this.data[0].odisha || [];
+           console.log(this.data,'ss')
+           this.crimesnews =  this.data[0].crime || [];
+           console.log(this.odishaarr,'ss')
 
+           this.homenews =  this.data[0].home || [];
+           this.womensnews =  this.data[0].women || [];
+           this.sportsnews =  this.data[0].sports || [];
+           this.technologynews =  this.data[0].technology || [];
+           this.polticesnews =  this.data[0].politics || [];
+           this.entermentaarr =  this.data[0].entertainment || [];
+           this.campusnews =  this.data[0].campus_muse || [];
+           this.scincenews =  this.data[0].science || [];
+           this.twinnews =  this.data[0].twin_city || [];
+          this.latestnews =this.data[0].latestnews || [];
+        } else {
+          this.postarr = [];
+        }
+      },
+      (err) => {
+        this.postarr = [];
+      }
+    );
+    
+    
+  }
+
+  opennewsSec(id: any,flag:any) {
+    if(flag === 'Y') {
+      window.location.href='/post/' + id;
+    } else {
+      this.router.navigate (['/post/' + id]) ;
+    }
+    
+  }
 
 
 }

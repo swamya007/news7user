@@ -197,6 +197,7 @@
     flex-direction: row;
     align-items: flex-start !important;
   }
+  
 }
 @media only screen and (max-width: 575px) {
   .navbar-bg {

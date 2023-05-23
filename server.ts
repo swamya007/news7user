@@ -20,7 +20,7 @@ import 'zone.js/dist/zone-node';
 import 'reflect-metadata';
 import { createClient } from 'redis';
 
-const REDIS_URI = 'redis://localhost:6379';
+const REDIS_URI = 'redis://localhost:6378';
 var redisIsReady = false;
 async function initRedisClient() {
   try {

@@ -44,8 +44,9 @@ div#slider figure div {
 div#slider figure img {
   width: 100%;
   float: left;
-  min-height: 450px;
+  height: 530px;
   object-fit: fill;
+
 }
 div#slider figure {
   position: relative;
@@ -55,6 +56,7 @@ div#slider figure {
   text-align: left;
   font-size: 0;
   animation: 30s slidy infinite;
+  background-color: #ccc;
 }
 figcaption {
   width: 100%;

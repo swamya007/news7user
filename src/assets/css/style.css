@@ -629,11 +629,14 @@ a:hover {
 .ngx-pagination .current {
   background: #000000 !important;
 }
-
+.recent-news-card
+{
+  margin: 0px;
+}
 /*footer start*/
 .footer-container {
   background: linear-gradient(1deg, #212121, #00000075);
-  padding: 2%;
+  padding: 20px 3vw;
 }
 .footer-container .news-text-container p {
   color: rgb(255, 255, 255);
@@ -647,7 +650,7 @@ a:hover {
 .news-section1 {
   background: var(--white) !important;
   border: 1px rgb(215, 215, 215) solid !important;
-  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .footer-container .news-box {
@@ -854,19 +857,19 @@ footer ul li a {
 }
 .home-first-container {
   background-color: var(--site-background);
-  padding: 2%;
+  padding: 20px 2.5vw;
 }
 .home-second-container {
   background-color: #f3f3f3;
-  padding: 2%;
+  padding: 20px 2.5vw;
 }
 .home-third-container {
   background-color: #f3f3f3;
-  padding: 2%;
+  padding: 20px 2.5vw;
 }
 .home-fourth-container {
   background-color: #f3f3f3;
-  padding: 2%;
+  padding: 20px 2.5vw;
 }
 .news-section:last-child {
   border: 0 !important;
@@ -964,7 +967,7 @@ footer ul li a {
   display: flex;
   justify-content: center;
   padding: 6px;
-  margin: 0% 1%;
+  /* margin: 0% 1%; */
 }
 .recent-news-heading h1 {
   margin-bottom: 0 !important;

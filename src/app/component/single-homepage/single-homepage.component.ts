@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { MasterServiceService } from 'src/app/services/masterservice/master-service.service';
 import { PostserviceService } from 'src/app/services/postservice/postservice.service';
 import { environment } from 'src/environments/environment';
-
+import { Meta, Title } from '@angular/platform-browser';
+import { makeStateKey, TransferState } from '@angular/platform-browser';
 @Component({
   selector: 'app-single-homepage',
   templateUrl: './single-homepage.component.html',
@@ -32,19 +33,73 @@ export class SingleHomepageComponent implements OnInit {
   slidearrayfeature: any = [];
   bahu_charchita_khabar:any = []
 
-  constructor(    private postserviceService: PostserviceService,    private router: Router,private master: MasterServiceService
+  constructor(      private title: Title,
+    private Meta: Meta,
+    private transferState: TransferState,private postserviceService: PostserviceService,    private router: Router,private master: MasterServiceService
 
     ) { }
 
   ngOnInit(): void {
     this.getAllnews();
     this.getslide()
+    this.title.setTitle(
+      'odisha news| Odisha News | Latest Odisha Breaking News-Prameya News'
+    );
+
+    let tags = [
+      { name: 'og:type', content: 'article' },
+      {
+        name: 'og:title',
+        content:
+          'odisha news| Odisha News | Latest Odisha Breaking News-Prameya News',
+      },
+      {
+        name: 'og:description',
+        content:
+          'Prameya news provides the latest Odisha news,indiaand the world.it brings you todays news from Politics,Crime,Business,Enviroment,Technology,Bollywood,Cricket,videos,photos and exclusive Odisha Breaking News',
+      },
+      { name: 'description', content: 'Prameya news provides the latest Odisha news,indiaand the world.it brings you todays news from Politics,Crime,Business,Enviroment,Technology,Bollywood,Cricket,videos,photos and exclusive Odisha Breaking News' },
+      { name: 'og:url', content: 'https://www.prameyanews.com/' },
+      { name: 'og:image', content: 'https://www.prameyanews.com/' },
+      { name: 'keywords', content: 'Odisha News in English' },
+      { name: 'canonical', content: 'https://www.prameyanews.com/' },
+      { rel:'canonical', href: 'https://www.prameyanews.com/'} 
+
+    ];
+    tags.forEach((tag: any) => {
+      this.Meta.updateTag(tag);
+    });
+  
   }
 
   onTableDataChange(event: any) {
     this.page = event;
   }
   getAllnews(){
+    let myTransferStateKey = makeStateKey<any>('myDatas');
+    if (this.transferState.hasKey(myTransferStateKey)) {
+      console.log('HomeComponent ngOnInit hasKey');
+      this.data = this.transferState.get(myTransferStateKey, []);
+       this.transferState.remove(myTransferStateKey);
+       this.odishaarr =  this.data[0].odisha || [];
+       console.log(this.data,'ss')
+       this.crimesnews =  this.data[0].crime || [];
+       console.log(this.odishaarr[0].twitter_exists,'twiter')
+      this.bahu_charchita_khabar = this.data[0].bahu_charchita_khabar || []
+       this.homenews =  this.data[0].home || [];
+       this.womensnews =  this.data[0].women || [];
+       this.sportsnews =  this.data[0].sports || [];
+       this.technologynews =  this.data[0].technology || [];
+       this.polticesnews =  this.data[0].politics || [];
+       this.entermentaarr =  this.data[0].entertainment || [];
+       this.campusnews =  this.data[0].campus_muse || [];
+       this.scincenews =  this.data[0].science || [];
+       this.twinnews =  this.data[0].twin_city || [];
+      this.latestnews =this.data[0].latestnews || [];
+    } 
+   
+    
+    else {
     this.postserviceService.getallnews().subscribe(
       (res: any) => {
         if (res.code == 'success') {
@@ -53,7 +108,7 @@ export class SingleHomepageComponent implements OnInit {
            this.odishaarr =  this.data[0].odisha || [];
            console.log(this.data,'ss')
            this.crimesnews =  this.data[0].crime || [];
-           console.log(this.odishaarr,'ss')
+           console.log(this.odishaarr[0].twitter_exists,'twiter')
           this.bahu_charchita_khabar = this.data[0].bahu_charchita_khabar || []
            this.homenews =  this.data[0].home || [];
            this.womensnews =  this.data[0].women || [];
@@ -65,6 +120,7 @@ export class SingleHomepageComponent implements OnInit {
            this.scincenews =  this.data[0].science || [];
            this.twinnews =  this.data[0].twin_city || [];
           this.latestnews =this.data[0].latestnews || [];
+          console.log()
         } else {
           this.postarr = [];
         }
@@ -75,7 +131,7 @@ export class SingleHomepageComponent implements OnInit {
     );
     
     
-  }
+    }}
 
   getShortName(user_name: any) {
     return user_name.slice(0, 46).trim() + (user_name.length > 45 ? '...' : '');

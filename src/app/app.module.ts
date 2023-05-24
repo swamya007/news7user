@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 // import { BrowserModule } from '@angular/platform-browser';
+import { NgtUniversalModule } from '@ng-toolkit/universal';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './component/header/header.component';
@@ -50,7 +52,7 @@ import {
   MatRadioModule,
   MAT_RADIO_DEFAULT_OPTIONS,
 } from '@angular/material/radio';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
@@ -160,6 +162,9 @@ import { SinglesearchComponent } from './component/singlesearch/singlesearch.com
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserTransferStateModule,
+    NgtUniversalModule,
+
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,

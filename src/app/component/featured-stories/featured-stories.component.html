@@ -3,7 +3,7 @@
     <article
       class="col-md-4 col-sm-12 col-12 news-img-container"
       *ngFor="let post of slidearrayfeature"
-      (click)="opennewsSec(post.slug)"
+      (click)="opennewsSec(post.slug,post.twitter_exists)"
     >
       <img [src]="post.guid" />
       <div class="news-text-container">

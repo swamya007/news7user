@@ -6,7 +6,7 @@
   <div
     class="news-card"
     *ngIf="firstpostbussiness"
-    (click)="opennewsSec(firstpostbussiness.slug)"
+    (click)="opennewsSec(firstpostbussiness.firstpostbussiness,firstpostbussiness.twitter_exists)"
   >
     <!-- <div class="category">Education</div> -->
     <img [src]="firstpostbussiness.guid" />
@@ -22,7 +22,7 @@
     class="row news-box"
     *ngFor="let post of nextthree; let i = index"
     [ngClass]="i !== 0 ? 'divider' : ''"
-    (click)="opennewsSec(post.slug)"
+    (click)="opennewsSec(post.slug,post.twitter_exists)"
   >
     <div class="col-md-5 col-sm-12 col-12 news-img-container">
       <img [src]="post.guid" />

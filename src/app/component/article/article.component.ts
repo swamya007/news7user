@@ -7,11 +7,10 @@ import { AdserviceService } from 'src/app/services/Adservice/adservice.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { PostserviceService } from 'src/app/services/postservice/postservice.service';
 import { environment } from 'src/environments/environment';
-import { Title, Meta } from '@angular/platform-browser';
+import { Title, Meta, SafeHtml, DomSanitizer } from '@angular/platform-browser';
 // import { LoginService } from 'src/app/services/loginService/login.service';
 import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 
 declare var $: any;
 
@@ -191,7 +190,9 @@ export class ArticleComponent implements OnInit {
       }
     );
   }
-
+  getIframeHtml(post_content: any): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(post_content) || '';
+  }
   prevSlide() {
     this.currentIndex =
       this.currentIndex === 0
@@ -372,9 +373,9 @@ export class ArticleComponent implements OnInit {
   }
   opennewsSec(id: any, flag: any) {
     if (flag === 'Y') {
-      window.location.href = '/post/' + id;
+      window.location.href = '/' + id;
     } else {
-      this.router.navigate(['/post/' + id]);
+      this.router.navigate(['/' + id]);
     }
   }
   getallpost() {

@@ -5,7 +5,7 @@
   </div>
   <article
     class="row news-box"
-    (click)="opennewsSec(post.slug)"
+    (click)="opennewsSec(post.slug,post.twitter_exists)"
     *ngFor="let post of postarr; let i = index"
     [ngClass]="i !== 0 ? 'divider' : ''"
   >

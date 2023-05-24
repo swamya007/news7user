@@ -32,8 +32,12 @@ export class OdiaTopstoriesComponent implements OnInit {
   getShortAuthorName(user_name: any) {
     return user_name.slice(0, 14).trim() + (user_name.length > 13 ? '...' : '');
   }
-  opennewsSec(id: any) {
-    window.location.href = '/post/' + id;
+    opennewsSec(id: any, flag: any) {
+    if (flag === 'Y') {
+      window.location.href = '/' + id;
+    } else {
+      this.router.navigate(['/' + id]);
+    }
   }
   getLatestNews() {
     this.postserviceService

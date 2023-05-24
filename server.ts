@@ -20,7 +20,7 @@ import 'zone.js/dist/zone-node';
 import 'reflect-metadata';
 import { createClient } from 'redis';
 
-const REDIS_URI = 'redis://localhost:6378';
+const REDIS_URI = 'redis://localhost:6379';
 var redisIsReady = false;
 async function initRedisClient() {
   try {
@@ -156,9 +156,9 @@ export function app(): express.Express {
   }));
 
   // All regular routes use the Universal engine
-  server.get('/',redisMiddleware, (req, res) => {
-    res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
-  });
+  // server.get('/',redisMiddleware, (req, res) => {
+  //   res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+  // });
   server.get('*', (req, res) => {
     res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
   });

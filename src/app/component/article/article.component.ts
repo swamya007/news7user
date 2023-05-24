@@ -8,7 +8,6 @@ import { NotificationService } from 'src/app/services/notification/notification.
 import { PostserviceService } from 'src/app/services/postservice/postservice.service';
 import { environment } from 'src/environments/environment';
 import { Title, Meta } from '@angular/platform-browser';
-import { LoaderService } from 'src/app/services/loaderService/loader.service';
 // import { LoginService } from 'src/app/services/loginService/login.service';
 import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
@@ -64,7 +63,6 @@ export class ArticleComponent implements OnInit {
     private postserviceService: PostserviceService,
     private adsService: AdserviceService,
     private Title: Title,
-    private spinnerService: LoaderService,
     private Meta: Meta,
     private sanitizer: DomSanitizer,
     @Inject(PLATFORM_ID) platformId: Object
@@ -224,7 +222,6 @@ export class ArticleComponent implements OnInit {
     }
   }
   getPostByAuthor() {
-    console.log(this.postarr[0].category, 'dkkd');
 
     this.post
       .getPostByCategoryIDodia(
@@ -352,7 +349,6 @@ export class ArticleComponent implements OnInit {
   }
 
   savePostComment() {
-    this.spinnerService.show();
 
     this.comment_obj.flag = 'I';
     this.comment_obj.customer_id = environment.CUSTOMER_ID;
@@ -365,9 +361,7 @@ export class ArticleComponent implements OnInit {
           this.comment_obj.comment_author_url = '';
           this.comment_obj.remember_me = false;
           this.getCommentsByPost(this.news.id);
-          this.spinnerService.hide();
         } else {
-          this.spinnerService.hide();
           this.notify.error(res.message);
         }
       },
@@ -384,7 +378,6 @@ export class ArticleComponent implements OnInit {
     }
   }
   getallpost() {
-    this.spinnerService.show();
     this.post.getPostBySlugodia(this.id, environment.CUSTOMER_ID).subscribe(
       (res: any) => {
         if (res.code == 'success') {
@@ -407,13 +400,11 @@ export class ArticleComponent implements OnInit {
           this.getCommentsByPost(this.news.id);
           // this.getPo(this.news.id);
           this.getPostBycategory();
-          this.spinnerService.hide();
         } else {
           this.postarr = [];
         }
       },
       (err) => {
-        this.spinnerService.hide();
         this.postarr = [];
       }
     );

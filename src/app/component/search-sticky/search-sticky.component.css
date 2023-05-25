@@ -44,7 +44,7 @@
     position: fixed;
     z-index: 9999;
     bottom: 40%;
-    right: 0px;
+    /* right: 0px; */
 
 }
 

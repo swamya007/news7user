@@ -53,7 +53,7 @@
             >
           </p>
         </div>
-        <div class="category-section">{{ news.tags }}</div>
+        <div class="category-section" *ngIf="news.tags">{{ news.tags }}</div>
       </div>
       <img class="article-image" alt="" [src]="news.guid" />
       <div
@@ -318,4 +318,6 @@
     </div>
   </div>
 </div>
+
 <app-search-sticky></app-search-sticky>
+<app-footer></app-footer>

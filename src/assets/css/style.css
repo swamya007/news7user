@@ -936,6 +936,7 @@ footer ul li a {
   font-weight: bold;
   margin-bottom: 0;
   line-height: 28px;
+  cursor: pointer;
 }
 
 .post-content {

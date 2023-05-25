@@ -1072,7 +1072,4 @@ footer ul li a {
     color: #ccc;
     flex-wrap: wrap;
   }
-  body {
-    overflow-x: hidden;
-  }
 }

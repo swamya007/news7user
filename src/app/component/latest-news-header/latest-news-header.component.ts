@@ -21,6 +21,7 @@ export class LatestNewsHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.getLatestNews();
+    this.getticker()
     setTimeout(() => {
       this.showSlides(this.slideIndex);
     }, 1000);
@@ -43,8 +44,12 @@ export class LatestNewsHeaderComponent implements OnInit {
     );
   }
 
-  opennewsSec(id: any) {
-    window.location.href = '/post/' + id;
+    opennewsSec(id: any, flag: any) {
+    if (flag === 'Y') {
+      window.location.href = '/' + id;
+    } else {
+      this.router.navigate(['/' + id]);
+    }
   }
 
   plusSlides(n: number) {

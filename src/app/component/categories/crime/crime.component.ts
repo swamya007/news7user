@@ -91,7 +91,11 @@ export class CrimeComponent implements OnInit {
   openpost(id: any) {
     this.router.navigate(['/post/' + id]);
   }
-  opennewsSec(id: any) {
-    window.location.href = '/post/' + id;
+    opennewsSec(id: any, flag: any) {
+    if (flag === 'Y') {
+      window.location.href = '/' + id;
+    } else {
+      this.router.navigate(['/' + id]);
+    }
   }
 }

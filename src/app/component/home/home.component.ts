@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdserviceService } from 'src/app/services/Adservice/adservice.service';
 import { environment } from 'src/environments/environment';
-import { LoaderService } from 'src/app/services/loaderService/loader.service';
 import { EntryPopupComponent } from '../entry-popup/entry-popup.component';
 
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
@@ -26,7 +25,7 @@ export class HomeComponent implements OnInit {
 
   searchval:any
 
-  constructor(public dialog: MatDialog,private adsService:AdserviceService,private router:Router,private spinnerService: LoaderService,) { }
+  constructor(public dialog: MatDialog,private adsService:AdserviceService,private router:Router) { }
 
   ngOnInit(): void {
     this.customer_id = environment.CUSTOMER_ID
@@ -34,7 +33,6 @@ export class HomeComponent implements OnInit {
   }
 
   getAllAdsList() {
-    this.spinnerService.show()
    
     this.ads_id = ''
     this.img_size = ''
@@ -51,7 +49,6 @@ export class HomeComponent implements OnInit {
       /** Middle */
       this.ads_middle = this.allAdsList.filter((data: any) => data.ads_img_size === "4");
       setTimeout(() => {
-        this.spinnerService.hide()
       }, 3000);
     })
   }

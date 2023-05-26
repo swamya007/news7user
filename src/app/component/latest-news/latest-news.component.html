@@ -12,7 +12,7 @@
               };
         let i = index
       "
-      (click)="opennewsSec(post.slug)"
+      (click)="opennewsSec(post.slug,post.twitter_exists)"
     >
       <img [src]="post.guid" />
       <p>{{ post.post_title }}</p>

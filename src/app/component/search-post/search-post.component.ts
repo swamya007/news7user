@@ -67,8 +67,12 @@ export class SearchPostComponent implements OnInit {
       );
   }
 
-  opennewsSec(id: any) {
-    window.location.href = '/post/' + id;
+    opennewsSec(id: any, flag: any) {
+    if (flag === 'Y') {
+      window.location.href = '/' + id;
+    } else {
+      this.router.navigate(['/' + id]);
+    }
   }
 
   getShortName(user_name: any) {

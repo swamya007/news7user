@@ -2,7 +2,7 @@
   <div class="heading-container">
     <h4 class="news-sub">ଓଡ଼ିଶା</h4>
   </div>
-  <div class="news-card" *ngFor="let post of postarr; let i = index" (click)="opennewsSec(post.slug)"  [ngClass]="i !== 0 ? 'divider' : ''">
+  <div class="news-card" *ngFor="let post of postarr; let i = index" (click)="opennewsSec(post.slug,post.twitter_exists)"  [ngClass]="i !== 0 ? 'divider' : ''">
     <img [src]="post.guid">
     <p>{{post.post_title}}</p>
       <div class="news-date-section d-flex">
@@ -19,7 +19,7 @@
   </div>
   <article
     class="row news-box"
-    (click)="opennewsSec(post.slug)"
+    (click)="opennewsSec(post.slug,post.twitter_exists)"
     *ngFor="let post of postarr"
   >
     <!-- <a (click)="opennewsSec(post.id)"> -->

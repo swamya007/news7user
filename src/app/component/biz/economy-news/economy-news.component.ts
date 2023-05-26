@@ -46,7 +46,11 @@ export class EconomyNewsComponent implements OnInit {
   getShortName(user_name: any) {
     return user_name.slice(0, 46).trim() + (user_name.length > 45 ? '...' : '');
   }
-  opennewsSec(id: any) {
-    window.location.href = '/post/' + id;
+    opennewsSec(id: any, flag: any) {
+    if (flag === 'Y') {
+      window.location.href = '/' + id;
+    } else {
+      this.router.navigate(['/' + id]);
+    }
   }
 }

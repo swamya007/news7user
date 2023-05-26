@@ -3,7 +3,6 @@ import { MasterServiceService } from 'src/app/services/masterservice/master-serv
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { AdserviceService } from 'src/app/services/Adservice/adservice.service';
-import { LoaderService } from 'src/app/services/loaderService/loader.service';
 import { EntryPopupComponent } from '../entry-popup/entry-popup.component';
 import { LoginService } from 'src/app/services/loginService/login.service';
 
@@ -30,7 +29,6 @@ export class HeaderComponent implements OnInit {
     private masterAPI: MasterServiceService,
     private adsService: AdserviceService,
     private router: Router,
-    private spinnerService: LoaderService
   ) {}
 
   ngOnInit(): void {
@@ -64,7 +62,6 @@ export class HeaderComponent implements OnInit {
   }
 
   getAllAdsList() {
-    this.spinnerService.show();
 
     this.ads_id = '';
     this.img_size = '';
@@ -79,7 +76,6 @@ export class HeaderComponent implements OnInit {
           (data: any) => data.ads_img_size === '4'
         );
         setTimeout(() => {
-          this.spinnerService.hide();
         }, 3000);
       });
   }

@@ -3,7 +3,7 @@
     <h4 class="news-sub">ବ୍ଲଗ୍ / ମତାମତ |</h4>
     <!-- <div class="grey-line"></div> -->
   </div>
-  <div class="opinion-section" *ngFor="let post of postarr; let i = index" [ngClass]="i !== 0 ? 'divider' : ''" (click)="opennewsSec(post.slug)">
+  <div class="opinion-section" *ngFor="let post of postarr; let i = index" [ngClass]="i !== 0 ? 'divider' : ''" (click)="opennewsSec(post.slug,post.twitter_exists)">
     <div class="opinion-content">
       <span>Opinions</span>
     </div>

@@ -15,7 +15,7 @@
         <div class="carousel-inner">
             <div class="carousel-item" *ngFor="let row of slidearray1;let i = index"
                 [ngClass]="i === 0 ? 'active' : ''">
-                <img class="d-block w-100" src={{row.guid}} (click)="opennewsSec(row.slug)">
+                <img class="d-block w-100" src={{row.guid}} (click)="opennewsSec(row.slug,row.twitter_exists)">
                 <div class="heading-container">
                     <h1>{{row.post_title ? getShortName(row.post_title) : ''}}</h1>
                     <div class="news-date-section">

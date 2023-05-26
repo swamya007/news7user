@@ -5,4 +5,6 @@ export const environment = {
   CUSTOMER_ID: 2,
   CUSTOMER_NAME: 'PRAMEYA_ODIA',
   PLATFORM_BASEURL: 'https://dev.prameyanews.com/',
+  GOOGLE_ANALYTICS_ID: 'UA-127312132-1',
+
 };

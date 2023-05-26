@@ -100,7 +100,7 @@
       </div> -->
 
       <div class="news-section">
-        <div class="row news-box" (click)="opennewsSec(post.slug)" *ngFor="let post of postarr">
+        <div class="row news-box" (click)="opennewsSec(post.slug,post.twitter_exists)" *ngFor="let post of postarr">
           <div class="col-md-4 col-sm-12 col-12 news-img-container">
             <img [src]="post.guid">
           </div>
@@ -127,7 +127,7 @@
         </div>
       </div>
       <div class="news-section">
-        <div class="row story-section" (click)="opennewsSec(post.slug)" *ngFor="let post of postarr; let i = index">
+        <div class="row story-section" (click)="opennewsSec(post.slug,post.twitter_exists)" *ngFor="let post of postarr; let i = index">
           <div class="col-md-6 col-sm-12 col-12">
             <div class="news-card">
               <div class="category">Odisha</div>

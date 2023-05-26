@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 // import { BrowserModule } from '@angular/platform-browser';
+import { NgtUniversalModule } from '@ng-toolkit/universal';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './component/header/header.component';
@@ -50,8 +52,7 @@ import {
   MatRadioModule,
   MAT_RADIO_DEFAULT_OPTIONS,
 } from '@angular/material/radio';
-import { CKEditorModule } from 'ckeditor4-angular';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
@@ -62,7 +63,6 @@ import { AutomobileNewsComponent } from './component/automobile-news/automobile-
 import { NgxPaginationModule } from 'ngx-pagination';
 
 import { CommonModule } from '@angular/common';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import { FileDragNDropDirectiveDirective } from './directives/file-drag-ndrop-directive.directive';
 
@@ -88,14 +88,10 @@ import { CategoryComponent } from './component/header-category/category/category
 import { SearchPostComponent } from './component/search-post/search-post.component';
 import { SearchNewsComponent } from './component/search-post/search-news/search-news.component';
 import { SearchStickyComponent } from './component/search-sticky/search-sticky.component';
-import { NgxSpinnerModule } from 'ngx-spinner';
 import { EntryPopupComponent } from './component/entry-popup/entry-popup.component';
 import { PrivacyPolicyComponent } from './component/privacy-policy/privacy-policy.component';
 import { FeaturedStoriesComponent } from './component/featured-stories/featured-stories.component';
 import { BnNgTreeModule } from 'bn-ng-tree-lib';
-import { DEFAULT_LIBRARY_BUTTONS, NgxWigModule } from 'ngx-wig';
-import { AngularEditorModule } from '@kolkov/angular-editor';
-import { QuillModule } from 'ngx-quill';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { OdiaTopstoriesComponent } from './component/odia-topstories/odia-topstories.component';
 import { SingleHomepageComponent } from './component/single-homepage/single-homepage.component';
@@ -165,8 +161,10 @@ import { SinglesearchComponent } from './component/singlesearch/singlesearch.com
     SinglesearchComponent,
   ],
   imports: [
-    NgMultiSelectDropDownModule.forRoot(),
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserTransferStateModule,
+    NgtUniversalModule,
+
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
@@ -188,18 +186,13 @@ import { SinglesearchComponent } from './component/singlesearch/singlesearch.com
     NgxPaginationModule,
     MatDatepickerModule,
     MatRadioModule,
-    CKEditorModule,
     ImageCropperModule,
     MatTabsModule,
     ImageCropperModule,
     MatSlideToggleModule,
     IvyCarouselModule,
     DragDropModule,
-    NgxSpinnerModule,
     BnNgTreeModule,
-    NgxWigModule.forRoot({ buttonsConfig: DEFAULT_LIBRARY_BUTTONS }),
-    AngularEditorModule,
-    QuillModule,
   ],
   providers: [
     {

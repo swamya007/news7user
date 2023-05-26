@@ -171,14 +171,14 @@ export function app(): express.Express {
 
     // render the error page
     res.status(err.status || 500);
-    res.send(err.message);
+    res.send(err);
   });
 
   return server;
 }
 
 function run(): void {
-  const port = process.env['PORT'] || 4001;
+  const port = process.env['PORT'] || 4000;
 
   // Start up the Node server
   const server = app();

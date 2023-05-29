@@ -46,10 +46,12 @@ export class ArticleComponent implements OnInit {
   navUrl!: string;
   currentIndex = 0;
   currentSlide = 0;
+  currentSlide1 = 0;
+
   translateValue = `-${this.currentSlide * 100}%`;
 
-  currentSlides = 0;
-  translateValues = `-${this.currentSlides * 100}%`;
+  currentSlides1 = 0;
+  translateValue1 = `-${this.currentSlide1 * 100}%`;
   cat: any;
   catname: any;
   constructor(
@@ -213,6 +215,7 @@ export class ArticleComponent implements OnInit {
         if (this.currentSlide !== this.ads_rightupper.length - 1) {
           this.currentSlide += 1;
           this.translateValue = `-${this.currentSlide * 100}%`;
+          console.log('this is upper');
         }
       } else {
         if (this.currentSlide !== 0) {
@@ -222,8 +225,24 @@ export class ArticleComponent implements OnInit {
       }
     }
   }
-  getPostByAuthor() {
 
+  moveSlideleft(direction: any) {
+    if (this.ads_leftmiddle) {
+      if (direction === 'plus') {
+        if (this.currentSlide1 !== this.ads_leftmiddle.length - 1) {
+          this.currentSlide1 += 1;
+          this.translateValue1 = `-${this.currentSlide1 * 100}%`;
+          console.log('this is lower');
+        }
+      } else {
+        if (this.currentSlide1 !== 0) {
+          this.currentSlide1 -= 1;
+          this.translateValue1 = `-${this.currentSlide1 * 100}%`;
+        }
+      }
+    }
+  }
+  getPostByAuthor() {
     this.post
       .getPostByCategoryIDodia(
         1,
@@ -350,7 +369,6 @@ export class ArticleComponent implements OnInit {
   }
 
   savePostComment() {
-
     this.comment_obj.flag = 'I';
     this.comment_obj.customer_id = environment.CUSTOMER_ID;
     this.post.savePostComment(this.comment_obj).subscribe(
@@ -411,10 +429,6 @@ export class ArticleComponent implements OnInit {
     );
   }
 
-  moveSlide2(directions: number) {
-    this.currentSlides += directions;
-    this.translateValues = `-${this.currentSlide * 100}%`;
-  }
   // getPostByAuthor(post_id: any) {
 
   //   this.post.getPostByAuthor(this.news.post_author, post_id, environment.CUSTOMER_ID).subscribe((res: any) => {

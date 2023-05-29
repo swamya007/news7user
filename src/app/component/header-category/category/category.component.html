@@ -92,9 +92,9 @@
             </a>
           </div>
         </div>
-        </div>
+      </div>
 
-        <!-- <div class="advertisement-space-container-first">
+      <!-- <div class="advertisement-space-container-first">
           <div
             id="carouselExampleControls4"
             class="carousel slide carousel-fade"
@@ -140,7 +140,7 @@
             </a>
           </div>
         </div> -->
-     
+
       <div class="prameya-epaper">
         <!-- <app-politics-news></app-politics-news> -->
         <div>
@@ -178,15 +178,87 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="prameya-epaper">
+        <!-- <app-entertainment-news></app-entertainment-news> -->
+        <div class="heading-container">
+          <h4 class="news-sub">ମନୋରଞ୍ଜନ</h4>
         </div>
-        <div class="prameya-epaper">
-          <!-- <app-entertainment-news></app-entertainment-news> -->
+        <div
+          class="row news-box ng-star-inserted"
+          *ngFor="let post of entermentaarr"
+          (click)="opennewsSec(post.slug, post.twitter_exists)"
+        >
+          <div class="col-md-4 col-sm-4 col-4 news-img-container">
+            <img
+              src="{{
+                post.home_img != null && post.home_img != undefined
+                  ? post.home_img
+                  : post.guid
+              }}"
+              [attr.alt]="post.media_alt_text"
+              loading="lazy"
+              fetchPrirority="high"
+            />
+          </div>
+          <div class="col-md-8 col-sm-8 col-8 news-text-container">
+            <p>{{ post.post_title ? getShortName(post.post_title) : "" }}</p>
+            <div class="news-date">
+              <time class="news-date">{{
+                post.post_date | date : "MMMM dd, yyyy"
+              }}</time>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="prameya-epaper">
+        <div class="advertisement-container-long">
+          <div class="slider-long">
+            <div
+              class="slides-long"
+              [ngStyle]="{ transform: 'translateX(' + translateValue1 + ')' }"
+            >
+              <div class="slide-long">
+                <img
+                  *ngFor="let rightupper_ad of ads_leftmiddle; let i = index"
+                  class="d-block w-100"
+                  loading="lazy"
+                  fetchPrirority="high"
+                  src="{{ rightupper_ad.ads_image }}"
+                  alt="{{ rightupper_ad.ads_image_alt_text }}"
+                  (click)="openLink(rightupper_ad.ads_image_link)"
+                />
+              </div>
+            </div>
+            <div class="controls">
+              <button
+                class="prev"
+                (click)="moveSlideleft('minus')"
+                mat-icon-button
+              >
+                <mat-icon>chevron_left</mat-icon>
+              </button>
+              <button
+                class="next"
+                (click)="moveSlideleft('plus')"
+                mat-icon-button
+              >
+                <mat-icon>chevron_right</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prameya-epaper">
+        <!-- <app-sports-news></app-sports-news> -->
+        <div class="news-section">
           <div class="heading-container">
-            <h4 class="news-sub">ମନୋରଞ୍ଜନ</h4>
+            <h4 class="news-sub">କ୍ରୀଡା</h4>
           </div>
           <div
             class="row news-box ng-star-inserted"
-            *ngFor="let post of entermentaarr"
+            *ngFor="let post of sportsnews"
             (click)="opennewsSec(post.slug, post.twitter_exists)"
           >
             <div class="col-md-4 col-sm-4 col-4 news-img-container">
@@ -196,13 +268,15 @@
                     ? post.home_img
                     : post.guid
                 }}"
-                [attr.alt]="post.media_alt_text"
                 loading="lazy"
                 fetchPrirority="high"
+                [attr.alt]="post.media_alt_text"
               />
             </div>
             <div class="col-md-8 col-sm-8 col-8 news-text-container">
-              <p>{{ post.post_title ? getShortName(post.post_title) : "" }}</p>
+              <p>
+                {{ post.post_title ? getShortName(post.post_title) : "" }}
+              </p>
               <div class="news-date">
                 <time class="news-date">{{
                   post.post_date | date : "MMMM dd, yyyy"
@@ -211,145 +285,9 @@
             </div>
           </div>
         </div>
-        <div class="prameya-epaper">
-          
-            <div class="advertisement-container-long">
-              <div
-                id="carouselExampleControls2"
-                class="carousel slide carousel-fade"
-                data-ride="carousel"
-              >
-                <div class="carousel-inner">
-                  <div
-                    class="carousel-item"
-                    *ngFor="let leftmiddle_ad of ads_leftmiddle; let i = index"
-                    [ngClass]="i === 0 ? 'active' : ''"
-                  >
-                    <img
-                      class="d-block w-100"
-                      src="{{ leftmiddle_ad.ads_image }}"
-                      alt="{{ leftmiddle_ad.ads_image_alt_text }}"
-                      (click)="openLink(leftmiddle_ad.ads_image_link)"
-                    />
-                  </div>
-                </div>
-                <a
-                  class="carousel-control-prev"
-                  href="#carouselExampleControls2"
-                  role="button"
-                  data-slide="prev"
-                >
-                  <span
-                    class="carousel-control-prev-icon"
-                    aria-hidden="true"
-                  ></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a
-                  class="carousel-control-next"
-                  href="#carouselExampleControls2"
-                  role="button"
-                  data-slide="next"
-                >
-                  <span
-                    class="carousel-control-next-icon"
-                    aria-hidden="true"
-                  ></span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </div>
-            </div>
-          
-          <!-- <div class="advertisement-container-long">
-            <div
-              id="carouselExampleControls2"
-              class="carousel slide carousel-fade"
-              data-ride="carousel"
-            >
-              <div class="carousel-inner">
-                <div
-                  class="carousel-item"
-                  *ngFor="let leftmiddle_ad of ads_leftmiddle; let i = index"
-                  [ngClass]="i === 0 ? 'active' : ''"
-                >
-                  <img
-                    class="d-block w-100"
-                    src="{{ leftmiddle_ad.ads_image }}"
-                    alt="{{ leftmiddle_ad.ads_image_alt_text }}"
-                    (click)="openLink(leftmiddle_ad.ads_image_link)"
-                  />
-                </div>
-              </div>
-              <a
-                class="carousel-control-prev"
-                href="#carouselExampleControls2"
-                role="button"
-                data-slide="prev"
-              >
-                <span
-                  class="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a
-                class="carousel-control-next"
-                href="#carouselExampleControls2"
-                role="button"
-                data-slide="next"
-              >
-                <span
-                  class="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="sr-only">Next</span>
-              </a>
-            </div>
-          </div> -->
-        </div>
-
-        <div class="prameya-epaper">
-          <!-- <app-sports-news></app-sports-news> -->
-          <div class="news-section">
-            <div class="heading-container">
-              <h4 class="news-sub">କ୍ରୀଡା</h4>
-            </div>
-            <div
-              class="row news-box ng-star-inserted"
-              *ngFor="let post of sportsnews"
-              (click)="opennewsSec(post.slug, post.twitter_exists)"
-            >
-              <div class="col-md-4 col-sm-4 col-4 news-img-container">
-                <img
-                  src="{{
-                    post.home_img != null && post.home_img != undefined
-                      ? post.home_img
-                      : post.guid
-                  }}"
-                  loading="lazy"
-                  fetchPrirority="high"
-                  [attr.alt]="post.media_alt_text"
-                />
-              </div>
-              <div class="col-md-8 col-sm-8 col-8 news-text-container">
-                <p>
-                  {{ post.post_title ? getShortName(post.post_title) : "" }}
-                </p>
-                <div class="news-date">
-                  <time class="news-date">{{
-                    post.post_date | date : "MMMM dd, yyyy"
-                  }}</time>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="prameya-epaper">
-          <!-- <app-crime-news></app-crime-news> -->
-        </div>
       </div>
     </div>
-
+  </div>
 </div>
 
 <app-search-sticky></app-search-sticky>

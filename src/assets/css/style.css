@@ -1,10 +1,3 @@
-@import "~bootstrap/dist/css/bootstrap.css";
-@import "~bootstrap/dist/css/bootstrap.css";
-@import "~quill/dist/quill.core.css";
-@import "~quill/dist/quill.bubble.css";
-@import "~quill/dist/quill.snow.css";
-
-
 :root {
   --white: #ffffff;
   --site-background: #d2d2d2;
@@ -384,7 +377,7 @@ h4.news-sub {
   color: rgb(90, 90, 90);
 }
 .mat-typography p {
-  margin: 0px!important;
+  margin: 0px !important;
 }
 
 /* <-----------------END CHECKBOX COLOR--------------------> */
@@ -702,6 +695,86 @@ h4.news-sub {
   width: 100% !important;
 }
 
+/** --------------------SLIDER 2------------------------ **/
+.advertisement-container-long {
+  margin-bottom: 20px !important;
+}
+.pic-ctn-long {
+  position: relative;
+  width: 100vw;
+  height: 300px;
+  margin-top: 15vh;
+}
+
+.pic-ctn-long > img {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 100px);
+  opacity: 0;
+  animation: display 10s infinite;
+}
+
+img:nth-child(2) {
+  animation-delay: 2s;
+}
+img:nth-child(3) {
+  animation-delay: 4s;
+}
+img:nth-child(4) {
+  animation-delay: 6s;
+}
+img:nth-child(5) {
+  animation-delay: 8s;
+}
+
+.slider-long {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.slides-long {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide-long {
+  flex: 1;
+  height: 720px !important;
+  flex-direction: row;
+  display: flex;
+  gap: 0;
+  background: #ccc;
+}
+.slides-long img {
+  min-width: 100%;
+}
+
+.controls-long {
+  position: absolute;
+  bottom: 40%;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.prev,
+.next {
+  color: #999;
+  border: none;
+  cursor: pointer;
+}
+
+/* --------------------airticle page ------------------------ */
+
+.article-heading {
+  font-size: 28px;
+  font-weight: bold;
+  background: #ddd;
+  padding: 10px;
+  border-bottom: 3px solid #f00;
+}
+
 /* --------------------Edit Profile------------------------ */
 
 /* ---------------------more from author carousal--------------------- */
@@ -828,8 +901,7 @@ a:hover {
 .ngx-pagination .current {
   background: #000000 !important;
 }
-.recent-news-card
-{
+.recent-news-card {
   margin: 0px;
 }
 /*footer start*/
@@ -857,7 +929,7 @@ a:hover {
 }
 .footer-container .news-date {
   font-size: 14px;
-  color:#bfbebe;
+  color: #bfbebe;
   padding-left: 0px;
 }
 
@@ -1093,21 +1165,19 @@ footer ul li a {
   height: auto;
   object-fit: cover;
   aspect-ratio: 3/2;
-  margin:0px;
+  margin: 0px;
   width: 100%;
 }
-.recent-news-card .news-img-container p
-{
-  margin-top:15px!important;
+.recent-news-card .news-img-container p {
+  margin-top: 15px !important;
 }
-.recent-news-card .news-img-container .news-date
-{
-  margin-bottom:15px!important;
+.recent-news-card .news-img-container .news-date {
+  margin-bottom: 15px !important;
 }
-.recent-news-card .recent-news-card .news-text-container p{
-  margin-top:15px!important;
+.recent-news-card .recent-news-card .news-text-container p {
+  margin-top: 15px !important;
 }
-.recent-news-card .news-text-container .news-date{
+.recent-news-card .news-text-container .news-date {
   margin-bottom: 15px;
 }
 .news-text-container p {
@@ -1224,11 +1294,10 @@ footer ul li a {
   font-weight: bold;
 }
 .prameya-epaper {
-  background: #FFF;
+  background: #fff;
   border: 15px solid #ddd;
 }
-.prameya-epaper-image
-{
+.prameya-epaper-image {
   max-width: 100%;
   height: auto;
 }
@@ -1277,10 +1346,10 @@ img:nth-child(5) {
   height: 260px;
   flex-direction: row;
   display: flex;
-  gap:0;
+  gap: 0;
   background: #ccc;
 }
-.slides img{
+.slides img {
   min-width: 100%;
 }
 
@@ -1298,25 +1367,22 @@ img:nth-child(5) {
   border: none;
   cursor: pointer;
 }
-.article-text-section
-{
+.article-text-section {
   padding: 20px 0px;
   font-size: 22px;
   font-weight: 700;
   line-height: 30px;
 }
-.article-text-section p{
-  margin-top: 20px!important;
+.article-text-section p {
+  margin-top: 20px !important;
 }
-.news-text-container p
-{
-  margin-top:0px!important;
+.news-text-container p {
+  margin-top: 0px !important;
 }
-h1 > span
-{
-  font-size: 22px!important;
-  font-weight: bold!important;
-  border-bottom:2px solid #f00!important;
+h1 > span {
+  font-size: 22px !important;
+  font-weight: bold !important;
+  border-bottom: 2px solid #f00 !important;
 }
 /* --------------------------------pagination---------------------------------- */
 @media (min-width: 1400px) {

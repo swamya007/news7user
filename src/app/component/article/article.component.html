@@ -1,142 +1,152 @@
 <app-header></app-header>
 <app-latest-news-header></app-latest-news-header>
 <div class="article-container">
-<div class="row">
-  <div class="col-md-8 col-12 bg-light">
-    <div class="article-section-container ng-star-inserted">
-      <h1 class="article-heading">
-        {{ news.post_title }}
-        <span target="_blank" class="ng-star-inserted"> </span>
-        <!---->
-      </h1>
-      <div class="social-section">
-        <div class="share-section">
-          <div class="share-cont">
-            <p class="share-number">161</p>
-            <p class="share-text">shares</p>
-          </div>
-          <div
-            (click)="createNavigationUrl('facebook')"
-            class="facebook-icon share-box"
-          >
-            <i class="fa-brands fa-facebook-f"></i>
-            <p>Share</p>
-          </div>
-          <div
-            (click)="createNavigationUrl('twitter')"
-            class="twitter-icon share-box"
-          >
-            <i class="fa-brands fa-twitter"></i>
-            <p>Tweet</p>
-          </div>
-          <div class="messenger-icon share-box">
-            <i class="fa-brands fa-facebook-messenger"></i>
-            <p>Share</p>
-          </div>
-          <div
-            (click)="createNavigationUrl('whatsapps')"
-            class="whatsapp-icon share-box"
-          >
-            <i class="fa-brands fa-whatsapp"></i>
-            <p>Share</p>
-          </div>
-          <div class="share-icon share-box">
-            <i class="fa-solid fa-share-nodes"></i>
-            <p>Share</p>
-          </div>
-        </div>
-      </div>
-      <div class="author-cat-section">
-        <div class="author-section">
-          <p>
-            <span
-              ><time>{{ news.post_date | date : "short" }}</time></span
+  <div class="row">
+    <div class="col-md-8 col-12 bg-light">
+      <div class="article-section-container ng-star-inserted">
+        <h1 class="article-heading">
+          {{ news.post_title }}
+          <span target="_blank" class="ng-star-inserted"> </span>
+          <!---->
+        </h1>
+        <div class="social-section">
+          <div class="share-section">
+            <div class="share-cont">
+              <p class="share-number">161</p>
+              <p class="share-text">shares</p>
+            </div>
+            <div
+              (click)="createNavigationUrl('facebook')"
+              class="facebook-icon share-box"
             >
-          </p>
-        </div>
-        <div class="category-section" *ngIf="news.tags">{{ news.tags }}</div>
-      </div>
-      <img class="article-image" alt="" [src]="news.guid" />
-      <div
-        class="article-text-section"
-        [innerHTML]="news.post_content_sanitized"
-      ></div>
-    </div>
-    <!---->
-    <div class="article-section-container ng-star-inserted">
-      <div class="article-text-section">
-        <div class="related-content-section">
-          <div class="related-content-section-heading">
-            <h1>
-              <span>ସମ୍ବନ୍ଧିତ ଖବର</span>
-            </h1>
+              <i class="fa-brands fa-facebook-f"></i>
+              <p>Share</p>
+            </div>
+            <div
+              (click)="createNavigationUrl('twitter')"
+              class="twitter-icon share-box"
+            >
+              <i class="fa-brands fa-twitter"></i>
+              <p>Tweet</p>
+            </div>
+            <div class="messenger-icon share-box">
+              <i class="fa-brands fa-facebook-messenger"></i>
+              <p>Share</p>
+            </div>
+            <div
+              (click)="createNavigationUrl('whatsapps')"
+              class="whatsapp-icon share-box"
+            >
+              <i class="fa-brands fa-whatsapp"></i>
+              <p>Share</p>
+            </div>
+            <div class="share-icon share-box">
+              <i class="fa-solid fa-share-nodes"></i>
+              <p>Share</p>
+            </div>
           </div>
-          <div class="related-content-section-cards prameya-epapers">
-            <div class="news-section">
-              <div class="d-flex flex-wrap news-box">
-                <div
-                  class="col-md-4 col-sm-12 col-12 news-img-container ng-star-inserted"
-                  *ngFor="let post of nextthree"
-                  (click)="opennewsSec(post.slug, post.twitter_exists)"
-                >
-                  <img class="news-images" [src]="post.guid" />
-                  <div class="news-text-container">
-                    <p>
-                      {{ post.post_title ? getShortName(post.post_title) : "" }}
-                    </p>
-                    <div class="news-date">
-                      {{ post.post_date | date : "short" }}
+        </div>
+        <div class="author-cat-section">
+          <div class="author-section">
+            <p>
+              <span
+                ><time>{{ news.post_date | date : "short" }}</time></span
+              >
+            </p>
+          </div>
+          <div class="category-section" *ngIf="news.tags">{{ news.tags }}</div>
+        </div>
+        <img class="article-image" alt="" [src]="news.guid" />
+        <div
+          class="article-text-section"
+          [innerHTML]="news.post_content_sanitized"
+        ></div>
+      </div>
+      <!---->
+      <div class="article-section-container ng-star-inserted">
+        <div class="article-text-section">
+          <div class="related-content-section">
+            <div class="related-content-section-heading">
+              <h1>
+                <span>ସମ୍ବନ୍ଧିତ ଖବର</span>
+              </h1>
+            </div>
+            <div class="related-content-section-cards prameya-epapers">
+              <div class="news-section">
+                <div class="d-flex flex-wrap news-box">
+                  <div
+                    class="col-md-4 col-sm-12 col-12 news-img-container ng-star-inserted"
+                    *ngFor="let post of nextthree"
+                    (click)="opennewsSec(post.slug, post.twitter_exists)"
+                  >
+                    <img class="news-images" [src]="post.guid" />
+                    <div class="news-text-container">
+                      <p>
+                        {{
+                          post.post_title ? getShortName(post.post_title) : ""
+                        }}
+                      </p>
+                      <div class="news-date">
+                        {{ post.post_date | date : "short" }}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <!---->
+                  <!---->
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <!---->
     </div>
-    <!---->
-  </div>
-  <div class="col-md-4 col-12">
-    <div class="prameya-epaper text-center">
-      <img
-        src="assets/img/prameya-epaper-link.jpeg"
-        class="prameya-epaper-image"
-      />
-    </div>
-    <div class="prameya-epaper">
-      <div class="advertisement-space-container-first">
+    <div class="col-md-4 col-12">
+      <div class="prameya-epaper text-center">
+        <img
+          src="assets/img/prameya-epaper-link.jpeg"
+          class="prameya-epaper-image"
+        />
+      </div>
+      <div class="prameya-epaper">
         <div class="advertisement-space-container-first">
-          <div class="slider">
-            <div
-              class="slides"
-              [ngStyle]="{ transform: 'translateX(' + translateValue + ')' }"
-            >
-              <div class="slide">
-                <img
-                  *ngFor="let rightupper_ad of ads_rightupper; let i = index"
-                  class="d-block w-100"
-                  loading="lazy"
-                  fetchPrirority="high"
-                  src="{{ rightupper_ad.ads_image }}"
-                  alt="{{ rightupper_ad.ads_image_alt_text }}"
-                  (click)="openLink(rightupper_ad.ads_image_link)"
-                />
+          <div class="advertisement-space-container-first">
+            <div class="slider">
+              <div
+                class="slides"
+                [ngStyle]="{ transform: 'translateX(' + translateValue + ')' }"
+              >
+                <div class="slide">
+                  <img
+                    *ngFor="let rightupper_ad of ads_rightupper; let i = index"
+                    class="d-block w-100"
+                    loading="lazy"
+                    fetchPrirority="high"
+                    src="{{ rightupper_ad.ads_image }}"
+                    alt="{{ rightupper_ad.ads_image_alt_text }}"
+                    (click)="openLink(rightupper_ad.ads_image_link)"
+                  />
+                </div>
               </div>
-            </div>
-            <div class="controls">
-              <button class="prev" (click)="moveSlide('minus')" mat-icon-button>
-                <mat-icon>chevron_left</mat-icon>
-              </button>
-              <button class="next" (click)="moveSlide('plus')" mat-icon-button>
-                <mat-icon>chevron_right</mat-icon>
-              </button>
+              <div class="controls">
+                <button
+                  class="prev"
+                  (click)="moveSlide('minus')"
+                  mat-icon-button
+                >
+                  <mat-icon>chevron_left</mat-icon>
+                </button>
+                <button
+                  class="next"
+                  (click)="moveSlide('plus')"
+                  mat-icon-button
+                >
+                  <mat-icon>chevron_right</mat-icon>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       </div>
       <div class="prameya-epaper">
         <div>
@@ -215,28 +225,36 @@
       </div>
       <div class="prameya-epaper">
         <div class="advertisement-container-long">
-          <div class="slider">
+          <div class="slider-long">
             <div
-              class="slides"
-              [ngStyle]="{ transform: 'translateX(' + translateValue + ')' }"
+              class="slides-long"
+              [ngStyle]="{ transform: 'translateX(' + translateValue1 + ')' }"
             >
-              <div class="slide">
+              <div class="slide-long">
                 <img
-                  *ngFor="let leftmiddle_ad of ads_leftmiddle; let i = index"
+                  *ngFor="let rightupper_ad of ads_leftmiddle; let i = index"
                   class="d-block w-100"
                   loading="lazy"
                   fetchPrirority="high"
-                  src="{{ leftmiddle_ad.ads_image }}"
-                  alt="{{ leftmiddle_ad.ads_image_alt_text }}"
-                  (click)="openLink(leftmiddle_ad.ads_image_link)"
+                  src="{{ rightupper_ad.ads_image }}"
+                  alt="{{ rightupper_ad.ads_image_alt_text }}"
+                  (click)="openLink(rightupper_ad.ads_image_link)"
                 />
               </div>
             </div>
             <div class="controls">
-              <button class="prev" (click)="moveSlide('minus')" mat-icon-button>
+              <button
+                class="prev"
+                (click)="moveSlideleft('minus')"
+                mat-icon-button
+              >
                 <mat-icon>chevron_left</mat-icon>
               </button>
-              <button class="next" (click)="moveSlide('plus')" mat-icon-button>
+              <button
+                class="next"
+                (click)="moveSlideleft('plus')"
+                mat-icon-button
+              >
                 <mat-icon>chevron_right</mat-icon>
               </button>
             </div>
@@ -319,7 +337,6 @@
       </div>
     </div>
   </div>
-
 </div>
 
 <app-search-sticky></app-search-sticky>

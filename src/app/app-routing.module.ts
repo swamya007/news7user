@@ -47,7 +47,7 @@ const routes: Routes = [
     component: HeaderCategoryComponent,
   },
   {
-    path: 'post/:Id',
+    path: ':Id',
     component: ArticleComponent,
   },
 

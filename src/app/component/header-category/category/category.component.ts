@@ -158,9 +158,9 @@ export class CategoryComponent implements OnInit {
   }
   opennewsSec(id: any,flag:any) {
     if(flag === 'Y') {
-      window.location.href='/post/' + id;
+      window.location.href='/' + id;
     } else {
-      this.router.navigate (['/post/' + id]) ;
+      this.router.navigate (['/' + id]) ;
     }
     
   }

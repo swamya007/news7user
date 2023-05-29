@@ -1,0 +1,89 @@
+@keyframes slidy {
+    0% {
+      left: 0%;
+    }
+    15% {
+      left: 0%;
+    }
+    20% {
+      left: -100%;
+    }
+    35% {
+      left: -100%;
+    }
+    40% {
+      left: -200%;
+    }
+    55% {
+      left: -200%;
+    }
+    70% {
+      left: -300%;
+    }
+    85% {
+      left: -300%;
+    }
+    90% {
+      left: -400%;
+    }
+    100% {
+      left: -400%;
+    }
+  }
+  
+  body {
+    margin: 0;
+  }
+  div#slider {
+    overflow: hidden;
+  }
+  div#slider figure div {
+    width: 20%;
+    float: left;
+  }
+  div#slider figure img {
+    width: 100%;
+    float: left;
+    height:260px;
+    object-fit: fill;
+  
+  }
+  div#slider figure {
+    position: relative;
+    width: 500%;
+    margin: 0;
+    left: 0;
+    text-align: left;
+    font-size: 0;
+    animation: 30s slidy infinite;
+    background-color: #ccc;
+  }
+  figcaption {
+    width: 100%;
+    float: left;
+    height: 74px;
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    color: #fff;
+    padding: 10px;
+  }
+  figcaption {
+    /* position: absolute; animation: 30s slidy infinite; left:0; top:390px; height: 60px; width: 500%; color: white; font-family: sans-serif; text-align: center; text-shadow: 0 0 20px rgba(0,0,0,0.5); background: rgba(0,0,0,1); */
+    position: static;
+    /* float: left; */
+    width: 100%;
+    left: 0;
+    text-align: left;
+    font-size: 14px !important;
+    left: 0;
+    text-align: left;
+    font-size: 0;
+    /* animation: 30s slidy infinite; */
+  }
+  @media only screen and (max-width: 767px) {
+    div#slider figure img {
+      width: 100%;
+      float: left;
+      min-height: 450px;
+      object-fit: fill;
+    }
+  }

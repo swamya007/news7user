@@ -73,7 +73,7 @@
           </div>
           <div class="related-content-section-cards prameya-epapers">
             <div class="news-section">
-              <div class="row news-box">
+              <div class="d-flex flex-wrap news-box">
                 <div
                   class="col-md-4 col-sm-12 col-12 news-img-container ng-star-inserted"
                   *ngFor="let post of nextthree"
@@ -145,7 +145,7 @@
               <h4 class="news-sub">ରାଜନୀତି</h4>
             </div>
             <div
-              class="row news-box ng-star-inserted"
+              class="d-flex news-box ng-star-inserted"
               *ngFor="let post of polticesnews"
               (click)="opennewsSec(post.slug, post.twitter_exists)"
             >
@@ -182,7 +182,7 @@
               <h4 class="news-sub">ମନୋରଞ୍ଜନ</h4>
             </div>
             <div
-              class="row news-box ng-star-inserted"
+              class="d-flex news-box ng-star-inserted"
               *ngFor="let post of entermentaarr"
               (click)="opennewsSec(post.slug, post.twitter_exists)"
             >
@@ -250,7 +250,7 @@
               <h4 class="news-sub">କ୍ରୀଡା</h4>
             </div>
             <div
-              class="row news-box ng-star-inserted"
+              class="d-flex news-box ng-star-inserted"
               *ngFor="let post of sportsnews"
               (click)="opennewsSec(post.slug, post.twitter_exists)"
             >
@@ -287,7 +287,7 @@
               <h4 class="news-sub">ଅପରାଧ</h4>
             </div>
             <div
-              class="row news-box ng-star-inserted"
+              class="d-flex news-box ng-star-inserted"
               *ngFor="let post of crimesnews"
               (click)="opennewsSec(post.slug, post.twitter_exists)"
             >

@@ -3,6 +3,8 @@
 @import "~quill/dist/quill.core.css";
 @import "~quill/dist/quill.bubble.css";
 @import "~quill/dist/quill.snow.css";
+
+
 :root {
   --white: #ffffff;
   --site-background: #d2d2d2;
@@ -855,8 +857,8 @@ a:hover {
 }
 .footer-container .news-date {
   font-size: 14px;
-  color: #000;
-  padding-left: 10px;
+  color:#bfbebe;
+  padding-left: 0px;
 }
 
 .footer-container > .news-section {
@@ -1084,22 +1086,39 @@ footer ul li a {
   width: 100%;
   margin: 8px auto;
   padding: 5px 7px;
+  cursor: pointer;
 }
 .news-img-container img {
   max-width: 100%;
   height: auto;
   object-fit: cover;
   aspect-ratio: 3/2;
-  margin: 10px 0px;
+  margin:0px;
   width: 100%;
 }
-
+.recent-news-card .news-img-container p
+{
+  margin-top:15px!important;
+}
+.recent-news-card .news-img-container .news-date
+{
+  margin-bottom:15px!important;
+}
+.recent-news-card .recent-news-card .news-text-container p{
+  margin-top:15px!important;
+}
+.recent-news-card .news-text-container .news-date{
+  margin-bottom: 15px;
+}
 .news-text-container p {
   color: rgb(71, 71, 71);
   transition: all 0.4s ease;
 }
 
 .news-box:hover .news-text-container p {
+  color: #da0000;
+}
+.news-box1:hover .news-text-container p {
   color: #da0000;
 }
 
@@ -1124,13 +1143,13 @@ footer ul li a {
   font-size: 20px;
   font-weight: bold;
   transition: all 0.4s ease;
-  padding: 7px 5px 0;
+  /* padding: 7px 5px 0; */
 }
 .news-section p {
   font-size: 20px;
   font-weight: bold;
   transition: all 0.4s ease;
-  padding: 7px 5px 0;
+  /* padding: 7px 5px 0; */
 }
 .news-section1 .news-text-container p {
   font-size: 20px;
@@ -1146,10 +1165,10 @@ footer ul li a {
   margin-top: 15px;
 }
 .news-section .news-text-container p {
-  font-weight: normal !important ;
+  font-weight: bold !important ;
 }
 .nobold {
-  font-weight: normal !important;
+  font-weight: bold !important;
 }
 
 .news-text-container p {
@@ -1212,6 +1231,92 @@ footer ul li a {
 {
   max-width: 100%;
   height: auto;
+}
+
+.pic-ctn {
+  position: relative;
+  width: 100vw;
+  height: 300px;
+  margin-top: 15vh;
+}
+
+.pic-ctn > img {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 100px);
+  opacity: 0;
+  animation: display 10s infinite;
+}
+
+img:nth-child(2) {
+  animation-delay: 2s;
+}
+img:nth-child(3) {
+  animation-delay: 4s;
+}
+img:nth-child(4) {
+  animation-delay: 6s;
+}
+img:nth-child(5) {
+  animation-delay: 8s;
+}
+
+.slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  flex: 1;
+  height: 260px;
+  flex-direction: row;
+  display: flex;
+  gap:0;
+  background: #ccc;
+}
+.slides img{
+  min-width: 100%;
+}
+
+.controls {
+  position: absolute;
+  bottom: 40%;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.prev,
+.next {
+  color: #999;
+  border: none;
+  cursor: pointer;
+}
+.article-text-section
+{
+  padding: 20px 0px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 30px;
+}
+.article-text-section p{
+  margin-top: 20px!important;
+}
+.news-text-container p
+{
+  margin-top:0px!important;
+}
+h1 > span
+{
+  font-size: 22px!important;
+  font-weight: bold!important;
+  border-bottom:2px solid #f00!important;
 }
 /* --------------------------------pagination---------------------------------- */
 @media (min-width: 1400px) {

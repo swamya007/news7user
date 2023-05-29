@@ -78,13 +78,10 @@ export class SingleHomepageComponent implements OnInit {
   getAllnews(){
     let myTransferStateKey = makeStateKey<any>('myDatas');
     if (this.transferState.hasKey(myTransferStateKey)) {
-      console.log('HomeComponent ngOnInit hasKey');
       this.data = this.transferState.get(myTransferStateKey, []);
        this.transferState.remove(myTransferStateKey);
        this.odishaarr =  this.data[0].odisha || [];
-       console.log(this.data,'ss')
        this.crimesnews =  this.data[0].crime || [];
-       console.log(this.odishaarr[0].twitter_exists,'twiter')
       this.bahu_charchita_khabar = this.data[0].bahu_charchita_khabar || []
        this.homenews =  this.data[0].home || [];
        this.womensnews =  this.data[0].women || [];
@@ -106,9 +103,7 @@ export class SingleHomepageComponent implements OnInit {
           this.data = res.body;
           this.data =  this.data?.map((dt: any) => JSON.parse(dt));
            this.odishaarr =  this.data[0].odisha || [];
-           console.log(this.data,'ss')
            this.crimesnews =  this.data[0].crime || [];
-           console.log(this.odishaarr[0].twitter_exists,'twiter')
           this.bahu_charchita_khabar = this.data[0].bahu_charchita_khabar || []
            this.homenews =  this.data[0].home || [];
            this.womensnews =  this.data[0].women || [];
@@ -144,10 +139,8 @@ export class SingleHomepageComponent implements OnInit {
         if (res.code == 'success') {
           var data = res.body;
           this.slidearrayfeature = data.map((dt: any) => JSON.parse(dt));
-          console.log(this.slidearrayfeature, 'kkk');
           if (this.slidearrayfeature.length > 3) {
             this.slidearray = this.slidearrayfeature.slice(5);
-            console.log(this.slidearrayfeature,'array')
           }
         } else {
           this.slidearrayfeature = [];
@@ -160,9 +153,9 @@ export class SingleHomepageComponent implements OnInit {
   }
   opennewsSec(id: any,flag:any) {
     if(flag === 'Y') {
-      window.location.href='/post/' + id;
+      window.location.href='/' + id;
     } else {
-      this.router.navigate (['/post/' + id]) ;
+      this.router.navigate (['/' + id]) ;
     }
     
   }

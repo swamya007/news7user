@@ -171,7 +171,7 @@ export function app(): express.Express {
 
     // render the error page
     res.status(err.status || 500);
-    res.send(err.message);
+    res.send(err);
   });
 
   return server;

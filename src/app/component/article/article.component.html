@@ -56,7 +56,9 @@
           </div>
           <div class="category-section" *ngIf="news.tags">{{ news.tags }}</div>
         </div>
-        <img class="article-image" alt="" [src]="news.guid" />
+        <div class="article-component-img">
+          <img class="article-image" alt="" [src]="news.guid" />
+        </div>
         <div
           class="article-text-section"
           [innerHTML]="news.post_content_sanitized"

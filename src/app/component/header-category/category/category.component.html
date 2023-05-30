@@ -4,7 +4,7 @@
       <div class="news-section cointainer">
         <div
           class="row news-box"
-          (click)="opennewsSecss(post.slug)"
+          (click)="opennewsSec(post.slug, post.twitter_exists)"
           *ngFor="
             let post of post_array
               | paginate : { itemsPerPage: 10, currentPage: p }

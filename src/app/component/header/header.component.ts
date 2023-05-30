@@ -23,12 +23,19 @@ export class HeaderComponent implements OnInit {
 
   ads_middle: any = [];
   isLoggedIn = false;
+  currentIndex = 0;
+  currentSlide = 0;
+  currentSlide1 = 0;
 
+  translateValue = `-${this.currentSlide * 100}%`;
+
+  currentSlides1 = 0;
+  translateValue1 = `-${this.currentSlide1 * 100}%`;
   constructor(
     private loginService: LoginService,
     private masterAPI: MasterServiceService,
     private adsService: AdserviceService,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -36,6 +43,22 @@ export class HeaderComponent implements OnInit {
     this.customer_id = environment.CUSTOMER_ID;
     this.getallheaders();
     this.getAllAdsList();
+  }
+
+  moveSlideleft(direction: any) {
+    if (this.ads_middle) {
+      if (direction === 'plus') {
+        if (this.currentSlide1 !== this.ads_middle.length - 1) {
+          this.currentSlide1 += 1;
+          this.translateValue1 = `-${this.currentSlide1 * 100}%`;
+        }
+      } else {
+        if (this.currentSlide1 !== 0) {
+          this.currentSlide1 -= 1;
+          this.translateValue1 = `-${this.currentSlide1 * 100}%`;
+        }
+      }
+    }
   }
 
   getallheaders() {
@@ -62,7 +85,6 @@ export class HeaderComponent implements OnInit {
   }
 
   getAllAdsList() {
-
     this.ads_id = '';
     this.img_size = '';
     this.adsService
@@ -75,8 +97,7 @@ export class HeaderComponent implements OnInit {
         this.ads_middle = this.allAdsList.filter(
           (data: any) => data.ads_img_size === '4'
         );
-        setTimeout(() => {
-        }, 3000);
+        setTimeout(() => {}, 3000);
       });
   }
 

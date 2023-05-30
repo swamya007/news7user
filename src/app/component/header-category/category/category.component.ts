@@ -242,10 +242,6 @@ export class CategoryComponent implements OnInit {
     );
   }
 
-  opennewsSecss(id: any) {
-    window.location.href = '/post/' + id;
-  }
-
   openCategory(url: any) {
     this.router.navigate([url]);
   }

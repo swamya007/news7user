@@ -740,7 +740,7 @@ img:nth-child(5) {
 
 .slide-long {
   flex: 1;
-  height: 720px !important;
+  height: 100% !important;
   flex-direction: row;
   display: flex;
   gap: 0;
@@ -770,7 +770,7 @@ img:nth-child(5) {
 .article-heading {
   font-size: 28px;
   font-weight: bold;
-  background: #ddd;
+  /* background: #ddd; */
   padding: 10px;
   border-bottom: 3px solid #f00;
 }

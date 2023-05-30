@@ -261,8 +261,8 @@ img:nth-child(5) {
     flex-wrap: wrap;
   }
   .home-ad-container div {
-    max-width: 100% !important;
-    height: auto;
+    /* max-width: 100% !important;
+    height: auto; */
   }
   .header-row {
     display: block;

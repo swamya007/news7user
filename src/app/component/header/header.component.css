@@ -179,7 +179,7 @@ img:nth-child(5) {
 
 .navbar-expand-lg .navbar-nav .dropdown-menu {
   position: absolute;
-  background: var(--bs-dropdown-link-color);
+  background: black;
   color: #fff;
   border-radius: 0 !important;
 }

@@ -466,7 +466,7 @@ export class ArticleComponent implements OnInit {
 
   public createNavigationUrl(type: string) {
     //let shareUrl = 'https://prameya/post/';
-    let shareUrl = `${environment.PLATFORM_BASEURL}/post/${this.id}`;
+    let shareUrl = `${environment.PLATFORM_BASEURL}/${this.id}`;
     let searchParams = new URLSearchParams();
 
     switch (type) {

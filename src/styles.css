@@ -697,7 +697,7 @@
   
   /** --------------------SLIDER 2------------------------ **/
   .advertisement-container-long {
-    margin-bottom: 20px !important;
+    margin-bottom:0px !important;
   }
   .pic-ctn-long {
     position: relative;
@@ -1353,7 +1353,7 @@
   
   .slide {
     flex: 1;
-    height: 240px !important;
+    height: 235px !important;
     flex-direction: row;
     display: flex;
     gap: 0;

@@ -774,6 +774,7 @@ img:nth-child(5) {
   padding: 10px;
   border-bottom: 3px solid #f00;
 }
+
 .article-component-img {
   height: auto;
   margin-bottom: 10px;
@@ -1352,7 +1353,7 @@ img:nth-child(5) {
 
 .slide {
   flex: 1;
-  height: 260px;
+  /* height: 260px; */
   flex-direction: row;
   display: flex;
   gap: 0;

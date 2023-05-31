@@ -1,21 +1,34 @@
 <div class="news-section">
-    <div class="main-news-container">
-        <div class="row main-news-section">
-            <div class="col-md-6 " *ngFor="let post of postarr| paginate: { itemsPerPage: 6, currentPage: p }"
-                (click)="opennewsSec(post.slug,post.twitter_exists)">
-                <div class="news-card main-news-border">
-                    <img [src]="post.guid">
-                    <div class="news-date-section d-flex">
-                        <div class="author-name">{{post.author_name}}</div>
-                        <div> <i class="fa-solid fa-circle news-circle-icon "></i></div>
-                        <div class="news-date"> {{post.post_date | date:'MMMM dd, yyyy'}}</div>
-                    </div>
-                    <p>{{post.post_title ? getShortName(post.post_title) : ''}}</p>
-                </div>
+  <div class="main-news-container">
+    <div class="row main-news-section">
+      <div
+        class="col-md-12"
+        *ngFor="
+          let post of postarr | paginate : { itemsPerPage: 6, currentPage: p }
+        "
+        (click)="opennewsSec(post.slug, post.twitter_exists)"
+      >
+        <div class="news-card main-news-border">
+          <div class="article-component-img">
+            <img [src]="post.guid" />
+          </div>
+          <div class="news-date-section d-flex">
+            <div class="author-name">{{ post.author_name }}</div>
+            <div><i class="fa-solid fa-circle news-circle-icon"></i></div>
+            <div class="news-date">
+              {{ post.post_date | date : "MMMM dd, yyyy" }}
             </div>
+          </div>
+          <p>{{ post.post_title ? getShortName(post.post_title) : "" }}</p>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 <div class="pagination">
-    <pagination-controls *ngIf="postarr" (pageChange)="p = $event" class="float-right"></pagination-controls>
+  <pagination-controls
+    *ngIf="postarr"
+    (pageChange)="p = $event"
+    class="float-right"
+  ></pagination-controls>
 </div>

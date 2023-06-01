@@ -129,7 +129,7 @@ export class SingleHomepageComponent implements OnInit {
     }}
 
   getShortName(user_name: any) {
-    return user_name.slice(0, 50).trim() + (user_name.length > 49 ? '...' : '');
+    return user_name.slice(0, 80).trim() + (user_name.length > 79 ? '...' : '');
   }
 
   getShortNamebhu(user_name: any) {

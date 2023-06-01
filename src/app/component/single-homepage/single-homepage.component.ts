@@ -129,9 +129,12 @@ export class SingleHomepageComponent implements OnInit {
     }}
 
   getShortName(user_name: any) {
-    return user_name.slice(0, 46).trim() + (user_name.length > 45 ? '...' : '');
+    return user_name.slice(0, 50).trim() + (user_name.length > 49 ? '...' : '');
   }
 
+  getShortNamebhu(user_name: any) {
+    return user_name.slice(0, 25).trim() + (user_name.length > 24 ? '...' : '');
+  }
 
   getslide() {
     this.master.getsliderodia(environment.CUSTOMER_ID).subscribe(

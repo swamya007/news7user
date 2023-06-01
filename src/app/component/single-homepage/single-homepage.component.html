@@ -14,7 +14,7 @@
    fetchPrirority="high" [attr.alt]="post.media_alt_text">
  </div>
  <div class="col-md-8 col-sm-8 col-8 news-text-container">
-   <p>{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
+   <p>{{ post.post_title ? getShortNamebhu(post.post_title) : '' }}</p>
    <div class="news-date"> <time class="news-date">{{
     post.post_date | date : "MMMM dd, yyyy"
     }}</time></div>
@@ -66,7 +66,7 @@
   [attr.alt]="post.media_alt_text" loading="lazy" fetchPrirority="high">
     </div>
     <div  class="col-md-8 col-sm-8 col-8 news-text-container">
-  <p >{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
+  <p >{{ post.post_title ? getShortNamebhu(post.post_title) : '' }}</p>
   <div class="news-date"><time class="news-date">{{
    post.post_date | date : "MMMM dd, yyyy"
    }}</time></div>

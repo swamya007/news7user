@@ -330,9 +330,9 @@
   
   .advertisement-space-container-first {
     cursor: pointer;
-    height: 260px;
+    height: auto;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
   }
   
   .advertisement-space-container-first .carousel {
@@ -1232,11 +1232,12 @@
     /* padding: 7px 5px 0; */
   }
   .news-section1 .news-text-container p {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     margin-bottom: 0;
-    line-height: 28px;
+    line-height: 25px;
     cursor: pointer;
+    min-height: 55px;
   }
   
   .post-content {

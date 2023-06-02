@@ -279,4 +279,21 @@ img:nth-child(5) {
     margin: 5px;
     font-size: 10px;
   }
+  .home-ad-container div {
+    width: autp;
+    height: auto;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .slides-long img {
+    min-width: 100%;
+    margin-bottom: 25px;
+  }
+  .home-ad-container {
+    padding: 10px;
+    height: 50px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
 }

@@ -1367,7 +1367,7 @@
   
   .controls {
     position: absolute;
-    bottom: 40%;
+    bottom: 45%;
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -1413,6 +1413,24 @@
       line-height: 25px;
       cursor: pointer;
   }
+  .btn-secondary {
+    background-color: #3f3f3f !important;
+    border: 1px solid #fff !important;
+    width: 185px !important;
+    margin: 0px 4px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+  }
+  @media (min-width: 1280px) {
+    .btn-secondary {
+      background-color: #3f3f3f !important;
+      border: 1px solid #fff !important;
+      width: 185px !important;
+      margin: 0px 4px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+  }
   }
   @media only screen and (max-width: 600px) {
     body {
@@ -1440,8 +1458,14 @@
       color: #ccc;
       flex-wrap: wrap;
     }
-    body {
-      overflow-x: hidden;
-    }
+
+    .news-section:last-child {
+      border-bottom: 10px solid #fff!important;
+      padding-bottom: 15px;
+      /* margin-top: 10px; */
+      padding-top: 10px;
+      border-top: 10px solid #FFF!important;
+  }
+
   }
   

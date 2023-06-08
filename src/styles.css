@@ -1130,7 +1130,7 @@ footer ul li a {
 .home-ad-container {
   width: 700px;
   overflow: hidden;
-  /* margin: 20px auto; */
+   margin: 20px;
 }
 .top-center-add {
   width: 50%;
@@ -1436,16 +1436,18 @@ h1 > span {
   body {
     overflow-x: hidden;
   }
-  :host ::ng-deep .home-ad-container div {
+  /* :host ::ng-deep .home-ad-container div {
     width: 100% !important;
-    height: 90px;
+    height: 40px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background: #f00;
-  }
+  } */
   .home-ad-container {
     width: 100%;
+    margin: 0px;
+    margin-bottom: 10!important;
   }
   .d-flex {
     flex-wrap: wrap;
@@ -1466,4 +1468,7 @@ h1 > span {
     padding-top: 10px;
     border-top: 10px solid #fff !important;
   }
+  .article-text-section img {
+    max-width: 100%!important;
+  };
 }

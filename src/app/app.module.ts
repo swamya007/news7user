@@ -96,6 +96,7 @@ import { PageNotFoundComponent } from './component/page-not-found/page-not-found
 import { OdiaTopstoriesComponent } from './component/odia-topstories/odia-topstories.component';
 import { SingleHomepageComponent } from './component/single-homepage/single-homepage.component';
 import { SinglesearchComponent } from './component/singlesearch/singlesearch.component';
+import { PhotoGalaryComponent } from './component/photo-galary/photo-galary.component';
 
 @NgModule({
   declarations: [
@@ -159,6 +160,7 @@ import { SinglesearchComponent } from './component/singlesearch/singlesearch.com
     OdiaTopstoriesComponent,
     SingleHomepageComponent,
     SinglesearchComponent,
+    PhotoGalaryComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

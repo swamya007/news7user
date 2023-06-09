@@ -14,6 +14,9 @@ export class SinglesearchComponent implements OnInit {
   ads_id: any;
   img_size: any;
   allAdsList: any = [];
+  currentSlide1 = 0;
+
+  translateValue1 = `-${this.currentSlide1 * 100}%`;
 
   ads_top: any = [];
   ads_rightupper: any = [];
@@ -85,7 +88,22 @@ export class SinglesearchComponent implements OnInit {
         }
       );
   }
-
+  moveSlideleft(direction: any) {
+    if (this.ads_leftmiddle) {
+      if (direction === 'plus') {
+        if (this.currentSlide1 !== this.ads_leftmiddle.length - 1) {
+          this.currentSlide1 += 1;
+          this.translateValue1 = `-${this.currentSlide1 * 100}%`;
+          console.log('this is lower');
+        }
+      } else {
+        if (this.currentSlide1 !== 0) {
+          this.currentSlide1 -= 1;
+          this.translateValue1 = `-${this.currentSlide1 * 100}%`;
+        }
+      }
+    }
+  }
   opennewsSecs(id: any) {
     window.location.href = '/post/' + id;
   }

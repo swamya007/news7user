@@ -52,7 +52,10 @@ import {
   MatRadioModule,
   MAT_RADIO_DEFAULT_OPTIONS,
 } from '@angular/material/radio';
-import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  BrowserTransferStateModule,
+} from '@angular/platform-browser';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
@@ -97,6 +100,7 @@ import { OdiaTopstoriesComponent } from './component/odia-topstories/odia-topsto
 import { SingleHomepageComponent } from './component/single-homepage/single-homepage.component';
 import { SinglesearchComponent } from './component/singlesearch/singlesearch.component';
 import { TermsOfUsageComponent } from './terms-of-usage/terms-of-usage.component';
+import { ScrollToTopComponent } from './component/scroll-to-top/scroll-to-top.component';
 
 @NgModule({
   declarations: [
@@ -161,6 +165,7 @@ import { TermsOfUsageComponent } from './terms-of-usage/terms-of-usage.component
     SingleHomepageComponent,
     SinglesearchComponent,
     TermsOfUsageComponent,
+    ScrollToTopComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

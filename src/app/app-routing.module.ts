@@ -25,6 +25,7 @@ import { PrivacyPolicyComponent } from './component/privacy-policy/privacy-polic
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { SingleHomepageComponent } from './component/single-homepage/single-homepage.component';
 import { SinglesearchComponent } from './component/singlesearch/singlesearch.component';
+import { TermsOfUsageComponent } from './terms-of-usage/terms-of-usage.component';
 
 const routes: Routes = [
   // {
@@ -32,9 +33,10 @@ const routes: Routes = [
   //   component: HomeComponent,
   // },
   {
-    path:'',
-    component:SingleHomepageComponent
-  },{
+    path: '',
+    component: SingleHomepageComponent,
+  },
+  {
     path: 'newsearch/:value',
     component: SinglesearchComponent,
   },
@@ -50,9 +52,12 @@ const routes: Routes = [
     path: ':Id',
     component: ArticleComponent,
   },
-
   {
-    path: 'contact-us',
+    path: 'prameya/TermsofUsage',
+    component: TermsOfUsageComponent,
+  },
+  {
+    path: 'prameya/contact-us',
     component: ContactUsComponent,
   },
   // {
@@ -64,7 +69,7 @@ const routes: Routes = [
   //   component: ManageHeaderComponent,
   // },
   {
-    path: 'PrivacyPolicy',
+    path: 'prameya/PrivacyPolicy',
     component: PrivacyPolicyComponent,
   },
   {

@@ -768,8 +768,8 @@ img:nth-child(5) {
 /* --------------------airticle page ------------------------ */
 
 .article-heading {
-  font-size: 28px;
-  font-weight: bold;
+  font-size: 30px !important;
+  font-weight: bold !important;
   /* background: #ddd; */
   padding: 10px;
   border-bottom: 3px solid #f00;
@@ -1130,7 +1130,7 @@ footer ul li a {
 .home-ad-container {
   width: 700px;
   overflow: hidden;
-   margin: 20px;
+  margin: 20px;
 }
 .top-center-add {
   width: 50%;
@@ -1381,7 +1381,7 @@ img:nth-child(5) {
 }
 .article-text-section {
   padding: 20px 0px;
-  font-size: 22px;
+  font-size: 18px;
   /* font-weight: 700; */
   line-height: 30px;
 }
@@ -1447,7 +1447,7 @@ h1 > span {
   .home-ad-container {
     width: 100%;
     margin: 0px;
-    margin-bottom: 10!important;
+    margin-bottom: 10 !important;
   }
   .d-flex {
     flex-wrap: wrap;
@@ -1469,6 +1469,6 @@ h1 > span {
     border-top: 10px solid #fff !important;
   }
   .article-text-section img {
-    max-width: 100%!important;
-  };
+    max-width: 100% !important;
+  }
 }

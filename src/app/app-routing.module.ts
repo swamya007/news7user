@@ -25,6 +25,7 @@ import { PrivacyPolicyComponent } from './component/privacy-policy/privacy-polic
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { SingleHomepageComponent } from './component/single-homepage/single-homepage.component';
 import { SinglesearchComponent } from './component/singlesearch/singlesearch.component';
+import { PhotoGalaryComponent } from './component/photo-galary/photo-galary.component';
 
 const routes: Routes = [
   // {
@@ -68,9 +69,14 @@ const routes: Routes = [
     component: PrivacyPolicyComponent,
   },
   {
+    path:'prameya/gallery',
+    component:PhotoGalaryComponent,
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
-  },
+  }
+  
 ];
 
 @NgModule({

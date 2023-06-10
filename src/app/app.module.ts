@@ -97,6 +97,7 @@ import { OdiaTopstoriesComponent } from './component/odia-topstories/odia-topsto
 import { SingleHomepageComponent } from './component/single-homepage/single-homepage.component';
 import { SinglesearchComponent } from './component/singlesearch/singlesearch.component';
 import { ScrollToTopComponent } from './component/scroll-to-top/scroll-to-top.component';
+import { PhotoGalaryComponent } from './component/photo-galary/photo-galary.component';
 
 @NgModule({
   declarations: [
@@ -161,6 +162,7 @@ import { ScrollToTopComponent } from './component/scroll-to-top/scroll-to-top.co
     SingleHomepageComponent,
     SinglesearchComponent,
     ScrollToTopComponent,
+    PhotoGalaryComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

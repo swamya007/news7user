@@ -8,7 +8,7 @@
           <div class="heading-container">
             <h4 class="news-sub">ଓଡ଼ିଶା</h4>
           </div>
-          <div
+          <article
             class="d-flex news-box ng-star-inserted"
             *ngFor="let post of odishaarr"
             (click)="opennewsSec(post.slug, post.twitter_exists)"
@@ -35,7 +35,7 @@
                 }}</time>
               </div>
             </div>
-          </div>
+          </article>
         </div>
       </section>
     </div>
@@ -79,7 +79,7 @@
               <div class="heading-container">
                 <h4 class="news-sub">ବହୁ ଚର୍ଚ୍ଚିତ ଖବର</h4>
               </div>
-              <div
+              <article
                 class="d-flex news-box1 ng-star-inserted"
                 *ngFor="let post of bahu_charchita_khabar"
                 (click)="opennewsSec(post.slug, post.twitter_exists)"
@@ -108,7 +108,7 @@
                     }}</time>
                   </div>
                 </div>
-              </div>
+              </article>
             </div>
           </section>
         </div>
@@ -125,7 +125,7 @@
             <div class="heading-container">
               <h4 class="news-sub">ଅପରାଧ</h4>
             </div>
-            <div
+            <article
               class="d-flex news-box1 ng-star-inserted"
               *ngFor="let post of crimesnews"
               (click)="opennewsSec(post.slug, post.twitter_exists)"
@@ -152,13 +152,13 @@
                   }}</time>
                 </div>
               </div>
-            </div>
+            </article>
           </div>
         </section>
       </div>
       <div class="col-md-4 col-sm-12 col-12">
         <section>
-          <div class="news-section1">
+          <article class="news-section1">
             <div class="heading-container">
               <h4 class="news-sub">ଟ୍ୱିନ୍ ସିଟି</h4>
             </div>
@@ -191,7 +191,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </article>
         </section>
       </div>
       <div class="col-md-4 col-sm-12 col-12">
@@ -200,7 +200,7 @@
             <div class="heading-container">
               <h4 class="news-sub">ରାଜନୀତି</h4>
             </div>
-            <div
+            <article
               class="d-flex news-box1 ng-star-inserted"
               *ngFor="let post of polticesnews"
               (click)="opennewsSec(post.slug, post.twitter_exists)"
@@ -227,7 +227,7 @@
                   }}</time>
                 </div>
               </div>
-            </div>
+            </article>
           </div>
         </section>
       </div>
@@ -241,7 +241,7 @@
             <div class="heading-container">
               <h4 class="news-sub">କ୍ରୀଡା</h4>
             </div>
-            <div
+            <article
               class="d-flex news-box1 ng-star-inserted"
               *ngFor="let post of sportsnews"
               (click)="opennewsSec(post.slug, post.twitter_exists)"
@@ -268,7 +268,7 @@
                   }}</time>
                 </div>
               </div>
-            </div>
+            </article>
           </div>
         </section>
       </div>
@@ -278,7 +278,7 @@
             <div class="heading-container">
               <h4 class="news-sub">ଟେକ୍ନୋଲୋଜି</h4>
             </div>
-            <div
+            <article
               class="d-flex news-box1 ng-star-inserted"
               *ngFor="let post of technologynews"
               (click)="opennewsSec(post.slug, post.twitter_exists)"
@@ -305,7 +305,7 @@
                   }}</time>
                 </div>
               </div>
-            </div>
+            </article>
           </div>
         </section>
       </div>
@@ -315,7 +315,7 @@
             <div class="heading-container">
               <h4 class="news-sub">ମନୋରଞ୍ଜନ</h4>
             </div>
-            <div
+            <article
               class="d-flex news-box1 ng-star-inserted"
               *ngFor="let post of entermentaarr"
               (click)="opennewsSec(post.slug, post.twitter_exists)"
@@ -342,7 +342,7 @@
                   }}</time>
                 </div>
               </div>
-            </div>
+            </article>
           </div>
         </section>
       </div>
@@ -357,7 +357,7 @@
     <section>
       <div class="recent-stories">
         <div class="row">
-          <div
+          <article
             class="col-md-3 col-sm-12 col-12 news-img-container ng-star-inserted"
             *ngFor="
               let post of latestnews
@@ -382,7 +382,7 @@
             <div class="news-date">
               {{ post.post_date | date : "MMMM dd, yyyy" }}
             </div>
-          </div>
+          </article>
         </div>
       </div>
       <div class="d-flex justify-content-center">
@@ -411,7 +411,7 @@
    <div  class="news-date">4/11/23, 2:12 PM</div>
  </div>
    </div> -->
-        <div
+        <article
           class="col-md-4 col-sm-12 col-12 news-img-container"
           *ngFor="let post of slidearrayfeature"
           (click)="opennewsSec(post.slug, post.twitter_exists)"
@@ -421,7 +421,7 @@
             <p>{{ post.post_title ? getShortName(post.post_title) : "" }}</p>
             <div class="news-date">{{ post.post_date | date : "short" }}</div>
           </div>
-        </div>
+        </article>
       </div>
     </div>
   </div>

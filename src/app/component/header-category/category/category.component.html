@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-8 col-sm-12 col-12">
       <div class="news-section cointainer">
-        <div
+        <article
           class="row news-box"
           (click)="opennewsSec(post.slug, post.twitter_exists)"
           *ngFor="
@@ -25,7 +25,7 @@
               [innerHTML]="getShortPostContent(post.post_content)"
             ></p>
           </div>
-        </div>
+        </article>
       </div>
       <div
         class="col-lg-12 col-md-12 col-12 w-100"
@@ -148,7 +148,7 @@
             <div class="heading-container">
               <h4 class="news-sub">ରାଜନୀତି</h4>
             </div>
-            <div
+            <article
               class="row news-box ng-star-inserted"
               *ngFor="let post of polticesnews"
               (click)="opennewsSec(post.slug, post.twitter_exists)"
@@ -175,7 +175,7 @@
                   }}</time>
                 </div>
               </div>
-            </div>
+            </article>
           </div>
         </div>
       </div>
@@ -184,7 +184,7 @@
         <div class="heading-container">
           <h4 class="news-sub">ମନୋରଞ୍ଜନ</h4>
         </div>
-        <div
+        <article
           class="row news-box ng-star-inserted"
           *ngFor="let post of entermentaarr"
           (click)="opennewsSec(post.slug, post.twitter_exists)"
@@ -209,7 +209,7 @@
               }}</time>
             </div>
           </div>
-        </div>
+        </article>
       </div>
       <div class="prameya-epaper">
         <div class="advertisement-container-long">
@@ -256,7 +256,7 @@
           <div class="heading-container">
             <h4 class="news-sub">କ୍ରୀଡା</h4>
           </div>
-          <div
+          <article
             class="row news-box ng-star-inserted"
             *ngFor="let post of sportsnews"
             (click)="opennewsSec(post.slug, post.twitter_exists)"
@@ -283,7 +283,7 @@
                 }}</time>
               </div>
             </div>
-          </div>
+          </article>
         </div>
       </div>
     </div>

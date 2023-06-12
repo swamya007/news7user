@@ -9,7 +9,7 @@
           <span target="_blank" class="ng-star-inserted"> </span>
           <!---->
         </h1>
-       
+
         <div class="author-cat-section">
           <div class="author-section">
             <p>
@@ -64,7 +64,8 @@
             <p>Share</p>
           </div>
         </div>
-      </div>      <div class="article-section-container ng-star-inserted">
+      </div>
+      <div class="article-section-container ng-star-inserted">
         <div class="article-text-section">
           <div class="related-content-section">
             <div class="related-content-section-heading">
@@ -75,7 +76,7 @@
             <div class="related-content-section-cards prameya-epapers">
               <div class="news-section">
                 <div class="d-flex flex-wrap news-box">
-                  <div
+                  <article
                     class="col-md-4 col-sm-12 col-12 news-img-container ng-star-inserted"
                     *ngFor="let post of nextthree"
                     (click)="opennewsSec(post.slug, post.twitter_exists)"
@@ -91,7 +92,7 @@
                         {{ post.post_date | date : "short" }}
                       </div>
                     </div>
-                  </div>
+                  </article>
 
                   <!---->
                 </div>
@@ -109,7 +110,7 @@
           class="prameya-epaper-image"
         />
       </div>
-      <div class="prameya-epaper"  style="height: 280px;">
+      <div class="prameya-epaper" style="height: 280px">
         <div class="advertisement-space-container-first">
           <div class="advertisement-space-container-first">
             <div class="slider">
@@ -155,7 +156,7 @@
             <div class="heading-container">
               <h4 class="news-sub">ରାଜନୀତି</h4>
             </div>
-            <div
+            <article
               class="d-flex news-box ng-star-inserted"
               *ngFor="let post of polticesnews"
               (click)="opennewsSec(post.slug, post.twitter_exists)"
@@ -182,7 +183,7 @@
                   }}</time>
                 </div>
               </div>
-            </div>
+            </article>
           </div>
         </div>
       </div>
@@ -192,7 +193,7 @@
             <div class="heading-container">
               <h4 class="news-sub">ମନୋରଞ୍ଜନ</h4>
             </div>
-            <div
+            <article
               class="d-flex news-box ng-star-inserted"
               *ngFor="let post of entermentaarr"
               (click)="opennewsSec(post.slug, post.twitter_exists)"
@@ -219,7 +220,7 @@
                   }}</time>
                 </div>
               </div>
-            </div>
+            </article>
             <!---->
           </div>
         </div>
@@ -268,7 +269,7 @@
             <div class="heading-container">
               <h4 class="news-sub">କ୍ରୀଡା</h4>
             </div>
-            <div
+            <article
               class="d-flex news-box ng-star-inserted"
               *ngFor="let post of sportsnews"
               (click)="opennewsSec(post.slug, post.twitter_exists)"
@@ -295,7 +296,7 @@
                   }}</time>
                 </div>
               </div>
-            </div>
+            </article>
           </div>
         </div>
       </div>
@@ -305,7 +306,7 @@
             <div class="heading-container">
               <h4 class="news-sub">ଅପରାଧ</h4>
             </div>
-            <div
+            <article
               class="d-flex news-box ng-star-inserted"
               *ngFor="let post of crimesnews"
               (click)="opennewsSec(post.slug, post.twitter_exists)"
@@ -332,7 +333,7 @@
                   }}</time>
                 </div>
               </div>
-            </div>
+            </article>
           </div>
         </div>
       </div>

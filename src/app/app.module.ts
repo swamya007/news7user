@@ -52,7 +52,10 @@ import {
   MatRadioModule,
   MAT_RADIO_DEFAULT_OPTIONS,
 } from '@angular/material/radio';
-import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  BrowserTransferStateModule,
+} from '@angular/platform-browser';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
@@ -96,6 +99,7 @@ import { PageNotFoundComponent } from './component/page-not-found/page-not-found
 import { OdiaTopstoriesComponent } from './component/odia-topstories/odia-topstories.component';
 import { SingleHomepageComponent } from './component/single-homepage/single-homepage.component';
 import { SinglesearchComponent } from './component/singlesearch/singlesearch.component';
+import { TermsOfUsageComponent } from './terms-of-usage/terms-of-usage.component';
 import { ScrollToTopComponent } from './component/scroll-to-top/scroll-to-top.component';
 import { PhotoGalaryComponent } from './component/photo-galary/photo-galary.component';
 
@@ -161,6 +165,7 @@ import { PhotoGalaryComponent } from './component/photo-galary/photo-galary.comp
     OdiaTopstoriesComponent,
     SingleHomepageComponent,
     SinglesearchComponent,
+    TermsOfUsageComponent,
     ScrollToTopComponent,
     PhotoGalaryComponent
   ],

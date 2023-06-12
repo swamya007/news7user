@@ -1,508 +1,742 @@
 <app-header></app-header>
 <app-latest-news-header></app-latest-news-header>
 <div class="home-first-container">
-   <div class="row">
-  <div class="col-md-3 col-sm-12 col-12">
-   <section>
-  <div class="news-section1">
-   <div class="heading-container">
- <h4 class="news-sub">ଓଡ଼ିଶା</h4>
-   </div>
-   <div class="d-flex news-box ng-star-inserted" *ngFor="let post of odishaarr" (click)="opennewsSec(post.slug,post.twitter_exists)">
- <div class="col-md-4 col-sm-4 col-4 news-img-container">
-   <img  src="{{ post.home_img != null && post.home_img != undefined ? post.home_img : post.guid }}" loading="lazy"
-   fetchPrirority="high" [attr.alt]="post.media_alt_text">
- </div>
- <div class="col-md-8 col-sm-8 col-8 news-text-container">
-   <p>{{ post.post_title ? getShortNamebhu(post.post_title) : '' }}</p>
-   <div class="news-date"> <time class="news-date">{{
-    post.post_date | date : "MMMM dd, yyyy"
-    }}</time></div>
- </div>
-
-   </div>
-   <div class="view-more ">
-    <button class="mat-raised-button">View More</button>
-   </div>
-  </div>
-   </section>
-  </div>
-  <div class="col-md-9 col-sm-12 col-12">
-   <div class="row">
-  <div class="col-md-8 col-sm-12 col-12">
-    <section>
-      <div id="slider">
-        <figure  *ngFor="let post of slidearrayfeature">
-          <div style="float:left;">
-        <img [src]="post.guid" loading="lazy" fetchPrirority="high"
-          [attr.alt]="post.media_alt_text" alt (click)="opennewsSec(post.slug,post.twitter_exists)">
-           <!-- <div class="slider-caption">
+  <div class="row">
+    <div class="col-md-3 col-sm-12 col-12">
+      <section>
+        <div class="news-section1">
+          <div class="heading-container">
+            <h4 class="news-sub">ଓଡ଼ିଶା</h4>
+          </div>
+          <article
+            class="d-flex news-box ng-star-inserted"
+            *ngFor="let post of odishaarr"
+            (click)="opennewsSec(post.slug, post.twitter_exists)"
+          >
+            <div class="col-md-4 col-sm-4 col-4 news-img-container">
+              <img
+                src="{{
+                  post.home_img != null && post.home_img != undefined
+                    ? post.home_img
+                    : post.guid
+                }}"
+                loading="lazy"
+                fetchPrirority="high"
+                [attr.alt]="post.media_alt_text"
+              />
+            </div>
+            <div class="col-md-8 col-sm-8 col-8 news-text-container">
+              <p>
+                {{ post.post_title ? getShortNamebhu(post.post_title) : "" }}
+              </p>
+              <div class="news-date">
+                <time class="news-date">{{
+                  post.post_date | date : "MMMM dd, yyyy"
+                }}</time>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+    <div class="col-md-9 col-sm-12 col-12">
+      <div class="row">
+        <div class="col-md-8 col-sm-12 col-12">
+          <section>
+            <div id="slider">
+              <figure *ngFor="let post of slidearrayfeature">
+                <div style="float: left">
+                  <img
+                    [src]="post.guid"
+                    loading="lazy"
+                    fetchPrirority="high"
+                    [attr.alt]="post.media_alt_text"
+                    alt
+                    (click)="opennewsSec(post.slug, post.twitter_exists)"
+                  />
+                  <!-- <div class="slider-caption">
             <h1 class="slider-heading" >{{
               post.post_title }}</h1>
             <p class="slider-txt"> {{ post.post_date | date : "MMMM dd,
               yyyy" }}</p>
           </div> -->
-          <figcaption>
-            
-              <h1 class="slider-heading" >
-                {{ post.post_title }}
-              </h1>
-              <p class="slider-txt"> 
-                {{ post.post_date | date : "MMMM dd, yyyy" }}
-              </p>
-           
-          </figcaption>
-          </div>
-        </figure>
-    
+                  <figcaption>
+                    <h1 class="slider-heading">
+                      {{ post.post_title }}
+                    </h1>
+                    <p class="slider-txt">
+                      {{ post.post_date | date : "MMMM dd, yyyy" }}
+                    </p>
+                  </figcaption>
+                </div>
+              </figure>
+            </div>
+          </section>
         </div>
-  </section>
-  </div>
-  <div class="col-md-4 col-sm-12 col-12">
-   <section>
- <div class="news-section1">
-   <div class="heading-container">
- <h4 class="news-sub">ବହୁ ଚର୍ଚ୍ଚିତ ଖବର</h4>
-   </div>
-   <div class="d-flex news-box1 ng-star-inserted" *ngFor="let post of bahu_charchita_khabar" (click)="opennewsSec(post.slug,post.twitter_exists)">
-    <div class="col-md-4 col-sm-4 col-4 news-img-container">
-  <img src="{{ post.home_img != null && post.home_img != undefined ? post.home_img : post.guid }}"
-  [attr.alt]="post.media_alt_text" loading="lazy" fetchPrirority="high">
+        <div class="col-md-4 col-sm-12 col-12">
+          <section>
+            <div class="news-section1">
+              <div class="heading-container">
+                <h4 class="news-sub">ବହୁ ଚର୍ଚ୍ଚିତ ଖବର</h4>
+              </div>
+              <article
+                class="d-flex news-box1 ng-star-inserted"
+                *ngFor="let post of bahu_charchita_khabar"
+                (click)="opennewsSec(post.slug, post.twitter_exists)"
+              >
+                <div class="col-md-4 col-sm-4 col-4 news-img-container">
+                  <img
+                    src="{{
+                      post.home_img != null && post.home_img != undefined
+                        ? post.home_img
+                        : post.guid
+                    }}"
+                    [attr.alt]="post.media_alt_text"
+                    loading="lazy"
+                    fetchPrirority="high"
+                  />
+                </div>
+                <div class="col-md-8 col-sm-8 col-8 news-text-container">
+                  <p>
+                    {{
+                      post.post_title ? getShortNamebhu(post.post_title) : ""
+                    }}
+                  </p>
+                  <div class="news-date">
+                    <time class="news-date">{{
+                      post.post_date | date : "MMMM dd, yyyy"
+                    }}</time>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+        </div>
+      </div>
     </div>
-    <div  class="col-md-8 col-sm-8 col-8 news-text-container">
-  <p >{{ post.post_title ? getShortNamebhu(post.post_title) : '' }}</p>
-  <div class="news-date"><time class="news-date">{{
-   post.post_date | date : "MMMM dd, yyyy"
-   }}</time></div>
-    </div>
   </div>
-  <div class="view-more ">
-    <button class="mat-raised-button">View More</button>
-   </div>
- </div>
-</section>
-  </div>
-   </div>
-  </div>
-   </div>
-  </div>
-  <div class="home-second-container">
-   <div class="home-second-cards-container">
-  <div class="row">
-   <div class="col-md-4 col-sm-12 col-12">
-  <section>
-   <div  class="news-section1">
- <div  class="heading-container">
-   <h4  class="news-sub">ଅପରାଧ </h4>
- </div>
- <div class="d-flex news-box1 ng-star-inserted" *ngFor="let post of crimesnews" (click)="opennewsSec(post.slug,post.twitter_exists)">
-   <div class="col-md-4 col-sm-4 col-4 news-img-container">
- <img src="{{ post.home_img != null && post.home_img != undefined ? post.home_img : post.guid }}"
- [attr.alt]="post.media_alt_text" loading="lazy" fetchPrirority="high">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
- <div class="news-date"><time class="news-date">{{
-  post.post_date | date : "MMMM dd, yyyy"
-  }}</time></div>
-   </div>
- </div>
- <div class="view-more ">
-  <button class="mat-raised-button">View More</button>
- </div>
-   </div>
-  </section>
-   </div>
-   <div class="col-md-4 col-sm-12 col-12">
-  <section >
-   <div  class="news-section1">
- <div  class="heading-container">
-   <h4  class="news-sub">ଟ୍ୱିନ୍ ସିଟି </h4>
- </div>
- 
- <div  class="d-flex news-box1 ng-star-inserted" *ngFor="let post of twinnews" (click)="opennewsSec(post.slug,post.twitter_exists)">
-   <div  class="col-md-4 col-sm-4 col-4 news-img-container"  >
- <img  src="{{ post.home_img != null && post.home_img != undefined ? post.home_img : post.guid }}"
- [attr.alt]="post.media_alt_text" loading="lazy" fetchPrirority="high">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p>{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
- <div  class="news-date"><time class="news-date">{{
-  post.post_date | date : "MMMM dd, yyyy"
-  }}</time></div>
-   </div>
- </div>
- <div class="view-more ">
-  <button class="mat-raised-button">View More</button>
- </div>
+</div>
+<div class="home-second-container">
+  <div class="home-second-cards-container">
+    <div class="row">
+      <div class="col-md-4 col-sm-12 col-12">
+        <section>
+          <div class="news-section1">
+            <div class="heading-container">
+              <h4 class="news-sub">ଅପରାଧ</h4>
+            </div>
+            <article
+              class="d-flex news-box1 ng-star-inserted"
+              *ngFor="let post of crimesnews"
+              (click)="opennewsSec(post.slug, post.twitter_exists)"
+            >
+              <div class="col-md-4 col-sm-4 col-4 news-img-container">
+                <img
+                  src="{{
+                    post.home_img != null && post.home_img != undefined
+                      ? post.home_img
+                      : post.guid
+                  }}"
+                  [attr.alt]="post.media_alt_text"
+                  loading="lazy"
+                  fetchPrirority="high"
+                />
+              </div>
+              <div class="col-md-8 col-sm-8 col-8 news-text-container">
+                <p>
+                  {{ post.post_title ? getShortName(post.post_title) : "" }}
+                </p>
+                <div class="news-date">
+                  <time class="news-date">{{
+                    post.post_date | date : "MMMM dd, yyyy"
+                  }}</time>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+      <div class="col-md-4 col-sm-12 col-12">
+        <section>
+          <article class="news-section1">
+            <div class="heading-container">
+              <h4 class="news-sub">ଟ୍ୱିନ୍ ସିଟି</h4>
+            </div>
 
-   </div>
-  </section>
-   </div>
-   <div   class="col-md-4 col-sm-12 col-12">
-  <section>
-   <div  class="news-section1">
- <div  class="heading-container">
-   <h4  class="news-sub">ରାଜନୀତି</h4>
- </div>
- <div  class="d-flex news-box1 ng-star-inserted" *ngFor="let post of polticesnews" (click)="opennewsSec(post.slug,post.twitter_exists)">
-   <div  class="col-md-4 col-sm-4 col-4 news-img-container" >
- <img src="{{ post.home_img != null && post.home_img != undefined ? post.home_img : post.guid }}"
- loading="lazy" fetchPrirority="high" [attr.alt]="post.media_alt_text">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
- <div  class="news-date"><time class="news-date">{{
-  post.post_date | date : "MMMM dd, yyyy"
-  }}</time></div>
-   </div>
- </div>
- <div class="view-more ">
-  <button class="mat-raised-button">View More</button>
- </div>
-   </div>
-  </section>
-   </div>
+            <div
+              class="d-flex news-box1 ng-star-inserted"
+              *ngFor="let post of twinnews"
+              (click)="opennewsSec(post.slug, post.twitter_exists)"
+            >
+              <div class="col-md-4 col-sm-4 col-4 news-img-container">
+                <img
+                  src="{{
+                    post.home_img != null && post.home_img != undefined
+                      ? post.home_img
+                      : post.guid
+                  }}"
+                  [attr.alt]="post.media_alt_text"
+                  loading="lazy"
+                  fetchPrirority="high"
+                />
+              </div>
+              <div class="col-md-8 col-sm-8 col-8 news-text-container">
+                <p>
+                  {{ post.post_title ? getShortName(post.post_title) : "" }}
+                </p>
+                <div class="news-date">
+                  <time class="news-date">{{
+                    post.post_date | date : "MMMM dd, yyyy"
+                  }}</time>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+      </div>
+      <div class="col-md-4 col-sm-12 col-12">
+        <section>
+          <div class="news-section1">
+            <div class="heading-container">
+              <h4 class="news-sub">ରାଜନୀତି</h4>
+            </div>
+            <article
+              class="d-flex news-box1 ng-star-inserted"
+              *ngFor="let post of polticesnews"
+              (click)="opennewsSec(post.slug, post.twitter_exists)"
+            >
+              <div class="col-md-4 col-sm-4 col-4 news-img-container">
+                <img
+                  src="{{
+                    post.home_img != null && post.home_img != undefined
+                      ? post.home_img
+                      : post.guid
+                  }}"
+                  loading="lazy"
+                  fetchPrirority="high"
+                  [attr.alt]="post.media_alt_text"
+                />
+              </div>
+              <div class="col-md-8 col-sm-8 col-8 news-text-container">
+                <p>
+                  {{ post.post_title ? getShortName(post.post_title) : "" }}
+                </p>
+                <div class="news-date">
+                  <time class="news-date">{{
+                    post.post_date | date : "MMMM dd, yyyy"
+                  }}</time>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </div>
   </div>
-   </div>
-   <div class="home-second-cards-container">
-  <div class="row">
-   <div class="col-md-4 col-sm-12 col-12">
-  <section>
-   <div  class="news-section1">
- <div  class="heading-container">
-   <h4  class="news-sub">କ୍ରୀଡା</h4>
- </div>
- <div  class="d-flex news-box1 ng-star-inserted" *ngFor="let post of sportsnews" (click)="opennewsSec(post.slug,post.twitter_exists)">
-   <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img src="{{ post.home_img != null && post.home_img != undefined ? post.home_img : post.guid }}"
- loading="lazy" fetchPrirority="high" [attr.alt]="post.media_alt_text">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
- <div  class="news-date"><time class="news-date">{{
-  post.post_date | date : "MMMM dd, yyyy"
-  }}</time></div>
-   </div>
- </div>
- <div class="view-more ">
-  <button class="mat-raised-button">View More</button>
- </div>
-   </div>
-  </section>
-   </div>
-   <div   class="col-md-4 col-sm-12 col-12">
-  <section >
-   <div  class="news-section1">
- <div  class="heading-container">
-   <h4  class="news-sub">ଟେକ୍ନୋଲୋଜି</h4>
- </div>
- <div  class="d-flex news-box1 ng-star-inserted" *ngFor="let post of technologynews" (click)="opennewsSec(post.slug,post.twitter_exists)">
-   <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img src="{{ post.home_img != null && post.home_img != undefined ? post.home_img : post.guid }}"
- loading="lazy" fetchPrirority="high" [attr.alt]="post.media_alt_text">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
- <div  class="news-date"><time class="news-date">{{
-  post.post_date | date : "MMMM dd, yyyy"
-  }}</time></div>
-   </div>
- </div>
- <div class="view-more ">
-  <button class="mat-raised-button">View More</button>
- </div>
-
-   </div>
-  </section>
-   </div>
-   <div   class="col-md-4 col-sm-12 col-12">
-  <section>
-   <div  class="news-section1">
- <div  class="heading-container">
-   <h4  class="news-sub">ମନୋରଞ୍ଜନ</h4>
- </div>
- <div  class="d-flex news-box1 ng-star-inserted" *ngFor="let post of entermentaarr" (click)="opennewsSec(post.slug,post.twitter_exists)">
-   <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img  src="{{ post.home_img != null && post.home_img != undefined ? post.home_img : post.guid }}"
- [attr.alt]="post.media_alt_text" loading="lazy" fetchPrirority="high">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
- <div  class="news-date"><time class="news-date">{{
-  post.post_date | date : "MMMM dd, yyyy"
-  }}</time></div>
-   </div>
- </div>
- <div class="view-more ">
-  <button class="mat-raised-button">View More</button>
- </div>
-   </div>
-  </section>
-   </div>
+  <div class="home-second-cards-container">
+    <div class="row">
+      <div class="col-md-4 col-sm-12 col-12">
+        <section>
+          <div class="news-section1">
+            <div class="heading-container">
+              <h4 class="news-sub">କ୍ରୀଡା</h4>
+            </div>
+            <article
+              class="d-flex news-box1 ng-star-inserted"
+              *ngFor="let post of sportsnews"
+              (click)="opennewsSec(post.slug, post.twitter_exists)"
+            >
+              <div class="col-md-4 col-sm-4 col-4 news-img-container">
+                <img
+                  src="{{
+                    post.home_img != null && post.home_img != undefined
+                      ? post.home_img
+                      : post.guid
+                  }}"
+                  loading="lazy"
+                  fetchPrirority="high"
+                  [attr.alt]="post.media_alt_text"
+                />
+              </div>
+              <div class="col-md-8 col-sm-8 col-8 news-text-container">
+                <p>
+                  {{ post.post_title ? getShortName(post.post_title) : "" }}
+                </p>
+                <div class="news-date">
+                  <time class="news-date">{{
+                    post.post_date | date : "MMMM dd, yyyy"
+                  }}</time>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+      <div class="col-md-4 col-sm-12 col-12">
+        <section>
+          <div class="news-section1">
+            <div class="heading-container">
+              <h4 class="news-sub">ଟେକ୍ନୋଲୋଜି</h4>
+            </div>
+            <article
+              class="d-flex news-box1 ng-star-inserted"
+              *ngFor="let post of technologynews"
+              (click)="opennewsSec(post.slug, post.twitter_exists)"
+            >
+              <div class="col-md-4 col-sm-4 col-4 news-img-container">
+                <img
+                  src="{{
+                    post.home_img != null && post.home_img != undefined
+                      ? post.home_img
+                      : post.guid
+                  }}"
+                  loading="lazy"
+                  fetchPrirority="high"
+                  [attr.alt]="post.media_alt_text"
+                />
+              </div>
+              <div class="col-md-8 col-sm-8 col-8 news-text-container">
+                <p>
+                  {{ post.post_title ? getShortName(post.post_title) : "" }}
+                </p>
+                <div class="news-date">
+                  <time class="news-date">{{
+                    post.post_date | date : "MMMM dd, yyyy"
+                  }}</time>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+      <div class="col-md-4 col-sm-12 col-12">
+        <section>
+          <div class="news-section1">
+            <div class="heading-container">
+              <h4 class="news-sub">ମନୋରଞ୍ଜନ</h4>
+            </div>
+            <article
+              class="d-flex news-box1 ng-star-inserted"
+              *ngFor="let post of entermentaarr"
+              (click)="opennewsSec(post.slug, post.twitter_exists)"
+            >
+              <div class="col-md-4 col-sm-4 col-4 news-img-container">
+                <img
+                  src="{{
+                    post.home_img != null && post.home_img != undefined
+                      ? post.home_img
+                      : post.guid
+                  }}"
+                  [attr.alt]="post.media_alt_text"
+                  loading="lazy"
+                  fetchPrirority="high"
+                />
+              </div>
+              <div class="col-md-8 col-sm-8 col-8 news-text-container">
+                <p>
+                  {{ post.post_title ? getShortName(post.post_title) : "" }}
+                </p>
+                <div class="news-date">
+                  <time class="news-date">{{
+                    post.post_date | date : "MMMM dd, yyyy"
+                  }}</time>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </div>
   </div>
-   </div>
+</div>
+<div class="home-second-container">
+  <div class="recent-news-heading">
+    <h1>Recent Stories</h1>
   </div>
-  <div class="home-second-container">
-    <div class="recent-news-heading">
-   <h1>Recent Stories</h1>
-    </div>
-    <div class="recent-news-card">
-   <section>
-    <div class="recent-stories">
-   <div  class="row">
-    <div  class="col-md-3 col-sm-12 col-12 news-img-container ng-star-inserted" *ngFor="let post of latestnews | paginate
-    : {
-        itemsPerPage: tableSize,
-        currentPage: page,
-        totalItems: count
-      };
- let i = index"  (click)="opennewsSec(post.slug,post.twitter_exists)">
-  <img  alt="main-news" src="{{ post.guid }}" [attr.alt]="post.media_alt_text" loading="lazy"
-  fetchPrirority="high">
-  <p >{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
-  <div  class="news-date">{{ post.post_date | date : "MMMM dd, yyyy" }}</div>
-    </div>
-   </div>
-    </div>
-    <div class="d-flex justify-content-center">
-     <pagination-controls
-       [responsive]="true"
-       previousLabel="Previous"
-       nextLabel="Next"
-       (pageChange)="onTableDataChange($event)"
-     >
-     </pagination-controls>
-   </div>
-   
-   </section>
-    </div>
-   </div>
-  <div class="home-second-container">
-   <div class="recent-news-heading">
-  <h1>Featured Stories</h1>
-   </div>
-   <div class="recent-news-card">
+  <div class="recent-news-card">
+    <section>
+      <div class="recent-stories">
+        <div class="row">
+          <article
+            class="col-md-3 col-sm-12 col-12 news-img-container ng-star-inserted"
+            *ngFor="
+              let post of latestnews
+                | paginate
+                  : {
+                      itemsPerPage: tableSize,
+                      currentPage: page,
+                      totalItems: count
+                    };
+              let i = index
+            "
+            (click)="opennewsSec(post.slug, post.twitter_exists)"
+          >
+            <img
+              alt="main-news"
+              src="{{ post.guid }}"
+              [attr.alt]="post.media_alt_text"
+              loading="lazy"
+              fetchPrirority="high"
+            />
+            <p>{{ post.post_title ? getShortName(post.post_title) : "" }}</p>
+            <div class="news-date">
+              {{ post.post_date | date : "MMMM dd, yyyy" }}
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <pagination-controls
+          [responsive]="true"
+          previousLabel="Previous"
+          nextLabel="Next"
+          (pageChange)="onTableDataChange($event)"
+        >
+        </pagination-controls>
+      </div>
+    </section>
+  </div>
+</div>
+<div class="home-second-container">
+  <div class="recent-news-heading">
+    <h1>Featured Stories</h1>
+  </div>
+  <div class="recent-news-card">
     <div class="news-section">
-  <div class="row">
-   <!-- <div class="col-md-3 col-sm-12 col-12 news-img-container ng-star-inserted">
+      <div class="row">
+        <!-- <div class="col-md-3 col-sm-12 col-12 news-img-container ng-star-inserted">
  <img src="https://api-dev.prameyanews.com/prameya/document/post/2/2_103_1680846705276.jpg">
  <div class="news-text-container">
    <p>ଘର ଭିତରୁ ମହିଳାଙ୍କ ଝୁଲନ୍ତା ମୃତଦେହ ଉଦ୍ଧାର</p>
    <div  class="news-date">4/11/23, 2:12 PM</div>
  </div>
-   </div> --><div
-      class="col-md-4 col-sm-12 col-12 news-img-container"
-      *ngFor="let post of slidearrayfeature"
-      (click)="opennewsSec(post.slug,post.twitter_exists)"
-    >
-      <img [src]="post.guid" />
-      <div class="news-text-container">
-        <p>{{ post.post_title ? getShortName(post.post_title) : "" }}</p>
-        <div class="news-date">{{ post.post_date | date : "short" }}</div>
+   </div> -->
+        <article
+          class="col-md-4 col-sm-12 col-12 news-img-container"
+          *ngFor="let post of slidearrayfeature"
+          (click)="opennewsSec(post.slug, post.twitter_exists)"
+        >
+          <img [src]="post.guid" />
+          <div class="news-text-container">
+            <p>{{ post.post_title ? getShortName(post.post_title) : "" }}</p>
+            <div class="news-date">{{ post.post_date | date : "short" }}</div>
+          </div>
+        </article>
       </div>
     </div>
-  
-   
-  
   </div>
-  
-   </div>
- 
-   </div>
-  </div>
-  <app-search-sticky></app-search-sticky>
+</div>
+<app-footer></app-footer>
+<app-search-sticky></app-search-sticky>
 
-  <section>
-   <div class="footer-container">
-  <div class="row">
-   <div class="col-md-3 col-sm-6 col-12">
-  <section>
-  
- <div class="heading-container">
-   <h4 class="news-sub">କ୍ୟାମ୍ପସ୍ ମ୍ୟୁଜ୍ </h4>
- </div>
- <div class="d-flex news-box ng-star-inserted" *ngFor="let post of campusnews" (click)="opennewsSec(post.slug,post.twitter_exists)">
-   <div class="col-md-4 col-sm-4 col-5 news-img-container" >
- <img src="{{ post.home_img != null && post.home_img != undefined ? post.home_img : post.guid }}"
- [attr.alt]="post.media_alt_text" loading="lazy" fetchPrirority="high">
-   </div>
-   <div class="col-md-8 col-sm-8 col-7 news-text-container">
- <p>{{ post.post_title ? getShortName(post.post_title) : '' }}</p>
- <div class="news-date"><time class="news-date">{{
-  post.post_date | date : "MMMM dd, yyyy"
-  }}</time></div>
-   </div>
- </div>
-  
-  </section>
-   </div>
-   <div class="col-md-3 col-sm-6 col-12">
-  <section>
-  
- <div class="heading-container">
-   <h4 class="news-sub">ମହିଳାମାନେ</h4>
- </div>
- <div  class="d-flex news-box ng-star-inserted" *ngFor="let post of womensnews" (click)="opennewsSec(post.slug,post.twitter_exists)">
-   <div  class="col-md-4 col-sm-4 col-5 news-img-container">
- <img  [src]="post.home_img != null && post.home_img != undefined ? post.home_img : post.guid" loading="lazy"
- fetchPrirority="high" [attr.alt]="post.media_alt_text">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-7 news-text-container">
- <p>{{ post.post_title ? getShortName(post.post_title) : ''}}</p>
- <div  class="news-date"><time class="news-date">{{
-  post.post_date | date : "MMMM dd, yyyy"
-  }}</time></div>
-   </div>
- </div>
- 
+<!-- <section>
+  <div class="footer-container">
+    <div class="row">
+      <div class="col-md-3 col-sm-6 col-12">
+        <section>
+          <div class="heading-container">
+            <h4 class="news-sub">କ୍ୟାମ୍ପସ୍ ମ୍ୟୁଜ୍</h4>
+          </div>
+          <div
+            class="d-flex news-box ng-star-inserted"
+            *ngFor="let post of campusnews"
+            (click)="opennewsSec(post.slug, post.twitter_exists)"
+          >
+            <div class="col-md-4 col-sm-4 col-5 news-img-container">
+              <img
+                src="{{
+                  post.home_img != null && post.home_img != undefined
+                    ? post.home_img
+                    : post.guid
+                }}"
+                [attr.alt]="post.media_alt_text"
+                loading="lazy"
+                fetchPrirority="high"
+              />
+            </div>
+            <div class="col-md-8 col-sm-8 col-7 news-text-container">
+              <p>{{ post.post_title ? getShortName(post.post_title) : "" }}</p>
+              <div class="news-date">
+                <time class="news-date">{{
+                  post.post_date | date : "MMMM dd, yyyy"
+                }}</time>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="col-md-3 col-sm-6 col-12">
+        <section>
+          <div class="heading-container">
+            <h4 class="news-sub">ମହିଳାମାନେ</h4>
+          </div>
+          <div
+            class="d-flex news-box ng-star-inserted"
+            *ngFor="let post of womensnews"
+            (click)="opennewsSec(post.slug, post.twitter_exists)"
+          >
+            <div class="col-md-4 col-sm-4 col-5 news-img-container">
+              <img
+                [src]="
+                  post.home_img != null && post.home_img != undefined
+                    ? post.home_img
+                    : post.guid
+                "
+                loading="lazy"
+                fetchPrirority="high"
+                [attr.alt]="post.media_alt_text"
+              />
+            </div>
+            <div class="col-md-8 col-sm-8 col-7 news-text-container">
+              <p>{{ post.post_title ? getShortName(post.post_title) : "" }}</p>
+              <div class="news-date">
+                <time class="news-date">{{
+                  post.post_date | date : "MMMM dd, yyyy"
+                }}</time>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="col-md-3 col-sm-6 col-12">
+        <section>
+          <div class="heading-container">
+            <h4 class="news-sub">ବିଜ୍ଞାନ</h4>
+          </div>
+          <div
+            class="row news-box ng-star-inserted"
+            *ngFor="let post of scincenews"
+            (click)="opennewsSec(post.slug, post.twitter_exists)"
+          >
+            <div class="col-md-4 col-sm-4 col-4 news-img-container">
+              <img
+                [src]="
+                  post.home_img != null && post.home_img != undefined
+                    ? post.home_img
+                    : post.guid
+                "
+                loading="lazy"
+                fetchPrirority="high"
+                [attr.alt]="post.media_alt_text"
+              />
+            </div>
+            <div class="col-md-8 col-sm-8 col-8 news-text-container">
+              <p>{{ post.post_title ? getShortName(post.post_title) : "" }}</p>
+              <div class="news-date">
+                <time class="news-date">{{
+                  post.post_date | date : "MMMM dd, yyyy"
+                }}</time>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="col-md-3 col-sm-6 col-12">
+        <section>
+          <div class="heading-container">
+            <h4 class="news-sub">ଟ୍ୱିନ୍ ସିଟି</h4>
+          </div>
+          <div
+            class="row news-box ng-star-inserted"
+            *ngFor="let post of scincenews"
+            (click)="opennewsSec(post.slug, post.twitter_exists)"
+          >
+            <div class="col-md-4 col-sm-4 col-4 news-img-container">
+              <img
+                [src]="
+                  post.home_img != null && post.home_img != undefined
+                    ? post.home_img
+                    : post.guid
+                "
+                loading="lazy"
+                fetchPrirority="high"
+                [attr.alt]="post.media_alt_text"
+              />
+            </div>
+            <div class="col-md-8 col-sm-8 col-8 news-text-container">
+              <p>{{ post.post_title ? getShortName(post.post_title) : "" }}</p>
+              <div class="news-date">
+                <time class="news-date">{{
+                  post.post_date | date : "MMMM dd, yyyy"
+                }}</time>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
 
- 
-  </section>
-   </div>
-   <div class="col-md-3 col-sm-6 col-12">
-  <section>
-   
- <div class="heading-container">
-   <h4 class="news-sub">ବିଜ୍ଞାନ</h4>
- </div>
- <div class="row news-box ng-star-inserted" *ngFor="let post of scincenews" (click)="opennewsSec(post.slug,post.twitter_exists)">
-   <div class="col-md-4 col-sm-4 col-4 news-img-container">
- <img [src]="post.home_img != null && post.home_img != undefined ? post.home_img : post.guid" loading="lazy"
- fetchPrirority="high" [attr.alt]="post.media_alt_text">
-   </div>
-   <div class="col-md-8 col-sm-8 col-8 news-text-container">
- <p >{{ post.post_title ? getShortName(post.post_title) : ''}}</p>
- <div class="news-date"><time class="news-date">{{
-  post.post_date | date : "MMMM dd, yyyy"
-  }}</time></div>
-   </div>
- </div>
- 
- 
-  
-  </section>
-   </div>
-   <div class="col-md-3 col-sm-6 col-12">
-  <section>
-  
- <div  class="heading-container">
-   <h4  class="news-sub">ଟ୍ୱିନ୍ ସିଟି</h4>
- </div>
- <div  class="row news-box ng-star-inserted" *ngFor="let post of scincenews" (click)="opennewsSec(post.slug,post.twitter_exists)">
-   <div  class="col-md-4 col-sm-4 col-4 news-img-container">
- <img  [src]="post.home_img != null && post.home_img != undefined ? post.home_img : post.guid" loading="lazy"
- fetchPrirority="high" [attr.alt]="post.media_alt_text">
-   </div>
-   <div  class="col-md-8 col-sm-8 col-8 news-text-container">
- <p  >{{ post.post_title ? getShortName(post.post_title) : ''}}</p>
- <div  class="news-date"><time class="news-date">{{
-  post.post_date | date : "MMMM dd, yyyy"
-  }}</time></div>
-   </div>
- </div>
- 
- 
-
- 
-  </section>
-   </div>
+    <div class="btn-section">
+      <button
+        type="button"
+        routerlink=""
+        class="btn btn-secondary"
+        tabindex="0"
+      >
+        Home
+      </button>
+      <button
+        type="button"
+        routerlink="/category/odisha-news-in-english"
+        class="btn btn-secondary"
+        tabindex="0"
+      >
+        Odisha
+      </button>
+      <button
+        type="button"
+        routerlink="/category/women"
+        class="btn btn-secondary"
+        tabindex="0"
+      >
+        Women
+      </button>
+      <button
+        type="button"
+        routerlink="/category/economy"
+        class="btn btn-secondary"
+        tabindex="0"
+      >
+        Economy
+      </button>
+      <button
+        type="button"
+        routerlink="/category/business"
+        class="btn btn-secondary"
+        tabindex="0"
+      >
+        Business
+      </button>
+      <button
+        type="button"
+        routerlink="/category/nation"
+        class="btn btn-secondary"
+        tabindex="0"
+      >
+        Nation
+      </button>
+    </div>
+  </div> -->
+<!-- <footer class="bg-grey py-5">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-7 bdr-rt">
+          <div class="row">
+            <div class="col-md-6 px-4">
+              <h6 class="footer-header">News</h6>
+              <ul>
+                <li>
+                  <a target="_blank" href="https://www.prameyanews7.com">
+                    News7 Odia</a
+                  >
+                </li>
+                <li>
+                  <a target="_blank" href="https://prameyaepaper.com">
+                    Prameya-ePaper</a
+                  >
+                </li>
+                <li>
+                  <a target="_blank" href="https://www.prameya.com">
+                    Prameya-Odia</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6 px-4">
+              <h6 class="footer-header">Quick Links</h6>
+              <ul>
+                <li>
+                  <a routerlink="/contact-us" href="/contact-us">Contact Us</a>
+                </li>
+                <li>
+                  <a routerlink="/PrivacyPolicy" href="/PrivacyPolicy"
+                    >Privacy Policy</a
+                  >
+                </li>
+                <li>
+                  <a routerlink="/termofuses" href="/termofuses"
+                    >Terms of Usage</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <h6 class="footer-header text-center">Download App</h6>
+          <div class="logo-part">
+            <div class="row">
+              <div class="col-md-4">
+                <ul>
+                  <li>
+                    <a target="_blank" href="https://www.prameyanews7.com">
+                      News7 Odia</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://play.google.com/store/apps/details?id=com.nirmalya.prameya_news7"
+                    >
+                      Prameya <br />(ePaper,Odia,English)
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-8">
+                <div class="download-app">
+                  <img src="assets/img/appstore1.png" />
+                  <img src="assets/img/appstore2.png" />
+                </div>
+                <div class="download-app">
+                  <img src="assets/img/appstore1.png" />
+                  <img src="assets/img/appstore2.png" />
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="social-icon">
+                  <a
+                    target="_blank"
+                    href="https://www.facebook.com/prameyaodia"
+                    class="fa fa-facebook"
+                    aria-hidden="true"
+                  ></a>
+                  <a
+                    target="_blank"
+                    href="https://twitter.com/prameyaodia"
+                    class="fa fa-twitter"
+                    aria-hidden="true"
+                  ></a>
+                  <a class="fa fa-instagram" aria-hidden="true"></a>
+                  <a class="fa fa-linkedin" aria-hidden="true"></a>
+                  <a class="fab fa-telegram-plane" aria-hidden="true"></a>
+                  <a class="fa fa-snapchat-ghost" aria-hidden="true"></a>
+                  <a class="fa fa-youtube" aria-hidden="true"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="credits-container">
+    <p>
+      Copyright © 2022 - <a>Summa Real Media Private Limited</a>. All Rights
+      Reserved.
+    </p>
+    <div class="footer-links-container">
+      <ul class="footer-navigation">
+        <li routerlink="/contact-us" class="navigation-item" tabindex="0">
+          Contact Us
+        </li>
+        <li routerlink="/PrivacyPolicy" class="navigation-item" tabindex="0">
+          Privacy Policy
+        </li>
+        <li routerlink="/termofuses" class="navigation-item" tabindex="0">
+          Terms of Usage
+        </li>
+      </ul>
+    </div>
   </div>
-
-  <div class="btn-section">
-   <button type="button" routerlink="" class="btn btn-secondary" tabindex="0">Home</button>
-   <button type="button" routerlink="/category/odisha-news-in-english" class="btn btn-secondary" tabindex="0"> Odisha </button>
-   <button type="button" routerlink="/category/women" class="btn btn-secondary" tabindex="0"> Women </button>
-   <button type="button" routerlink="/category/economy" class="btn btn-secondary" tabindex="0"> Economy </button>
-   <button type="button" routerlink="/category/business" class="btn btn-secondary" tabindex="0"> Business </button>
-   <button type="button" routerlink="/category/nation" class="btn btn-secondary" tabindex="0"> Nation </button>
-  </div>
-   </div>
-   <footer class="bg-grey py-5">
-  <div class="container-fluid">
-   <div class="row">
-  <div class="col-md-7 bdr-rt">
-   <div class="row">
- <div class="col-md-6 px-4">
-   <h6 class="footer-header">News</h6>
-   <ul   >
- <li   >
-   <a target="_blank" href="https://www.prameyanews7.com"> News7 Odia</a>
- </li>
- <li   >
-   <a target="_blank" href="https://prameyaepaper.com"> Prameya-ePaper</a>
- </li>
- <li   >
-   <a target="_blank" href="https://www.prameya.com"> Prameya-Odia</a>
- </li>
-   </ul>
- </div>
- <div class="col-md-6 px-4">
-   <h6 class="footer-header">Quick Links</h6>
-   <ul   >
- <li   >
-   <a routerlink="/contact-us" href="/contact-us">Contact Us</a>
- </li>
- <li   >
-   <a routerlink="/PrivacyPolicy" href="/PrivacyPolicy">Privacy Policy</a>
- </li>
- <li   >
-   <a routerlink="/termofuses" href="/termofuses">Terms of Usage</a>
- </li>
-   </ul>
- </div>
-   </div>
-  </div>
-  <div class="col-md-5">
-   <h6 class="footer-header text-center">Download App</h6>
-   <div class="logo-part">
- <div class="row">
-   <div class="col-md-4">
- <ul>
-   <li >
- <a href="#"> News7 Odia</a>
-   </li>
-   <li   >
- <a href="https://play.google.com/store/apps/details?id=com.nirmalya.prameya_news7"> Prameya <br>(ePaper,Odia,English) </a>
-   </li>
- </ul>
-   </div>
-   <div class="col-md-8">
- <div class="download-app">
-   <img src="assets/img/appstore1.png">
-   <img src="assets/img/appstore2.png">
- </div>
- <div class="download-app">
-   <img src="assets/img/appstore1.png">
-   <img src="assets/img/appstore2.png">
- </div>
-   </div>
-   <div class="col-md-12">
- <div class="social-icon">
-   <a target="_blank" href="https://www.facebook.com/prameyaodia" class="fa fa-facebook" aria-hidden="true"></a>
-   <a target="_blank" href="https://twitter.com/prameyaodia" class="fa fa-twitter" aria-hidden="true"></a>
-   <a class="fa fa-instagram" aria-hidden="true"></a>
-   <a class="fa fa-linkedin" aria-hidden="true"></a>
-   <a class="fab fa-telegram-plane" aria-hidden="true"></a>
-   <a class="fa fa-snapchat-ghost" aria-hidden="true"></a>
-   <a class="fa fa-youtube" aria-hidden="true"></a>
- </div>
-   </div>
- </div>
-   </div>
-  </div>
-   </div>
-  </div>
-   </footer>
-   <div class="credits-container">
-  <p> Copyright © 2022 - <a   >Summa Real Media Private Limited</a>. All Rights Reserved. </p>
-  <div class="footer-links-container">
-   <ul class="footer-navigation">
-  <li routerlink="/contact-us" class="navigation-item" tabindex="0">Contact Us</li>
-  <li routerlink="/PrivacyPolicy" class="navigation-item" tabindex="0"> Privacy Policy </li>
-  <li routerlink="/termofuses" class="navigation-item" tabindex="0">Terms of Usage</li>
-   </ul>
-  </div>
-   </div>
-
-  </section>
+</section> -->
+<!-- </section> -->

@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-singlesearch',
   templateUrl: './singlesearch.component.html',
-  styleUrls: ['./singlesearch.component.css']
+  styleUrls: ['./singlesearch.component.css'],
 })
 export class SinglesearchComponent implements OnInit {
   customer_id: any;
@@ -40,17 +40,17 @@ export class SinglesearchComponent implements OnInit {
   sportsnews: any = [];
   technologynews: any = [];
   polticesnews: any = [];
-  entermentaarr: any=[];
-  campusnews: any = []
-  scincenews:any = []
+  entermentaarr: any = [];
+  campusnews: any = [];
+  scincenews: any = [];
   twinnews: any = [];
-  latestnews:any = [];
+  latestnews: any = [];
   constructor(
     private adsService: AdserviceService,
     private router: Router,
     private postService: PostserviceService,
     private activatedRoute: ActivatedRoute,
-    private postserviceService: PostserviceService, 
+    private postserviceService: PostserviceService
   ) {
     activatedRoute.params.subscribe((val) => {
       this.customer_id = environment.CUSTOMER_ID;
@@ -58,9 +58,9 @@ export class SinglesearchComponent implements OnInit {
       this.searchval = routeParams.get('value');
       this.getAllAdsList();
       this.getSearchedPost();
-      this.getAllnews();
+      // this.getAllnews();
     });
-   }
+  }
 
   ngOnInit(): void {
     this.customer_id = environment.CUSTOMER_ID;
@@ -68,6 +68,7 @@ export class SinglesearchComponent implements OnInit {
     this.searchval = routeParams.get('value');
     this.getAllAdsList();
     this.getSearchedPost();
+    this.getAllnews();
   }
 
   getSearchedPost() {
@@ -105,7 +106,7 @@ export class SinglesearchComponent implements OnInit {
     }
   }
   opennewsSecs(id: any) {
-    window.location.href = '/post/' + id;
+    window.location.href = '/' + id;
   }
 
   getShortName(user_name: any) {
@@ -144,27 +145,27 @@ export class SinglesearchComponent implements OnInit {
     window.open(url);
   }
 
-  getAllnews(){
+  getAllnews() {
     this.postserviceService.getallnews().subscribe(
       (res: any) => {
         if (res.code == 'success') {
           this.data = res.body;
-          this.data =  this.data?.map((dt: any) => JSON.parse(dt));
-           this.odishaarr =  this.data[0].odisha || [];
-           console.log(this.data,'ss')
-           this.crimesnews =  this.data[0].crime || [];
-           console.log(this.odishaarr,'ss')
+          this.data = this.data?.map((dt: any) => JSON.parse(dt));
+          this.odishaarr = this.data[0].odisha || [];
+          console.log(this.data, 'ss');
+          this.crimesnews = this.data[0].crime || [];
+          console.log(this.odishaarr, 'ss');
 
-           this.homenews =  this.data[0].home || [];
-           this.womensnews =  this.data[0].women || [];
-           this.sportsnews =  this.data[0].sports || [];
-           this.technologynews =  this.data[0].technology || [];
-           this.polticesnews =  this.data[0].politics || [];
-           this.entermentaarr =  this.data[0].entertainment || [];
-           this.campusnews =  this.data[0].campus_muse || [];
-           this.scincenews =  this.data[0].science || [];
-           this.twinnews =  this.data[0].twin_city || [];
-          this.latestnews =this.data[0].latestnews || [];
+          this.homenews = this.data[0].home || [];
+          this.womensnews = this.data[0].women || [];
+          this.sportsnews = this.data[0].sports || [];
+          this.technologynews = this.data[0].technology || [];
+          this.polticesnews = this.data[0].politics || [];
+          this.entermentaarr = this.data[0].entertainment || [];
+          this.campusnews = this.data[0].campus_muse || [];
+          this.scincenews = this.data[0].science || [];
+          this.twinnews = this.data[0].twin_city || [];
+          this.latestnews = this.data[0].latestnews || [];
         } else {
           this.postarr = [];
         }
@@ -173,18 +174,13 @@ export class SinglesearchComponent implements OnInit {
         this.postarr = [];
       }
     );
-    
-    
   }
 
-  opennewsSec(id: any,flag:any) {
-    if(flag === 'Y') {
-      window.location.href='/post/' + id;
+  opennewsSec(id: any, flag: any) {
+    if (flag === 'Y') {
+      window.location.href = '/' + id;
     } else {
-      this.router.navigate (['/post/' + id]) ;
+      this.router.navigate(['/' + id]);
     }
-    
   }
-
-
 }

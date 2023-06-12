@@ -86,6 +86,7 @@ export class ArticleComponent implements OnInit {
             if (this.news.tags) {
               this.news.tags = this.news.tags.replaceAll(',', ', ');
             }
+            console.log(this.news, 'caption');
             this.news.post_content_sanitized =
               this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
             //if(isPlatformBrowser(PLATFORM_ID)) {

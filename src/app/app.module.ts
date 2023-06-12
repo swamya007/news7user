@@ -101,6 +101,7 @@ import { SingleHomepageComponent } from './component/single-homepage/single-home
 import { SinglesearchComponent } from './component/singlesearch/singlesearch.component';
 import { TermsOfUsageComponent } from './terms-of-usage/terms-of-usage.component';
 import { ScrollToTopComponent } from './component/scroll-to-top/scroll-to-top.component';
+import { PhotoGalaryComponent } from './component/photo-galary/photo-galary.component';
 
 @NgModule({
   declarations: [
@@ -166,6 +167,7 @@ import { ScrollToTopComponent } from './component/scroll-to-top/scroll-to-top.co
     SinglesearchComponent,
     TermsOfUsageComponent,
     ScrollToTopComponent,
+    PhotoGalaryComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

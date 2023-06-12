@@ -26,6 +26,7 @@ import { PageNotFoundComponent } from './component/page-not-found/page-not-found
 import { SingleHomepageComponent } from './component/single-homepage/single-homepage.component';
 import { SinglesearchComponent } from './component/singlesearch/singlesearch.component';
 import { TermsOfUsageComponent } from './terms-of-usage/terms-of-usage.component';
+import { PhotoGalaryComponent } from './component/photo-galary/photo-galary.component';
 
 const routes: Routes = [
   // {
@@ -71,6 +72,10 @@ const routes: Routes = [
   {
     path: 'prameya/PrivacyPolicy',
     component: PrivacyPolicyComponent,
+  },
+  {
+    path: 'prameya/gallery',
+    component: PhotoGalaryComponent,
   },
   {
     path: '**',

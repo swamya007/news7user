@@ -1,0 +1,85 @@
+	div.product-chooser div.product-chooser-item{
+		padding: 11px;
+		border-radius: 6px;
+		cursor: pointer;
+		position: relative;
+	    border: 1px solid #d4d4d4;
+		margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 10x;
+        /* height: 40vh; */
+        box-shadow: 5px 5px 10px #dfdfdf;
+    }
+
+		div.product-chooser div.product-chooser-item img{
+			padding: 0;
+		}
+		
+		div.product-chooser div.product-chooser-item span.title{
+			display: block;
+			margin: 10px 0 5px 0;
+			font-weight: bold;
+			font-size: 12px;
+		}
+		
+		div.product-chooser div.product-chooser-item span.description{
+			font-size: 12px;
+		}
+		.galary-sec{
+            padding: 20px 0px;
+        }
+        .description{
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+                    line-clamp: 3; 
+            -webkit-box-orient: vertical;
+            min-height: 10vh;
+        }
+        div.product-chooser div.product-chooser-item{
+            height: 25vh;
+        }
+        
+        @media screen  and (max-device-width:1020px) {
+            div.product-chooser div.product-chooser-item{
+                height:auto;
+            }
+        
+        }
+        @media screen and (min-width:1024px) {
+            div.product-chooser div.product-chooser-item{
+                height: 33vh;
+            }
+        }
+        @media screen and (min-width:1280px) {
+            div.product-chooser div.product-chooser-item{
+                height: 40vh;
+            }
+        }
+        /* @media screen and (min-device-width:1281px) and (max-device-width:1919px) {
+            div.product-chooser div.product-chooser-item{
+                height:260px;
+            }
+        }
+         */
+        @media screen and (min-width:1368px) {
+            div.product-chooser div.product-chooser-item{
+                height: 40vh;
+            }
+        }
+        
+        @media screen and (min-width:1540px) {
+        
+        }
+        @media screen and (min-width:1920px) {
+            div.product-chooser div.product-chooser-item{
+                height: 33vh;
+            }
+        }
+        @media screen and (min-width:2560px) {
+            div.product-chooser div.product-chooser-item{
+                height: 25vh;
+            }
+        }
+       
+        

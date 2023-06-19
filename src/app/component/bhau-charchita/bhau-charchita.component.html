@@ -1,3 +1,5 @@
+<app-header></app-header>
+<app-latest-news-header></app-latest-news-header>
 <div class="article-container top-stories">
   <div class="row">
     <div class="col-md-8 col-sm-12 col-12">
@@ -6,7 +8,7 @@
           class="row news-box"
           (click)="opennewsSec(post.slug, post.twitter_exists)"
           *ngFor="
-            let post of post_array
+            let post of bahu_charchita_khabar_all
               | paginate : { itemsPerPage: 10, currentPage: p }
           "
         >

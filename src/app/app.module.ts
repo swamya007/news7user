@@ -102,6 +102,8 @@ import { SinglesearchComponent } from './component/singlesearch/singlesearch.com
 import { TermsOfUsageComponent } from './terms-of-usage/terms-of-usage.component';
 import { ScrollToTopComponent } from './component/scroll-to-top/scroll-to-top.component';
 import { PhotoGalaryComponent } from './component/photo-galary/photo-galary.component';
+import { BhauCharchitaComponent } from './component/bhau-charchita/bhau-charchita.component';
+import { OpenInNewTabDirective } from './open-in-new-tab.directive';
 
 @NgModule({
   declarations: [
@@ -167,7 +169,9 @@ import { PhotoGalaryComponent } from './component/photo-galary/photo-galary.comp
     SinglesearchComponent,
     TermsOfUsageComponent,
     ScrollToTopComponent,
-    PhotoGalaryComponent
+    PhotoGalaryComponent,
+    BhauCharchitaComponent,
+    OpenInNewTabDirective
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

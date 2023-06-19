@@ -155,6 +155,8 @@ export class ArticleComponent implements OnInit {
           }
           this.news.post_content_sanitized =
             this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
+          this.news.post_click = Math.round(this.news.post_click / 3);
+
           //if(isPlatformBrowser(PLATFORM_ID)) {
           // let div = document.querySelector('.article-text-section');
           // if (div) {
@@ -165,6 +167,7 @@ export class ArticleComponent implements OnInit {
           let imgURL = this.news.guid;
           let newsTitle = this.news.post_title;
           let newsDesc = this.news.meta_description;
+          console.log('check', newsDesc);
           let postURL = this.news.permalink;
           let tags = [
             { name: 'twitter:card', content: 'summary' },
@@ -486,6 +489,23 @@ export class ArticleComponent implements OnInit {
         searchParams.set('url', shareUrl);
         this.navUrl = 'https://api.whatsapp.com/send?text=' + searchParams;
         window.open(this.navUrl);
+        break;
+      case 'telegram':
+        searchParams.set('url', shareUrl);
+        this.navUrl = 'https://t.me/share/url?' + searchParams;
+        window.open(this.navUrl);
+        break;
+      case 'gmail':
+        const subject = encodeURIComponent('Shared URL');
+        const body = encodeURIComponent(`Check out this URL: ${shareUrl}`);
+        this.navUrl = `mailto:?subject=${subject}&body=${body}`;
+        window.location.href = this.navUrl;
+        break;
+      case 'sharechat':
+        const encodedShareUrl = encodeURIComponent(shareUrl);
+        this.navUrl = `https://sharechat.com/share?url=${encodedShareUrl}`;
+        window.open(this.navUrl);
+        break;
     }
   }
 

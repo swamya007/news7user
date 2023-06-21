@@ -138,27 +138,29 @@ export function app(): express.Express {
     res.type('text/xml');
     res.setHeader('Content-Encoding', 'utf8');
     try {
-      let routes = ['', 'prameya/contact-us', 'prameya/termofuses']; // Add your routes here
+      let routes = [{ slug: '' }, { slug: 'prameya/contact-us' }, { slug: 'prameya/termofuses' }]; // Add your routes here
       const response = await axios.get('http://localhost:8073/prameya/api/post/get-sitemap-details-odia').then(res => res.data);
       response.body?.forEach((r:any)=>{
         let routeData = JSON.parse(r);
-        routes.push(routeData.slug)
+        routes.push(routeData)
 
       })
       let sitemapItems = [];
       for(let i = 0; i< routes.length ; i++) {
         let route:any = routes[i];
         
-        let Item = {
+        let Item:any = {
           url: [
             {
-              loc: environment.POST_URL + route,
+              loc: environment.POST_URL + route.slug,
             },
             { changefreq: "daily" },
-            { lastmod: route.post_date },
             { priority: "1.0" },
           ],
         };
+        if(route.post_date) {
+          Item.url.push({ lastmod: route.post_date });
+        }
         //await sitemap.write({ url: route, changefreq: 'monthly', priority: 0.5 });
         sitemapItems.push(Item);
       }
@@ -198,7 +200,7 @@ export function app(): express.Express {
   }));
 
   // All regular routes use the Universal engine
- server.get('/',redisMiddleware, (req, res, next) => {
+ server.get('/', (req, res, next) => {
   // res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
   next();
 });

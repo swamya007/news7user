@@ -115,12 +115,12 @@ export function app(): express.Express {
     res.sendFile(__dirname + '/robots.txt');
   });
 
-  server.get('/rss', async (req, res) => {
-    let resp = await axios.get(
-      'https://moapi.prameyanews.com/prameya/api/rssfeed'
-    );
-    res.type('text/xml').send(resp.data);
-  });
+  // server.get('/rss', async (req, res) => {
+  //   let resp = await axios.get(
+  //     'https://moapi.prameyanews.com/prameya/api/rssfeed'
+  //   );
+  //   res.type('text/xml').send(resp.data);
+  // });
 
   server.get('/rss', async (req, res) => {
     let resp = await axios.get('https://moapi.prameyanews.com/prameya/api/rssfeed');

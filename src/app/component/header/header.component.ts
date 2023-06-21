@@ -4,7 +4,6 @@ import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { AdserviceService } from 'src/app/services/Adservice/adservice.service';
 import { EntryPopupComponent } from '../entry-popup/entry-popup.component';
-import { LoginService } from 'src/app/services/loginService/login.service';
 
 @Component({
   selector: 'app-header',
@@ -32,14 +31,12 @@ export class HeaderComponent implements OnInit {
   currentSlides1 = 0;
   translateValue1 = `-${this.currentSlide1 * 100}%`;
   constructor(
-    private loginService: LoginService,
     private masterAPI: MasterServiceService,
     private adsService: AdserviceService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.isLoggedIn = this.loginService.isLoggedIn();
     this.customer_id = environment.CUSTOMER_ID;
     this.getallheaders();
     this.getAllAdsList();

@@ -5,7 +5,6 @@ import { CategoriesComponent } from './component/categories/categories.component
 import { TopStoriesComponent } from './component/categories/top-stories/top-stories.component';
 import { ContactUsComponent } from './component/contact-us/contact-us.component';
 import { HomeComponent } from './component/home/home.component';
-import { SidenavComponent } from './component/layout/sidenav/sidenav.component';
 import { PasswordComponent } from './password/password.component';
 import { OdishaComponent } from './component/categories/odisha/odisha.component';
 import { NationComponent } from './component/categories/nation/nation.component';
@@ -20,7 +19,6 @@ import { TechnologyComponent } from './component/categories/technology/technolog
 import { BlogCategoryComponent } from './component/categories/blog-category/blog-category.component';
 import { HeaderCategoryComponent } from './component/header-category/header-category.component';
 import { SearchPostComponent } from './component/search-post/search-post.component';
-import { AuthGuard } from './Guards/auth.guard';
 import { PrivacyPolicyComponent } from './component/privacy-policy/privacy-policy.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { SingleHomepageComponent } from './component/single-homepage/single-homepage.component';

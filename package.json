@@ -53,6 +53,7 @@
     "ngx-bootstrap": "^8.0.0",
     "ngx-magic-social-share": "^0.1.2",
     "ngx-pagination": "^6.0.2",
+    "express-xml-bodyparser": "^0.3.0",
     "redis": "^4.6.6",
     "rxjs": "~6.6.0",
     "tslib": "^2.4.0",

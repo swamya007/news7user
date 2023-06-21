@@ -186,6 +186,11 @@ h4.news-sub {
   background: var(--red);
 }
 
+.author-cat-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .category-section {
   background-color: #b50000;
   color: var(--white);
@@ -212,11 +217,6 @@ h4.news-sub {
 .share-cont p {
   margin: 0;
   color: #7b7b7b;
-}
-
-.share-number {
-  font-size: 24px;
-  height: 15px;
 }
 
 .share-text {
@@ -297,6 +297,52 @@ h4.news-sub {
   transition: all 0.5s ease;
 }
 
+.img-caption {
+  font-size: 15px;
+  height: 15px;
+  text-align: end;
+  width: 250px;
+  height: 37px;
+  text-align: center;
+  line-height: 35px;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.share-number {
+  float: right;
+  font-size: 24px;
+  height: 15px;
+  text-align: end;
+  width: 150px;
+  height: 37px;
+  text-align: center;
+  line-height: 35px;
+  position: absolute;
+  bottom: -37px;
+  right: 0;
+  background-color: #af0000;
+  color: #fff;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.share-chat {
+  height: 32px;
+  width: 100px;
+  margin-left: 8px;
+  background-color: #e6ff02;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
 .share-box p {
   margin: 0;
 }
@@ -778,6 +824,7 @@ img:nth-child(5) {
 .article-component-img {
   height: auto;
   margin-bottom: 10px;
+  position: relative;
 }
 .article-component-img img {
   width: 100%;
@@ -1143,6 +1190,7 @@ footer ul li a {
 .home-second-container {
   background-color: #f3f3f3;
   padding: 20px 2.5vw;
+  cursor: pointer;
 }
 .home-third-container {
   background-color: #f3f3f3;
@@ -1407,7 +1455,7 @@ h1 > span {
     max-width: 1320px;
   }
   .news-section1 .news-text-container p {
-    font-size: 15px;
+    font-size: 18px;
     font-weight: bold;
     margin-bottom: 0;
     line-height: 25px;

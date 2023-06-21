@@ -25,6 +25,7 @@ import { SingleHomepageComponent } from './component/single-homepage/single-home
 import { SinglesearchComponent } from './component/singlesearch/singlesearch.component';
 import { TermsOfUsageComponent } from './terms-of-usage/terms-of-usage.component';
 import { PhotoGalaryComponent } from './component/photo-galary/photo-galary.component';
+import { BhauCharchitaComponent } from './component/bhau-charchita/bhau-charchita.component';
 
 const routes: Routes = [
   // {
@@ -58,6 +59,10 @@ const routes: Routes = [
   {
     path: 'prameya/contact-us',
     component: ContactUsComponent,
+  },
+  {
+    path: 'prameya/bhaucharchita',
+    component: BhauCharchitaComponent,
   },
   // {
   //   path: 'login',

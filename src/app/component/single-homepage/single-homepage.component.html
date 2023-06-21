@@ -36,6 +36,14 @@
               </div>
             </div>
           </article>
+          <div class="view-more" *ngIf="odishaarr && odishaarr.length > 0">
+            <button
+              class="mat-raised-button"
+              [routerLink]="odishaarr[0].category_slug"
+            >
+              View More
+            </button>
+          </div>
         </div>
       </section>
     </div>
@@ -109,6 +117,11 @@
                   </div>
                 </div>
               </article>
+              <div class="view-more">
+                <button class="mat-raised-button" routerLink="bhaucharchita">
+                  View More
+                </button>
+              </div>
             </div>
           </section>
         </div>
@@ -153,17 +166,25 @@
                 </div>
               </div>
             </article>
+            <div class="view-more" *ngIf="crimesnews && crimesnews.length > 0">
+              <button
+                class="mat-raised-button"
+                [routerLink]="crimesnews[0].category_slug"
+              >
+                View More
+              </button>
+            </div>
           </div>
         </section>
       </div>
       <div class="col-md-4 col-sm-12 col-12">
         <section>
-          <article class="news-section1">
+          <div class="news-section1">
             <div class="heading-container">
               <h4 class="news-sub">ଟ୍ୱିନ୍ ସିଟି</h4>
             </div>
 
-            <div
+            <article
               class="d-flex news-box1 ng-star-inserted"
               *ngFor="let post of twinnews"
               (click)="opennewsSec(post.slug, post.twitter_exists)"
@@ -190,8 +211,16 @@
                   }}</time>
                 </div>
               </div>
+            </article>
+            <div class="view-more" *ngIf="twinnews && twinnews.length > 0">
+              <button
+                class="mat-raised-button"
+                [routerLink]="twinnews[0].category_slug"
+              >
+                View More
+              </button>
             </div>
-          </article>
+          </div>
         </section>
       </div>
       <div class="col-md-4 col-sm-12 col-12">
@@ -228,6 +257,17 @@
                 </div>
               </div>
             </article>
+            <div
+              class="view-more"
+              *ngIf="polticesnews && polticesnews.length > 0"
+            >
+              <button
+                class="mat-raised-button"
+                [routerLink]="polticesnews[0].category_slug"
+              >
+                View More
+              </button>
+            </div>
           </div>
         </section>
       </div>
@@ -269,6 +309,14 @@
                 </div>
               </div>
             </article>
+            <div class="view-more" *ngIf="sportsnews && sportsnews.length > 0">
+              <button
+                class="mat-raised-button"
+                [routerLink]="sportsnews[0].category_slug"
+              >
+                View More
+              </button>
+            </div>
           </div>
         </section>
       </div>
@@ -306,6 +354,17 @@
                 </div>
               </div>
             </article>
+            <div
+              class="view-more"
+              *ngIf="technologynews && technologynews.length > 0"
+            >
+              <button
+                class="mat-raised-button"
+                [routerLink]="technologynews[0].category_slug"
+              >
+                View More
+              </button>
+            </div>
           </div>
         </section>
       </div>
@@ -343,6 +402,17 @@
                 </div>
               </div>
             </article>
+            <div
+              class="view-more"
+              *ngIf="entermentaarr && entermentaarr.length > 0"
+            >
+              <button
+                class="mat-raised-button"
+                [routerLink]="entermentaarr[0].category_slug"
+              >
+                View More
+              </button>
+            </div>
           </div>
         </section>
       </div>

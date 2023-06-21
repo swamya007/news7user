@@ -11,7 +11,7 @@ import { enableProdMode } from '@angular/core';
 import { readFileSync } from 'fs';
 import { createGzip } from 'zlib';
 import { environment } from 'src/environments/environment';
-import  axios  from 'axios';
+import axios from 'axios';
 import { Readable } from 'stream';
 import { writeFile } from "fs";
 import { promisify } from "util";
@@ -34,26 +34,32 @@ const REDIS_URI = 'redis://localhost:6379';
 var redisIsReady = false;
 async function initRedisClient() {
   try {
-      const client = createClient({ url: REDIS_URI });
-      client.on("error", (err) => { redisIsReady = false; console.log("Redis Client Connection Error")});
-      client.on('ready', function() {
-        redisIsReady = true;
-        console.log('redis is running');
-      });
-      await client.connect();
-      console.log("Redis cashe app database connected...");
-      return client;
+    const client = createClient({ url: REDIS_URI });
+    client.on('error', (err) => {
+      redisIsReady = false;
+      console.log('Redis Client Connection Error');
+    });
+    client.on('ready', function () {
+      redisIsReady = true;
+      console.log('redis is running');
+    });
+    await client.connect();
+    console.log('Redis cashe app database connected...');
+    return client;
   } catch (error) {
-      console.log('Redis app connection Error...', error);
-      return null;
+    console.log('Redis app connection Error...', error);
+    return null;
   }
 }
 
-
 // The Express app is exported so that it can be used by serverless Functions.
-const redisMiddleware = async (req: { url: any; cookies: { loggedIn: any; }; }, res: { send: { (arg0: any): void; (body: any): void; bind?: any; }; }, next: () => void) => {
-  console.log('Called middleware')
-  const client:any = await initRedisClient();
+const redisMiddleware = async (
+  req: { url: any; cookies: { loggedIn: any } },
+  res: { send: { (arg0: any): void; (body: any): void; bind?: any } },
+  next: () => void
+) => {
+  console.log('Called middleware');
+  const client: any = await initRedisClient();
   if (!redisIsReady) {
     next();
     return;
@@ -71,7 +77,7 @@ const redisMiddleware = async (req: { url: any; cookies: { loggedIn: any; }; }, 
         sendReference(body);
       };
       next();
-    } 
+    }
   } catch (error) {
     next();
   }
@@ -106,7 +112,14 @@ export function app(): express.Express {
   // Serve static files from /browser
   server.get('/robots.txt', (req, res) => {
     res.type('text/plain');
-    res.sendFile(__dirname +"/robots.txt");
+    res.sendFile(__dirname + '/robots.txt');
+  });
+
+  server.get('/rss', async (req, res) => {
+    let resp = await axios.get(
+      'https://moapi.prameyanews.com/prameya/api/rssfeed'
+    );
+    res.type('text/xml').send(resp.data);
   });
 
   server.get('/rss', async (req, res) => {
@@ -139,7 +152,7 @@ export function app(): express.Express {
         let Item = {
           url: [
             {
-              loc:  environment.POST_URL+route,
+              loc: environment.POST_URL + route,
             },
             { changefreq: "daily" },
             { lastmod: route.post_date },
@@ -153,21 +166,24 @@ export function app(): express.Express {
         urlset: [
           {
             _attr: {
-              xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9",
-              "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
-              "xsi:schemaLocation": "http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+              xmlns: 'http://www.sitemaps.org/schemas/sitemap/0.9',
+              'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
+              'xsi:schemaLocation':
+                'http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd',
             },
           },
           // indexItem,
           ...sitemapItems,
         ],
       };
-      const sitemap = `<?xml version="1.0" encoding="UTF-8"?>${xml(sitemapObject)}`;
+      const sitemap = `<?xml version="1.0" encoding="UTF-8"?>${xml(
+        sitemapObject
+      )}`;
       // const stream = await sitemap.pipe(gzip);
       // const smStream = await streamToPromise(stream);
       //sitemap.end();
-      await writeFileAsync(__dirname+'/sitemap.xml', sitemap, "utf8");
-      res.sendFile(__dirname+'/sitemap.xml');
+      await writeFileAsync(__dirname + '/sitemap.xml', sitemap, 'utf8');
+      res.sendFile(__dirname + '/sitemap.xml');
     } catch (err) {
       console.error(err);
       res.status(500).end();
@@ -193,7 +209,7 @@ server.get('*',  (req, res) => {
 });
 
   // error handler
-  server.use(function(err:any, req:any, res:any, next:any) {
+  server.use(function (err: any, req: any, res: any, next: any) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -222,7 +238,7 @@ function run(): void {
 // The below code is to ensure that the server is run only when not requiring the bundle.
 declare const __non_webpack_require__: NodeRequire;
 const mainModule = __non_webpack_require__.main;
-const moduleFilename = mainModule && mainModule.filename || '';
+const moduleFilename = (mainModule && mainModule.filename) || '';
 if (moduleFilename === __filename || moduleFilename.includes('iisnode')) {
   run();
 }

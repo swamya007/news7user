@@ -1,4 +1,4 @@
-import { Directive, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, Inject } from '@angular/core';
 
 @Directive({
   selector: '[appOpenInNewTab]',
@@ -8,9 +8,11 @@ export class OpenInNewTabDirective {
 
   @HostListener('contextmenu', ['$event'])
   onContextMenu(event: MouseEvent) {
-    // event.preventDefault(); // Prevent the default context menu from appearing
-    this.getLinkFromEventTarget(event.target);
-    window.open('_blank'); // Open the link in a new tab
+    event.preventDefault(); // Prevent the default context menu from appearing
+    const link = this.getLinkFromEventTarget(event.target);
+    if (link) {
+      window.open(link, '_blank'); // Open the link in a new tab
+    }
   }
 
   private getLinkFromEventTarget(target: EventTarget | null): string | null {

@@ -68,6 +68,9 @@
         </div>
         <div class="article-component-img">
           <img class="article-image" alt="" [src]="news.guid" />
+          <p class="img-caption" *ngIf="news.media_caption">
+            {{ news.media_caption }}
+          </p>
           <p class="share-number">
             {{ news.post_click }} {{ news.post_click === 1 ? "View" : "Views" }}
           </p>

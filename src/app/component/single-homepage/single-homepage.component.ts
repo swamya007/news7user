@@ -33,6 +33,7 @@ export class SingleHomepageComponent implements OnInit {
   slidearrayfeature: any = [];
   bahu_charchita_khabar: any = [];
   bahu_charchita_khabar_all: any = [];
+  sliderdata: any = [];
 
   constructor(
     private title: Title,
@@ -124,6 +125,8 @@ export class SingleHomepageComponent implements OnInit {
             this.scincenews = this.data[0].science || [];
             this.twinnews = this.data[0].twin_city || [];
             this.latestnews = this.data[0].latestnews || [];
+            this.sliderdata = this.data[0].slider_data || [];
+
             console.log();
           } else {
             this.postarr = [];

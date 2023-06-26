@@ -50,7 +50,7 @@
     <div class="col-md-9 col-sm-12 col-12">
       <div class="row">
         <div class="col-md-8 col-sm-12 col-12">
-          <section>
+          <!-- <section>
             <div id="slider">
               <figure *ngFor="let post of slidearrayfeature">
                 <div style="float: left">
@@ -62,12 +62,6 @@
                     alt
                     (click)="opennewsSec(post.slug, post.twitter_exists)"
                   />
-                  <!-- <div class="slider-caption">
-            <h1 class="slider-heading" >{{
-              post.post_title }}</h1>
-            <p class="slider-txt"> {{ post.post_date | date : "MMMM dd,
-              yyyy" }}</p>
-          </div> -->
                   <figcaption>
                     <h1 class="slider-heading">
                       {{ post.post_title }}
@@ -78,6 +72,178 @@
                   </figcaption>
                 </div>
               </figure>
+            </div>
+          </section> -->
+
+          <section>
+            <div class="rt-container">
+              <div class="col-rt-12">
+                <div class="container-slider">
+                  <input
+                    type="radio"
+                    id="i1"
+                    name="images"
+                    checked
+                    class="vis-hid"
+                  />
+                  <input type="radio" id="i2" name="images" class="vis-hid" />
+                  <input type="radio" id="i3" name="images" class="vis-hid" />
+                  <input type="radio" id="i4" name="images" class="vis-hid" />
+                  <input type="radio" id="i5" name="images" class="vis-hid" />
+                  <div class="slide-home_img" id="imgone">
+                    <img
+                      [src]="sliderdata[0].guid"
+                      (click)="
+                        opennewsSec(
+                          sliderdata[0].slug,
+                          sliderdata[0].twitter_exists
+                        )
+                      "
+                    />
+                    <label class="prev" for="i5"><span>&#x2039;</span></label>
+                    <label class="next" for="i2"><span>&#x203a;</span></label>
+                    <figcaption>
+                      <h5
+                        class="slider-heading"
+                        (click)="
+                          opennewsSec(
+                            sliderdata[0].slug,
+                            sliderdata[0].twitter_exists
+                          )
+                        "
+                      >
+                        {{ sliderdata[0].post_title }}
+                      </h5>
+                      <p class="slider-txt">
+                        {{ sliderdata[0].post_date | date : "MMMM dd, yyyy" }}
+                      </p>
+                    </figcaption>
+                  </div>
+                  <div class="slide-home_img" id="imgtwo">
+                    <img
+                      [src]="sliderdata[1].guid"
+                      (click)="
+                        opennewsSec(
+                          sliderdata[1].slug,
+                          sliderdata[1].twitter_exists
+                        )
+                      "
+                    />
+                    <label class="prev" for="i1"><span>&#x2039;</span></label>
+                    <label class="next" for="i3"><span>&#x203a;</span></label>
+                    <figcaption>
+                      <h5
+                        class="slider-heading"
+                        (click)="
+                          opennewsSec(
+                            sliderdata[1].slug,
+                            sliderdata[1].twitter_exists
+                          )
+                        "
+                      >
+                        {{ sliderdata[1].post_title }}
+                      </h5>
+                      <p class="slider-txt">
+                        {{ sliderdata[1].post_date | date : "MMMM dd, yyyy" }}
+                      </p>
+                    </figcaption>
+                  </div>
+                  <div class="slide-home_img" id="imgthree">
+                    <img
+                      [src]="sliderdata[2].guid"
+                      (click)="
+                        opennewsSec(
+                          sliderdata[2].slug,
+                          sliderdata[2].twitter_exists
+                        )
+                      "
+                    />
+                    <label class="prev" for="i2"><span>&#x2039;</span></label>
+                    <label class="next" for="i4"><span>&#x203a;</span></label>
+                    <figcaption>
+                      <h5
+                        class="slider-heading"
+                        (click)="
+                          opennewsSec(
+                            sliderdata[2].slug,
+                            sliderdata[2].twitter_exists
+                          )
+                        "
+                      >
+                        {{ sliderdata[2].post_title }}
+                      </h5>
+                      <p class="slider-txt">
+                        {{ sliderdata[2].post_date | date : "MMMM dd, yyyy" }}
+                      </p>
+                    </figcaption>
+                  </div>
+                  <div class="slide-home_img" id="imgfour">
+                    <img
+                      [src]="sliderdata[3].guid"
+                      (click)="
+                        opennewsSec(
+                          sliderdata[3].slug,
+                          sliderdata[3].twitter_exists
+                        )
+                      "
+                    />
+                    <label class="prev" for="i3"><span>&#x2039;</span></label>
+                    <label class="next" for="i5"><span>&#x203a;</span></label>
+                    <figcaption>
+                      <h5
+                        class="slider-heading"
+                        (click)="
+                          opennewsSec(
+                            sliderdata[3].slug,
+                            sliderdata[3].twitter_exists
+                          )
+                        "
+                      >
+                        {{ sliderdata[3].post_title }}
+                      </h5>
+                      <p class="slider-txt">
+                        {{ sliderdata[3].post_date | date : "MMMM dd, yyyy" }}
+                      </p>
+                    </figcaption>
+                  </div>
+                  <div class="slide-home_img" id="imgfive">
+                    <img
+                      [src]="sliderdata[4].guid"
+                      (click)="
+                        opennewsSec(
+                          sliderdata[4].slug,
+                          sliderdata[4].twitter_exists
+                        )
+                      "
+                    />
+                    <label class="prev" for="i4"><span>&#x2039;</span></label>
+                    <label class="next" for="i1"><span>&#x203a;</span></label>
+                    <figcaption>
+                      <h5 class="slider-heading">
+                        {{ sliderdata[4].post_title }}
+                      </h5>
+                      <p
+                        class="slider-txt"
+                        (click)="
+                          opennewsSec(
+                            sliderdata[4].slug,
+                            sliderdata[4].twitter_exists
+                          )
+                        "
+                      >
+                        {{ sliderdata[4].post_date | date : "MMMM dd, yyyy" }}
+                      </p>
+                    </figcaption>
+                  </div>
+                  <div id="nav_slide">
+                    <label for="i1" class="dots" id="dot1"></label>
+                    <label for="i2" class="dots" id="dot2"></label>
+                    <label for="i3" class="dots" id="dot3"></label>
+                    <label for="i4" class="dots" id="dot4"></label>
+                    <label for="i5" class="dots" id="dot5"></label>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
         </div>

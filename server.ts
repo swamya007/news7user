@@ -13,8 +13,8 @@ import { createGzip } from 'zlib';
 import { environment } from 'src/environments/environment';
 import axios from 'axios';
 import { Readable } from 'stream';
-import { writeFile } from 'fs';
-import { promisify } from 'util';
+import { writeFile } from "fs";
+import { promisify } from "util";
 import 'zone.js/dist/zone-node';
 import 'reflect-metadata';
 import { createClient } from 'redis';
@@ -88,23 +88,21 @@ const gzip = createGzip();
 export function app(): express.Express {
   const server = express();
   const distFolder = join(process.cwd(), 'dist/prameya/browser');
-  const indexHtml = existsSync(join(distFolder, 'index.original.html'))
-    ? 'index.original.html'
-    : 'index';
-  server.use(express.static(join(__dirname, 'public')));
-  server.use(xmlparser());
+  const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
+  server.use(express.static(
+    join(__dirname,"public")
+  ))
+   server.use(xmlparser());
   // server.use((req, res, next) => {
   //   res.setHeader('Content-Security-Policy', "default-src ''; frame-src 'none'");
   //   next();
   // });
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
-
-  server.engine(
-    'html',
-    ngExpressEngine({
-      bootstrap: AppServerModule,
-    })
-  );
+  
+ 
+  server.engine('html', ngExpressEngine({
+    bootstrap: AppServerModule,
+  }));
 
   server.set('view engine', 'html');
   server.set('views', distFolder);
@@ -117,40 +115,52 @@ export function app(): express.Express {
     res.sendFile(__dirname + '/robots.txt');
   });
 
+  // server.get('/rss', async (req, res) => {
+  //   let resp = await axios.get(
+  //     'https://moapi.prameyanews.com/prameya/api/rssfeed'
+  //   );
+  //   res.type('text/xml').send(resp.data);
+  // });
+
   server.get('/rss', async (req, res) => {
-    let resp = await axios.get(
-      'https://moapi.prameyanews.com/prameya/api/rssfeed'
-    );
+    let resp = await axios.get('https://moapi.prameyanews.com/prameya/api/rssfeed');
     res.type('text/xml').send(resp.data);
   });
 
+  server.get('/:category/rss', async (req, res) => {
+    const { category } = req.params;
+    let resp = await axios.get(`https://moapi.prameyanews.com/prameya/api/${category}/rssfeed`);
+    res.type('text/xml').send(resp.data);
+  });
+  
   server.get('/sitemap.xml', async (req, res) => {
     //const sitemap = new SitemapStream({ hostname: environment.POST_URL });
     res.type('text/xml');
     res.setHeader('Content-Encoding', 'utf8');
     try {
-      let routes = ['', 'prameya/contact-us', 'prameya/termofuses']; // Add your routes here
-      const response = await axios
-        .get(
-          'https://moapi.prameyanews.com/prameya/api/post/get-sitemap-details'
-        )
-        .then((res) => res.data);
-      response.body?.forEach((r: any) => {
+      let routes = [{ slug: '' }, { slug: 'prameya/contact-us' }, { slug: 'prameya/termofuses' }]; // Add your routes here
+      const response = await axios.get('http://localhost:8073/prameya/api/post/get-sitemap-details-odia').then(res => res.data);
+      response.body?.forEach((r:any)=>{
         let routeData = JSON.parse(r);
-        routes.push(routeData.slug);
-      });
+        routes.push(routeData)
+
+      })
       let sitemapItems = [];
-      for (let i = 0; i < routes.length; i++) {
-        let route = routes[i];
-        let Item = {
+      for(let i = 0; i< routes.length ; i++) {
+        let route:any = routes[i];
+        
+        let Item:any = {
           url: [
             {
-              loc: environment.POST_URL + route,
+              loc: environment.POST_URL + route.slug,
             },
-            { changefreq: 'daily' },
-            { priority: '1.0' },
+            { changefreq: "daily" },
+            { priority: "1.0" },
           ],
         };
+        if(route.post_date) {
+          Item.url.push({ lastmod: route.post_date });
+        }
         //await sitemap.write({ url: route, changefreq: 'monthly', priority: 0.5 });
         sitemapItems.push(Item);
       }
@@ -182,25 +192,23 @@ export function app(): express.Express {
     }
   });
 
-  server.get(
-    '*.*',
-    express.static(distFolder, {
-      maxAge: '1y',
-    })
-  );
+
+
+  
+  server.get('*.*', express.static(distFolder, {
+    maxAge: '1y'
+  }));
 
   // All regular routes use the Universal engine
-  server.get('/', redisMiddleware, (req, res, next) => {
-    // res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
-    next();
-  });
+ server.get('/',redisMiddleware, (req, res, next) => {
+  // res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+  next();
+});
 
-  server.get('*', (req, res) => {
-    res.render(indexHtml, {
-      req,
-      providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }],
-    });
-  });
+
+server.get('*',  (req, res) => {
+  res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+});
 
   // error handler
   server.use(function (err: any, req: any, res: any, next: any) {
@@ -209,7 +217,7 @@ export function app(): express.Express {
     res.locals.error = req.app.get('env') === 'development' ? err : {};
 
     // render the error page
-    console.log(err.message);
+    console.log(err.message)
     res.status(err.status || 500);
     res.send(err.message);
   });

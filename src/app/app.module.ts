@@ -44,7 +44,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { SidenavComponent } from './component/layout/sidenav/sidenav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -137,7 +136,6 @@ import { OpenInNewTabDirective } from './open-in-new-tab.directive';
     OpinionsComponent,
     ArticleComponent,
     SocialShareComponent,
-    SidenavComponent,
     PasswordComponent,
 
     ForgetpasswordComponent,

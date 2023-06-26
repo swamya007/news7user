@@ -1,6 +1,21 @@
 <app-header></app-header>
 <app-latest-news-header></app-latest-news-header>
 <div class="article-container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <span class="br-span" routerLink="/">Home</span>
+      </li>
+      <li class="breadcrumb-item">
+        <span class="br-span" [routerLink]="news.category_slug">{{
+          news.category_name
+        }}</span>
+      </li>
+      <li class="breadcrumb-item" aria-current="page">
+        <span>{{ news.post_title }}</span>
+      </li>
+    </ol>
+  </nav>
   <div class="row">
     <div class="col-md-8 col-12 bg-light">
       <div class="article-section-container ng-star-inserted">

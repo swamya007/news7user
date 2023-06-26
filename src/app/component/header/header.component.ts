@@ -70,7 +70,6 @@ export class HeaderComponent implements OnInit {
           if (this.headerarry.length > 10) {
             this.newarray = this.headerarry.slice(0, 10);
             this.morearray = this.headerarry.slice(10);
-            console.log(this.newarray, 'head');
           } else {
             this.newarray = this.headerarry;
           }

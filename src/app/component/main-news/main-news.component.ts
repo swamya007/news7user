@@ -39,7 +39,6 @@ export class MainNewsComponent implements OnInit {
         if (res.code == 'success') {
           var data = res.body;
           this.slidearrayfeature = data.map((dt: any) => JSON.parse(dt));
-          console.log(this.slidearrayfeature, 'kkk');
           if (this.slidearrayfeature.length > 3) {
             this.slidearray1 = this.slidearrayfeature.slice(0, 5);
           }
@@ -131,7 +130,7 @@ export class MainNewsComponent implements OnInit {
     // }
   }
 
-    opennewsSec(id: any, flag: any) {
+  opennewsSec(id: any, flag: any) {
     if (flag === 'Y') {
       window.location.href = '/' + id;
     } else {

@@ -32,7 +32,12 @@
         class="custom-marquee-title"
         (click)="opennewsSec(post.redirect_url, post.twitter_exists)"
       >
-        {{ post.ticker_name }}
+        <ng-container *ngIf="post.redirect_url; else nourl">
+          <a> {{ post.ticker_name }}</a>
+        </ng-container>
+        <ng-template #nourl>
+          {{ post.ticker_name }}
+        </ng-template>
       </li>
       <span>||</span>
     </ul>

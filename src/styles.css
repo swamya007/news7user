@@ -15,7 +15,13 @@ body {
 .navbar {
   margin-bottom: 0px;
 }
-
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #fff; /* Adjust as needed */
+  /* Add any other styling you want for the header */
+}
 /** 22-08-2022 **/
 .article-container {
   width: 90%;
@@ -185,7 +191,9 @@ h4.news-sub {
   .mat-ripple-element {
   background: var(--red);
 }
-
+.leftcontent-border {
+  border: 15px solid #ddd;
+}
 .author-cat-section {
   display: flex;
   align-items: center;
@@ -1209,7 +1217,7 @@ footer ul li a {
   } */
 .news-box {
   width: 100%;
-  margin: 8px auto;
+  margin: 0;
   padding: 5px 7px;
 }
 .news-box1 {
@@ -1274,6 +1282,13 @@ footer ul li a {
   /* padding: 7px 5px 0; */
   line-height: 30px;
 }
+.item-three-bg {
+  background: #fff !important;
+}
+.news-section {
+  background-color: #ddd;
+}
+
 .news-section p {
   font-size: 20px;
   font-weight: bold;
@@ -1330,7 +1345,12 @@ footer ul li a {
   margin: 0px 0 15px 0;
 }
 .top-stories {
-  background: #f7f7f7;
+  /* background: #f7f7f7; */
+}
+.item-three {
+  height: 450px;
+  overflow: hidden;
+  background: #fff;
 }
 .strong-txt {
   font-weight: bold !important;
@@ -1344,7 +1364,8 @@ footer ul li a {
 .top-stories .news-box {
   background: #ffffff !important;
   height: auto;
-  margin: 20px 0;
+  /* margin: 20px 0; */
+  margin-bottom: 15px !important;
 }
 
 .news-text-container .post-heading {
@@ -1361,7 +1382,10 @@ footer ul li a {
   max-width: 100%;
   height: auto;
 }
-
+.logo-part .barcodeimg {
+  width: 100px;
+  height: 100px;
+}
 .pic-ctn {
   position: relative;
   width: 100vw;
@@ -1487,6 +1511,9 @@ h1 > span {
   body {
     overflow-x: hidden;
   }
+  .item-three {
+    height: 400px !important;
+  }
   /* :host ::ng-deep .home-ad-container div {
     width: 100% !important;
     height: 40px;
@@ -1521,6 +1548,12 @@ h1 > span {
   }
   .article-text-section img {
     max-width: 100% !important;
+  }
+  .news-section1 {
+    background: var(--white) !important;
+    border: 1px rgb(215, 215, 215) solid !important;
+    margin-bottom: 10px;
+    margin-top: 40px;
   }
 }
 

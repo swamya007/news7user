@@ -1,9 +1,11 @@
-<app-header></app-header>
+<div class="sticky-header">
+  <app-header></app-header>
+</div>
 <app-latest-news-header></app-latest-news-header>
 <div class="article-container top-stories">
   <div class="row">
     <div class="col-md-8 col-sm-12 col-12">
-      <div class="news-section cointainer">
+      <div class="news-section cointainer leftcontent-border">
         <article
           class="row news-box"
           (click)="opennewsSec(post.slug, post.twitter_exists)"
@@ -98,7 +100,7 @@
 
       <div class="prameya-epaper">
         <div>
-          <div class="news-section">
+          <div class="news-section item-three">
             <div class="heading-container">
               <h4 class="news-sub">ରାଜନୀତି</h4>
             </div>
@@ -134,35 +136,37 @@
         </div>
       </div>
       <div class="prameya-epaper">
-        <div class="heading-container">
-          <h4 class="news-sub">ମନୋରଞ୍ଜନ</h4>
-        </div>
-        <article
-          class="row news-box ng-star-inserted"
-          *ngFor="let post of entermentaarr"
-          (click)="opennewsSec(post.slug, post.twitter_exists)"
-        >
-          <div class="col-md-4 col-sm-4 col-4 news-img-container">
-            <img
-              src="{{
-                post.home_img != null && post.home_img != undefined
-                  ? post.home_img
-                  : post.guid
-              }}"
-              [attr.alt]="post.media_alt_text"
-              loading="lazy"
-              fetchPrirority="high"
-            />
+        <div class="news-section item-three">
+          <div class="heading-container">
+            <h4 class="news-sub">ମନୋରଞ୍ଜନ</h4>
           </div>
-          <div class="col-md-8 col-sm-8 col-8 news-text-container">
-            <p>{{ post.post_title ? getShortName(post.post_title) : "" }}</p>
-            <div class="news-date">
-              <time class="news-date">{{
-                post.post_date | date : "MMMM dd, yyyy"
-              }}</time>
+          <article
+            class="row news-box ng-star-inserted"
+            *ngFor="let post of entermentaarr"
+            (click)="opennewsSec(post.slug, post.twitter_exists)"
+          >
+            <div class="col-md-4 col-sm-4 col-4 news-img-container">
+              <img
+                src="{{
+                  post.home_img != null && post.home_img != undefined
+                    ? post.home_img
+                    : post.guid
+                }}"
+                [attr.alt]="post.media_alt_text"
+                loading="lazy"
+                fetchPrirority="high"
+              />
             </div>
-          </div>
-        </article>
+            <div class="col-md-8 col-sm-8 col-8 news-text-container">
+              <p>{{ post.post_title ? getShortName(post.post_title) : "" }}</p>
+              <div class="news-date">
+                <time class="news-date">{{
+                  post.post_date | date : "MMMM dd, yyyy"
+                }}</time>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
       <div class="prameya-epaper">
         <div class="advertisement-container-long">
@@ -204,7 +208,7 @@
       </div>
 
       <div class="prameya-epaper">
-        <div class="news-section">
+        <div class="news-section item-three">
           <div class="heading-container">
             <h4 class="news-sub">କ୍ରୀଡା</h4>
           </div>

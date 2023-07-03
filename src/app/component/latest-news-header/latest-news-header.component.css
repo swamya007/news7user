@@ -103,6 +103,21 @@
   margin-left: 145px;
 }
 
+.custom-marquee-title a {
+  text-decoration: none;
+  color: #ff3209;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.custom-marquee-title a:hover {
+  text-decoration: none;
+  color: #000000 !important;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: transparent !important;
+}
+
 .custom-marquee {
   list-style-type: none;
   margin: 0;
@@ -117,6 +132,7 @@
   padding-left: 20px;
   padding-right: 20px;
   font-size: 20px;
+  font-weight: bold;
 }
 
 .custom-marquee span {

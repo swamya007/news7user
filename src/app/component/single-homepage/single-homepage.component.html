@@ -1,4 +1,6 @@
-<app-header></app-header>
+<div class="sticky-header">
+  <app-header></app-header>
+</div>
 <app-latest-news-header></app-latest-news-header>
 <div class="home-first-container">
   <div class="row">
@@ -9,7 +11,7 @@
             <h4 class="news-sub">ଓଡ଼ିଶା</h4>
           </div>
           <article
-            class="d-flex news-box ng-star-inserted"
+            class="d-flex news-box1 ng-star-inserted"
             *ngFor="let post of odishaarr"
             (click)="opennewsSec(post.slug, post.twitter_exists)"
           >
@@ -284,7 +286,10 @@
                 </div>
               </article>
               <div class="view-more">
-                <button class="mat-raised-button" routerLink="bhaucharchita">
+                <button
+                  class="mat-raised-button"
+                  routerLink="/prameya/bhaucharchita"
+                >
                   View More
                 </button>
               </div>
@@ -636,7 +641,7 @@
     <button
       type="button"
       class="btn btn-secondary"
-      routerLink="/category/odisha-news-in-english"
+      routerLink="/category/odisha"
     >
       Odisha
     </button>
@@ -650,9 +655,9 @@
     <button
       type="button"
       class="btn btn-secondary"
-      routerLink="/category/economy"
+      routerLink="/category/technology"
     >
-      Economy
+      Technology
     </button>
     <button
       type="button"

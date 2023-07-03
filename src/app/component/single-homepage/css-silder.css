@@ -50,6 +50,7 @@ figcaption {
   transition: 0.45s;
   cursor: pointer;
   text-align: center;
+  opacity: 0;
 }
 
 .next {
@@ -77,8 +78,12 @@ label span {
 .next:hover {
   transition: 0.3s;
   color: #ffffff;
+  opacity: 1;
 }
 
+.slider-heading {
+  font-size: 18px;
+}
 .container-slider #nav_slide {
   width: 100%;
   bottom: 12%;
@@ -87,6 +92,7 @@ label span {
   text-align: center;
   z-index: 9;
   cursor: default;
+  display: none;
 }
 
 #nav_slide .dots {
@@ -183,7 +189,7 @@ transition: .3s;
 
   .prev,
   .next {
-    width: 15%;
+    width: 11%;
   }
   #nav_slide .dots {
     width: 12px;

@@ -8,6 +8,9 @@
 .logo-container {
   padding: 10px 13px;
 }
+.logo-container img {
+  cursor: pointer;
+}
 .dropdown-menu {
   padding: 0px !important;
   box-shadow: none !important;

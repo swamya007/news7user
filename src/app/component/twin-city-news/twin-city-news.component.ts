@@ -19,7 +19,6 @@ export class TwinCityNewsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getLatestNews();
-    console.log('twincity');
   }
 
   getShortName(user_name: any) {
@@ -51,7 +50,7 @@ export class TwinCityNewsComponent implements OnInit {
       );
   }
 
-    opennewsSec(id: any, flag: any) {
+  opennewsSec(id: any, flag: any) {
     if (flag === 'Y') {
       window.location.href = '/' + id;
     } else {

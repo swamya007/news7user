@@ -95,7 +95,6 @@ export class SinglesearchComponent implements OnInit {
         if (this.currentSlide1 !== this.ads_leftmiddle.length - 1) {
           this.currentSlide1 += 1;
           this.translateValue1 = `-${this.currentSlide1 * 100}%`;
-          console.log('this is lower');
         }
       } else {
         if (this.currentSlide1 !== 0) {
@@ -152,9 +151,7 @@ export class SinglesearchComponent implements OnInit {
           this.data = res.body;
           this.data = this.data?.map((dt: any) => JSON.parse(dt));
           this.odishaarr = this.data[0].odisha || [];
-          console.log(this.data, 'ss');
           this.crimesnews = this.data[0].crime || [];
-          console.log(this.odishaarr, 'ss');
 
           this.homenews = this.data[0].home || [];
           this.womensnews = this.data[0].women || [];

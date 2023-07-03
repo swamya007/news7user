@@ -273,7 +273,6 @@ export class ArticleComponent implements OnInit {
       );
   }
   getPostBycategory() {
-    console.log(this.postarr[0].category, 'dkkd');
     // this.postarr[0].category= this.cat.replace(/,/g, "")
     if (this.postarr[0].category) {
       this.cat = this.postarr[0].category.split(',')[0];
@@ -282,7 +281,6 @@ export class ArticleComponent implements OnInit {
     if (this.postarr[0].category_name) {
       this.catname = this.postarr[0].category_name.split(',')[0];
     }
-    console.log(this.cat, 'k');
     this.post
       .getPostByCategoryIDodia(1, this.cat, environment.CUSTOMER_ID)
       .subscribe(

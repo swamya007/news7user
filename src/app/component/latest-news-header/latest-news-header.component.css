@@ -1,4 +1,3 @@
-
 .slideshow-container {
   position: relative;
   display: flex;
@@ -29,20 +28,21 @@
   color: #73797f;
 }
 
-.prev, .next {
+.prev,
+.next {
   cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -12px;
-    padding: 0px 8px;
-    color: #888;
-    font-size: 14px;
-    border-radius: 0 3px 3px 0;
-    -webkit-user-select: none;
-    user-select: none;
-    text-decoration: none;
-    border: 1px #ccc solid;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -12px;
+  padding: 0px 8px;
+  color: #888;
+  font-size: 14px;
+  border-radius: 0 3px 3px 0;
+  -webkit-user-select: none;
+  user-select: none;
+  text-decoration: none;
+  border: 1px #ccc solid;
 }
 
 .next {
@@ -56,16 +56,16 @@
   border-radius: 3px;
 }
 
-.prev:hover, .next:hover {
+.prev:hover,
+.next:hover {
   background-color: #e10505;
   color: white;
   border: none;
 }
 
-
 .custom-ticker {
   max-width: 1740px;
-  padding-left: 30px;
+  padding-left: 15px;
   padding-right: 30px;
   margin-right: auto;
   margin-left: auto;
@@ -119,12 +119,12 @@
   font-size: 20px;
 }
 
-.custom-marquee span{
-  color: #781804;}
+.custom-marquee span {
+  color: #781804;
+}
 
-  @media only screen and (max-width: 767px){
-    .custom-ticker
-      {
-        padding-left: 13px!important;
-      }
-    }
+@media only screen and (max-width: 767px) {
+  .custom-ticker {
+    padding-left: 13px !important;
+  }
+}

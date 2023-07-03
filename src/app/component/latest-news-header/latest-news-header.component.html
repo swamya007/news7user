@@ -28,7 +28,12 @@
     class="custom-marquee-style"
   >
     <ul class="custom-marquee" *ngFor="let post of catarr">
-      <li class="custom-marquee-title">{{ post.ticker_name }}</li>
+      <li
+        class="custom-marquee-title"
+        (click)="opennewsSec(post.redirect_url, post.twitter_exists)"
+      >
+        {{ post.ticker_name }}
+      </li>
       <span>||</span>
     </ul>
   </marquee>

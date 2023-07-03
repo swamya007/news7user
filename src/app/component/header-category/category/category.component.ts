@@ -110,7 +110,6 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.customer_id = environment.CUSTOMER_ID;
-    console.log(this.cat_name, 'jimes');
     const routeParams = this.activatedRoute.snapshot.paramMap;
     this.cat_name = routeParams.get('slug');
     if (this.ads_list && this.ads_list.length > 0) {
@@ -137,8 +136,6 @@ export class CategoryComponent implements OnInit {
     //   this.category_three = this.post_array_upper[4].category_name.split(",");
     //   console.log('Category====', this.category_three)
     // }
-
-    console.log(this.post_array, 'console');
   }
   moveSlideleft(direction: any) {
     if (this.ads_leftmiddle) {
@@ -146,7 +143,6 @@ export class CategoryComponent implements OnInit {
         if (this.currentSlide1 !== this.ads_leftmiddle.length - 1) {
           this.currentSlide1 += 1;
           this.translateValue1 = `-${this.currentSlide1 * 100}%`;
-          console.log('this is lower');
         }
       } else {
         if (this.currentSlide1 !== 0) {
@@ -197,27 +193,14 @@ export class CategoryComponent implements OnInit {
           this.sportsnews = this.data[0].sports || [];
           this.polticesnews = this.data[0].politics || [];
           this.entermentaarr = this.data[0].entertainment || [];
-          console.log(this.entermentaarr, 'entermentaarr');
           this.womensnews = this.data[0].women || [];
-          console.log(this.womensnews, 'womensnews');
           this.sportsnews = this.data[0].sports || [];
-          console.log(this.sportsnews, 'sportsnews');
           this.technologynews = this.data[0].technology || [];
-          console.log(this.technologynews, 'technologynews');
           this.polticesnews = this.data[0].politics || [];
-          console.log(this.polticesnews, 'polticesnews');
-
           this.entermentaarr = this.data[0].entertainment || [];
-          console.log(this.entermentaarr, 'entermentaarr');
-
           this.campusnews = this.data[0].campus_muse || [];
-          console.log(this.campusnews, 'campusnews');
-
           this.scincenews = this.data[0].science || [];
-          console.log(this.scincenews, 'scincenews');
-
           this.twinnews = this.data[0].twin_city || [];
-          console.log(this.twinnews, 'twinnews');
         } else {
           this.postarr = [];
         }

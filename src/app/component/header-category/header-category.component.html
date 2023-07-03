@@ -1,8 +1,15 @@
-<app-header></app-header>
+<div class="sticky-header">
+  <app-header></app-header>
+</div>
 <app-latest-news-header></app-latest-news-header>
-<div *ngIf="postarr && postarr.length;">
-    <app-category [post_array]="postarr" [ads_list]="allAdsList" [post_array_upper]="post_array_upper" [post_array_lower]="post_array_lower">
-    </app-category>
+<div *ngIf="postarr && postarr.length">
+  <app-category
+    [post_array]="postarr"
+    [ads_list]="allAdsList"
+    [post_array_upper]="post_array_upper"
+    [post_array_lower]="post_array_lower"
+  >
+  </app-category>
 </div>
 <!-- <ng-template #other_content>
     <div class="other_content">

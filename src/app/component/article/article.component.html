@@ -1,4 +1,6 @@
-<app-header></app-header>
+<div class="sticky-header">
+  <app-header></app-header>
+</div>
 <app-latest-news-header></app-latest-news-header>
 <div class="article-container">
   <nav aria-label="breadcrumb">
@@ -86,9 +88,9 @@
           <p class="img-caption" *ngIf="news.media_caption">
             {{ news.media_caption }}
           </p>
-          <p class="share-number">
+          <!-- <p class="share-number">
             {{ news.post_click }} {{ news.post_click === 1 ? "View" : "Views" }}
-          </p>
+          </p> -->
         </div>
 
         <div
@@ -142,7 +144,11 @@
           class="prameya-epaper-image"
         />
       </div>
-      <div class="prameya-epaper" style="height: 280px">
+      <div
+        class="prameya-epaper"
+        style="height: 280px"
+        *ngIf="ads_rightupper != 0"
+      >
         <div class="advertisement-space-container-first">
           <div class="advertisement-space-container-first">
             <div class="slider">
@@ -257,7 +263,7 @@
           </div>
         </div>
       </div>
-      <div class="prameya-epaper">
+      <div class="prameya-epaper" *ngIf="ads_leftmiddle != 0">
         <div class="advertisement-container-long">
           <div class="slider-long">
             <div

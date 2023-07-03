@@ -1,5 +1,5 @@
 .breadcrumb {
-  padding: 15px 0px !important;
+  padding: 15px !important;
   /* background-color: transparent !important; */
 }
 
@@ -10,4 +10,7 @@
 }
 .news-section {
   background-color: #fff;
+}
+.bg-light {
+  padding: 0px 20px;
 }

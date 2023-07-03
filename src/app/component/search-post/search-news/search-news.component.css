@@ -18,7 +18,8 @@
 .news-card p {
   margin-top: 10px;
   margin-bottom: 0px;
-  height: 34px;
+  height: 60px;
+  line-height: 28px;
 }
 
 .news-date-section {

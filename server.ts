@@ -110,7 +110,7 @@ export function app(): express.Express {
   });
 
   server.get('/rss', async (req, res) => {
-    let resp = await axios.get('http://localhost:8073/prameya/api/rss-feed');
+    let resp = await axios.get('https://api-dev.prameyanews.com/prameya/api/rss-feed');
     res.type('text/xml').send(resp.data);
   });
 

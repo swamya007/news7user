@@ -20,7 +20,6 @@ export class PostserviceService {
   }
 
   addpostodia(post: any) {
-    console.log("Post Data===",post)
     return this.HTTP.post<any>(Masterapi + `/add-post-odia`, { ...post });
   }
 

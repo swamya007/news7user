@@ -86,7 +86,6 @@ export class ArticleComponent implements OnInit {
             if (this.news.tags) {
               this.news.tags = this.news.tags.replaceAll(',', ', ');
             }
-            console.log(this.news, 'caption');
             this.news.post_content_sanitized =
               this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
             //if(isPlatformBrowser(PLATFORM_ID)) {
@@ -167,7 +166,6 @@ export class ArticleComponent implements OnInit {
           let imgURL = this.news.guid;
           let newsTitle = this.news.post_title;
           let newsDesc = this.news.meta_description;
-          console.log('check', newsDesc);
           let postURL = this.news.permalink;
           let tags = [
             { name: 'twitter:card', content: 'summary' },
@@ -219,7 +217,6 @@ export class ArticleComponent implements OnInit {
         if (this.currentSlide !== this.ads_rightupper.length - 1) {
           this.currentSlide += 1;
           this.translateValue = `-${this.currentSlide * 100}%`;
-          console.log('this is upper');
         }
       } else {
         if (this.currentSlide !== 0) {
@@ -236,7 +233,6 @@ export class ArticleComponent implements OnInit {
         if (this.currentSlide1 !== this.ads_leftmiddle.length - 1) {
           this.currentSlide1 += 1;
           this.translateValue1 = `-${this.currentSlide1 * 100}%`;
-          console.log('this is lower');
         }
       } else {
         if (this.currentSlide1 !== 0) {
@@ -262,7 +258,6 @@ export class ArticleComponent implements OnInit {
               (a: any) => a.slug !== this.id
             );
             this.nextthree = this.author_post?.slice(0, 7);
-            console.log('time', this.nextthree);
           } else {
             this.author_post = [];
           }
@@ -291,9 +286,7 @@ export class ArticleComponent implements OnInit {
             this.author_post = this.author_post.filter(
               (a: any) => a.slug !== this.id
             );
-            console.log('this.author_post==', this.author_post);
             this.nextthree = this.author_post?.slice(1, 7);
-            console.log(this.nextthree, 'king');
           } else {
             this.author_post = [];
           }
@@ -558,7 +551,6 @@ export class ArticleComponent implements OnInit {
           this.sportsnews = this.data[0].sports || [];
           this.polticesnews = this.data[0].politics || [];
           this.entermentaarr = this.data[0].entertainment || [];
-          console.log(this.entermentaarr, 'data');
         } else {
           this.postarr = [];
         }

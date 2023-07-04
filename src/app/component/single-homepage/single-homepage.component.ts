@@ -127,7 +127,6 @@ export class SingleHomepageComponent implements OnInit {
             this.latestnews = this.data[0].latestnews || [];
             this.sliderdata = this.data[0].slider_data || [];
 
-            console.log();
           } else {
             this.postarr = [];
           }

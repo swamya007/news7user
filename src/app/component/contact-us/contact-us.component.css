@@ -41,8 +41,8 @@
   margin-bottom: 1rem;
 }
 .contact-info-container-img {
-  background: var(--white) url("../../../assets/img/contactbg.png") no-repeat;
-  bottom: right;
+  background: var(--white) url("../../../assets/img/contactbg.png") no-repeat
+    bottom right;
 }
 p i {
   margin-right: 10px;

@@ -117,7 +117,7 @@ export class ArticleComponent implements OnInit {
             });
             this.comment_obj.comment_post_id = this.news.id;
             this.getCommentsByPost(this.news.id);
-            this.getPostByAuthor();
+            this.getPostBycategory();
           } else {
             this.postarr = [];
           }
@@ -186,7 +186,7 @@ export class ArticleComponent implements OnInit {
           });
           this.comment_obj.comment_post_id = this.news.id;
           this.getCommentsByPost(this.news.id);
-          this.getPostByAuthor();
+          this.getPostBycategory();
         } else {
           this.postarr = [];
         }

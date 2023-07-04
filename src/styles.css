@@ -1248,7 +1248,7 @@ footer ul li a {
   height: auto;
   object-fit: cover;
   aspect-ratio: 3/2;
-  margin: 15px 0px;
+  margin: 0px 0px;
   width: 100%;
 }
 .recent-news-card .news-img-container p {
@@ -1490,11 +1490,27 @@ h1 > span {
 @media (max-width: 1540px) {
   .news-box1 .news-img-container img {
     max-width: 100%;
-    height: 65px;
+    height: 70px;
     object-fit: cover;
     aspect-ratio: 3/2;
-    margin: 5px 0px;
+    margin: 0px 0px;
     width: 100%;
+  }
+  .news-section1 .news-img-container {
+    background: #ccc;
+    padding: 0px 0px;
+    height: 70px;
+    margin: 5px 0px;
+  }
+  .download-app img {
+    height: 30px;
+    margin: 0px 3px;
+  }
+  .news-text-container p {
+    font-size: 16px;
+    font-weight: bold !important;
+    margin-bottom: 0px;
+    line-height: 25px;
   }
 }
 @media (min-width: 1400px) {
@@ -1513,6 +1529,7 @@ h1 > span {
     line-height: 25px;
     cursor: pointer;
   }
+
   .btn-secondary {
     background-color: #3f3f3f !important;
     border: 1px solid #fff !important;
@@ -1520,6 +1537,14 @@ h1 > span {
     margin: 0px 4px;
     text-transform: uppercase;
     margin-bottom: 10px;
+  }
+}
+@media (max-width: 1368px) {
+  .news-text-container p {
+    font-size: 13px !important;
+    font-weight: bold !important;
+    margin-bottom: 0px;
+    line-height: 18px !important;
   }
 }
 @media (min-width: 1280px) {

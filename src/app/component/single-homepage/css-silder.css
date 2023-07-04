@@ -3,7 +3,7 @@
   margin-top: 0px;
   position: relative;
   height: 0;
-  padding-bottom: 54%;
+  padding-bottom: 57%;
   user-select: none;
   background-color: #fff;
   margin-bottom: 50px;
@@ -175,6 +175,18 @@ color: #fff;
 transition: .3s;
 }
 */
+@media screen and (max-width: 1368px) {
+  .container-slider {
+    margin: 0 auto;
+    margin-top: 0px;
+    position: relative;
+    height: 0;
+    padding-bottom: 69%;
+    user-select: none;
+    background-color: #fff;
+    margin-bottom: 50px;
+  }
+}
 @media screen and (max-width: 685px) {
   .container-slider {
     border: none;

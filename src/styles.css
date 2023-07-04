@@ -988,7 +988,12 @@ a:hover {
   border: 1px rgb(215, 215, 215) solid !important;
   margin-bottom: 10px;
 }
-
+.news-section1 .news-img-container {
+  background: #ccc;
+  padding: 0px 0px;
+  height: 90px;
+  margin: 5px 0px;
+}
 .footer-container .news-box {
   border-bottom: 0px !important;
 }
@@ -1222,16 +1227,28 @@ footer ul li a {
 }
 .news-box1 {
   width: 100%;
-  margin: 8px auto;
-  padding: 5px 7px;
+  margin: 0px auto;
+  padding: 0px 7px;
   cursor: pointer;
+}
+/* .news-img-container {
+  background: #ccc;
+  padding: 0px -15px;
+} */
+.news-box1 .news-img-container img {
+  max-width: 100%;
+  height: 90px;
+  object-fit: cover;
+  aspect-ratio: 3/2;
+  margin: 0px 0px;
+  width: 100%;
 }
 .news-img-container img {
   max-width: 100%;
   height: auto;
   object-fit: cover;
   aspect-ratio: 3/2;
-  margin: 0px;
+  margin: 0px 0px;
   width: 100%;
 }
 .recent-news-card .news-img-container p {
@@ -1357,6 +1374,7 @@ footer ul li a {
 }
 .top-stories .news-img-container {
   padding: 0 !important;
+  background: #ccc;
 }
 .top-stories .news-text-container {
   margin-top: 10px;
@@ -1469,6 +1487,32 @@ h1 > span {
   border-bottom: 2px solid #f00 !important;
 }
 /* --------------------------------pagination---------------------------------- */
+@media (max-width: 1540px) {
+  .news-box1 .news-img-container img {
+    max-width: 100%;
+    height: 70px;
+    object-fit: cover;
+    aspect-ratio: 3/2;
+    margin: 0px 0px;
+    width: 100%;
+  }
+  .news-section1 .news-img-container {
+    background: #ccc;
+    padding: 0px 0px;
+    height: 70px;
+    margin: 5px 0px;
+  }
+  .download-app img {
+    height: 30px;
+    margin: 0px 3px;
+  }
+  .news-text-container p {
+    font-size: 16px;
+    font-weight: bold !important;
+    margin-bottom: 0px;
+    line-height: 25px;
+  }
+}
 @media (min-width: 1400px) {
   .container,
   .container-lg,
@@ -1485,6 +1529,7 @@ h1 > span {
     line-height: 25px;
     cursor: pointer;
   }
+
   .btn-secondary {
     background-color: #3f3f3f !important;
     border: 1px solid #fff !important;
@@ -1492,6 +1537,14 @@ h1 > span {
     margin: 0px 4px;
     text-transform: uppercase;
     margin-bottom: 10px;
+  }
+}
+@media (max-width: 1368px) {
+  .news-text-container p {
+    font-size: 13px !important;
+    font-weight: bold !important;
+    margin-bottom: 0px;
+    line-height: 18px !important;
   }
 }
 @media (min-width: 1280px) {

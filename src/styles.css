@@ -869,7 +869,17 @@ img:nth-child(5) {
 .panel-body .mat-form-field {
   width: 100% !important;
 }
-
+.category-heading {
+  font-size: 24px;
+  color: #fff;
+  background: #af0000;
+  max-width: 300px;
+  margin-bottom: 0 !important;
+  margin-top: 10px !important;
+  padding: 8px;
+  text-transform: uppercase;
+  border-top-right-radius: 20px;
+}
 /*** Sagar CSS Starts ***/
 
 .mat-icon-cls {
@@ -879,7 +889,9 @@ img:nth-child(5) {
 .mat-icon-cls:hover {
   color: var(--blue);
 }
-
+.navbar a:hover {
+  background-color: var(--red) !important;
+}
 .pagination .ngx-pagination .current {
   padding: 0.8rem 0.8rem !important;
   background: transparent !important;

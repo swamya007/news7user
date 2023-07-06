@@ -107,26 +107,27 @@
             routerLink="{{ item.category_url }}"
             data-toggle="dropdown"
             aria-expanded="false"
-            >{{ item.category_name }}</a
           >
-          <div
-            class="dropdown-menu"
-            style="
-              min-width: 300px !important;
-              left: 0 !important;
-              position: absolute !important;
-              background-color: black;
-            "
-          >
+            {{ item.category_name }}
+          </a>
+          <i
+            class="fa-solid fa-plus dropicon"
+            *ngIf="item.sub_category_details"
+            data-toggle="collapse"
+            href="#collapseExample"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseExample"
+          ></i>
+          <div class="dropdown-menu dropdown-style">
             <div
               *ngFor="let subject of item.sub_category_details"
               class="submenu"
+              id="collapseExample"
             >
-              <a
-                class="dropdown-item"
-                routerLink="{{ subject.category_url }}"
-                >{{ subject.category_name }}</a
-              >
+              <a class="dropdown-item" routerLink="{{ subject.category_url }}">
+                {{ subject.category_name }}
+              </a>
             </div>
           </div>
         </li>
@@ -140,23 +141,65 @@
           >Photo Gallery</a
         > -->
         </li>
-        <li class="nav-item dropdown" *ngIf="morearray && morearray.length">
+        <!-- <li class="nav-item dropdown" *ngIf="morearray && morearray.length">
           <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            role="button"
+            class="nav-link"
+            data-target=".navbar-collapse.show"
             data-toggle="dropdown"
             aria-expanded="false"
           >
             More
           </a>
-          <div class="dropdown-menu">
-            <a
-              class="dropdown-item"
-              routerLink="{{ rows.category_url }}"
-              *ngFor="let rows of morearray"
-              >{{ rows.category_name }}</a
-            >
+          <i
+            class="fa-solid fa-plus dropicon"
+            *ngIf="morearray && morearray.length"
+            data-toggle="collapse"
+            href="#collapseExample1"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseExample1"
+          ></i>
+          <div class="dropdown-menu dropdown-style">
+            <div class="submenu" id="collapseExample1">
+              <a
+                class="dropdown-item"
+                routerLink="{{ rows.category_url }}"
+                *ngFor="let rows of morearray"
+              >
+                {{ rows.category_name }}
+              </a>
+            </div>
+          </div>
+        </li> -->
+
+        <li class="nav-item dropdown" *ngIf="morearray && morearray.length">
+          <a
+            class="nav-link"
+            data-target=".navbar-collapse.show"
+            data-toggle="dropdown"
+            aria-expanded="false"
+          >
+            More
+          </a>
+          <i
+            class="fa-solid fa-plus dropicon"
+            *ngIf="morearray && morearray.length"
+            data-toggle="collapse"
+            href="#collapseExample1"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseExample1"
+          ></i>
+          <div class="dropdown-menu dropdown-style">
+            <div class="submenu" id="collapseExample1">
+              <a
+                class="dropdown-item"
+                routerLink="{{ rows.category_url }}"
+                *ngFor="let rows of morearray"
+              >
+                {{ rows.category_name }}
+              </a>
+            </div>
           </div>
         </li>
       </ul>

@@ -69,7 +69,7 @@ export class CategoryComponent implements OnInit {
     activatedRoute.params.subscribe((val) => {
       const routeParams = this.activatedRoute.snapshot.paramMap;
       this.cat_name = routeParams.get('slug');
-
+      console.log(this.cat_name, 'log');
       // console.log('Here')
 
       // this.customer_id = environment.CUSTOMER_ID

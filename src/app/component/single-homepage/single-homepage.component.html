@@ -38,11 +38,8 @@
               </div>
             </div>
           </article>
-          <div class="view-more" *ngIf="odishaarr && odishaarr.length > 0">
-            <button
-              class="mat-raised-button"
-              [routerLink]="odishaarr[0].category_slug"
-            >
+          <div class="text-center" *ngIf="odishaarr && odishaarr.length > 0">
+            <button class="button-29" [routerLink]="odishaarr[0].category_slug">
               View More
             </button>
           </div>
@@ -285,11 +282,8 @@
                   </div>
                 </div>
               </article>
-              <div class="view-more">
-                <button
-                  class="mat-raised-button"
-                  routerLink="/prameya/bhaucharchita"
-                >
+              <div class="text-center">
+                <button class="button-29" routerLink="/prameya/bhaucharchita">
                   View More
                 </button>
               </div>
@@ -337,9 +331,12 @@
                 </div>
               </div>
             </article>
-            <div class="view-more" *ngIf="crimesnews && crimesnews.length > 0">
+            <div
+              class="text-center"
+              *ngIf="crimesnews && crimesnews.length > 0"
+            >
               <button
-                class="mat-raised-button"
+                class="button-29"
                 [routerLink]="crimesnews[0].category_slug"
               >
                 View More
@@ -383,9 +380,9 @@
                 </div>
               </div>
             </article>
-            <div class="view-more" *ngIf="twinnews && twinnews.length > 0">
+            <div class="text-center" *ngIf="twinnews && twinnews.length > 0">
               <button
-                class="mat-raised-button"
+                class="button-29"
                 [routerLink]="twinnews[0].category_slug"
               >
                 View More
@@ -429,11 +426,11 @@
               </div>
             </article>
             <div
-              class="view-more"
+              class="text-center"
               *ngIf="polticesnews && polticesnews.length > 0"
             >
               <button
-                class="mat-raised-button"
+                class="button-29"
                 [routerLink]="polticesnews[0].category_slug"
               >
                 View More
@@ -480,9 +477,12 @@
                 </div>
               </div>
             </article>
-            <div class="view-more" *ngIf="sportsnews && sportsnews.length > 0">
+            <div
+              class="text-center"
+              *ngIf="sportsnews && sportsnews.length > 0"
+            >
               <button
-                class="mat-raised-button"
+                class="button-29"
                 [routerLink]="sportsnews[0].category_slug"
               >
                 View More
@@ -526,11 +526,11 @@
               </div>
             </article>
             <div
-              class="view-more"
+              class="text-center"
               *ngIf="technologynews && technologynews.length > 0"
             >
               <button
-                class="mat-raised-button"
+                class="button-29"
                 [routerLink]="technologynews[0].category_slug"
               >
                 View More
@@ -574,11 +574,11 @@
               </div>
             </article>
             <div
-              class="view-more"
+              class="text-center"
               *ngIf="entermentaarr && entermentaarr.length > 0"
             >
               <button
-                class="mat-raised-button"
+                class="button-29"
                 [routerLink]="entermentaarr[0].category_slug"
               >
                 View More
@@ -668,6 +668,7 @@
     </div>
   </div>
 </div>
+
 <app-footer></app-footer>
 <app-search-sticky></app-search-sticky>
 

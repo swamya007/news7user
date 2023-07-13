@@ -62,7 +62,12 @@
 .navbar-light .navbar-nav .nav-link {
   padding: 15px;
 }
-
+.navbar-nav .dropicon {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  display: none;
+}
 .home-button {
   padding: 9px 15px;
   font-size: 20px;
@@ -258,7 +263,13 @@ img:nth-child(5) {
     width: 100%;
   }
 }
-
+.dropdown-style {
+  min-width: 300px !important;
+  left: 0 !important;
+  position: absolute !important;
+  background-color: rgba(0, 0, 0, 0.95);
+  top: 47px;
+}
 /* Navbar hovercolor */
 
 /* .navbar ul li:hover ::after {
@@ -320,6 +331,19 @@ img:nth-child(5) {
   }
   .arrow-icon {
     margin-top: 18px;
+  }
+  .navbar-nav .dropicon {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    display: block;
+    color: #fff;
+  }
+  .dropdown-style {
+    min-width: 300px !important;
+    left: 0 !important;
+    position: relative !important;
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }
 @media only screen and (max-width: 575px) {

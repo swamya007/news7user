@@ -108,15 +108,17 @@ export function app(): express.Express {
     res.type('text/plain');
     res.sendFile(__dirname + "/robots.txt");
   });
-
+  server.get('/ads.txt', (req, res) => {
+    res.sendFile(__dirname + '/ads.txt');
+  });
   server.get('/rss', async (req, res) => {
-    let resp = await axios.get('https://api-dev.prameyanews.com/prameya/api/rss-feed');
+    let resp = await axios.get('https://dev.prameyanews.com/prameya/api/rssfeed');
     res.type('text/xml').send(resp.data);
   });
 
   server.get('/:category/rss', async (req, res) => {
     const { category } = req.params;
-    let resp = await axios.get(`https://api-dev.prameyanews.com/prameya/api/${category}/rss-feed`);
+    let resp = await axios.get(`https://dev.prameyanews.com/prameya/api/${category}/rssfeed`);
     res.type('text/xml').send(resp.data);
   });
 
@@ -126,7 +128,7 @@ export function app(): express.Express {
     res.setHeader('Content-Encoding', 'utf8');
     try {
       let routes = ['', 'prameya/contact-us', 'prameya/termofuses']; // Add your routes here
-      const response = await axios.get('https://api-dev.prameyanews.com/prameya/api/post/get-sitemap-details').then(res => res.data);
+      const response = await axios.get('https://dev.prameyanews.com/prameya/api/post/get-sitemap-details').then(res => res.data);
       response.body?.forEach((r: any) => {
         let routeData = JSON.parse(r);
         routes.push(routeData.slug)
@@ -178,7 +180,7 @@ export function app(): express.Express {
     res.setHeader('Content-Encoding', 'utf8');
     try {
       let routes:Array<any> = []; // Add your routes here
-      const response = await axios.get('https://api-dev.prameyanews.com/prameya/api/post/get-sitemap-details').then(res => res.data);
+      const response = await axios.get('https://dev.prameyanews.com/prameya/api/post/get-sitemap-details').then(res => res.data);
       response.body?.forEach((r: any) => {
         let routeData = JSON.parse(r);
         routes.push(routeData)
@@ -259,6 +261,11 @@ export function app(): express.Express {
     res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
   });
 
+
+
+  // All regular routes use the Universal engine
+
+
   // error handler
   server.use(function (err: any, req: any, res: any, next: any) {
     // set locals, only providing error in development
@@ -275,7 +282,7 @@ export function app(): express.Express {
 }
 
 function run(): void {
-  const port = process.env['PORT'] || 4001;
+  const port = process.env['PORT'] || 4000;
 
   // Start up the Node server
   const server = app();

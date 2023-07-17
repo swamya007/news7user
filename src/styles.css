@@ -870,12 +870,13 @@ img:nth-child(5) {
   width: 100% !important;
 }
 .category-heading {
-  font-size: 24px;
-  color: #fff;
-  background: #af0000;
-  max-width: 300px;
+  font-size: 30px !important;
+  color: #000;
+  /* background: #af0000;
+  max-width: 300px; */
   margin-bottom: 0 !important;
   margin-top: 10px !important;
+  font-weight: bold !important;
   padding: 8px;
   text-transform: uppercase;
   border-top-right-radius: 20px;
@@ -999,6 +1000,7 @@ a:hover {
   background: var(--white) !important;
   border: 1px rgb(215, 215, 215) solid !important;
   margin-bottom: 10px;
+  min-height: 64vh;
 }
 .news-section1 .news-img-container {
   background: #ccc;
@@ -1115,11 +1117,11 @@ footer ul {
 }
 footer ul li a {
   text-decoration: none;
-  color: #bbb;
-  text-decoration: none;
+  color: #bbb !important;
+  text-decoration: underline !important;
 }
 .download-app img {
-  height: 40px;
+  height: 36px;
   margin: 0px 5px;
 }
 .download-app {
@@ -1128,6 +1130,7 @@ footer ul li a {
   display: flex;
   display: table;
   margin-bottom: 10px;
+  float: right;
 }
 .bdr-rt {
   border-right: 2px solid #4d4d4d;
@@ -1136,6 +1139,7 @@ footer ul li a {
   background: none;
   padding: 5px 5px;
   display: flex;
+  justify-content: flex-end;
 }
 .social-icon .fa,
 .social-icon .fab {
@@ -1515,7 +1519,7 @@ h1 > span {
     margin: 5px 0px;
   }
   .download-app img {
-    height: 30px;
+    height: 28px;
     margin: 0px 3px;
   }
   .news-text-container p {
@@ -1523,6 +1527,12 @@ h1 > span {
     font-weight: bold !important;
     margin-bottom: 0px;
     line-height: 25px;
+  }
+  .news-section1 {
+    background: var(--white) !important;
+    border: 1px rgb(215, 215, 215) solid !important;
+    margin-bottom: 10px;
+    min-height: 70vh;
   }
 }
 @media (min-width: 1400px) {
@@ -1558,8 +1568,14 @@ h1 > span {
     margin-bottom: 0px;
     line-height: 18px !important;
   }
+  .news-section1 {
+    background: var(--white) !important;
+    border: 1px rgb(215, 215, 215) solid !important;
+    margin-bottom: 10px;
+    min-height: 100vh;
+  }
 }
-@media (min-width: 1280px) {
+@media (max-width: 1280px) {
   .btn-secondary {
     background-color: #af0000 !important;
     border: 1px solid #fff !important;
@@ -1570,6 +1586,16 @@ h1 > span {
     text-transform: uppercase;
     margin-bottom: 10px;
     font-size: 22px;
+  }
+  .news-section1 {
+    background: var(--white) !important;
+    border: 1px rgb(215, 215, 215) solid !important;
+    margin-bottom: 10px;
+    min-height: 106vh;
+  }
+  .download-app img {
+    height: 18px !important;
+    margin: 0px 3px;
   }
 }
 @media only screen and (max-width: 600px) {
@@ -1618,7 +1644,7 @@ h1 > span {
     background: var(--white) !important;
     border: 1px rgb(215, 215, 215) solid !important;
     margin-bottom: 10px;
-    margin-top: 40px;
+    margin-top: 0px;
   }
 }
 

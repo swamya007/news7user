@@ -3,7 +3,7 @@
   margin-top: 0px;
   position: relative;
   height: 0;
-  padding-bottom: 57%;
+  padding-bottom: 58%;
   user-select: none;
   background-color: #fff;
   margin-bottom: 50px;
@@ -50,7 +50,20 @@ figcaption {
   transition: 0.45s;
   cursor: pointer;
   text-align: center;
+  opacity: 1;
+}
+
+.container-slider .prev,
+.next {
   opacity: 0;
+}
+
+.container-slider:hover .prev {
+  opacity: 1;
+}
+
+.container-slider:hover .next {
+  opacity: 1;
 }
 
 .next {
@@ -74,12 +87,12 @@ label span {
   padding-bottom: 15px;
 }
 
-.prev:hover,
+/* .prev:hover,
 .next:hover {
   transition: 0.3s;
   color: #ffffff;
   opacity: 1;
-}
+} */
 
 .slider-heading {
   font-size: 18px;

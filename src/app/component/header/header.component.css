@@ -64,9 +64,11 @@
 }
 .navbar-nav .dropicon {
   position: absolute;
-  right: 10px;
-  top: 0;
-  display: none;
+  right: -3px;
+  top: 17px;
+  color: #fff;
+  font-size: 15px;
+  /* display: none; */
 }
 .home-button {
   padding: 9px 15px;
@@ -255,6 +257,9 @@ img:nth-child(5) {
   border: none;
   cursor: pointer;
 }
+.dropdown-toggle::after {
+  display: none;
+}
 @keyframes blinker {
   0% {
     width: 0%;
@@ -270,6 +275,13 @@ img:nth-child(5) {
   background-color: rgba(0, 0, 0, 0.95);
   top: 47px;
 }
+.pc-icon {
+  display: block;
+}
+.mb-icon {
+  display: none;
+}
+
 /* Navbar hovercolor */
 
 /* .navbar ul li:hover ::after {
@@ -335,8 +347,7 @@ img:nth-child(5) {
   .navbar-nav .dropicon {
     position: absolute;
     right: 10px;
-    top: 0;
-    display: block;
+    top: 18px;
     color: #fff;
   }
   .dropdown-style {
@@ -344,6 +355,13 @@ img:nth-child(5) {
     left: 0 !important;
     position: relative !important;
     background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .pc-icon {
+    display: none;
+  }
+  .mb-icon {
+    display: block;
   }
 }
 @media only screen and (max-width: 575px) {
@@ -371,5 +389,20 @@ img:nth-child(5) {
     height: 40px;
     overflow: hidden;
     margin-bottom: 10px;
+  }
+  .dropdown-style {
+    min-width: 300px !important;
+    left: 0 !important;
+    position: relative !important;
+    background-color: rgba(0, 0, 0, 0.95);
+    top: 0px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  .pc-icon {
+    display: none;
+  }
+  .mb-icon {
+    display: block;
   }
 }

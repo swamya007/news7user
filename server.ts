@@ -30,7 +30,7 @@ const writeFileAsync = promisify(writeFile);
 // global['document'] = mock.getDocument();
 // global['window'] = mock.getWindow();
 
-const REDIS_URI = 'redis://localhost:6379';
+const REDIS_URI = 'redis://localhost:6379.1';
 var redisIsReady = false;
 async function initRedisClient() {
   try {
@@ -282,7 +282,7 @@ export function app(): express.Express {
 }
 
 function run(): void {
-  const port = process.env['PORT'] || 4000;
+  const port = process.env['PORT'] || 4001;
 
   // Start up the Node server
   const server = app();

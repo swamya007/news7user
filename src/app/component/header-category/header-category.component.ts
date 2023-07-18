@@ -21,13 +21,13 @@ export class HeaderCategoryComponent implements OnInit {
   slug:any
 
   constructor(private adsService: AdserviceService, private postserviceService: PostserviceService,private activatedRoute: ActivatedRoute) {
-    activatedRoute.params.subscribe(val => {
-      this.customer_id = environment.CUSTOMER_ID
-      const routeParams = this.activatedRoute.snapshot.paramMap;
-      this.slug = routeParams.get('slug');
-      this.getAllAdsList();
-      this.getNewsBySlug();
-    })
+    // activatedRoute.params.subscribe(val => {
+    //   this.customer_id = environment.CUSTOMER_ID
+    //   const routeParams = this.activatedRoute.snapshot.paramMap;
+    //   this.slug = routeParams.get('slug');
+    //   this.getAllAdsList();
+    //   this.getNewsBySlug();
+    // })
    }
 
   ngOnInit(): void {

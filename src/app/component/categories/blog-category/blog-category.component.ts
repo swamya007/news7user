@@ -60,7 +60,6 @@ export class BlogCategoryComponent implements OnInit {
           this.postarr[0] : {};
         this.nextthree = this.postarr?.slice(1, 3);
 
-        console.log(this.postarr)
       } else {
         this.postarr = []
       }

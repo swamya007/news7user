@@ -22,9 +22,9 @@ export class LatestNewsHeaderComponent implements OnInit {
   ngOnInit(): void {
     this.getLatestNews();
     this.getticker();
-    setTimeout(() => {
-      this.showSlides(this.slideIndex);
-    }, 1000);
+    // setTimeout(() => {
+    //   this.showSlides(this.slideIndex);
+    // }, 1000);
     this.getticker();
   }
 
@@ -52,14 +52,14 @@ export class LatestNewsHeaderComponent implements OnInit {
     }
   }
 
-  plusSlides(n: number) {
-    clearInterval(this.myTimer);
-    this.showSlides((this.slideIndex += n));
-  }
+  // plusSlides(n: number) {
+  //   clearInterval(this.myTimer);
+  //   this.showSlides((this.slideIndex += n));
+  // }
 
-  currentSlide(n: any) {
-    this.showSlides((this.slideIndex = n));
-  }
+  // currentSlide(n: any) {
+  //   this.showSlides((this.slideIndex = n));
+  // }
 
   getticker() {
     this.ticker_id = '';
@@ -77,21 +77,21 @@ export class LatestNewsHeaderComponent implements OnInit {
         (err: any) => {}
       );
   }
-  showSlides(n: number) {
-    var i;
-    let slides: any = document.getElementsByClassName('mySlides');
-    if (n > slides.length) {
-      this.slideIndex = 1;
-    }
-    if (n < 1) {
-      this.slideIndex = slides.length;
-    }
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = 'none';
-    }
-    slides[this.slideIndex - 1].style.display = 'block';
-    setTimeout(() => {
-      this.plusSlides(1);
-    }, 6000);
-  }
+  // showSlides(n: number) {
+  //   var i;
+  //   let slides: any = document.getElementsByClassName('mySlides');
+  //   if (n > slides.length) {
+  //     this.slideIndex = 1;
+  //   }
+  //   if (n < 1) {
+  //     this.slideIndex = slides.length;
+  //   }
+  //   for (i = 0; i < slides.length; i++) {
+  //     slides[i].style.display = 'none';
+  //   }
+  //   slides[this.slideIndex - 1].style.display = 'block';
+  //   setTimeout(() => {
+  //     this.plusSlides(1);
+  //   }, 6000);
+  // }
 }

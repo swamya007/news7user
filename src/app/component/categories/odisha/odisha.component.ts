@@ -84,7 +84,6 @@ export class OdishaComponent implements OnInit {
               this.postarr && this.postarr.length ? this.postarr[0] : {};
             this.nextthree = this.postarr?.slice(1, 3);
 
-            console.log(this.postarr);
           } else {
             this.postarr = [];
           }
@@ -105,7 +104,6 @@ export class OdishaComponent implements OnInit {
           var data = res.body;
           //console.log(res.body);
           this.catarr = data.map((dt: any) => JSON.parse(dt));
-          console.log(this.catarr);
         } else {
           this.catarr = [];
         }

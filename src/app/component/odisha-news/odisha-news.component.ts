@@ -42,7 +42,6 @@ export class OdishaNewsComponent implements OnInit {
           if (res.code == 'success') {
             var data = res.body;
             this.postarr = data.map((dt: any) => JSON.parse(dt));
-            console.log(this.postarr, 'hello');
             this.postarr = this.postarr.slice(0, 5);
           } else {
             this.postarr = [];

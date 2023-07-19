@@ -129,13 +129,11 @@ export class BhauCharchitaComponent implements OnInit {
           this.ads_rightupper = this.allAdsList.filter(
             (data: any) => data.ads_img_size === '2'
           );
-          console.log(this.ads_rightupper, 'AD');
 
           /** Left Middle */
           this.ads_leftmiddle = this.allAdsList.filter(
             (data: any) => data.ads_img_size === '3'
           );
-          console.log(this.ads_rightupper, 'AD2');
         }
       });
   }
@@ -146,7 +144,6 @@ export class BhauCharchitaComponent implements OnInit {
         if (res.code == 'success') {
           this.data = res.body;
           this.data = this.data?.map((dt: any) => JSON.parse(dt));
-          console.log('Data===', this.data[0]);
           this.odishaarr = this.data[0].odisha || [];
           this.crimesnews = this.data[0].crime || [];
           this.bahu_charchita_khabar_all =
@@ -161,10 +158,7 @@ export class BhauCharchitaComponent implements OnInit {
           this.campusnews = this.data[0].campus_muse || [];
           this.scincenews = this.data[0].science || [];
           this.twinnews = this.data[0].twin_city || [];
-          console.log(
-            'Bahu Charchitta Khabar====',
-            this.bahu_charchita_khabar_all
-          );
+        
         } else {
           this.postarr = [];
         }
@@ -181,7 +175,6 @@ export class BhauCharchitaComponent implements OnInit {
         if (this.currentSlide1 !== this.ads_leftmiddle.length - 1) {
           this.currentSlide1 += 1;
           this.translateValue1 = `-${this.currentSlide1 * 100}%`;
-          console.log('this is lower');
         }
       } else {
         if (this.currentSlide1 !== 0) {

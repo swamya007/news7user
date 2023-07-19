@@ -20,7 +20,6 @@ export class PostserviceService {
   }
 
   addpostodia(post: any) {
-    console.log("Post Data===",post)
     return this.HTTP.post<any>(Masterapi + `/add-post-odia`, { ...post });
   }
 
@@ -63,10 +62,8 @@ export class PostserviceService {
   getpostallodia(post_id: any, post_name: any, cust_id: any) {
     return this.HTTP.get<any>(
       Masterapi +
-        `/get-post-details-odia?post_id=${post_id}&post_name=${post_name}&customer_id=${cust_id}`,
-      {
-        context: withCache(),
-      }
+        `/get-post-details-odia?post_id=${post_id}&post_name=${post_name}&customer_id=${cust_id}`
+     
     );
   }
 
@@ -109,43 +106,36 @@ export class PostserviceService {
     return this.HTTP.get<any>(
       Masterapi +
         `/get-post-list-page-wise?page_no=${page_no}&customer_id=${cust_id}&category_name=${category_name}`,
-      {
-        context: withCache(),
-      }
+      
     );
   }
 
   getLatestNewsodia(page_no: any, cust_id: any, category_name: any) {
     return this.HTTP.get<any>(
       Masterapi +
-        `/get-post-list-page-wise-odia?page_no=${page_no}&customer_id=${cust_id}&category_name=${category_name}`,
-      {
-        context: withCache(),
-      }
+        `/get-post-list-page-wise-odia?page_no=${page_no}&customer_id=${cust_id}&category_name=${category_name}`
     );
   }
 
   getNewsForHome(limit: any, cust_id: any, category_name: any) {
     return this.HTTP.get<any>(
       Masterapi +
-        `/get-post-list-for-home?limit=${limit}&customer_id=${cust_id}&category_name=${category_name}`,
-      {
-        context: withCache(),
-      }
+        `/get-post-list-for-home?limit=${limit}&customer_id=${cust_id}&category_name=${category_name}`
+     
     );
   }
 
   getTrendingNews(customer_id: any) {
     return this.HTTP.get<any>(
-      Masterapi + `/get-trending-news?customer_id=${customer_id}`,
-      { context: withCache() }
+      Masterapi + `/get-trending-news?customer_id=${customer_id}`
+     
     );
   }
 
   gettodaysnews(customer_id: any) {
     return this.HTTP.get<any>(
-      Masterapi + `/get-todays-news?customer_id=${customer_id}`,
-      { context: withCache() }
+      Masterapi + `/get-todays-news?customer_id=${customer_id}`
+    
     );
   }
 
@@ -156,65 +146,51 @@ export class PostserviceService {
   getPostByAuthor(author_id: any, post_id: any, customer_id: any) {
     return this.HTTP.get<any>(
       Masterapi +
-        `/get-post-by-author?author_id=${author_id}&post_id=${post_id}&customer_id=${customer_id}`,
-      {
-        context: withCache(),
-      }
+        `/get-post-by-author?author_id=${author_id}&post_id=${post_id}&customer_id=${customer_id}`
+    
     );
   }
 
   getPostByCategoryID(page_no: any, category_id: any, customer_id: any) {
     return this.HTTP.get<any>(
       Masterapi +
-        `/get-post-by-category?page_no=${page_no}&category_id=${category_id}&customer_id=${customer_id}`,
-      {
-        context: withCache(),
-      }
+        `/get-post-by-category?page_no=${page_no}&category_id=${category_id}&customer_id=${customer_id}`
+     
     );
   }
 
   getPostByCategoryIDodia(page_no: any, category_id: any, customer_id: any) {
     return this.HTTP.get<any>(
       Masterapi +
-        `/get-post-by-category-odia?page_no=${page_no}&category_id=${category_id}&customer_id=${customer_id}`,
-      {
-        context: withCache(),
-      }
+        `/get-post-by-category-odia?page_no=${page_no}&category_id=${category_id}&customer_id=${customer_id}`
+     
     );
   }
 
   getPostBySlug(slug: any, customer_id: any) {
     return this.HTTP.get<any>(
-      Masterapi + `/get-post-by-slug?slug=${slug}&customer_id=${customer_id}`,
-      {
-        context: withCache(),
-      }
+      Masterapi + `/get-post-by-slug?slug=${slug}&customer_id=${customer_id}`
+    
     );
   }
   getPostBySlugodia(slug: any, customer_id: any) {
     return this.HTTP.get<any>(
-      Masterapi + `/get-post-by-slug-odia?slug=${slug}&customer_id=${customer_id}`,
-      {
-        context: withCache(),
-      }
+      Masterapi + `/get-post-by-slug-odia?slug=${slug}&customer_id=${customer_id}`
+     
     );
   }
   getPostByCategorySlug(page_no: any, category_slug: any, customer_id: any) {
     return this.HTTP.get<any>(
       Masterapi +
-        `/get-post-by-category-slug?page_no=${page_no}&category_slug=${category_slug}&customer_id=${customer_id}`,
-      {
-        context: withCache(),
-      }
+        `/get-post-by-category-slug?page_no=${page_no}&category_slug=${category_slug}&customer_id=${customer_id}`
+   
     );
   }
   getPostByCategorySlugodia(page_no: any, category_slug: any, customer_id: any) {
     return this.HTTP.get<any>(
       Masterapi +
-        `/get-post-by-category-slug-odia?page_no=${page_no}&category_slug=${category_slug}&customer_id=${customer_id}`,
-      {
-        context: withCache(),
-      }
+        `/get-post-by-category-slug-odia?page_no=${page_no}&category_slug=${category_slug}&customer_id=${customer_id}`
+    
     );
   }
 
@@ -255,10 +231,8 @@ export class PostserviceService {
 
   getsilder(customer_id: any) {
     return this.HTTP.get<any>(
-      Masterapi + `/get-silde?customer_id=${customer_id}`,
-      {
-        context: withCache(),
-      }
+      Masterapi + `/get-silde?customer_id=${customer_id}`
+      
     );
   }
   getallnews(){

@@ -68,10 +68,7 @@ export class CategoryComponent implements OnInit {
   ) {
     activatedRoute.params.subscribe((val) => {
       const routeParams = this.activatedRoute.snapshot.paramMap;
-      this.cat_name = routeParams.get('slug');
-      this.category_name = routeParams.get('slug');
-
-      console.log(this.cat_name, 'log');
+      // this.cat_name = routeParams.get('slug');
       // console.log('Here')
 
       // this.customer_id = environment.CUSTOMER_ID
@@ -113,9 +110,7 @@ export class CategoryComponent implements OnInit {
   ngOnInit(): void {
     this.customer_id = environment.CUSTOMER_ID;
     const routeParams = this.activatedRoute.snapshot.paramMap;
-    this.cat_name = routeParams.get('slug');
-    this.category_name = routeParams.get('slug');
-    console.log(this.category_name, 'swamya');
+    // this.cat_name = routeParams.get('slug');
     if (this.ads_list && this.ads_list.length > 0) {
       /** Right Upper */
       this.ads_rightupper = this.ads_list.filter(
@@ -127,7 +122,6 @@ export class CategoryComponent implements OnInit {
       );
     }
     this.getWithoutHeaderCategory();
-    this.getAllairticlenews();
     // if (this.post_array_upper && this.post_array_upper[0].category_name) {
     //   this.category_one = this.post_array_upper[0].category_name.split(",");
     //   console.log('Category====', this.category_one)

@@ -35,7 +35,6 @@ export class ArticleComponent implements OnInit {
   comments: any = [];
   author_post: any = [];
   comment_page_no: number = 1;
-  post_page_no: number = 1;
   comment_obj: any;
   data: any;
   polticesnews: any;
@@ -71,10 +70,7 @@ export class ArticleComponent implements OnInit {
     activatedRoute.params.subscribe((val) => {
       const routeParams = this.activatedRoute.snapshot.paramMap;
       this.id = routeParams.get('Id');
-      this.comment_page_no = 1;
-      this.post_page_no = 1;
-      this.comment_count = 0;
-      this.comment_obj = new CommentModel();
+    
       this.getAllAdsList();
       this.post.getPostBySlugodia(this.id, environment.CUSTOMER_ID).subscribe(
         (res: any) => {
@@ -86,7 +82,6 @@ export class ArticleComponent implements OnInit {
             if (this.news.tags) {
               this.news.tags = this.news.tags.replaceAll(',', ', ');
             }
-            console.log(this.news, 'caption');
             this.news.post_content_sanitized =
               this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
             //if(isPlatformBrowser(PLATFORM_ID)) {
@@ -115,9 +110,7 @@ export class ArticleComponent implements OnInit {
             tags.forEach((tag: any) => {
               this.Meta.updateTag(tag);
             });
-            this.comment_obj.comment_post_id = this.news.id;
-            this.getCommentsByPost(this.news.id);
-            this.getPostByAuthor();
+            this.getPostBycategory();
           } else {
             this.postarr = [];
           }
@@ -134,13 +127,7 @@ export class ArticleComponent implements OnInit {
     //this.isLoggedIn = this.loginService.isLoggedIn();
     const routeParams = this.activatedRoute.snapshot.paramMap;
     this.id = routeParams.get('Id');
-    this.comment_page_no = 1;
-    this.post_page_no = 1;
-    this.comment_count = 0;
-    this.comment_obj = new CommentModel();
-    this.getallpost();
-    this.getAllAdsList();
-    this.getAllairticlenews();
+  
     // this.getIPAddress();
     // this.getBrowserName();
     this.post.getPostBySlugodia(this.id, environment.CUSTOMER_ID).subscribe(
@@ -155,7 +142,7 @@ export class ArticleComponent implements OnInit {
           }
           this.news.post_content_sanitized =
             this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
-          this.news.post_click = Math.round(this.news.post_click / 3);
+            this.news.post_click = Math.round(this.news.post_click / 3);
 
           //if(isPlatformBrowser(PLATFORM_ID)) {
           // let div = document.querySelector('.article-text-section');
@@ -167,7 +154,6 @@ export class ArticleComponent implements OnInit {
           let imgURL = this.news.guid;
           let newsTitle = this.news.post_title;
           let newsDesc = this.news.meta_description;
-          console.log('check', newsDesc);
           let postURL = this.news.permalink;
           let tags = [
             { name: 'twitter:card', content: 'summary' },
@@ -184,9 +170,7 @@ export class ArticleComponent implements OnInit {
           tags.forEach((tag: any) => {
             this.Meta.updateTag(tag);
           });
-          this.comment_obj.comment_post_id = this.news.id;
-          this.getCommentsByPost(this.news.id);
-          this.getPostByAuthor();
+          this.getPostBycategory();
         } else {
           this.postarr = [];
         }
@@ -195,6 +179,9 @@ export class ArticleComponent implements OnInit {
         this.postarr = [];
       }
     );
+    this.getallpost();
+    this.getAllAdsList();
+    this.getAllairticlenews();
   }
   getIframeHtml(post_content: any): SafeHtml {
     return this.sanitizer.bypassSecurityTrustHtml(post_content) || '';
@@ -219,7 +206,6 @@ export class ArticleComponent implements OnInit {
         if (this.currentSlide !== this.ads_rightupper.length - 1) {
           this.currentSlide += 1;
           this.translateValue = `-${this.currentSlide * 100}%`;
-          console.log('this is upper');
         }
       } else {
         if (this.currentSlide !== 0) {
@@ -236,7 +222,6 @@ export class ArticleComponent implements OnInit {
         if (this.currentSlide1 !== this.ads_leftmiddle.length - 1) {
           this.currentSlide1 += 1;
           this.translateValue1 = `-${this.currentSlide1 * 100}%`;
-          console.log('this is lower');
         }
       } else {
         if (this.currentSlide1 !== 0) {
@@ -262,7 +247,6 @@ export class ArticleComponent implements OnInit {
               (a: any) => a.slug !== this.id
             );
             this.nextthree = this.author_post?.slice(0, 7);
-            console.log('time', this.nextthree);
           } else {
             this.author_post = [];
           }
@@ -291,9 +275,7 @@ export class ArticleComponent implements OnInit {
             this.author_post = this.author_post.filter(
               (a: any) => a.slug !== this.id
             );
-            console.log('this.author_post==', this.author_post);
             this.nextthree = this.author_post?.slice(1, 7);
-            console.log(this.nextthree, 'king');
           } else {
             this.author_post = [];
           }
@@ -355,42 +337,41 @@ export class ArticleComponent implements OnInit {
     window.open(url);
   }
 
-  edit(uid: any) {
-    this.router.navigate([`/admin/post/edit/${uid}`]);
-  }
+ 
+  
   getShortName(user_name: any) {
     return user_name.slice(0, 46).trim() + (user_name.length > 45 ? '...' : '');
   }
 
-  onChange(ob: MatCheckboxChange) {
-    if (ob.checked) {
-      this.comment_obj.remember_me = true;
-    } else {
-      this.comment_obj.remember_me = false;
-    }
-  }
+  // onChange(ob: MatCheckboxChange) {
+  //   if (ob.checked) {
+  //     this.comment_obj.remember_me = true;
+  //   } else {
+  //     this.comment_obj.remember_me = false;
+  //   }
+  // }
 
-  savePostComment() {
-    this.comment_obj.flag = 'I';
-    this.comment_obj.customer_id = environment.CUSTOMER_ID;
-    this.post.savePostComment(this.comment_obj).subscribe(
-      (res: any) => {
-        if (res.code == 'success') {
-          this.comment_obj.comment_content = '';
-          this.comment_obj.comment_author = '';
-          this.comment_obj.comment_author_email = '';
-          this.comment_obj.comment_author_url = '';
-          this.comment_obj.remember_me = false;
-          this.getCommentsByPost(this.news.id);
-        } else {
-          this.notify.error(res.message);
-        }
-      },
-      (err: any) => {
-        this.notify.error(err.message);
-      }
-    );
-  }
+  // savePostComment() {
+  //   this.comment_obj.flag = 'I';
+  //   this.comment_obj.customer_id = environment.CUSTOMER_ID;
+  //   this.post.savePostComment(this.comment_obj).subscribe(
+  //     (res: any) => {
+  //       if (res.code == 'success') {
+  //         this.comment_obj.comment_content = '';
+  //         this.comment_obj.comment_author = '';
+  //         this.comment_obj.comment_author_email = '';
+  //         this.comment_obj.comment_author_url = '';
+  //         this.comment_obj.remember_me = false;
+  //         this.getCommentsByPost(this.news.id);
+  //       } else {
+  //         this.notify.error(res.message);
+  //       }
+  //     },
+  //     (err: any) => {
+  //       this.notify.error(err.message);
+  //     }
+  //   );
+  // }
   opennewsSec(id: any, flag: any) {
     if (flag === 'Y') {
       window.location.href = '/' + id;
@@ -417,8 +398,6 @@ export class ArticleComponent implements OnInit {
           }
 
           this.Title.setTitle(this.news.post_title);
-          this.comment_obj.comment_post_id = this.news.id;
-          this.getCommentsByPost(this.news.id);
           // this.getPo(this.news.id);
           this.getPostBycategory();
         } else {
@@ -558,7 +537,6 @@ export class ArticleComponent implements OnInit {
           this.sportsnews = this.data[0].sports || [];
           this.polticesnews = this.data[0].politics || [];
           this.entermentaarr = this.data[0].entertainment || [];
-          console.log(this.entermentaarr, 'data');
         } else {
           this.postarr = [];
         }

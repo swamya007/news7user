@@ -27,10 +27,10 @@ export class MainNewsComponent implements OnInit {
   ngOnInit(): void {
     // this.showImage(this.slideIndex);
     this.getLatestNews();
-    this.getslide();
-    setTimeout(() => {
-      this.showImage(this.slideIndex);
-    }, 1500);
+    // this.getslide();
+    // setTimeout(() => {
+    //   this.showImage(this.slideIndex);
+    // }, 1500);
   }
 
   getslide() {

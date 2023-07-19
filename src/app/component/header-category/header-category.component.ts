@@ -19,6 +19,7 @@ export class HeaderCategoryComponent implements OnInit {
   post_array_upper:any
   ads_list: any
   slug:any
+  post_cnt:number = 0;
 
   constructor(private adsService: AdserviceService, private postserviceService: PostserviceService,private activatedRoute: ActivatedRoute) {
     activatedRoute.params.subscribe(val => {
@@ -44,7 +45,7 @@ export class HeaderCategoryComponent implements OnInit {
         var data = res.body;
 
         this.postarr = data?.map((dt: any) => JSON.parse(dt));
-
+        this.post_cnt = this.postarr.length;
         this.postarr.forEach((element:any) => {
           if (element && element.category_name) {
             element.category_list = element.category_name.split(",");

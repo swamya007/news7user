@@ -13,10 +13,12 @@
           (click)="opennewsSec(post.slug, post.twitter_exists)"
           *ngFor="
             let post of post_array
-              | paginate : { itemsPerPage: 10, currentPage: p }
+              | paginate : { itemsPerPage: 10, currentPage: p, totalItems: post_cnt }
           "
         >
+        
           <div class="col-md-6 col-sm-12 col-12 news-img-container">
+            <!-- <div style="color: black;">{{post.total_cnt}}</div> -->
             <img [src]="post.guid" />
           </div>
           <div class="col-md-6 col-sm-12 col-12 news-text-container">

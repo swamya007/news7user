@@ -107,6 +107,9 @@ export class CategoryComponent implements OnInit {
   @Input()
   post_array: any = [];
 
+  @Input()
+  post_cnt:number = 0
+
   ngOnInit(): void {
     this.customer_id = environment.CUSTOMER_ID;
     const routeParams = this.activatedRoute.snapshot.paramMap;

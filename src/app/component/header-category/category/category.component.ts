@@ -25,7 +25,7 @@ export class CategoryComponent implements OnInit {
   currentIndex = 0;
   currentSlide = 0;
   currentSlide1 = 0;
-
+  category_name: any;
   translateValue = `-${this.currentSlide * 100}%`;
 
   currentSlides1 = 0;
@@ -69,6 +69,8 @@ export class CategoryComponent implements OnInit {
     activatedRoute.params.subscribe((val) => {
       const routeParams = this.activatedRoute.snapshot.paramMap;
       this.cat_name = routeParams.get('slug');
+      this.category_name = routeParams.get('slug');
+
       console.log(this.cat_name, 'log');
       // console.log('Here')
 
@@ -112,6 +114,8 @@ export class CategoryComponent implements OnInit {
     this.customer_id = environment.CUSTOMER_ID;
     const routeParams = this.activatedRoute.snapshot.paramMap;
     this.cat_name = routeParams.get('slug');
+    this.category_name = routeParams.get('slug');
+    console.log(this.category_name, 'swamya');
     if (this.ads_list && this.ads_list.length > 0) {
       /** Right Upper */
       this.ads_rightupper = this.ads_list.filter(
@@ -152,7 +156,6 @@ export class CategoryComponent implements OnInit {
       }
     }
   }
-  getcategoryname() {}
 
   getWithoutHeaderCategory() {
     this.masterservice
@@ -162,6 +165,7 @@ export class CategoryComponent implements OnInit {
           if (res.code == 'success') {
             var data = res.body;
             this.category_arr = data.map((dt: any) => JSON.parse(dt));
+            console.log(this.category_arr, 'cat-name');
           } else {
             this.category_arr = [];
           }

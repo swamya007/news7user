@@ -39,9 +39,13 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.customer_id = environment.CUSTOMER_ID;
     this.getallheaders();
-    this.getAllAdsList();
+    ///this.getAllAdsList();
   }
-
+  home() {
+   
+      this.router.navigate(['/']);
+    
+  }
   moveSlideleft(direction: any) {
     if (this.ads_middle) {
       if (direction === 'plus') {

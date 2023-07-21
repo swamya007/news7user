@@ -13,10 +13,10 @@
           (click)="opennewsSec(post.slug, post.twitter_exists)"
           *ngFor="
             let post of post_array
-              | paginate : { itemsPerPage: 10, currentPage: p, totalItems: post_cnt }
+              | paginate
+                : { itemsPerPage: 10, currentPage: p, totalItems: post_cnt }
           "
         >
-        
           <div class="col-md-6 col-sm-12 col-12 news-img-container">
             <!-- <div style="color: black;">{{post.total_cnt}}</div> -->
             <img [src]="post.guid" />
@@ -214,7 +214,7 @@
       <div class="prameya-epaper">
         <div class="news-section item-three-bg">
           <div class="heading-container">
-            <h4 class="news-sub">କ୍ରୀଡା</h4>
+            <h4 class="news-sub">ଖେଳ</h4>
           </div>
           <article
             class="row news-box ng-star-inserted"

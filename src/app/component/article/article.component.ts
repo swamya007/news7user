@@ -70,7 +70,7 @@ export class ArticleComponent implements OnInit {
     activatedRoute.params.subscribe((val) => {
       const routeParams = this.activatedRoute.snapshot.paramMap;
       this.id = routeParams.get('Id');
-    
+
       this.getAllAdsList();
       this.post.getPostBySlugodia(this.id, environment.CUSTOMER_ID).subscribe(
         (res: any) => {
@@ -127,7 +127,7 @@ export class ArticleComponent implements OnInit {
     //this.isLoggedIn = this.loginService.isLoggedIn();
     const routeParams = this.activatedRoute.snapshot.paramMap;
     this.id = routeParams.get('Id');
-  
+
     // this.getIPAddress();
     // this.getBrowserName();
     this.post.getPostBySlugodia(this.id, environment.CUSTOMER_ID).subscribe(
@@ -142,7 +142,7 @@ export class ArticleComponent implements OnInit {
           }
           this.news.post_content_sanitized =
             this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
-            this.news.post_click = Math.round(this.news.post_click / 3);
+          this.news.post_click = Math.round(this.news.post_click / 3);
 
           //if(isPlatformBrowser(PLATFORM_ID)) {
           // let div = document.querySelector('.article-text-section');
@@ -337,8 +337,6 @@ export class ArticleComponent implements OnInit {
     window.open(url);
   }
 
- 
-  
   getShortName(user_name: any) {
     return user_name.slice(0, 46).trim() + (user_name.length > 45 ? '...' : '');
   }

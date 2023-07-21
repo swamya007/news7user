@@ -134,6 +134,8 @@ export class CategoryComponent implements OnInit {
     //   this.category_three = this.post_array_upper[4].category_name.split(",");
     //   console.log('Category====', this.category_three)
     // }
+
+    this.getAllairticlenews();
   }
   moveSlideleft(direction: any) {
     if (this.ads_leftmiddle) {
@@ -149,6 +151,29 @@ export class CategoryComponent implements OnInit {
         }
       }
     }
+  }
+
+  getAllairticlenews() {
+    this.postserviceService.getallairticle().subscribe(
+      (res: any) => {
+        if (res.code == 'success') {
+          this.data = res.body;
+          this.data = this.data?.map((dt: any) => JSON.parse(dt));
+          console.log(this.data,'ssihsiaoh')
+          this.crimesnews = this.data[0].crime || [];
+          this.sportsnews = this.data[0].sports || [];
+          this.polticesnews = this.data[0].politics || [];
+          console.log(  this.polticesnews ,'politc')
+          this.entermentaarr = this.data[0].entertainment || [];
+          console.log(this.data, 'data');
+        } else {
+          this.postarr = [];
+        }
+      },
+      (err) => {
+        this.postarr = [];
+      }
+    );
   }
   getcategoryname() {}
 
@@ -181,33 +206,7 @@ export class CategoryComponent implements OnInit {
     }
   }
 
-  getAllairticlenews() {
-    this.postserviceService.getallairticle().subscribe(
-      (res: any) => {
-        if (res.code == 'success') {
-          this.data = res.body;
-          this.data = this.data?.map((dt: any) => JSON.parse(dt));
-          this.crimesnews = this.data[0].crime || [];
-          this.sportsnews = this.data[0].sports || [];
-          this.polticesnews = this.data[0].politics || [];
-          this.entermentaarr = this.data[0].entertainment || [];
-          this.womensnews = this.data[0].women || [];
-          this.sportsnews = this.data[0].sports || [];
-          this.technologynews = this.data[0].technology || [];
-          this.polticesnews = this.data[0].politics || [];
-          this.entermentaarr = this.data[0].entertainment || [];
-          this.campusnews = this.data[0].campus_muse || [];
-          this.scincenews = this.data[0].science || [];
-          this.twinnews = this.data[0].twin_city || [];
-        } else {
-          this.postarr = [];
-        }
-      },
-      (err) => {
-        this.postarr = [];
-      }
-    );
-  }
+  
 
   getShortName(user_name: any) {
     return user_name.slice(0, 46).trim() + (user_name.length > 45 ? '...' : '');

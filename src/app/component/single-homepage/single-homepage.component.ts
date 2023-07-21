@@ -34,7 +34,8 @@ export class SingleHomepageComponent implements OnInit {
   bahu_charchita_khabar: any = [];
   bahu_charchita_khabar_all: any = [];
   sliderdata: any = [];
-
+  nation: any = [];
+  business: any = [];
   constructor(
     private title: Title,
     private Meta: Meta,
@@ -90,8 +91,8 @@ export class SingleHomepageComponent implements OnInit {
             this.data = this.data?.map((dt: any) => JSON.parse(dt));
             this.odishaarr = this.data[0].odisha || [];
             this.crimesnews = this.data[0].crime || [];
-            // this.bahu_charchita_khabar =
-            //   this.data[0].bahu_charchita_khabar || [];
+            this.bahu_charchita_khabar =
+               this.data[0].bahu_charchita_khabar || [];
             this.bahu_charchita_khabar_all =
               this.data[0].bahu_charchita_khabar_all || [];
 
@@ -106,7 +107,11 @@ export class SingleHomepageComponent implements OnInit {
             this.twinnews = this.data[0].twin_city || [];
             this.latestnews = this.data[0].latestnews || [];
             this.sliderdata = this.data[0].slider_data || [];
+            this.nation = this.data[0].nation || [];
+            this.business = this.data[0].business || [];
 
+            
+            
           } else {
             this.postarr = [];
           }

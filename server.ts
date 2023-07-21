@@ -104,134 +104,141 @@ export function app(): express.Express {
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
   // Serve static files from /browser
-  // server.get('/robots.txt', (req, res) => {
-  //   res.type('text/plain');
-  //   res.sendFile(__dirname + "/robots.txt");
-  // });
-  // server.get('/ads.txt', (req, res) => {
-  //   res.sendFile(__dirname + '/ads.txt');
-  // });
-  // server.get('/rss', async (req, res) => {
-  //   let resp = await axios.get('https://dev.prameyanews.com/prameya/api/rssfeed');
-  //   res.type('text/xml').send(resp.data);
-  // });
+  server.get('/robots.txt', (req, res) => {
+    res.type('text/plain');
+    res.sendFile(__dirname + "/robots.txt");
+  });
+  server.get('/ads.txt', (req, res) => {
+    res.sendFile(__dirname + '/ads.txt');
+  });
+  server.get('/rss', async (req, res) => {
+    let resp = await axios.get('https://dev.prameyanews.com/prameya/api/rssfeed');
+    res.type('text/xml').send(resp.data);
+  });
 
-  // server.get('/:category/rss', async (req, res) => {
-  //   const { category } = req.params;
-  //   let resp = await axios.get(`https://dev.prameyanews.com/prameya/api/${category}/rssfeed`);
-  //   res.type('text/xml').send(resp.data);
-  // });
+  server.get('/:category/rss', async (req, res) => {
+    const { category } = req.params;
+    let resp = await axios.get(`https://dev.prameyanews.com/prameya/api/${category}/rssfeed`);
+    res.type('text/xml').send(resp.data);
+  });
 
-  // server.get('/sitemap.xml', async (req, res) => {
-  //   res.type('text/xml');
-  //   res.setHeader('Content-Encoding', 'utf8');
-  //   try {
-  //     let routes = ['', 'prameya/contact-us', 'prameya/termofuses']; // Add your routes here
-  //     const response = await axios.get('https://dev.prameyanews.com/prameya/api/post/get-sitemap-details').then(res => res.data);
-  //     response.body?.forEach((r: any) => {
-  //       let routeData = JSON.parse(r);
-  //       routes.push(routeData.slug)
-  //     })
-  //     let sitemapItems = [];
-  //     for (let i = 0; i < routes.length; i++) {
-  //       let route = routes[i];
-  //       let Item = {
-  //         url: [
-  //           {
-  //             loc: environment.POST_URL + route,
-  //           },
-  //           { changefreq: "daily" },
-  //           { priority: "1.0" },
-  //         ],
-  //       };
-  //       sitemapItems.push(Item);
-  //     }
-  //     const sitemapObject = {
-  //       urlset: [
-  //         {
-  //           _attr: {
-  //             xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9",
-  //             "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
-  //             "xsi:schemaLocation": "http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
-  //           },
-  //         },
-  //         ...sitemapItems,
-  //       ],
-  //     };
-  //     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>${xml(sitemapObject)}`;
+  server.get('/sitemap.xml', async (req, res) => {
+    res.type('text/xml');
+    res.setHeader('Content-Encoding', 'utf8');
+    try {
+      let routes = ['', 'prameya/contact-us', 'prameya/termofuses']; // Add your routes here
+      const response = await axios.get('https://dev.prameyanews.com/prameya/api/post/get-sitemap-details').then(res => res.data);
+      response.body?.forEach((r: any) => {
+        let routeData = JSON.parse(r);
+        routes.push(routeData.slug)
+      })
+      let sitemapItems = [];
+      for (let i = 0; i < routes.length; i++) {
+        let route = routes[i];
+        let Item = {
+          url: [
+            {
+              loc: environment.POST_URL + route,
+            },
+            { changefreq: "daily" },
+            { priority: "1.0" },
+          ],
+        };
+        sitemapItems.push(Item);
+      }
+      const sitemapObject = {
+        urlset: [
+          {
+            _attr: {
+              xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9",
+              "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+              "xsi:schemaLocation": "http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+            },
+          },
+          ...sitemapItems,
+        ],
+      };
+      const sitemap = `<?xml version="1.0" encoding="UTF-8"?>${xml(sitemapObject)}`;
       
-  //     await writeFileAsync(__dirname + '/sitemap.xml', sitemap, "utf8");
-  //     res.sendFile(__dirname + '/sitemap.xml');
-  //   } catch (err) {
-  //     console.error(err);
-  //     res.status(500).end();
-  //   }
-  // });
+      await writeFileAsync(__dirname + '/sitemap.xml', sitemap, "utf8");
+      res.sendFile(__dirname + '/sitemap.xml');
+    } catch (err) {
+      console.error(err);
+      res.status(500).end();
+    }
+  });
 
 
-  // server.get('/news-sitemap.xml', async (req, res) => {
-  //   res.type('text/xml');
-  //   res.setHeader('Content-Encoding', 'utf8');
-  //   try {
-  //     let routes:Array<any> = [];
-  //     const response = await axios.get('https://dev.prameyanews.com/prameya/api/post/get-sitemap-details').then(res => res.data);
-  //     response.body?.forEach((r: any) => {
-  //       let routeData = JSON.parse(r);
-  //       routes.push(routeData)
-  //     })
-  //     let sitemapItems = [];
-  //     for (let i = 0; i < routes.length; i++) {
-  //       let route: any = routes[i];
-  //       let Item = {
-  //         url: [
-  //           {
-  //             loc: environment.POST_URL + route.slug,
-  //           },
-  //           {
-  //             "news:news": [
-  //               {
-  //                 "news:publication": [
-  //                   { "news:name": environment.PLATFORM_BASEURL },
-  //                   { "news:language": 'en' }
-  //                 ]
-  //               },
-  //               { "news:publication_date": route.created_on ? new Date(route.created_on).toISOString() : route.created_on },
-  //               { "news:title": route.post_title },
-  //               { "news:keywords": route.seo_keywords }
-
-
-  //             ]
-  //           }
-
-  //         ],
-  //       };
-
-  //       sitemapItems.push(Item);
-
-  //     }
-  //     const sitemapObject = {
-  //       urlset: [
-  //         {
-  //           _attr: {
-  //             xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9",
-  //             "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
-  //             "xsi:schemaLocation": "http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd",
-  //            "xmlns:news": "http://www.google.com/schemas/sitemap-news/0.9",
-  //            "xmlns:image":"http://www.google.com/schemas/sitemap-image/1.1"
-  //           },
-  //         },
-  //         ...sitemapItems,
-  //       ],
-  //     };
-  //     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>${xml(sitemapObject)}`;
+  server.get('/news-sitemap.xml', async (req, res) => {
+    res.type('text/xml');
+    res.setHeader('Content-Encoding', 'utf8');
+    try {
+      let routes:Array<any> = [];
+      const response = await axios.get('https://api-dev.prameyanews.com/prameya/api/post/get-sitemap-details').then(res => res.data);
+      response.body?.forEach((r: any) => {
+        let routeData = JSON.parse(r);
+        routes.push(routeData)
+      })
+      let sitemapItems = [];
+      if(routes.length > 0) {
+        for (let i = 0; i < routes.length; i++) {
+          let route: any = routes[i];
+          let Item = {
+            url: [
+              {
+                loc: environment.POST_URL + route.slug,
+              },
+              {
+                "news:news": [
+                  {
+                    "news:publication": [
+                      { "news:name": environment.PLATFORM_BASEURL },
+                      { "news:language": 'en' }
+                    ]
+                  },
+                  { "news:publication_date": route.created_on ? new Date(route.created_on).toISOString() : route.created_on },
+                  { "news:title": route.post_title },
+                  { "news:keywords": route.seo_keywords }
+  
+  
+                ]
+              }
+  
+            ],
+          };
+          sitemapItems.push(Item);
+        }
+      } else {
+        let Item = {
+          url: 
+            "No Data Found"    
+        }
+        sitemapItems.push(Item);
+      }
+      
+      const sitemapObject = {
+        urlset: [
+          {
+            _attr: {
+              xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9",
+              "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+              "xsi:schemaLocation": "http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd",
+             "xmlns:news": "http://www.google.com/schemas/sitemap-news/0.9",
+             "xmlns:image":"http://www.google.com/schemas/sitemap-image/1.1"
+            },
+          },
+          ...sitemapItems,
+        ],
+      };
+      const sitemap = `<?xml version="1.0" encoding="UTF-8"?>${xml(sitemapObject)}`;
      
-  //     await writeFileAsync(__dirname + '/sitemap.xml', sitemap, "utf8");
-  //     res.sendFile(__dirname + '/sitemap.xml');
-  //   } catch (err) {
-  //     console.error(err);
-  //     res.status(500).end();
-  //   }
-  // });
+      await writeFileAsync(__dirname + '/sitemap.xml', sitemap, "utf8");
+      res.sendFile(__dirname + '/sitemap.xml');
+    } catch (err) {
+      console.error(err);
+      res.status(500).end();
+    }
+  });
 
 
 

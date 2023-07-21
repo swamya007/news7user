@@ -2,6 +2,7 @@
   <div>
     <h1 class="category-heading">
       {{ post_array[0].head_category_name }}
+
       <!-- {{ category_name }} -->
     </h1>
   </div>
@@ -38,8 +39,10 @@
         style="padding-top: 1vw; padding-bottom: 1vw"
       >
         <pagination-controls
-          class="pagination-color"
+          
+          *ngIf="post_array"
           (pageChange)="p = $event"
+          
         ></pagination-controls>
       </div>
     </div>

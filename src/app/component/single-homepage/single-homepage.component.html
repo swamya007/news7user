@@ -349,12 +349,12 @@
         <section>
           <div class="news-section1">
             <div class="heading-container">
-              <h4 class="news-sub">ଟ୍ୱିନ୍ ସିଟି</h4>
+              <h4 class="news-sub">ଦେଶ- ବିଦେଶ</h4>
             </div>
 
             <article
               class="d-flex news-box1 ng-star-inserted"
-              *ngFor="let post of twinnews"
+              *ngFor="let post of nation"
               (click)="opennewsSec(post.slug, post.twitter_exists)"
             >
               <div class="col-md-3 col-sm-3 col-3 news-img-container">
@@ -380,10 +380,10 @@
                 </div>
               </div>
             </article>
-            <div class="text-center" *ngIf="twinnews && twinnews.length > 0">
+            <div class="text-center" *ngIf="nation && nation.length > 0">
               <button
                 class="button-29"
-                [routerLink]="twinnews[0].category_slug"
+                [routerLink]="nation[0].category_slug"
               >
                 View More
               </button>
@@ -495,11 +495,12 @@
         <section>
           <div class="news-section1">
             <div class="heading-container">
-              <h4 class="news-sub">ଟେକ୍ନୋଲୋଜି</h4>
+              <h4 class="news-sub">ବାଣିଜ୍ୟ
+              </h4>
             </div>
             <article
               class="d-flex news-box1 ng-star-inserted"
-              *ngFor="let post of technologynews"
+              *ngFor="let post of business"
               (click)="opennewsSec(post.slug, post.twitter_exists)"
             >
               <div class="col-md-3 col-sm-3 col-3 news-img-container">
@@ -527,11 +528,11 @@
             </article>
             <div
               class="text-center"
-              *ngIf="technologynews && technologynews.length > 0"
+              *ngIf="business && business.length > 0"
             >
               <button
                 class="button-29"
-                [routerLink]="technologynews[0].category_slug"
+                [routerLink]="business[0].category_slug"
               >
                 View More
               </button>

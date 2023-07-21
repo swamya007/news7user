@@ -19,15 +19,15 @@
   height: auto;
   margin-bottom: 10px;
 }
-.article-component-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.article-section-container img {
+  max-width: 100%;
+  height: auto;
 }
-
-.article-section-container .article-image {
-  width: -webkit-fill-available;
-  margin: 20px 0px;
+.article-section-container figure img {
+  max-width: 100%;
+  height: auto;
+}
+.wp-image-596647 {
   max-width: 100%;
   height: auto;
 }

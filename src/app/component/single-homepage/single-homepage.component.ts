@@ -157,4 +157,5 @@ export class SingleHomepageComponent implements OnInit {
       this.router.navigate(['/' + id]);
     }
   }
+  
 }

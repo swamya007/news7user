@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdserviceService } from 'src/app/services/Adservice/adservice.service';
 import { MasterServiceService } from 'src/app/services/masterservice/master-service.service';
@@ -25,7 +25,7 @@ export class CategoryComponent implements OnInit {
   currentIndex = 0;
   currentSlide = 0;
   currentSlide1 = 0;
-
+  category_name: any;
   translateValue = `-${this.currentSlide * 100}%`;
 
   currentSlides1 = 0;
@@ -107,6 +107,10 @@ export class CategoryComponent implements OnInit {
   @Input()
   post_array: any = [];
 
+  @Input()
+  post_cnt:number = 0
+  
+  @Output() page_count:EventEmitter<string>= new EventEmitter();  
   ngOnInit(): void {
     this.customer_id = environment.CUSTOMER_ID;
     const routeParams = this.activatedRoute.snapshot.paramMap;
@@ -185,6 +189,7 @@ export class CategoryComponent implements OnInit {
           if (res.code == 'success') {
             var data = res.body;
             this.category_arr = data.map((dt: any) => JSON.parse(dt));
+            console.log(this.category_arr, 'cat-name');
           } else {
             this.category_arr = [];
           }
@@ -224,5 +229,8 @@ export class CategoryComponent implements OnInit {
 
   openCategory(url: any) {
     this.router.navigate([url]);
+  }
+  pageChange(page:any){
+    this.page_count.emit(page);  
   }
 }

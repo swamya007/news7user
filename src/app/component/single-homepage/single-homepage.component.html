@@ -131,7 +131,7 @@
                     <label class="prev" for="i1"><span>&#x2039;</span></label>
                     <label class="next" for="i3"><span>&#x203a;</span></label>
                     <figcaption>
-                      <h5 
+                      <h5
                         class="slider-heading"
                         (click)="
                           opennewsSec(
@@ -147,7 +147,11 @@
                       </p>
                     </figcaption>
                   </div>
-                  <div class="slide-home_img" id="imgthree" *ngIf="sliderdata[2]">
+                  <div
+                    class="slide-home_img"
+                    id="imgthree"
+                    *ngIf="sliderdata[2]"
+                  >
                     <img
                       [src]="sliderdata[2].guid"
                       (click)="
@@ -176,7 +180,11 @@
                       </p>
                     </figcaption>
                   </div>
-                  <div class="slide-home_img" id="imgfour" *ngIf="sliderdata[4]">
+                  <div
+                    class="slide-home_img"
+                    id="imgfour"
+                    *ngIf="sliderdata[4]"
+                  >
                     <img
                       [src]="sliderdata[3].guid"
                       (click)="
@@ -205,7 +213,11 @@
                       </p>
                     </figcaption>
                   </div>
-                  <div class="slide-home_img" id="imgfive" *ngIf="sliderdata[4]">
+                  <div
+                    class="slide-home_img"
+                    id="imgfive"
+                    *ngIf="sliderdata[4]"
+                  >
                     <img
                       [src]="sliderdata[4].guid"
                       (click)="
@@ -282,7 +294,12 @@
                   </div>
                 </div>
               </article>
-              <div class="text-center">
+              <div
+                class="text-center"
+                *ngIf="
+                  bahu_charchita_khabar && bahu_charchita_khabar.length > 0
+                "
+              >
                 <button class="button-29" routerLink="/prameya/bhaucharchita">
                   View More
                 </button>
@@ -447,7 +464,7 @@
         <section>
           <div class="news-section1">
             <div class="heading-container">
-              <h4 class="news-sub">କ୍ରୀଡା</h4>
+              <h4 class="news-sub">ଖେଳ</h4>
             </div>
             <article
               class="d-flex news-box1 ng-star-inserted"
@@ -638,7 +655,6 @@
       </div>
     </section>
   </div>
-  
 </div>
 <div class="home-second-container">
   <div class="recent-news-heading">

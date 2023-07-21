@@ -80,7 +80,7 @@ label span {
   transform: translateY(0%);
   background: rgba(0, 0, 0, 0.6);
   height: 62px;
-  width: 45px;
+  width: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -212,6 +212,20 @@ transition: .3s;
     background-color: #fff;
     margin-bottom: 50px;
   }
+
+  label span {
+    position: absolute;
+    font-size: 73pt;
+    top: 50%;
+    transform: translateY(0%);
+    background: rgba(0, 0, 0, 0.6);
+    height: 62px;
+    width: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 15px;
+  }
 }
 
 @media screen and (max-width: 1368px) {
@@ -248,7 +262,7 @@ transition: .3s;
     margin-top: 0px;
     position: relative;
     height: 0;
-    padding-bottom: 83.5%;
+    padding-bottom: 73.5%;
     user-select: none;
     background-color: #fff;
     margin-bottom: 50px;

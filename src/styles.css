@@ -1591,7 +1591,7 @@ h1 > span {
     background: var(--white) !important;
     border: 1px rgb(215, 215, 215) solid !important;
     margin-bottom: 10px;
-    min-height: 106vh;
+    min-height: 89.5vh;
   }
   .download-app img {
     height: 18px !important;

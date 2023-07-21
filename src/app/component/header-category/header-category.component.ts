@@ -20,7 +20,7 @@ export class HeaderCategoryComponent implements OnInit {
   ads_list: any;
   slug: any;
   post_cnt: number = 0;
-
+  p:any = 1;
   constructor(
     private adsService: AdserviceService,
     private postserviceService: PostserviceService,
@@ -42,17 +42,20 @@ export class HeaderCategoryComponent implements OnInit {
     this.getAllAdsList();
     this.getNewsBySlug();
   }
-
+  getCount(data:any){
+    this.p = data;
+    this.getNewsBySlug();
+  }
   getNewsBySlug() {
     this.postserviceService
-      .getPostByCategorySlugodia(1, this.slug, environment.CUSTOMER_ID)
+      .getPostByCategorySlugodia(this.p, this.slug, environment.CUSTOMER_ID)
       .subscribe(
         (res: any) => {
           if (res.code == 'success') {
             var data = res.body;
 
             this.postarr = data?.map((dt: any) => JSON.parse(dt));
-            this.post_cnt = this.postarr.length;
+            this.post_cnt = this.postarr[0].total_cnt;
             this.postarr.forEach((element: any) => {
               if (element && element.category_name) {
                 element.category_list = element.category_name.split(',');

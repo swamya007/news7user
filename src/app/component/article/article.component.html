@@ -93,10 +93,13 @@
           </p> -->
         </div>
 
-        <div
+        <!-- <div
           class="article-text-section"
           [innerHTML]="news.post_content_sanitized"
-        ></div>
+        ></div> -->
+
+        <div class="article-text-section" [innerHTML]="getIframeHtml(news.post_content)"></div>
+
       </div>
 
       <div class="article-section-container ng-star-inserted">

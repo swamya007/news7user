@@ -1,7 +1,7 @@
 .news-section {
   padding: 1rem;
   background: var(--white);
-  border: 1px rgb(215, 215, 215) solid;
+  border: 15px rgb(215, 215, 215) solid;
 }
 .news-card {
   cursor: pointer;
@@ -161,7 +161,7 @@
 
 .main-news-border {
   border-bottom: 1px dotted #bbb;
-  padding: 20px 0px 30px 0px;
+  padding: 20px 15px 30px 15px;
 }
 
 .second-news-section {

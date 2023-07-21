@@ -108,7 +108,7 @@ export class CategoryComponent implements OnInit {
   post_array: any = [];
 
   @Input()
-  post_cnt:number = 0
+  post_cnt: number = 0;
 
   ngOnInit(): void {
     this.customer_id = environment.CUSTOMER_ID;
@@ -125,6 +125,7 @@ export class CategoryComponent implements OnInit {
       );
     }
     this.getWithoutHeaderCategory();
+    this.getAllairticlenews();
     // if (this.post_array_upper && this.post_array_upper[0].category_name) {
     //   this.category_one = this.post_array_upper[0].category_name.split(",");
     //   console.log('Category====', this.category_one)

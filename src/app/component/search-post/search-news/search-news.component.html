@@ -1,17 +1,18 @@
 <div class="news-section">
-  <div class="main-news-container">
-    <div class="row main-news-section">
-      <div
-        class="col-md-12"
-        *ngFor="
-          let post of postarr | paginate : { itemsPerPage: 6, currentPage: p }
-        "
-        (click)="opennewsSec(post.slug, post.twitter_exists)"
-      >
-        <div class="news-card main-news-border">
-          <div class="article-component-img">
-            <img [src]="post.guid" />
-          </div>
+  <div class="row main-news-section">
+    <div
+      class="col-md-12"
+      *ngFor="
+        let post of postarr | paginate : { itemsPerPage: 6, currentPage: p }
+      "
+      (click)="opennewsSec(post.slug, post.twitter_exists)"
+    >
+      <div class="news-card main-news-border row">
+        <div class="col-md-6 col-sm-12 col-12 news-img-container">
+          <img [src]="post.guid" />
+        </div>
+        <div class="col-md-6 col-sm-12 col-12 news-text-container">
+          <p>{{ post.post_title ? getShortName(post.post_title) : "" }}</p>
           <div class="news-date-section d-flex">
             <div class="author-name">{{ post.author_name }}</div>
             <div><i class="fa-solid fa-circle news-circle-icon"></i></div>
@@ -19,7 +20,6 @@
               {{ post.post_date | date : "MMMM dd, yyyy" }}
             </div>
           </div>
-          <p>{{ post.post_title ? getShortName(post.post_title) : "" }}</p>
         </div>
       </div>
     </div>

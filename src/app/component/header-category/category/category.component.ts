@@ -108,9 +108,9 @@ export class CategoryComponent implements OnInit {
   post_array: any = [];
 
   @Input()
-  post_cnt:number = 0
-  
-  @Output() page_count:EventEmitter<string>= new EventEmitter();  
+  post_cnt: number = 0;
+
+  @Output() page_count: EventEmitter<string> = new EventEmitter();
   ngOnInit(): void {
     this.customer_id = environment.CUSTOMER_ID;
     const routeParams = this.activatedRoute.snapshot.paramMap;
@@ -126,6 +126,7 @@ export class CategoryComponent implements OnInit {
       );
     }
     this.getWithoutHeaderCategory();
+    this.getAllairticlenews();
     // if (this.post_array_upper && this.post_array_upper[0].category_name) {
     //   this.category_one = this.post_array_upper[0].category_name.split(",");
     //   console.log('Category====', this.category_one)
@@ -163,11 +164,11 @@ export class CategoryComponent implements OnInit {
         if (res.code == 'success') {
           this.data = res.body;
           this.data = this.data?.map((dt: any) => JSON.parse(dt));
-          console.log(this.data,'ssihsiaoh')
+          console.log(this.data, 'ssihsiaoh');
           this.crimesnews = this.data[0].crime || [];
           this.sportsnews = this.data[0].sports || [];
           this.polticesnews = this.data[0].politics || [];
-          console.log(  this.polticesnews ,'politc')
+          console.log(this.polticesnews, 'politc');
           this.entermentaarr = this.data[0].entertainment || [];
           console.log(this.data, 'data');
         } else {
@@ -211,8 +212,6 @@ export class CategoryComponent implements OnInit {
     }
   }
 
-  
-
   getShortName(user_name: any) {
     return user_name.slice(0, 46).trim() + (user_name.length > 45 ? '...' : '');
   }
@@ -230,7 +229,7 @@ export class CategoryComponent implements OnInit {
   openCategory(url: any) {
     this.router.navigate([url]);
   }
-  pageChange(page:any){
-    this.page_count.emit(page);  
+  pageChange(page: any) {
+    this.page_count.emit(page);
   }
 }

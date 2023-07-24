@@ -145,7 +145,7 @@ export class SingleHomepageComponent implements OnInit {
     );
   }
   opennewsSec(id: any, flag: any) {
-    alert(flag);
+    // alert(flag);
     if (flag === 'Y') {
       window.location.href = '/' + id;
     } else {

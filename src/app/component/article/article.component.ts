@@ -381,8 +381,10 @@ export class ArticleComponent implements OnInit {
         if (res.code == 'success') {
           var data = res.body;
           this.postarr = data?.map((dt: any) => JSON.parse(dt));
+
           this.news =
             this.postarr && this.postarr.length ? this.postarr[0] : {};
+          console.log(this.news, 'check');
           if (this.news.tags) {
             this.news.tags = this.news.tags.replaceAll(',', ', ');
           }
@@ -548,6 +550,7 @@ export class ArticleComponent implements OnInit {
   getIframeHtml(post_content: any): SafeHtml {
     return this.sanitizer.bypassSecurityTrustHtml(post_content) || '';
   }
+
   updateSEO_Tags() {
     this.Title.setTitle(this.news.post_title);
     let imgURL = this.news.guid;

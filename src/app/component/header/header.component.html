@@ -3,7 +3,7 @@
     <div class="logo-container">
       <img src="assets/img/prameya-logo1.png" routerLink="" />
     </div>
-    <div class="home-ad-container" *ngIf="ads_middle != 0">
+    <div class="home-ad-container" *ngIf="ads_middle.length != 0">
       <!-- <div
         id="carouselExampleControls3"
         class="carousel slide carousel-fade"
@@ -42,7 +42,7 @@
           <span class="sr-only">Next</span>
         </a>
       </div> -->
-      <!-- <div class="slider">
+      <div class="slider">
         <div
           class="slides"
           [ngStyle]="{ transform: 'translateX(' + translateValue1 + ')' }"
@@ -75,7 +75,7 @@
             <mat-icon>chevron_right</mat-icon>
           </button>
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
 </header>

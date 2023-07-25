@@ -52,7 +52,10 @@
           src="assets/img/prameya-epaper-link.jpeg"
         />
       </div>
-      <div class="prameya-epaper" *ngIf="ads_rightupper != 0">
+      <div
+        class="prameya-epaper"
+        *ngIf="ads_rightupper && ads_rightupper.length > 0"
+      >
         <div class="advertisement-space-container-first">
           <div
             id="carouselExampleControls4"

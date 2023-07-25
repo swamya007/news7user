@@ -84,43 +84,38 @@ export class SingleHomepageComponent implements OnInit {
     this.page = event;
   }
   getAllnews() {
-      this.postserviceService.getallnews().subscribe(
-        (res: any) => {
-          if (res.code == 'success') {
-            this.data = res.body;
-            this.data = this.data?.map((dt: any) => JSON.parse(dt));
-            this.odishaarr = this.data[0].odisha || [];
-            this.crimesnews = this.data[0].crime || [];
-            this.bahu_charchita_khabar =
-               this.data[0].bahu_charchita_khabar || [];
-            this.bahu_charchita_khabar_all =
-              this.data[0].bahu_charchita_khabar_all || [];
+    this.postserviceService.getallnews().subscribe(
+      (res: any) => {
+        if (res.code == 'success') {
+          this.data = res.body;
+          this.data = this.data?.map((dt: any) => JSON.parse(dt));
+          this.odishaarr = this.data[0].odisha || [];
+          this.crimesnews = this.data[0].crime || [];
+          this.bahu_charchita_khabar = this.data[0].bahu_charchita_khabar || [];
+          this.bahu_charchita_khabar_all =
+            this.data[0].bahu_charchita_khabar_all || [];
 
-            this.homenews = this.data[0].home || [];
-            this.womensnews = this.data[0].women || [];
-            this.sportsnews = this.data[0].sports || [];
-            this.technologynews = this.data[0].technology || [];
-            this.polticesnews = this.data[0].politics || [];
-            this.entermentaarr = this.data[0].entertainment || [];
-            this.campusnews = this.data[0].campus_muse || [];
-            this.scincenews = this.data[0].science || [];
-            this.twinnews = this.data[0].twin_city || [];
-            this.latestnews = this.data[0].latestnews || [];
-            this.sliderdata = this.data[0].slider_data || [];
-            this.nation = this.data[0].nation || [];
-            this.business = this.data[0].business || [];
-
-            
-            
-          } else {
-            this.postarr = [];
-          }
-        },
-        (err) => {
+          this.homenews = this.data[0].home || [];
+          this.womensnews = this.data[0].women || [];
+          this.sportsnews = this.data[0].sports || [];
+          this.technologynews = this.data[0].technology || [];
+          this.polticesnews = this.data[0].politics || [];
+          this.entermentaarr = this.data[0].entertainment || [];
+          this.campusnews = this.data[0].campus_muse || [];
+          this.scincenews = this.data[0].science || [];
+          this.twinnews = this.data[0].twin_city || [];
+          this.latestnews = this.data[0].latestnews || [];
+          this.sliderdata = this.data[0].slider_data || [];
+          this.nation = this.data[0].nation || [];
+          this.business = this.data[0].business || [];
+        } else {
           this.postarr = [];
         }
-      );
-    
+      },
+      (err) => {
+        this.postarr = [];
+      }
+    );
   }
 
   getShortName(user_name: any) {
@@ -150,12 +145,11 @@ export class SingleHomepageComponent implements OnInit {
     );
   }
   opennewsSec(id: any, flag: any) {
-    alert(flag)
+    // alert(flag);
     if (flag === 'Y') {
       window.location.href = '/' + id;
     } else {
       this.router.navigate(['/' + id]);
     }
   }
-  
 }

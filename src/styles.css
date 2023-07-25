@@ -1335,7 +1335,7 @@ footer ul li a {
   margin-bottom: 0;
   line-height: 25px;
   cursor: pointer;
-  min-height: 55px;
+  /* min-height: 55px; */
 }
 
 .post-content {

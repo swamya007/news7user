@@ -183,7 +183,7 @@ export class ArticleComponent implements OnInit {
     this.getAllAdsList();
     this.getAllairticlenews();
   }
-  
+
   prevSlide() {
     this.currentIndex =
       this.currentIndex === 0
@@ -381,8 +381,10 @@ export class ArticleComponent implements OnInit {
         if (res.code == 'success') {
           var data = res.body;
           this.postarr = data?.map((dt: any) => JSON.parse(dt));
+
           this.news =
             this.postarr && this.postarr.length ? this.postarr[0] : {};
+          console.log(this.news, 'check');
           if (this.news.tags) {
             this.news.tags = this.news.tags.replaceAll(',', ', ');
           }
@@ -523,20 +525,17 @@ export class ArticleComponent implements OnInit {
     }
   }
 
-  
-
   getAllairticlenews() {
-    alert('jii')
     this.postserviceService.getallairticle().subscribe(
       (res: any) => {
         if (res.code == 'success') {
           this.data = res.body;
           this.data = this.data?.map((dt: any) => JSON.parse(dt));
-          console.log(this.data,'ssihsiaoh')
+          console.log(this.data, 'ssihsiaoh');
           this.crimesnews = this.data[0].crime || [];
           this.sportsnews = this.data[0].sports || [];
           this.polticesnews = this.data[0].politics || [];
-          console.log(  this.polticesnews ,'politc')
+          console.log(this.polticesnews, 'politc');
           this.entermentaarr = this.data[0].entertainment || [];
           console.log(this.data, 'data');
         } else {
@@ -551,6 +550,7 @@ export class ArticleComponent implements OnInit {
   getIframeHtml(post_content: any): SafeHtml {
     return this.sanitizer.bypassSecurityTrustHtml(post_content) || '';
   }
+
   updateSEO_Tags() {
     this.Title.setTitle(this.news.post_title);
     let imgURL = this.news.guid;

@@ -143,7 +143,7 @@ export class ArticleComponent implements OnInit {
           this.news.post_content_sanitized =
             this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
           this.news.post_click = Math.round(this.news.post_click / 3);
-
+        
           //if(isPlatformBrowser(PLATFORM_ID)) {
           // let div = document.querySelector('.article-text-section');
           // if (div) {

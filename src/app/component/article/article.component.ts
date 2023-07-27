@@ -325,13 +325,13 @@ export class ArticleComponent implements OnInit {
       .getAllAds(this.ads_id, this.img_size, environment.CUSTOMER_ID, 'U')
       .subscribe((res: any) => {
         this.allAdsList = res.body;
-        this.allAdsList = this.allAdsList.map((dt: any) => JSON.parse(dt));
+        this.allAdsList = this.allAdsList?.map((dt: any) => JSON.parse(dt));
         /** Right Upper */
-        this.ads_rightupper = this.allAdsList.filter(
+        this.ads_rightupper = this.allAdsList?.filter(
           (data: any) => data.ads_img_size === '2'
         );
         /** Left Middle */
-        this.ads_leftmiddle = this.allAdsList.filter(
+        this.ads_leftmiddle = this.allAdsList?.filter(
           (data: any) => data.ads_img_size === '3'
         );
       });

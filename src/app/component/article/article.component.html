@@ -2,7 +2,7 @@
   <app-header></app-header>
 </div>
 <app-latest-news-header></app-latest-news-header>
-<div class="article-container">
+<div class="article-container" *ngIf="news">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
@@ -98,7 +98,7 @@
           [innerHTML]="news.post_content_sanitized"
         ></div> -->
 
-        <div class="article-text-section" [innerHTML]="getIframeHtml(news.post_content)"></div>
+        <div class="article-text-section" [innerHTML]="news.post_content | safeHtml"></div>
 
       </div>
 

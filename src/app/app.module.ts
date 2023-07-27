@@ -103,6 +103,7 @@ import { ScrollToTopComponent } from './component/scroll-to-top/scroll-to-top.co
 import { PhotoGalaryComponent } from './component/photo-galary/photo-galary.component';
 import { BhauCharchitaComponent } from './component/bhau-charchita/bhau-charchita.component';
 import { OpenInNewTabDirective } from './open-in-new-tab.directive';
+import { SafeHtmlPipe } from 'src/safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -169,7 +170,8 @@ import { OpenInNewTabDirective } from './open-in-new-tab.directive';
     ScrollToTopComponent,
     PhotoGalaryComponent,
     BhauCharchitaComponent,
-    OpenInNewTabDirective
+    OpenInNewTabDirective,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

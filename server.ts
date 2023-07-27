@@ -112,13 +112,13 @@ export function app(): express.Express {
     res.sendFile(__dirname + '/ads.txt');
   });
   server.get('/rss', async (req, res) => {
-    let resp = await axios.get('http://localhost:8073/prameya/api/rssfeed');
+    let resp = await axios.get('https://odia.prameya.com/prameya/api/rssfeed');
     res.type('text/xml').send(resp.data);
   });
 
   server.get('/:category/rss', async (req, res) => {
     const { category } = req.params;
-    let resp = await axios.get(`http://localhost:8073/prameya/api/${category}/rssfeed`);
+    let resp = await axios.get(`https://odia.prameya.com/prameya/api/${category}/rssfeed`);
     res.type('text/xml').send(resp.data);
   });
 
@@ -127,7 +127,7 @@ export function app(): express.Express {
     res.setHeader('Content-Encoding', 'utf8');
     try {
       let routes = ['', 'prameya/contact-us', 'prameya/termofuses']; // Add your routes here
-      const response = await axios.get('https://api-dev.prameyanews.com/prameya/api/post/get-sitemap-details').then(res => res.data);
+      const response = await axios.get('https://odia.prameya.com/prameya/api/post/get-sitemap-details').then(res => res.data);
       response.body?.forEach((r: any) => {
         let routeData = JSON.parse(r);
         routes.push(routeData.slug)
@@ -174,7 +174,7 @@ export function app(): express.Express {
     res.setHeader('Content-Encoding', 'utf8');
     try {
       let routes:Array<any> = [];
-      const response = await axios.get('https://api-dev.prameyanews.com/prameya/api/post/get-sitemap-details').then(res => res.data);
+      const response = await axios.get('https://odia.prameya.com/prameya/api/post/get-sitemap-details').then(res => res.data);
       response.body?.forEach((r: any) => {
         let routeData = JSON.parse(r);
         routes.push(routeData)
@@ -248,7 +248,7 @@ export function app(): express.Express {
   }));
 
   // All regular routes use the Universal engine
-  server.get('/', (req, res, next) => {
+  server.get('/', redisMiddleware,(req, res, next) => {
     // res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
     next();
   });

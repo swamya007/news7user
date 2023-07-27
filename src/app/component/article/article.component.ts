@@ -173,7 +173,7 @@ export class ArticleComponent implements OnInit {
             this.Meta.updateTag(tag);
           });
 
-          this.getPostBycategory();
+          // this.getPostBycategory();
         } else {
           this.postarr = [];
           this.router.navigate(['/'])

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { MasterServiceService } from 'src/app/services/masterservice/master-service.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
@@ -33,7 +33,9 @@ export class HeaderComponent implements OnInit {
   constructor(
     private masterAPI: MasterServiceService,
     private adsService: AdserviceService,
-    private router: Router
+    private router: Router,
+    private renderer: Renderer2,
+    private elementRef: ElementRef
   ) {}
 
   ngOnInit(): void {
@@ -57,6 +59,24 @@ export class HeaderComponent implements OnInit {
           this.translateValue1 = `-${this.currentSlide1 * 100}%`;
         }
       }
+    }
+  }
+
+  // closeDropdown() {
+  //   const navbarToggler = document.querySelector('.navbar-toggler');
+  //   const navbarCollapse = document.querySelector('.navbar-collapse');
+  //   if (navbarToggler && navbarCollapse) {
+  //     (navbarToggler as HTMLElement).click(); // Simulate clicking the toggler to close the dropdown
+  //   }
+  // }
+  closeDropdown() {
+    const navbarToggler =
+      this.elementRef.nativeElement.querySelector('.navbar-toggler');
+    const navbarCollapse =
+      this.elementRef.nativeElement.querySelector('.navbar-collapse');
+    if (navbarToggler && navbarCollapse) {
+      this.renderer.setProperty(navbarToggler, 'aria-expanded', 'false');
+      this.renderer.removeClass(navbarCollapse, 'show');
     }
   }
 

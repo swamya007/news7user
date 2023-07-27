@@ -99,7 +99,7 @@ export class ArticleComponent implements OnInit {
               { name: 'og:description', content: newsDesc },
               { name: 'description', content: newsDesc },
               { name: 'og:url', content: postURL },
-              {name: 'image', content :imgURL },
+              { name: 'image', content: imgURL },
               { name: 'og:image', content: imgURL },
               { name: 'keywords', content: keywords },
               { name: 'canonical', content: shareUrl },
@@ -110,22 +110,20 @@ export class ArticleComponent implements OnInit {
             tags.forEach((tag: any) => {
               this.Meta.updateTag(tag);
             });
-       
+
             this.getPostBycategory();
           } else {
             this.postarr = [];
-            router.navigate(['/'])
+            router.navigate(['/']);
           }
         },
         (err) => {
           this.postarr = [];
-          router.navigate(['/'])
-
+          router.navigate(['/']);
         }
       );
     });
     this.getAllAdsList();
-
   }
   isLoggedIn = false;
 
@@ -145,7 +143,7 @@ export class ArticleComponent implements OnInit {
     //       }
     //       this.news.post_content_sanitized =
     //         this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
-        
+
     //       this.Title.setTitle(this.news.post_title);
     //       let imgURL = this.news.guid;
     //       let newsTitle = this.news.post_title;
@@ -166,12 +164,11 @@ export class ArticleComponent implements OnInit {
     //         { name: 'og:image', content: imgURL },
     //         { name: 'keywords', content: keywords },
 
-            
     //       ];
     //       tags.forEach((tag: any) => {
     //         this.Meta.updateTag(tag);
     //       });
-         
+
     //       this.getPostBycategory();
     //     } else {
     //       this.postarr = [];
@@ -187,7 +184,7 @@ export class ArticleComponent implements OnInit {
     // );
     this.getallpost();
     this.getAllAdsList();
-    this.getAllairticlenews()
+    this.getAllairticlenews();
   }
   getIframeHtml(post_content: any): SafeHtml {
     return this.sanitizer.bypassSecurityTrustHtml(post_content) || '';
@@ -239,11 +236,7 @@ export class ArticleComponent implements OnInit {
   }
   getPostByAuthor() {
     this.post
-      .getPostByCategoryID(
-        1,
-        this.postarr[0].category,
-        environment.CUSTOMER_ID
-      )
+      .getPostByCategoryID(1, this.postarr[0].category, environment.CUSTOMER_ID)
       .subscribe(
         (res: any) => {
           if (res.code == 'success') {
@@ -359,7 +352,6 @@ export class ArticleComponent implements OnInit {
     }
   }
 
-
   opennewsSec(id: any, flag: any) {
     if (flag === 'Y') {
       window.location.href = '/' + id;
@@ -386,7 +378,7 @@ export class ArticleComponent implements OnInit {
           }
 
           this.Title.setTitle(this.news.post_title);
-         
+
           this.getPostBycategory();
         } else {
           this.postarr = [];
@@ -397,7 +389,6 @@ export class ArticleComponent implements OnInit {
       }
     );
   }
-
 
   public createNavigationUrl(type: string) {
     //let shareUrl = 'https://prameya/post/';
@@ -450,13 +441,12 @@ export class ArticleComponent implements OnInit {
     this.comment_page_no = this.comment_page_no + 1;
     this.getCommentsByPost(this.news.id);
   }
-  
+
   openUrl(url: any) {
     if (url) {
       window.open(url);
     }
   }
-
 
   updateSEO_Tags() {
     this.Title.setTitle(this.news.post_title);
@@ -464,7 +454,7 @@ export class ArticleComponent implements OnInit {
     let newsTitle = this.news.post_title;
     let newsDesc = this.news.meta_description;
     let postURL = this.news.permalink;
-    let keywords =this.news.seo_keywords;
+    let keywords = this.news.seo_keywords;
 
     let tags = [
       { name: 'twitter:card', content: 'summary' },
@@ -475,18 +465,14 @@ export class ArticleComponent implements OnInit {
       { name: 'og:description', content: newsDesc },
       { name: 'description', content: newsDesc },
       { name: 'og:url', content: postURL },
-      {name: 'image', content :imgURL },
+      { name: 'image', content: imgURL },
       { name: 'og:image', content: imgURL },
       { name: 'keywords', content: keywords },
-
     ];
     tags.forEach((tag: any) => {
       this.Meta.updateTag(tag);
     });
   }
-
-  
-
 
   getAllairticlenews() {
     this.postserviceService.getallairticle().subscribe(

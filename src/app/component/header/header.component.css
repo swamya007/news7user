@@ -284,7 +284,15 @@ img:nth-child(5) {
 .mb-icon {
   display: none;
 }
-
+button {
+  border: none;
+  outline: none;
+  color: #000;
+  background-color: transparent;
+  float: left;
+  height: 40px;
+  width: 40px;
+}
 /* Navbar hovercolor */
 
 /* .navbar ul li:hover ::after {
@@ -322,6 +330,12 @@ img:nth-child(5) {
   body {
     overflow-x: hidden;
   }
+  button {
+    border: none;
+    outline: none;
+    color: #000;
+    background-color: transparent;
+  }
   :host ::ng-deep .header-container {
     display: block !important;
     justify-content: space-between;
@@ -353,8 +367,12 @@ img:nth-child(5) {
   .navbar-nav .dropicon {
     position: absolute;
     right: 10px;
-    top: 18px;
-    color: #fff;
+    top: 0px;
+    color: #000;
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.95);
+    cursor: pointer;
+    padding: 10px;
   }
   .dropdown-style {
     min-width: 300px !important;
@@ -368,6 +386,22 @@ img:nth-child(5) {
   }
   .mb-icon {
     display: block;
+  }
+  .navbar-collapse {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -ms-flex-align: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    top: 50px;
+    background: var(--red);
+    height: 100vh;
+  }
+  .navbar-light .navbar-nav .nav-link {
+    width: 85% !important;
   }
 }
 @media only screen and (max-width: 575px) {
@@ -410,5 +444,8 @@ img:nth-child(5) {
   }
   .mb-icon {
     display: block;
+  }
+  .navbar-light .navbar-nav .nav-link {
+    width: 85% !important;
   }
 }

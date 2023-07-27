@@ -31,7 +31,6 @@ export class SportsComponent implements OnInit {
     this.customer_id = environment.CUSTOMER_ID;
     this.getAllAdsList();
     this.getLatestNews();
-    alert('sport');
   }
 
   getAllAdsList() {

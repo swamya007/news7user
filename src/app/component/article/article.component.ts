@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CommentModel } from 'src/app/models/commentModel';
 import { AdserviceService } from 'src/app/services/Adservice/adservice.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { PostserviceService } from 'src/app/services/postservice/postservice.service';
@@ -35,6 +34,7 @@ export class ArticleComponent implements OnInit {
   comments: any = [];
   author_post: any = [];
   comment_page_no: number = 1;
+  post_page_no: number = 1;
   comment_obj: any;
   data: any;
   polticesnews: any;
@@ -57,7 +57,6 @@ export class ArticleComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
     private router: Router,
-    private notify: NotificationService,
     private post: PostserviceService,
     private titleService: Title,
     private postserviceService: PostserviceService,
@@ -70,9 +69,7 @@ export class ArticleComponent implements OnInit {
     activatedRoute.params.subscribe((val) => {
       const routeParams = this.activatedRoute.snapshot.paramMap;
       this.id = routeParams.get('Id');
-
-      this.getAllAdsList();
-      this.post.getPostBySlugodia(this.id, environment.CUSTOMER_ID).subscribe(
+      this.post.getPostBySlug(this.id, environment.CUSTOMER_ID).subscribe(
         (res: any) => {
           if (res.code == 'success') {
             var data = res.body;
@@ -84,17 +81,13 @@ export class ArticleComponent implements OnInit {
             }
             this.news.post_content_sanitized =
               this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
-            //if(isPlatformBrowser(PLATFORM_ID)) {
-            // let div = document.querySelector('.article-text-section');
-            // if (div) {
-            //   div.innerHTML = this.news.post_content;
-            // }
-            //}
             this.Title.setTitle(this.news.post_title);
             let imgURL = this.news.guid;
             let newsTitle = this.news.post_title;
             let newsDesc = this.news.meta_description;
             let postURL = this.news.permalink;
+            let keywords = this.news.seo_keywords;
+
             let tags = [
               { name: 'twitter:card', content: 'summary' },
               { name: 'twitter:image', content: imgURL },
@@ -105,21 +98,27 @@ export class ArticleComponent implements OnInit {
               { name: 'og:description', content: newsDesc },
               { name: 'description', content: newsDesc },
               { name: 'og:url', content: postURL },
+              { name: 'image', content: imgURL },
               { name: 'og:image', content: imgURL },
+              { name: 'keywords', content: keywords },
             ];
             tags.forEach((tag: any) => {
               this.Meta.updateTag(tag);
             });
+
             this.getPostBycategory();
           } else {
             this.postarr = [];
+            router.navigate(['/']);
           }
         },
         (err) => {
           this.postarr = [];
+          router.navigate(['/']);
         }
       );
     });
+    this.getAllAdsList();
   }
   isLoggedIn = false;
 
@@ -127,64 +126,64 @@ export class ArticleComponent implements OnInit {
     //this.isLoggedIn = this.loginService.isLoggedIn();
     const routeParams = this.activatedRoute.snapshot.paramMap;
     this.id = routeParams.get('Id');
+    // this.post.getPostBySlug(this.id, environment.CUSTOMER_ID).subscribe(
+    //   (res: any) => {
+    //     if (res.code == 'success') {
+    //       var data = res.body;
+    //       this.postarr = data?.map((dt: any) => JSON.parse(dt));
+    //       this.news =
+    //         this.postarr && this.postarr.length ? this.postarr[0] : {};
+    //       if (this.news.tags) {
+    //         this.news.tags = this.news.tags.replaceAll(',', ', ');
+    //       }
+    //       this.news.post_content_sanitized =
+    //         this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
 
-    // this.getIPAddress();
-    // this.getBrowserName();
-    this.post.getPostBySlugodia(this.id, environment.CUSTOMER_ID).subscribe(
-      (res: any) => {
-        if (res.code == 'success') {
-          var data = res.body;
-          this.postarr = data?.map((dt: any) => JSON.parse(dt));
-          this.news =
-            this.postarr && this.postarr.length ? this.postarr[0] : {};
-          console.log(this.news, 'datadetails');
-          if (this.news.tags) {
-            this.news.tags = this.news.tags.replaceAll(',', ', ');
-          }
-          this.news.post_content_sanitized =
-            this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
-          this.news.post_click = Math.round(this.news.post_click / 3);
+    //       this.Title.setTitle(this.news.post_title);
+    //       let imgURL = this.news.guid;
+    //       let newsTitle = this.news.post_title;
+    //       let newsDesc = this.news.meta_description;
+    //       let postURL = this.news.permalink;
+    //       let keywords =this.news.seo_keywords;
+    //       let tags = [
+    //         { name: 'twitter:card', content: 'summary' },
+    //         { name: 'twitter:image', content: imgURL },
+    //         { name: 'twitter:title', content: newsTitle },
+    //         { name: 'twitter:description', content: newsDesc },
+    //         { name: 'og:type', content: 'article' },
+    //         { name: 'og:title', content: newsTitle },
+    //         { name: 'og:description', content: newsDesc },
+    //         { name: 'description', content: newsDesc },
+    //         { name: 'og:url', content: postURL },
+    //         {name: 'image', content :imgURL },
+    //         { name: 'og:image', content: imgURL },
+    //         { name: 'keywords', content: keywords },
 
-          //if(isPlatformBrowser(PLATFORM_ID)) {
-          // let div = document.querySelector('.article-text-section');
-          // if (div) {
-          //   div.innerHTML = this.news.post_content;
-          // }
-          //}
-          this.Title.setTitle(this.news.post_title);
-          let imgURL = this.news.guid;
-          let newsTitle = this.news.post_title;
-          let newsDesc = this.news.meta_description;
-          let postURL = this.news.permalink;
-          let tags = [
-            { name: 'twitter:card', content: 'summary' },
-            { name: 'twitter:image', content: imgURL },
-            { name: 'twitter:title', content: newsTitle },
-            { name: 'twitter:description', content: newsDesc },
-            { name: 'og:type', content: 'article' },
-            { name: 'og:title', content: newsTitle },
-            { name: 'og:description', content: newsDesc },
-            { name: 'description', content: newsDesc },
-            { name: 'og:url', content: postURL },
-            { name: 'og:image', content: imgURL },
-          ];
-          tags.forEach((tag: any) => {
-            this.Meta.updateTag(tag);
-          });
-          this.getPostBycategory();
-        } else {
-          this.postarr = [];
-        }
-      },
-      (err) => {
-        this.postarr = [];
-      }
-    );
+    //       ];
+    //       tags.forEach((tag: any) => {
+    //         this.Meta.updateTag(tag);
+    //       });
+
+    //       this.getPostBycategory();
+    //     } else {
+    //       this.postarr = [];
+    //       this.router.navigate(['/'])
+
+    //     }
+    //   },
+    //   (err) => {
+    //     this.postarr = [];
+    //     this.router.navigate(['/'])
+
+    //   }
+    // );
     this.getallpost();
     this.getAllAdsList();
     this.getAllairticlenews();
   }
-
+  getIframeHtml(post_content: any): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(post_content) || '';
+  }
   prevSlide() {
     this.currentIndex =
       this.currentIndex === 0
@@ -232,11 +231,7 @@ export class ArticleComponent implements OnInit {
   }
   getPostByAuthor() {
     this.post
-      .getPostByCategoryIDodia(
-        1,
-        this.postarr[0].category,
-        environment.CUSTOMER_ID
-      )
+      .getPostByCategoryID(1, this.postarr[0].category, environment.CUSTOMER_ID)
       .subscribe(
         (res: any) => {
           if (res.code == 'success') {
@@ -264,8 +259,9 @@ export class ArticleComponent implements OnInit {
     if (this.postarr[0].category_name) {
       this.catname = this.postarr[0].category_name.split(',')[0];
     }
+
     this.post
-      .getPostByCategoryIDodia(1, this.cat, environment.CUSTOMER_ID)
+      .getPostByCategoryID(1, this.cat, environment.CUSTOMER_ID)
       .subscribe(
         (res: any) => {
           if (res.code == 'success') {
@@ -336,39 +332,21 @@ export class ArticleComponent implements OnInit {
     window.open(url);
   }
 
+  edit(uid: any) {
+    this.router.navigate([`/admin/post/edit/${uid}`]);
+  }
   getShortName(user_name: any) {
     return user_name.slice(0, 46).trim() + (user_name.length > 45 ? '...' : '');
   }
 
-  // onChange(ob: MatCheckboxChange) {
-  //   if (ob.checked) {
-  //     this.comment_obj.remember_me = true;
-  //   } else {
-  //     this.comment_obj.remember_me = false;
-  //   }
-  // }
+  onChange(ob: MatCheckboxChange) {
+    if (ob.checked) {
+      this.comment_obj.remember_me = true;
+    } else {
+      this.comment_obj.remember_me = false;
+    }
+  }
 
-  // savePostComment() {
-  //   this.comment_obj.flag = 'I';
-  //   this.comment_obj.customer_id = environment.CUSTOMER_ID;
-  //   this.post.savePostComment(this.comment_obj).subscribe(
-  //     (res: any) => {
-  //       if (res.code == 'success') {
-  //         this.comment_obj.comment_content = '';
-  //         this.comment_obj.comment_author = '';
-  //         this.comment_obj.comment_author_email = '';
-  //         this.comment_obj.comment_author_url = '';
-  //         this.comment_obj.remember_me = false;
-  //         this.getCommentsByPost(this.news.id);
-  //       } else {
-  //         this.notify.error(res.message);
-  //       }
-  //     },
-  //     (err: any) => {
-  //       this.notify.error(err.message);
-  //     }
-  //   );
-  // }
   opennewsSec(id: any, flag: any) {
     if (flag === 'Y') {
       window.location.href = '/' + id;
@@ -377,15 +355,13 @@ export class ArticleComponent implements OnInit {
     }
   }
   getallpost() {
-    this.post.getPostBySlugodia(this.id, environment.CUSTOMER_ID).subscribe(
+    this.post.getPostBySlug(this.id, environment.CUSTOMER_ID).subscribe(
       (res: any) => {
         if (res.code == 'success') {
           var data = res.body;
           this.postarr = data?.map((dt: any) => JSON.parse(dt));
-
           this.news =
             this.postarr && this.postarr.length ? this.postarr[0] : {};
-          console.log(this.news, 'check');
           if (this.news.tags) {
             this.news.tags = this.news.tags.replaceAll(',', ', ');
           }
@@ -397,7 +373,7 @@ export class ArticleComponent implements OnInit {
           }
 
           this.Title.setTitle(this.news.post_title);
-          // this.getPo(this.news.id);
+
           this.getPostBycategory();
         } else {
           this.postarr = [];
@@ -409,46 +385,10 @@ export class ArticleComponent implements OnInit {
     );
   }
 
-  // getPostByAuthor(post_id: any) {
-
-  //   this.post.getPostByAuthor(this.news.post_author, post_id, environment.CUSTOMER_ID).subscribe((res: any) => {
-  //     if (res.code == 'success') {
-  //       var data = res.body;
-  //       this.author_post = data?.map((dt: any) => JSON.parse(dt));
-  //       console.log('this.author_post==',this.author_post)
-  //     } else {
-  //       this.author_post = []
-  //     }
-  //   }, (err) => {
-  //     this.author_post = []
-  //   })
-  // }
-
-  // getPostByAuthor() {
-
-  //   console.log(this.postarr[0].category,'dkkd')
-
-  //       this.post.getPostByCategoryID(1,  this.postarr[0].category, environment.CUSTOMER_ID).subscribe((res: any) => {
-  //         if (res.code == 'success') {
-  //           var data = res.body;
-  //           this.author_post = data?.map((dt: any) => JSON.parse(dt));
-  //           this.author_post = this.author_post.filter((a:any) => a.slug !== this.id);
-  //           this.nextthree = this.author_post?.slice(0, 7);
-  //           console.log('time',this.nextthree)
-
-  //         } else {
-  //           this.author_post = []
-  //         }
-  //       }, (err) => {
-  //         this.author_post = []
-  //       })
-  //     }
-
   public createNavigationUrl(type: string) {
     //let shareUrl = 'https://prameya/post/';
-    let shareUrl = `${environment.PLATFORM_BASEURL}/${this.id}`;
+    let shareUrl = `${environment.PLATFORM_BASEURL}/post/${this.id}`;
     let searchParams = new URLSearchParams();
-
     switch (type) {
       case 'facebook':
         searchParams.set('u', shareUrl);
@@ -465,23 +405,6 @@ export class ArticleComponent implements OnInit {
         searchParams.set('url', shareUrl);
         this.navUrl = 'https://api.whatsapp.com/send?text=' + searchParams;
         window.open(this.navUrl);
-        break;
-      case 'telegram':
-        searchParams.set('url', shareUrl);
-        this.navUrl = 'https://t.me/share/url?' + searchParams;
-        window.open(this.navUrl);
-        break;
-      case 'gmail':
-        const subject = encodeURIComponent('Shared URL');
-        const body = encodeURIComponent(`Check out this URL: ${shareUrl}`);
-        this.navUrl = `mailto:?subject=${subject}&body=${body}`;
-        window.location.href = this.navUrl;
-        break;
-      case 'sharechat':
-        const encodedShareUrl = encodeURIComponent(shareUrl);
-        this.navUrl = `https://sharechat.com/share?url=${encodedShareUrl}`;
-        window.open(this.navUrl);
-        break;
     }
   }
 
@@ -513,43 +436,11 @@ export class ArticleComponent implements OnInit {
     this.comment_page_no = this.comment_page_no + 1;
     this.getCommentsByPost(this.news.id);
   }
-  // opennewsSec(id: any) {
-  //   window.location.href = '/post/' + id;
-  // }
 
-  // opennewsSec(id: any) {
-  //   this.router.navigate(['/post/' + id]);
-  // }
   openUrl(url: any) {
     if (url) {
       window.open(url);
     }
-  }
-
-  getAllairticlenews() {
-    this.postserviceService.getallairticle().subscribe(
-      (res: any) => {
-        if (res.code == 'success') {
-          this.data = res.body;
-          this.data = this.data?.map((dt: any) => JSON.parse(dt));
-          console.log(this.data, 'ssihsiaoh');
-          this.crimesnews = this.data[0].crime || [];
-          this.sportsnews = this.data[0].sports || [];
-          this.polticesnews = this.data[0].politics || [];
-          console.log(this.polticesnews, 'politc');
-          this.entermentaarr = this.data[0].entertainment || [];
-          console.log(this.data, 'data');
-        } else {
-          this.postarr = [];
-        }
-      },
-      (err) => {
-        this.postarr = [];
-      }
-    );
-  }
-  getIframeHtml(post_content: any): SafeHtml {
-    return this.sanitizer.bypassSecurityTrustHtml(post_content) || '';
   }
 
   updateSEO_Tags() {
@@ -558,6 +449,8 @@ export class ArticleComponent implements OnInit {
     let newsTitle = this.news.post_title;
     let newsDesc = this.news.meta_description;
     let postURL = this.news.permalink;
+    let keywords = this.news.seo_keywords;
+
     let tags = [
       { name: 'twitter:card', content: 'summary' },
       { name: 'twitter:image', content: imgURL },
@@ -567,37 +460,32 @@ export class ArticleComponent implements OnInit {
       { name: 'og:description', content: newsDesc },
       { name: 'description', content: newsDesc },
       { name: 'og:url', content: postURL },
+      { name: 'image', content: imgURL },
       { name: 'og:image', content: imgURL },
+      { name: 'keywords', content: keywords },
     ];
     tags.forEach((tag: any) => {
       this.Meta.updateTag(tag);
     });
   }
 
-  // ngAfterViewInit(): void {
-  //   $('#carousel-example').on(
-  //     'slide.bs.carousel',
-  //     function (e: { relatedTarget: any; direction: string }) {
-  //       /*
-  //         CC 2.0 License Iatek LLC 2018 - Attribution required
-  //     */
-  //       var $e = $(e.relatedTarget);
-  //       var idx = $e.index();
-  //       var itemsPerSlide = 5;
-  //       var totalItems = $('.carousel-item').length;
-
-  //       if (idx >= totalItems - (itemsPerSlide - 1)) {
-  //         var it = itemsPerSlide - (totalItems - idx);
-  //         for (var i = 0; i < it; i++) {
-  //           // append slides to end
-  //           if (e.direction == 'left') {
-  //             $('.carousel-item').eq(i).appendTo('.carousel-inner');
-  //           } else {
-  //             $('.carousel-item').eq(0).appendTo('.carousel-inner');
-  //           }
-  //         }
-  //       }
-  //     }
-  //   );
-  // }
+  getAllairticlenews() {
+    this.postserviceService.getallairticle().subscribe(
+      (res: any) => {
+        if (res.code == 'success') {
+          this.data = res.body;
+          this.data = this.data?.map((dt: any) => JSON.parse(dt));
+          this.crimesnews = this.data[0].crime || [];
+          this.sportsnews = this.data[0].sports || [];
+          this.polticesnews = this.data[0].politics || [];
+          this.entermentaarr = this.data[0].entertainment || [];
+        } else {
+          this.postarr = [];
+        }
+      },
+      (err) => {
+        this.postarr = [];
+      }
+    );
+  }
 }

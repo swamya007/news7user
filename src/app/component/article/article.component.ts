@@ -86,7 +86,8 @@ export class ArticleComponent implements OnInit {
             let newsTitle = this.news.post_title;
             let newsDesc = this.news.meta_description;
             let postURL = this.news.permalink;
-            let keywords = this.news.seo_keywords;
+            let keywords =this.news.seo_keywords;
+            let shareUrl = `${environment.PLATFORM_BASEURL}/${this.id}`;
 
             let tags = [
               { name: 'twitter:card', content: 'summary' },
@@ -101,6 +102,10 @@ export class ArticleComponent implements OnInit {
               { name: 'image', content: imgURL },
               { name: 'og:image', content: imgURL },
               { name: 'keywords', content: keywords },
+              { name: 'canonical', content: shareUrl },
+
+              
+
             ];
             tags.forEach((tag: any) => {
               this.Meta.updateTag(tag);
@@ -387,7 +392,7 @@ export class ArticleComponent implements OnInit {
 
   public createNavigationUrl(type: string) {
     //let shareUrl = 'https://prameya/post/';
-    let shareUrl = `${environment.PLATFORM_BASEURL}/post/${this.id}`;
+    let shareUrl = `${environment.PLATFORM_BASEURL}/${this.id}`;
     let searchParams = new URLSearchParams();
     switch (type) {
       case 'facebook':

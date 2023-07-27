@@ -31,3 +31,16 @@
   max-width: 100%;
   height: auto;
 }
+
+:host ::ng-deep .article-text-section p {
+  text-align: justify;
+}
+
+:host ::ng-deep .article-text-section p:has(img) {
+  text-align: center !important;
+}
+
+:host ::ng-deep .article-text-section p:has(img) img {
+  width: 100% !important;
+  display: block !important;
+}

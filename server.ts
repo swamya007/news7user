@@ -112,13 +112,13 @@ export function app(): express.Express {
     res.sendFile(__dirname + '/ads.txt');
   });
   server.get('/rss', async (req, res) => {
-    let resp = await axios.get('https://api-dev.prameyanews.com/prameya/api/rssfeed');
+    let resp = await axios.get('http://localhost:8073/prameya/api/rssfeed');
     res.type('text/xml').send(resp.data);
   });
 
   server.get('/:category/rss', async (req, res) => {
     const { category } = req.params;
-    let resp = await axios.get(`https://api-dev.prameyanews.com/prameya/api/${category}/rssfeed`);
+    let resp = await axios.get(`http://localhost:8073/prameya/api/${category}/rssfeed`);
     res.type('text/xml').send(resp.data);
   });
 

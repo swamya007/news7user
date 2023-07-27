@@ -49,7 +49,7 @@ export class SingleHomepageComponent implements OnInit {
     this.getAllnews();
     this.getslide();
     this.title.setTitle(
-      'odisha news| Odisha News | Latest Odisha Breaking News-Prameya News'
+      'PRAMEYA - Prameya News Portal, Prameya Daily, Odisha Latest News, Odisha Current Headlines, Odisha News Online'
     );
 
     let tags = [

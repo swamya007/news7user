@@ -111,12 +111,12 @@ export function app(): express.Express {
   server.get('/ads.txt', (req, res) => {
     res.sendFile(__dirname + '/ads.txt');
   });
-  server.get('/rss', async (req, res) => {
+  server.get('/feed', async (req, res) => {
     let resp = await axios.get('https://odia.prameya.com/prameya/api/rssfeed');
     res.type('text/xml').send(resp.data);
   });
 
-  server.get('/:category/rss', async (req, res) => {
+  server.get('/:category/feed', async (req, res) => {
     const { category } = req.params;
     let resp = await axios.get(`https://odia.prameya.com/prameya/api/${category}/rssfeed`);
     res.type('text/xml').send(resp.data);

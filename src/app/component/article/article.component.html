@@ -98,7 +98,7 @@
           [innerHTML]="news.post_content_sanitized"
         ></div> -->
 
-        <div class="article-text-section" [innerHTML]="news.post_content | safeHtml"></div>
+        <div class="article-text-section" *ngIf="news.post_content" [innerHTML]="news.post_content | safeHtml"></div>
 
       </div>
 

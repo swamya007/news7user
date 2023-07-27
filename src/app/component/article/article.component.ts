@@ -69,7 +69,7 @@ export class ArticleComponent implements OnInit {
     activatedRoute.params.subscribe((val) => {
       const routeParams = this.activatedRoute.snapshot.paramMap;
       this.id = routeParams.get('Id');
-      this.post.getPostBySlug(this.id, environment.CUSTOMER_ID).subscribe(
+      this.post.getPostBySlugodia(this.id, environment.CUSTOMER_ID).subscribe(
         (res: any) => {
           if (res.code == 'success') {
             var data = res.body;
@@ -360,7 +360,7 @@ export class ArticleComponent implements OnInit {
     }
   }
   getallpost() {
-    this.post.getPostBySlug(this.id, environment.CUSTOMER_ID).subscribe(
+    this.post.getPostBySlugodia(this.id, environment.CUSTOMER_ID).subscribe(
       (res: any) => {
         if (res.code == 'success') {
           var data = res.body;

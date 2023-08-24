@@ -100,7 +100,8 @@
 
         <div
           class="article-text-section"
-          [innerHTML]="news.post_content | safeHtml"
+          *ngIf="news.post_content"
+          [innerHTML]="news.post_content"
         ></div>
       </div>
 
@@ -149,11 +150,7 @@
           class="prameya-epaper-image"
         />
       </div>
-      <div
-        class="prameya-epaper"
-        style="height: 280px"
-        *ngIf="ads_rightupper != 0"
-      >
+      <div class="prameya-epaper" style="height: 280px" *ngIf="ads_rightupper">
         <div class="advertisement-space-container-first">
           <div class="advertisement-space-container-first">
             <div class="slider">
@@ -382,6 +379,7 @@
       </div>
     </div>
   </div>
+  <!-- <app-mgid></app-mgid> -->
 </div>
 
 <app-search-sticky></app-search-sticky>

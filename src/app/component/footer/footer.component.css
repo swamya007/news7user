@@ -240,3 +240,11 @@ footer ul li a {
 
 @media screen and (min-width: 2501px) {
 } */
+
+:host ::ng-deep .ft-a {
+  text-decoration: none !important;
+}
+
+:host ::ng-deep .ft-a:hover {
+  background: transparent !important;
+}

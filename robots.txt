@@ -4,4 +4,6 @@ Disallow: /category/
 Disallow: /search/
 
 
-Sitemap: https://www.prameyanews.com/sitemap.xml
+Sitemap: https://www.prameya.com/sitemap.xml
+Sitemap: https://www.prameya.com/news-sitemap.xml
+

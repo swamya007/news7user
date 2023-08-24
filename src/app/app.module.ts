@@ -105,6 +105,7 @@ import { BhauCharchitaComponent } from './component/bhau-charchita/bhau-charchit
 import { OpenInNewTabDirective } from './open-in-new-tab.directive';
 import { SafeHtmlPipe } from 'src/safe-html.pipe';
 import { ZodiacComponent } from './component/zodiac/zodiac.component';
+import { MgidComponent } from './component/mgid/mgid.component';
 
 @NgModule({
   declarations: [
@@ -173,7 +174,8 @@ import { ZodiacComponent } from './component/zodiac/zodiac.component';
     BhauCharchitaComponent,
     OpenInNewTabDirective,
     SafeHtmlPipe,
-    ZodiacComponent
+    ZodiacComponent,
+    MgidComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

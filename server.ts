@@ -13,8 +13,8 @@ import { createGzip } from 'zlib';
 import { environment } from 'src/environments/environment';
 import axios from 'axios';
 import { Readable } from 'stream';
-import { writeFile } from "fs";
-import { promisify } from "util";
+import { writeFile } from 'fs';
+import { promisify } from 'util';
 import 'zone.js/dist/zone-node';
 import 'reflect-metadata';
 import { createClient } from 'redis';
@@ -35,13 +35,16 @@ var redisIsReady = false;
 async function initRedisClient() {
   try {
     const client = createClient({ url: REDIS_URI });
-    client.on("error", (err) => { redisIsReady = false; console.log("Redis Client Connection Error") });
+    client.on('error', (err) => {
+      redisIsReady = false;
+      console.log('Redis Client Connection Error');
+    });
     client.on('ready', function () {
       redisIsReady = true;
       console.log('redis is running');
     });
     await client.connect();
-    console.log("Redis cashe app database connected...");
+    console.log('Redis cashe app database connected...');
     return client;
   } catch (error) {
     console.log('Redis app connection Error...', error);
@@ -49,10 +52,13 @@ async function initRedisClient() {
   }
 }
 
-
 // The Express app is exported so that it can be used by serverless Functions.
-const redisMiddleware = async (req: { url: any; cookies: { loggedIn: any; }; }, res: { send: { (arg0: any): void; (body: any): void; bind?: any; }; }, next: () => void) => {
-  console.log('Called middleware')
+const redisMiddleware = async (
+  req: { url: any; cookies: { loggedIn: any } },
+  res: { send: { (arg0: any): void; (body: any): void; bind?: any } },
+  next: () => void
+) => {
+  console.log('Called middleware');
   const client: any = await initRedisClient();
   if (!redisIsReady) {
     next();
@@ -82,10 +88,10 @@ const gzip = createGzip();
 export function app(): express.Express {
   const server = express();
   const distFolder = join(process.cwd(), 'dist/prameya/browser');
-  const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
-  server.use(express.static(
-    join(__dirname, "public")
-  ))
+  const indexHtml = existsSync(join(distFolder, 'index.original.html'))
+    ? 'index.original.html'
+    : 'index';
+  server.use(express.static(join(__dirname, 'public')));
   server.use(xmlparser());
   // server.use((req, res, next) => {
   //   res.setHeader('Content-Security-Policy', "default-src ''; frame-src 'none'");
@@ -93,10 +99,12 @@ export function app(): express.Express {
   // });
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
 
-
-  server.engine('html', ngExpressEngine({
-    bootstrap: AppServerModule,
-  }));
+  server.engine(
+    'html',
+    ngExpressEngine({
+      bootstrap: AppServerModule,
+    })
+  );
 
   server.set('view engine', 'html');
   server.set('views', distFolder);
@@ -106,32 +114,43 @@ export function app(): express.Express {
   // Serve static files from /browser
   server.get('/robots.txt', (req, res) => {
     res.type('text/plain');
-    res.sendFile(__dirname + "/robots.txt");
+    res.sendFile(__dirname + '/robots.txt');
+  });
+  server.get('/izooto.html', (req, res) => {
+    res.sendFile(__dirname + '/izooto.html');
+  });
+  server.get('/service-worker.js', (req, res) => {
+    res.sendFile(__dirname + '/service-worker.js');
   });
   server.get('/ads.txt', (req, res) => {
     res.sendFile(__dirname + '/ads.txt');
   });
   server.get('/rss', async (req, res) => {
-    let resp = await axios.get('http://localhost:8073/prameya/api/rssfeed');
+    let resp = await axios.get('https://odia.prameya.com/prameya/api/rssfeed');
     res.type('text/xml').send(resp.data);
   });
 
   server.get('/:category/rss', async (req, res) => {
     const { category } = req.params;
-    let resp = await axios.get(`http://localhost:8073/prameya/api/${category}/rssfeed`);
+    let resp = await axios.get(
+      `https://odia.prameya.com/prameya/api/${category}/rssfeed`
+    );
     res.type('text/xml').send(resp.data);
   });
 
   server.get('/sitemap.xml', async (req, res) => {
+    //const sitemap = new SitemapStream({ hostname: environment.POST_URL });
     res.type('text/xml');
     res.setHeader('Content-Encoding', 'utf8');
     try {
       let routes = ['', 'prameya/contact-us', 'prameya/termofuses']; // Add your routes here
-      const response = await axios.get('https://api-dev.prameyanews.com/prameya/api/post/get-sitemap-details').then(res => res.data);
+      const response = await axios
+        .get('https://odia.prameya.com/prameya/api/post/get-sitemap-details')
+        .then((res) => res.data);
       response.body?.forEach((r: any) => {
         let routeData = JSON.parse(r);
-        routes.push(routeData.slug)
-      })
+        routes.push(routeData.slug);
+      });
       let sitemapItems = [];
       for (let i = 0; i < routes.length; i++) {
         let route = routes[i];
@@ -140,27 +159,34 @@ export function app(): express.Express {
             {
               loc: environment.POST_URL + route,
             },
-            { changefreq: "daily" },
-            { priority: "1.0" },
+            { changefreq: 'daily' },
+            { priority: '1.0' },
           ],
         };
+        //await sitemap.write({ url: route, changefreq: 'monthly', priority: 0.5 });
         sitemapItems.push(Item);
       }
       const sitemapObject = {
         urlset: [
           {
             _attr: {
-              xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9",
-              "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
-              "xsi:schemaLocation": "http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+              xmlns: 'http://www.sitemaps.org/schemas/sitemap/0.9',
+              'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
+              'xsi:schemaLocation':
+                'http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd',
             },
           },
+          // indexItem,
           ...sitemapItems,
         ],
       };
-      const sitemap = `<?xml version="1.0" encoding="UTF-8"?>${xml(sitemapObject)}`;
-      
-      await writeFileAsync(__dirname + '/sitemap.xml', sitemap, "utf8");
+      const sitemap = `<?xml version="1.0" encoding="UTF-8"?>${xml(
+        sitemapObject
+      )}`;
+      // const stream = await sitemap.pipe(gzip);
+      // const smStream = await streamToPromise(stream);
+      //sitemap.end();
+      await writeFileAsync(__dirname + '/sitemap.xml', sitemap, 'utf8');
       res.sendFile(__dirname + '/sitemap.xml');
     } catch (err) {
       console.error(err);
@@ -168,71 +194,73 @@ export function app(): express.Express {
     }
   });
 
-
   server.get('/news-sitemap.xml', async (req, res) => {
+    //const sitemap = new SitemapStream({ hostname: environment.POST_URL });
     res.type('text/xml');
     res.setHeader('Content-Encoding', 'utf8');
     try {
-      let routes:Array<any> = [];
-      const response = await axios.get('https://api-dev.prameyanews.com/prameya/api/post/get-sitemap-details').then(res => res.data);
+      let routes: Array<any> = []; // Add your routes here
+      const response = await axios
+        .get('https://odia.prameya.com/prameya/api/post/get-sitemap-details')
+        .then((res) => res.data);
       response.body?.forEach((r: any) => {
         let routeData = JSON.parse(r);
-        routes.push(routeData)
-      })
+        routes.push(routeData);
+      });
       let sitemapItems = [];
-      if(routes.length > 0) {
-        for (let i = 0; i < routes.length; i++) {
-          let route: any = routes[i];
-          let Item = {
-            url: [
-              {
-                loc: environment.POST_URL + route.slug,
-              },
-              {
-                "news:news": [
-                  {
-                    "news:publication": [
-                      { "news:name": environment.PLATFORM_BASEURL },
-                      { "news:language": 'en' }
-                    ]
-                  },
-                  { "news:publication_date": route.created_on ? new Date(route.created_on).toISOString() : route.created_on },
-                  { "news:title": route.post_title },
-                  { "news:keywords": route.seo_keywords }
-  
-  
-                ]
-              }
-  
-            ],
-          };
-          sitemapItems.push(Item);
-        }
-      } else {
+      for (let i = 0; i < routes.length; i++) {
+        let route: any = routes[i];
         let Item = {
-          url: 
-            "No Data Found"    
-        }
+          url: [
+            {
+              loc: environment.POST_URL + route.slug,
+            },
+            {
+              'news:news': [
+                {
+                  'news:publication': [
+                    { 'news:name': environment.PLATFORM_BASEURL },
+                    { 'news:language': 'en' },
+                  ],
+                },
+                {
+                  'news:publication_date': route.created_on
+                    ? new Date(route.created_on).toISOString()
+                    : route.created_on,
+                },
+                { 'news:title': route.post_title },
+                { 'news:keywords': route.seo_keywords },
+              ],
+            },
+          ],
+        };
+
+        //await sitemap.write({ url: route, changefreq: 'monthly', priority: 0.5 });
         sitemapItems.push(Item);
       }
-      
       const sitemapObject = {
         urlset: [
           {
             _attr: {
-              xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9",
-              "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
-              "xsi:schemaLocation": "http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd",
-             "xmlns:news": "http://www.google.com/schemas/sitemap-news/0.9",
-             "xmlns:image":"http://www.google.com/schemas/sitemap-image/1.1"
+              xmlns: 'http://www.sitemaps.org/schemas/sitemap/0.9',
+              'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
+              'xsi:schemaLocation':
+                'http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd',
+              'xmlns:news': 'http://www.google.com/schemas/sitemap-news/0.9',
+              'xmlns:image': 'http://www.google.com/schemas/sitemap-image/1.1',
             },
           },
+          // indexItem,
           ...sitemapItems,
         ],
       };
-      const sitemap = `<?xml version="1.0" encoding="UTF-8"?>${xml(sitemapObject)}`;
-     
-      await writeFileAsync(__dirname + '/sitemap.xml', sitemap, "utf8");
+      const sitemap = `<?xml version="1.0" encoding="UTF-8"?>${xml(
+        sitemapObject
+      )}`;
+      // const stream = await sitemap.pipe(gzip);
+      // const smStream = await streamToPromise(stream);
+      //sitemap.end();
+      await writeFileAsync(__dirname + '/sitemap.xml', sitemap, 'utf8');
       res.sendFile(__dirname + '/sitemap.xml');
     } catch (err) {
       console.error(err);
@@ -240,12 +268,12 @@ export function app(): express.Express {
     }
   });
 
-
-
-
-  server.get('*.*', express.static(distFolder, {
-    maxAge: '1y'
-  }));
+  server.get(
+    '*.*',
+    express.static(distFolder, {
+      maxAge: '1y',
+    })
+  );
 
   // All regular routes use the Universal engine
   server.get('/', (req, res, next) => {
@@ -253,15 +281,14 @@ export function app(): express.Express {
     next();
   });
 
-
   server.get('*', (req, res) => {
-    res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+    res.render(indexHtml, {
+      req,
+      providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }],
+    });
   });
 
-
-
   // All regular routes use the Universal engine
-
 
   // error handler
   server.use(function (err: any, req: any, res: any, next: any) {
@@ -270,7 +297,7 @@ export function app(): express.Express {
     res.locals.error = req.app.get('env') === 'development' ? err : {};
 
     // render the error page
-    console.log(err.message)
+    console.log(err.message);
     res.status(err.status || 500);
     res.send(err.message);
   });
@@ -279,7 +306,7 @@ export function app(): express.Express {
 }
 
 function run(): void {
-  const port = process.env['PORT'] || 4001;
+  const port = process.env['PORT'] || 3005;
 
   // Start up the Node server
   const server = app();
@@ -293,7 +320,7 @@ function run(): void {
 // The below code is to ensure that the server is run only when not requiring the bundle.
 declare const __non_webpack_require__: NodeRequire;
 const mainModule = __non_webpack_require__.main;
-const moduleFilename = mainModule && mainModule.filename || '';
+const moduleFilename = (mainModule && mainModule.filename) || '';
 if (moduleFilename === __filename || moduleFilename.includes('iisnode')) {
   run();
 }

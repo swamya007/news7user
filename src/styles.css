@@ -1199,7 +1199,7 @@ footer ul li a {
   color: #fff !important;
   transition: all 0.4s ease;
 }
-:host ::ng-deep .news-text-container p:hover {
+:host ::ng-deep .news-text-container .post-heading:hover {
   color: #f00 !important;
   transition: all 0.4s ease;
 }
@@ -1284,10 +1284,10 @@ footer ul li a {
   transition: all 0.4s ease;
 }
 
-.news-box:hover .news-text-container p {
+.news-box:hover .news-text-container .post-heading {
   color: #da0000;
 }
-.news-box1:hover .news-text-container p {
+.news-box1:hover .news-text-container .post-heading {
   color: #da0000;
 }
 
@@ -1530,7 +1530,7 @@ h1 > span {
     margin: 0px 3px;
   }
   .news-text-container p {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold !important;
     margin-bottom: 0px;
     line-height: 25px;
@@ -1570,7 +1570,7 @@ h1 > span {
 }
 @media (max-width: 1368px) {
   .news-text-container p {
-    font-size: 13px !important;
+    font-size: 18px !important;
     font-weight: bold !important;
     margin-bottom: 0px;
     line-height: 18px !important;

@@ -26,6 +26,7 @@ import { SinglesearchComponent } from './component/singlesearch/singlesearch.com
 import { TermsOfUsageComponent } from './terms-of-usage/terms-of-usage.component';
 import { PhotoGalaryComponent } from './component/photo-galary/photo-galary.component';
 import { BhauCharchitaComponent } from './component/bhau-charchita/bhau-charchita.component';
+import { ZodiacComponent } from './component/zodiac/zodiac.component';
 
 const routes: Routes = [
   // {
@@ -63,6 +64,10 @@ const routes: Routes = [
   {
     path: 'prameya/bhaucharchita',
     component: BhauCharchitaComponent,
+  },
+  {
+    path: 'prameya/horoscope',
+    component: ZodiacComponent,
   },
   // {
   //   path: 'login',

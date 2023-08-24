@@ -104,6 +104,7 @@ import { PhotoGalaryComponent } from './component/photo-galary/photo-galary.comp
 import { BhauCharchitaComponent } from './component/bhau-charchita/bhau-charchita.component';
 import { OpenInNewTabDirective } from './open-in-new-tab.directive';
 import { SafeHtmlPipe } from 'src/safe-html.pipe';
+import { ZodiacComponent } from './component/zodiac/zodiac.component';
 
 @NgModule({
   declarations: [
@@ -171,7 +172,8 @@ import { SafeHtmlPipe } from 'src/safe-html.pipe';
     PhotoGalaryComponent,
     BhauCharchitaComponent,
     OpenInNewTabDirective,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    ZodiacComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

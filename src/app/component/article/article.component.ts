@@ -86,7 +86,7 @@ export class ArticleComponent implements OnInit {
             let newsTitle = this.news.post_title;
             let newsDesc = this.news.meta_description;
             let postURL = this.news.permalink;
-            let keywords =this.news.seo_keywords;
+            let keywords = this.news.seo_keywords;
             let shareUrl = `${environment.PLATFORM_BASEURL}/${this.id}`;
 
             let tags = [
@@ -103,9 +103,6 @@ export class ArticleComponent implements OnInit {
               { name: 'og:image', content: imgURL },
               { name: 'keywords', content: keywords },
               { name: 'canonical', content: shareUrl },
-
-              
-
             ];
             tags.forEach((tag: any) => {
               this.Meta.updateTag(tag);

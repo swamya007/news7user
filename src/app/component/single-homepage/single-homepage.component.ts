@@ -47,7 +47,7 @@ export class SingleHomepageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getAllnews();
+    this.getLatestNews();
     this.getslide();
     this.title.setTitle(
       'PRAMEYA - Prameya News Portal, Prameya Daily, Odisha Latest News, Odisha Current Headlines, Odisha News Online'

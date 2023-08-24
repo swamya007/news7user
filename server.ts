@@ -108,21 +108,28 @@ export function app(): express.Express {
     res.type('text/plain');
     res.sendFile(__dirname + "/robots.txt");
   });
+  server.get('/izooto.html', (req, res) => {
+    res.sendFile(__dirname + "/izooto.html");
+  });
+  server.get('/service-worker.js', (req, res) => {
+    res.sendFile(__dirname + "/service-worker.js");
+  });
   server.get('/ads.txt', (req, res) => {
     res.sendFile(__dirname + '/ads.txt');
   });
-  server.get('/feed', async (req, res) => {
+  server.get('/rss', async (req, res) => {
     let resp = await axios.get('https://odia.prameya.com/prameya/api/rssfeed');
     res.type('text/xml').send(resp.data);
   });
 
-  server.get('/:category/feed', async (req, res) => {
+  server.get('/:category/rss', async (req, res) => {
     const { category } = req.params;
     let resp = await axios.get(`https://odia.prameya.com/prameya/api/${category}/rssfeed`);
     res.type('text/xml').send(resp.data);
   });
 
   server.get('/sitemap.xml', async (req, res) => {
+    //const sitemap = new SitemapStream({ hostname: environment.POST_URL });
     res.type('text/xml');
     res.setHeader('Content-Encoding', 'utf8');
     try {
@@ -144,6 +151,7 @@ export function app(): express.Express {
             { priority: "1.0" },
           ],
         };
+        //await sitemap.write({ url: route, changefreq: 'monthly', priority: 0.5 });
         sitemapItems.push(Item);
       }
       const sitemapObject = {
@@ -155,11 +163,14 @@ export function app(): express.Express {
               "xsi:schemaLocation": "http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
             },
           },
+          // indexItem,
           ...sitemapItems,
         ],
       };
       const sitemap = `<?xml version="1.0" encoding="UTF-8"?>${xml(sitemapObject)}`;
-      
+      // const stream = await sitemap.pipe(gzip);
+      // const smStream = await streamToPromise(stream);
+      //sitemap.end();
       await writeFileAsync(__dirname + '/sitemap.xml', sitemap, "utf8");
       res.sendFile(__dirname + '/sitemap.xml');
     } catch (err) {
@@ -170,52 +181,47 @@ export function app(): express.Express {
 
 
   server.get('/news-sitemap.xml', async (req, res) => {
+    //const sitemap = new SitemapStream({ hostname: environment.POST_URL });
     res.type('text/xml');
     res.setHeader('Content-Encoding', 'utf8');
     try {
-      let routes:Array<any> = [];
+      let routes:Array<any> = []; // Add your routes here
       const response = await axios.get('https://odia.prameya.com/prameya/api/post/get-sitemap-details').then(res => res.data);
       response.body?.forEach((r: any) => {
         let routeData = JSON.parse(r);
         routes.push(routeData)
       })
       let sitemapItems = [];
-      if(routes.length > 0) {
-        for (let i = 0; i < routes.length; i++) {
-          let route: any = routes[i];
-          let Item = {
-            url: [
-              {
-                loc: environment.POST_URL + route.slug,
-              },
-              {
-                "news:news": [
-                  {
-                    "news:publication": [
-                      { "news:name": environment.PLATFORM_BASEURL },
-                      { "news:language": 'en' }
-                    ]
-                  },
-                  { "news:publication_date": route.created_on ? new Date(route.created_on).toISOString() : route.created_on },
-                  { "news:title": route.post_title },
-                  { "news:keywords": route.seo_keywords }
-  
-  
-                ]
-              }
-  
-            ],
-          };
-          sitemapItems.push(Item);
-        }
-      } else {
+      for (let i = 0; i < routes.length; i++) {
+        let route: any = routes[i];
         let Item = {
-          url: 
-            "No Data Found"    
-        }
+          url: [
+            {
+              loc: environment.POST_URL + route.slug,
+            },
+            {
+              "news:news": [
+                {
+                  "news:publication": [
+                    { "news:name": environment.PLATFORM_BASEURL },
+                    { "news:language": 'en' }
+                  ]
+                },
+                { "news:publication_date": route.created_on ? new Date(route.created_on).toISOString() : route.created_on },
+                { "news:title": route.post_title },
+                { "news:keywords": route.seo_keywords }
+
+
+              ]
+            }
+
+          ],
+        };
+
+        //await sitemap.write({ url: route, changefreq: 'monthly', priority: 0.5 });
         sitemapItems.push(Item);
+
       }
-      
       const sitemapObject = {
         urlset: [
           {
@@ -227,11 +233,14 @@ export function app(): express.Express {
              "xmlns:image":"http://www.google.com/schemas/sitemap-image/1.1"
             },
           },
+          // indexItem,
           ...sitemapItems,
         ],
       };
       const sitemap = `<?xml version="1.0" encoding="UTF-8"?>${xml(sitemapObject)}`;
-     
+      // const stream = await sitemap.pipe(gzip);
+      // const smStream = await streamToPromise(stream);
+      //sitemap.end();
       await writeFileAsync(__dirname + '/sitemap.xml', sitemap, "utf8");
       res.sendFile(__dirname + '/sitemap.xml');
     } catch (err) {
@@ -248,11 +257,12 @@ export function app(): express.Express {
   }));
 
   // All regular routes use the Universal engine
-  server.get('/', redisMiddleware,(req, res, next) => {
+  server.get('/',redisMiddleware, (req, res, next) => {
     // res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
     next();
   });
 
+  
 
   server.get('*', (req, res) => {
     res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
@@ -279,7 +289,7 @@ export function app(): express.Express {
 }
 
 function run(): void {
-  const port = process.env['PORT'] || 4000;
+  const port = process.env['PORT'] || 3005;
 
   // Start up the Node server
   const server = app();

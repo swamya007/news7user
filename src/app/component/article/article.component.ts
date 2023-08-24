@@ -76,9 +76,9 @@ export class ArticleComponent implements OnInit {
             this.postarr = data?.map((dt: any) => JSON.parse(dt));
             this.news =
               this.postarr && this.postarr.length ? this.postarr[0] : {};
-            if (this.news.tags) {
-              this.news.tags = this.news.tags.replaceAll(',', ', ');
-            }
+            // if (this.news.tags) {
+            //   this.news.tags = this.news.tags.replaceAll(',', ', ');
+            // }
             this.news.post_content_sanitized =
               this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
             this.Title.setTitle(this.news.post_title);
@@ -138,9 +138,9 @@ export class ArticleComponent implements OnInit {
           this.postarr = data?.map((dt: any) => JSON.parse(dt));
           this.news =
             this.postarr && this.postarr.length ? this.postarr[0] : {};
-          if (this.news.tags) {
-            this.news.tags = this.news.tags.replaceAll(',', ', ');
-          }
+          // if (this.news.tags) {
+          //   this.news.tags = this.news.tags.replaceAll(',', ', ');
+          // }
           this.news.post_content_sanitized =
             this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
 
@@ -371,9 +371,9 @@ export class ArticleComponent implements OnInit {
           this.postarr = data?.map((dt: any) => JSON.parse(dt));
           this.news =
             this.postarr && this.postarr.length ? this.postarr[0] : {};
-          if (this.news.tags) {
-            this.news.tags = this.news.tags.replaceAll(',', ', ');
-          }
+          // if (this.news.tags) {
+          //   this.news.tags = this.news.tags.replaceAll(',', ', ');
+          // }
           if (isPlatformBrowser(PLATFORM_ID)) {
             let div = document.querySelector('.article-text-section');
             if (div) {

@@ -224,9 +224,9 @@ export function app(): express.Express {
                   ],
                 },
                 {
-                  'news:publication_date': route.created_on
+                  'news:publication_date': route.post_date
                     ? new Date(route.created_on).toISOString()
-                    : route.created_on,
+                    : route.post_date,
                 },
                 { 'news:title': route.post_title },
                 { 'news:keywords': route.seo_keywords },

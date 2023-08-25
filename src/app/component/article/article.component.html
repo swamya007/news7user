@@ -39,16 +39,28 @@
               (click)="createNavigationUrl('twitter')"
               class="twitter-icon share-box"
             >
-              <i class="fa-brands fa-twitter"></i>
+              <div class="twitter-icon-x">
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  class="r-18jsvk2 r-4qtqp9 r-yyyyoo r-16y2uox r-8kz0gk r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-lrsllp"
+                >
+                  <g>
+                    <path
+                      d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
               <p>Tweet</p>
             </div>
-            <div
+            <!-- <div
               (click)="createNavigationUrl('gmail')"
               class="messenger-icon share-box"
             >
               <i class="fa-brands fa fa-google"></i>
               <p>Share</p>
-            </div>
+            </div> -->
             <div
               (click)="createNavigationUrl('whatsapps')"
               class="whatsapp-icon share-box"
@@ -56,21 +68,21 @@
               <i class="fa-brands fa-whatsapp"></i>
               <p>Share</p>
             </div>
-            <div
+            <!-- <div
               (click)="createNavigationUrl('telegram')"
               class="share-icon share-box"
             >
               <i class="fa-solid fa fa-telegram"></i>
               <p>Share</p>
-            </div>
+            </div> -->
 
-            <div
+            <!-- <div
               (click)="createNavigationUrl('sharechat')"
               class="share-chat share-box"
             >
               <i class="fa-solid fa fa-meetup"></i>
               <p>Share</p>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="author-cat-section">
@@ -103,6 +115,8 @@
           *ngIf="news.post_content"
           [innerHTML]="news.post_content"
         ></div>
+
+        <button class="morebtn">Read more in App</button>
       </div>
 
       <div class="article-section-container ng-star-inserted">

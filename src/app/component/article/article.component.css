@@ -31,7 +31,13 @@
   max-width: 100%;
   height: auto;
 }
-
+.twitter-icon-x {
+  width: 20px;
+  height: 20px;
+}
+.twitter-icon-x svg {
+  fill: #fff;
+}
 :host ::ng-deep .article-text-section p {
   text-align: justify;
 }

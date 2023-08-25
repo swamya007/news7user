@@ -364,6 +364,7 @@ export class ArticleComponent implements OnInit {
           this.postarr = data?.map((dt: any) => JSON.parse(dt));
           this.news =
             this.postarr && this.postarr.length ? this.postarr[0] : {};
+          console.log(this.postarr, 'data');
           if (this.news.tags) {
             this.news.tags = this.news.tags.replaceAll(',', ', ');
           }

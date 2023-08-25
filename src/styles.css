@@ -1577,7 +1577,7 @@ h1 > span {
   position: absolute;
   height: 30px;
   width: 200px;
-  right: 0;
+  right: 25% !important;
   bottom: 0;
   color: #fff;
   background-color: var(--red);

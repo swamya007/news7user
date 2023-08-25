@@ -69,7 +69,7 @@ export class ArticleComponent implements OnInit {
     activatedRoute.params.subscribe((val) => {
       const routeParams = this.activatedRoute.snapshot.paramMap;
       this.id = routeParams.get('Id');
-      this.post.getPostBySlug(this.id, environment.CUSTOMER_ID).subscribe(
+      this.post.getPostBySlugodia(this.id, environment.CUSTOMER_ID).subscribe(
         (res: any) => {
           if (res.code == 'success') {
             var data = res.body;
@@ -233,7 +233,7 @@ export class ArticleComponent implements OnInit {
   }
   getPostByAuthor() {
     this.post
-      .getPostByCategoryID(1, this.postarr[0].category, environment.CUSTOMER_ID)
+      .getPostByCategoryIDodia(1, this.postarr[0].category, environment.CUSTOMER_ID)
       .subscribe(
         (res: any) => {
           if (res.code == 'success') {
@@ -263,7 +263,7 @@ export class ArticleComponent implements OnInit {
     }
 
     this.post
-      .getPostByCategoryID(1, this.cat, environment.CUSTOMER_ID)
+      .getPostByCategoryIDodia(1, this.cat, environment.CUSTOMER_ID)
       .subscribe(
         (res: any) => {
           if (res.code == 'success') {
@@ -364,7 +364,6 @@ export class ArticleComponent implements OnInit {
           this.postarr = data?.map((dt: any) => JSON.parse(dt));
           this.news =
             this.postarr && this.postarr.length ? this.postarr[0] : {};
-          console.log(this.postarr, 'data');
           if (this.news.tags) {
             this.news.tags = this.news.tags.replaceAll(',', ', ');
           }
@@ -389,7 +388,11 @@ export class ArticleComponent implements OnInit {
       }
     );
   }
+  openapp(){
+    window.location.href = 'https://play.google.com/store/apps/details?id=com.nirmalya.prameya_news7';
 
+
+  }
   public createNavigationUrl(type: string) {
     //let shareUrl = 'https://prameya/post/';
     let shareUrl = `${environment.PLATFORM_BASEURL}/${this.id}`;

@@ -76,7 +76,6 @@ export class SportsComponent implements OnInit {
               this.postarr && this.postarr.length ? this.postarr[0] : {};
             this.nextthree = this.postarr?.slice(1, 3);
 
-            console.log(this.postarr);
           } else {
             this.postarr = [];
           }

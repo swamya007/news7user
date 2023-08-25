@@ -42,6 +42,26 @@
   padding-right: 10px;
 }
 
+
+
+.blink{
+  width:200px;
+  height: 50px;
+  padding: 15px;	
+  text-align: center;
+  line-height: 50px;
+}
+span{
+  font-size: 25px;
+  font-family: cursive;
+  color: white;
+  animation: blink 1s linear infinite;
+}
+@keyframes blink{
+0%{opacity: 0;}
+50%{opacity: .5;}
+100%{opacity: 1;}
+}
 .home-ad-container div {
   width: autp;
   height: 90px;

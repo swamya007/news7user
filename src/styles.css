@@ -22,6 +22,35 @@ body {
   background-color: #fff; /* Adjust as needed */
   /* Add any other styling you want for the header */
 }
+@keyframes blink-text {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.twitter-icon-new {
+  background-color: #000;
+  height: 24px;
+  width: 24px;
+  border-radius: 20px;
+  text-align: center;
+  margin-top: 5px;
+}
+.twitter-icon-new svg {
+  fill: #fff !important;
+  padding: 5px;
+  height: 20px;
+  width: 20px;
+}
+.twitter-icon-new:hover {
+  background-color: #ccc;
+}
+
 /** 22-08-2022 **/
 .article-container {
   width: 90%;
@@ -254,7 +283,20 @@ h4.news-sub {
   height: 32px;
   width: 100px;
   margin: 0px 5px;
-  background-color: #53c7ff;
+  background-color: #000;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.5s ease;
+}
+.twitter-icon:hover {
+  height: 32px;
+  width: 100px;
+  margin: 0px 5px;
+  background-color: #ccc;
   color: var(--white);
   display: flex;
   align-items: center;
@@ -373,9 +415,14 @@ h4.news-sub {
 }
 
 .twitter-icon:hover {
-  background-color: #1299dc;
+  background-color: #ccc;
+  color: #000;
+  fill: #000;
 }
-
+.article-section-container {
+  position: relative;
+  padding-bottom: 0px;
+}
 .article-section-container .article-image {
   width: -webkit-fill-available;
   /* margin: 20px 0px; */
@@ -1213,11 +1260,11 @@ footer ul li a {
   margin: 20px auto;
 }
 .home-first-container {
-  background-color: var(--site-background);
+  background-color: #fff;
   padding: 20px 2.5vw;
 }
 .home-second-container {
-  background-color: #f3f3f3;
+  background-color: #fff;
   padding: 20px 2.5vw;
   cursor: pointer;
 }
@@ -1319,7 +1366,7 @@ footer ul li a {
   background: #fff !important;
 }
 .news-section {
-  background-color: #ddd;
+  background-color: #fff;
   padding: 15px;
 }
 
@@ -1509,6 +1556,39 @@ h1 > span {
   font-weight: bold !important;
   border-bottom: 2px solid #f00 !important;
 }
+/* right menu css */
+:host ::ng-deep .navbar-right {
+  float: right !important;
+  margin-right: 15px;
+}
+.right-menu {
+  color: #fff;
+  text-decoration: none !important;
+  padding: 0px 10px !important;
+}
+.right-menu:hover {
+  color: #000 !important;
+}
+.active-menu {
+  color: #fbb70a;
+}
+/* right menu css */
+.article-section-container .morebtn {
+  position: absolute;
+  height: 30px;
+  width: 200px;
+  right: 0;
+  bottom: 0;
+  color: #fff;
+  background-color: var(--red);
+  font-size: 20px;
+  border: none;
+  outline: none;
+  display: none;
+  animation: blink-text 1.9s linear infinite;
+  border-radius: 20px;
+  cursor: pointer;
+}
 /* --------------------------------pagination---------------------------------- */
 @media (max-width: 1540px) {
   .news-box1 .news-img-container img {
@@ -1601,7 +1681,7 @@ h1 > span {
     min-height: 89.5vh;
   }
   .download-app img {
-    height: 18px !important;
+    height: 13px !important;
     margin: 0px 3px;
   }
 }
@@ -1610,8 +1690,35 @@ h1 > span {
   body {
     overflow-x: hidden;
   }
+  .article-section-container {
+    position: relative;
+    padding-bottom: 50px !important;
+  }
+  .article-section-container .morebtn {
+    position: absolute;
+    height: 30px;
+    width: 200px;
+    right: 0;
+    bottom: 0;
+    color: #fff;
+    background-color: var(--red);
+    font-size: 20px;
+    border: none;
+    outline: none;
+    display: block !important;
+  }
   .item-three {
     height: 400px !important;
+  }
+  figcaption {
+    height: 105px !important;
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 30px;
+    position: absolute !important;
+    z-index: 2;
+    bottom: -30px;
   }
   /* :host ::ng-deep .home-ad-container div {
     width: 100% !important;

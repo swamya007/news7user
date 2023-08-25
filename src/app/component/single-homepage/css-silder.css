@@ -21,6 +21,16 @@
   height: inherit;
 }
 figcaption {
+  height: 90px;
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  color: #fff;
+  padding: 10px;
+  margin-bottom: 30px;
+  position: absolute !important;
+  z-index: 2;
+  bottom: -30px;
+}
+/* figcaption {
   width: 100%;
   float: left;
   height: 80px;
@@ -28,7 +38,7 @@ figcaption {
   color: #fff;
   padding: 10px;
   margin-bottom: 30px;
-}
+} */
 figcaption {
   position: static;
   width: 100%;
@@ -207,7 +217,7 @@ transition: .3s;
     margin-top: 0px;
     position: relative;
     height: 0;
-    padding-bottom: 59%;
+    padding-bottom: 70%;
     user-select: none;
     background-color: #fff;
     margin-bottom: 50px;
@@ -279,7 +289,7 @@ transition: .3s;
     margin-top: 0px;
     position: relative;
     height: 0;
-    padding-bottom: 66.7%;
+    padding-bottom: 79.7%;
     user-select: none;
     background-color: #fff;
     margin-bottom: 50px;
@@ -314,16 +324,53 @@ transition: .3s;
 /* @media screen and (min-width: 1366px) {
   
 } */
+
+@media (max-width: 1680px) {
+  .container-slider {
+    margin: 0 auto;
+    margin-top: 0px;
+    position: relative;
+    height: 0;
+    padding-bottom: 81%;
+    -webkit-user-select: none;
+    user-select: none;
+    background-color: #fff;
+    margin-bottom: 50px;
+  }
+}
+@media (max-width: 1540px) {
+  .container-slider {
+    margin: 0 auto;
+    margin-top: 0px;
+    position: relative;
+    height: 0;
+    padding-bottom: 70%;
+    -webkit-user-select: none;
+    user-select: none;
+    background-color: #fff;
+    margin-bottom: 50px;
+  }
+}
 @media screen and (max-width: 1280px) {
   .container-slider {
     margin: 0 auto;
     margin-top: 0px;
     position: relative;
     height: 0;
-    padding-bottom: 73.5%;
+    padding-bottom: 109.5%;
     user-select: none;
     background-color: #fff;
     margin-bottom: 50px;
+  }
+  figcaption {
+    height: 110px;
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 30px;
+    position: absolute !important;
+    z-index: 2;
+    bottom: -30px;
   }
   .prev,
   .next {

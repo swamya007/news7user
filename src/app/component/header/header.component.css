@@ -27,6 +27,7 @@
   padding: 0px;
   /* background: #f00; */
 }
+
 .header-row {
   display: flex;
   flex-direction: row;
@@ -326,6 +327,12 @@ button {
 .navbar ul li:nth-child(7n + 7):after {
   background-color: #8bc34a;
 } */
+@media (max-width: 1280px) {
+  .navbar-nav .nav-link {
+    color: var(--white);
+    font-size: 12px !important;
+  }
+}
 @media only screen and (max-width: 600px) {
   body {
     overflow-x: hidden;

@@ -22,17 +22,7 @@ body {
   background-color: #fff; /* Adjust as needed */
   /* Add any other styling you want for the header */
 }
-@keyframes blink-text {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
+
 .twitter-icon-new {
   background-color: #000;
   height: 24px;

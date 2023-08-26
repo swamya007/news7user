@@ -128,57 +128,57 @@ export class ArticleComponent implements OnInit {
     //this.isLoggedIn = this.loginService.isLoggedIn();
     const routeParams = this.activatedRoute.snapshot.paramMap;
     this.id = routeParams.get('Id');
-    // this.post.getPostBySlug(this.id, environment.CUSTOMER_ID).subscribe(
-    //   (res: any) => {
-    //     if (res.code == 'success') {
-    //       var data = res.body;
-    //       this.postarr = data?.map((dt: any) => JSON.parse(dt));
-    //       this.news =
-    //         this.postarr && this.postarr.length ? this.postarr[0] : {};
-    //       if (this.news.tags) {
-    //         this.news.tags = this.news.tags.replaceAll(',', ', ');
-    //       }
-    //       this.news.post_content_sanitized =
-    //         this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
+    this.post.getPostBySlugodia(this.id, environment.CUSTOMER_ID).subscribe(
+      (res: any) => {
+        if (res.code == 'success') {
+          var data = res.body;
+          this.postarr = data?.map((dt: any) => JSON.parse(dt));
+          this.news =
+            this.postarr && this.postarr.length ? this.postarr[0] : {};
+          // if (this.news.tags) {
+          //   this.news.tags = this.news.tags.replaceAll(',', ', ');
+          // }
+          // this.news.post_content_sanitized =
+          //   this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
 
-    //       this.Title.setTitle(this.news.post_title);
-    //       let imgURL = this.news.guid;
-    //       let newsTitle = this.news.post_title;
-    //       let newsDesc = this.news.meta_description;
-    //       let postURL = this.news.permalink;
-    //       let keywords =this.news.seo_keywords;
-    //       let tags = [
-    //         { name: 'twitter:card', content: 'summary' },
-    //         { name: 'twitter:image', content: imgURL },
-    //         { name: 'twitter:title', content: newsTitle },
-    //         { name: 'twitter:description', content: newsDesc },
-    //         { name: 'og:type', content: 'article' },
-    //         { name: 'og:title', content: newsTitle },
-    //         { name: 'og:description', content: newsDesc },
-    //         { name: 'description', content: newsDesc },
-    //         { name: 'og:url', content: postURL },
-    //         {name: 'image', content :imgURL },
-    //         { name: 'og:image', content: imgURL },
-    //         { name: 'keywords', content: keywords },
+          this.Title.setTitle(this.news.post_title);
+          let imgURL = this.news.guid;
+          let newsTitle = this.news.post_title;
+          let newsDesc = this.news.meta_description;
+          let postURL = this.news.permalink;
+          let keywords =this.news.seo_keywords;
+          let tags = [
+            { name: 'twitter:card', content: 'summary' },
+            { name: 'twitter:image', content: imgURL },
+            { name: 'twitter:title', content: newsTitle },
+            { name: 'twitter:description', content: newsDesc },
+            { name: 'og:type', content: 'article' },
+            { name: 'og:title', content: newsTitle },
+            { name: 'og:description', content: newsDesc },
+            { name: 'description', content: newsDesc },
+            { name: 'og:url', content: postURL },
+            {name: 'image', content :imgURL },
+            { name: 'og:image', content: imgURL },
+            { name: 'keywords', content: keywords },
 
-    //       ];
-    //       tags.forEach((tag: any) => {
-    //         this.Meta.updateTag(tag);
-    //       });
+          ];
+          tags.forEach((tag: any) => {
+            this.Meta.updateTag(tag);
+          });
 
-    //       this.getPostBycategory();
-    //     } else {
-    //       this.postarr = [];
-    //       this.router.navigate(['/'])
+          this.getPostBycategory();
+        } else {
+          this.postarr = [];
+          this.router.navigate(['/'])
 
-    //     }
-    //   },
-    //   (err) => {
-    //     this.postarr = [];
-    //     this.router.navigate(['/'])
+        }
+      },
+      (err) => {
+        this.postarr = [];
+        this.router.navigate(['/'])
 
-    //   }
-    // );
+      }
+    );
     this.getallpost();
     this.getAllAdsList();
     this.getAllairticlenews();

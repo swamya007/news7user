@@ -357,7 +357,7 @@ export class ArticleComponent implements OnInit {
     }
   }
   getallpost() {
-    this.post.getPostBySlug(this.id, environment.CUSTOMER_ID).subscribe(
+    this.post.getPostBySlugodia(this.id, environment.CUSTOMER_ID).subscribe(
       (res: any) => {
         if (res.code == 'success') {
           var data = res.body;

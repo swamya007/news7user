@@ -128,6 +128,8 @@ export class ArticleComponent implements OnInit {
     //this.isLoggedIn = this.loginService.isLoggedIn();
     const routeParams = this.activatedRoute.snapshot.paramMap;
     this.id = routeParams.get('Id');
+     this.getallpost();
+
     this.post.getPostBySlugodia(this.id, environment.CUSTOMER_ID).subscribe(
       (res: any) => {
         if (res.code == 'success') {
@@ -179,7 +181,6 @@ export class ArticleComponent implements OnInit {
 
       }
     );
-    this.getallpost();
     this.getAllAdsList();
     this.getAllairticlenews();
   }

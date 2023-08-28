@@ -54,6 +54,10 @@ const routes: Routes = [
     component: ArticleComponent,
   },
   {
+    path: 'post/:Id',
+    component: ArticleComponent,
+  },
+  {
     path: 'prameya/TermsofUsage',
     component: TermsOfUsageComponent,
   },

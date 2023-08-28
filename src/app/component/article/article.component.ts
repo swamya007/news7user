@@ -76,11 +76,11 @@ export class ArticleComponent implements OnInit {
             this.postarr = data?.map((dt: any) => JSON.parse(dt));
             this.news =
               this.postarr && this.postarr.length ? this.postarr[0] : {};
-            if (this.news.tags) {
-              this.news.tags = this.news.tags.replaceAll(',', ', ');
-            }
-            // this.news.post_content_sanitized =
-            //   this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
+            // if (this.news.tags) {
+            //   this.news.tags = this.news.tags.replaceAll(',', ', ');
+            // }
+            this.news.post_content_sanitized =
+              this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
             this.Title.setTitle(this.news.post_title);
             let imgURL = this.news.guid;
             let newsTitle = this.news.post_title;
@@ -365,9 +365,9 @@ export class ArticleComponent implements OnInit {
           this.postarr = data?.map((dt: any) => JSON.parse(dt));
           this.news =
             this.postarr && this.postarr.length ? this.postarr[0] : {};
-          if (this.news.tags) {
-            this.news.tags = this.news.tags.replaceAll(',', ', ');
-          }
+          // if (this.news.tags) {
+          //   this.news.tags = this.news.tags.replaceAll(',', ', ');
+          // }
           // if (isPlatformBrowser(PLATFORM_ID)) {
           //   let div = document.querySelector('.article-text-section');
           //   if (div) {
@@ -375,8 +375,8 @@ export class ArticleComponent implements OnInit {
           //   }
           // }
 
-          // this.news.post_content_sanitized =
-          //   this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
+          this.news.post_content_sanitized =
+            this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
           this.Title.setTitle(this.news.post_title);
 
           this.getPostBycategory();
@@ -396,7 +396,7 @@ export class ArticleComponent implements OnInit {
   }
   public createNavigationUrl(type: string) {
     //let shareUrl = 'https://prameya/post/';
-    let shareUrl = `${environment.PLATFORM_BASEURL}/${this.id}`;
+    let shareUrl = `${environment.PLATFORM_BASEURL}${this.id}`;
     let searchParams = new URLSearchParams();
     switch (type) {
       case 'facebook':

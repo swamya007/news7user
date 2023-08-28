@@ -8,10 +8,10 @@ export const environment = {
   BASE_URL: 'https://user-api.prameya.com/prameya/api',
   // BASE_URL: 'http://localhost:8073/prameya/api',
   // BASE_URL: 'https://moapi.prameyanews.com/prameya/api',
-  POST_URL: 'https://www2.prameya.com/',
+  POST_URL: 'https://www.prameya.com/',
   CUSTOMER_ID: 2,
   CUSTOMER_NAME: 'PRAMEYA_ODIA',
-  PLATFORM_BASEURL: 'https://www2.prameya.com/',
+  PLATFORM_BASEURL: 'https://www.prameya.com/',
   GOOGLE_ANALYTICS_ID: 'UA-132075618-1',
 };
 /*

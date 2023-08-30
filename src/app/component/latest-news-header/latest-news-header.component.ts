@@ -20,29 +20,28 @@ export class LatestNewsHeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getLatestNews();
-    this.getticker();
+    // this.getLatestNews();
     // setTimeout(() => {
     //   this.showSlides(this.slideIndex);
     // }, 1000);
     this.getticker();
   }
 
-  getLatestNews() {
-    this.postserviceService.getTrendingNews(environment.CUSTOMER_ID).subscribe(
-      (res: any) => {
-        if (res.code == 'success') {
-          var data = res.body;
-          this.postarr = data.map((dt: any) => JSON.parse(dt));
-        } else {
-          this.postarr = [];
-        }
-      },
-      (err) => {
-        this.postarr = [];
-      }
-    );
-  }
+  // getLatestNews() {
+  //   this.postserviceService.getTrendingNews(environment.CUSTOMER_ID).subscribe(
+  //     (res: any) => {
+  //       if (res.code == 'success') {
+  //         var data = res.body;
+  //         this.postarr = data.map((dt: any) => JSON.parse(dt));
+  //       } else {
+  //         this.postarr = [];
+  //       }
+  //     },
+  //     (err) => {
+  //       this.postarr = [];
+  //     }
+  //   );
+  // }
 
   opennewsSec(id: any, flag: any) {
     if (flag === 'Y') {

@@ -379,7 +379,6 @@ export class ArticleComponent implements OnInit {
             this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
           this.Title.setTitle(this.news.post_title);
 
-          this.getPostBycategory();
         } else {
           this.postarr = [];
         }

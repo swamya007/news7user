@@ -93,7 +93,6 @@
               >
             </p>
           </div>
-          <div class="category-section" *ngIf="news.tags">{{ news.tags }}</div>
         </div>
         <div class="article-component-img">
           <img class="article-image" alt="" [src]="news.guid" />
@@ -115,8 +114,22 @@
           *ngIf="news.post_content"
           [innerHTML]="news.post_content"
         ></div>
-
+        <div class="category-list-container" *ngIf="nameArr">
+          <!-- <ul class="category-list"> -->
+           <!-- <div>Tags </div>  -->
+            <div
+              class="category-name"
+              *ngFor="let post of nameArr"
+              (click)="opentags(post)"
+            >
+              {{ post }}
+          </div>
+          <div class="clear"></div>
+          <!-- </ul> -->
+        </div>
+       
         <button class="morebtn" (click)="openapp()">Read more in App</button>
+       
       </div>
 
       <div class="article-section-container ng-star-inserted">
@@ -393,7 +406,7 @@
       </div>
     </div>
   </div>
-   <app-mgid></app-mgid> 
+  <app-taboola-widget-component></app-taboola-widget-component>
 </div>
 
 <app-search-sticky></app-search-sticky>

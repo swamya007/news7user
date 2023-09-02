@@ -27,6 +27,7 @@ import { TermsOfUsageComponent } from './terms-of-usage/terms-of-usage.component
 import { PhotoGalaryComponent } from './component/photo-galary/photo-galary.component';
 import { BhauCharchitaComponent } from './component/bhau-charchita/bhau-charchita.component';
 import { ZodiacComponent } from './component/zodiac/zodiac.component';
+import { SearchtagscomponentComponent } from './component/search-post/searchtagscomponent/searchtagscomponent.component';
 
 const routes: Routes = [
   // {
@@ -40,6 +41,10 @@ const routes: Routes = [
   {
     path: 'newsearch/:value',
     component: SinglesearchComponent,
+  },
+  {
+    path: 'tag/:tags',
+    component: SearchtagscomponentComponent,
   },
   // {
   //   path: 'search/:value',

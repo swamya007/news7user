@@ -94,6 +94,10 @@ export class PostserviceService {
         `/get-searched-post?searchval=${searchval}&customer_id=${cust_id}`
     );
   }
+  getTagWisw(page_no: any,cust_id:any,tags:any) {
+    return this.HTTP.get<any>(Masterapi + `/get-post-list-tags-wise?page_no=${page_no}&customer_id=${cust_id}&tags=${tags}`,{
+    });
+  }
 
   getSearchedPostodia(searchval: any, cust_id: any) {
     return this.HTTP.get<any>(

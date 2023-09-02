@@ -32,11 +32,13 @@ export class ArticleComponent implements OnInit {
   ads_leftmiddle: any = [];
   nextthree: any = [];
   comments: any = [];
+  trimmedText: any;
   author_post: any = [];
   comment_page_no: number = 1;
   post_page_no: number = 1;
   comment_obj: any;
   data: any;
+  nameArr: any;
   polticesnews: any;
   entermentaarr: any;
   sportsnews: any;
@@ -79,6 +81,7 @@ export class ArticleComponent implements OnInit {
             // if (this.news.tags) {
             //   this.news.tags = this.news.tags.replaceAll(',', ', ');
             // }
+           
             this.news.post_content_sanitized =
               this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
             this.Title.setTitle(this.news.post_title);
@@ -143,6 +146,7 @@ export class ArticleComponent implements OnInit {
           // this.news.post_content_sanitized =
           //   this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
 
+          
           this.Title.setTitle(this.news.post_title);
           let imgURL = this.news.guid;
           let newsTitle = this.news.post_title;
@@ -193,7 +197,11 @@ export class ArticleComponent implements OnInit {
         ? this.ads_rightupper.length - 1
         : this.currentIndex - 1;
   }
-
+  opentags(tags: any) {
+    this.trimmedText = tags.trim();
+alert(this.trimmedText)
+    this.router.navigate(['tag/' + this.trimmedText]);
+  }
   nextSlide() {
     this.currentIndex =
       this.currentIndex === this.ads_rightupper.length - 1
@@ -374,13 +382,18 @@ export class ArticleComponent implements OnInit {
           //     div.innerHTML = this.news.post_content;
           //   }
           // }
+          var names = this.news.tags;
+          this.nameArr = names.split(',');
 
           this.news.post_content_sanitized =
             this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
           this.Title.setTitle(this.news.post_title);
+          this.getPostBycategory();
 
         } else {
           this.postarr = [];
+          this.getPostBycategory();
+
         }
       },
       (err) => {

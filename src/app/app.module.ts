@@ -106,6 +106,8 @@ import { OpenInNewTabDirective } from './open-in-new-tab.directive';
 import { SafeHtmlPipe } from 'src/safe-html.pipe';
 import { ZodiacComponent } from './component/zodiac/zodiac.component';
 import { MgidComponent } from './component/mgid/mgid.component';
+import { TaboolaWidgetComponentComponent } from './component/TaboolaWidgetComponent/taboola-widget-component/taboola-widget-component.component';
+import { SearchtagscomponentComponent } from './component/search-post/searchtagscomponent/searchtagscomponent.component';
 
 @NgModule({
   declarations: [
@@ -138,9 +140,10 @@ import { MgidComponent } from './component/mgid/mgid.component';
     ContactUsComponent,
     OpinionsComponent,
     ArticleComponent,
+    SearchtagscomponentComponent,
     SocialShareComponent,
     PasswordComponent,
-
+    TaboolaWidgetComponentComponent,
     ForgetpasswordComponent,
     TechnologyNewsComponent,
     AutomobileNewsComponent,

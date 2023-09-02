@@ -27,10 +27,8 @@ export class SinglesearchComponent implements OnInit {
 
   searchval: any;
   p: number = 1;
-  @Input()
   postarr: any = [];
 
-  @Input()
   s!: number;
   data: any;
   odishaarr: any = [];

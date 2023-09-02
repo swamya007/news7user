@@ -27,10 +27,8 @@ export class SearchtagscomponentComponent implements OnInit {
 
   searchval: any;
   p: number = 1;
-  @Input()
   postarr: any = [];
 
-  @Input()
   s!: number;
   data: any;
   odishaarr: any = [];
@@ -55,7 +53,8 @@ export class SearchtagscomponentComponent implements OnInit {
     activatedRoute.params.subscribe((val) => {
       this.customer_id = environment.CUSTOMER_ID;
       const routeParams = this.activatedRoute.snapshot.paramMap;
-      this.searchval = routeParams.get('value');
+      this.searchval = routeParams.get('tags');
+
       this.getAllAdsList();
       this.getSearchedPost();
       // this.getAllnews();
@@ -65,7 +64,7 @@ export class SearchtagscomponentComponent implements OnInit {
   ngOnInit(): void {
     this.customer_id = environment.CUSTOMER_ID;
     const routeParams = this.activatedRoute.snapshot.paramMap;
-    this.searchval = routeParams.get('value');
+    this.searchval = routeParams.get('tags');
     alert(this.searchval)
     this.getAllAdsList();
     this.getSearchedPost();

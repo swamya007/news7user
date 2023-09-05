@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute,Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AdserviceService } from 'src/app/services/Adservice/adservice.service';
 import { PostserviceService } from 'src/app/services/postservice/postservice.service';
 import { environment } from 'src/environments/environment';
@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-searchtagscomponent',
   templateUrl: './searchtagscomponent.component.html',
-  styleUrls: ['./searchtagscomponent.component.css']
+  styleUrls: ['./searchtagscomponent.component.css'],
 })
 export class SearchtagscomponentComponent implements OnInit {
   customer_id: any;
@@ -65,7 +65,7 @@ export class SearchtagscomponentComponent implements OnInit {
     this.customer_id = environment.CUSTOMER_ID;
     const routeParams = this.activatedRoute.snapshot.paramMap;
     this.searchval = routeParams.get('tags');
-    alert(this.searchval)
+    // alert(this.searchval)
     this.getAllAdsList();
     this.getSearchedPost();
     this.getAllnews();
@@ -74,7 +74,7 @@ export class SearchtagscomponentComponent implements OnInit {
   getSearchedPost() {
     // this.searchval = 'am'
     this.postService
-      .getTagWisw(this.p, environment.CUSTOMER_ID,this.searchval)
+      .getTagWisw(this.p, environment.CUSTOMER_ID, this.searchval)
       .subscribe(
         (res: any) => {
           if (res.code == 'success') {

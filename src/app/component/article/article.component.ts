@@ -202,7 +202,7 @@ export class ArticleComponent implements OnInit {
   }
   opentags(tags: any) {
     this.trimmedText = tags.trim();
-    alert(this.trimmedText);
+    // alert(this.trimmedText);
     this.router.navigate(['tag/' + this.trimmedText]);
   }
   nextSlide() {

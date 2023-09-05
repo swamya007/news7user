@@ -90,7 +90,7 @@ export class ArticleComponent implements OnInit {
             let shareUrl = `${environment.PLATFORM_BASEURL}/${this.id}`;
 
             let tags = [
-              { name: 'twitter:card', content: 'summary' },
+              { name: 'twitter:card', content: 'summary_large_image' },
               { name: 'twitter:image', content: imgURL },
               { name: 'twitter:title', content: newsTitle },
               { name: 'twitter:description', content: newsDesc },
@@ -100,6 +100,11 @@ export class ArticleComponent implements OnInit {
               { name: 'description', content: newsDesc },
               { name: 'og:url', content: postURL },
               { name: 'image', content: imgURL },
+              { name: 'image', content: imgURL },
+
+              { name: 'og:image:width', content: 1200 },
+              { name: 'og:image:height', content: 600 },
+
               { name: 'og:image', content: imgURL },
               { name: 'keywords', content: keywords },
               { name: 'canonical', content: shareUrl },
@@ -128,7 +133,7 @@ export class ArticleComponent implements OnInit {
     //this.isLoggedIn = this.loginService.isLoggedIn();
     const routeParams = this.activatedRoute.snapshot.paramMap;
     this.id = routeParams.get('Id');
-     this.getallpost();
+    this.getallpost();
 
     this.post.getPostBySlugodia(this.id, environment.CUSTOMER_ID).subscribe(
       (res: any) => {
@@ -148,9 +153,9 @@ export class ArticleComponent implements OnInit {
           let newsTitle = this.news.post_title;
           let newsDesc = this.news.meta_description;
           let postURL = this.news.permalink;
-          let keywords =this.news.seo_keywords;
+          let keywords = this.news.seo_keywords;
           let tags = [
-            { name: 'twitter:card', content: 'summary' },
+            { name: 'twitter:card', content: 'summary_large_image' },
             { name: 'twitter:image', content: imgURL },
             { name: 'twitter:title', content: newsTitle },
             { name: 'twitter:description', content: newsDesc },
@@ -159,10 +164,11 @@ export class ArticleComponent implements OnInit {
             { name: 'og:description', content: newsDesc },
             { name: 'description', content: newsDesc },
             { name: 'og:url', content: postURL },
-            {name: 'image', content :imgURL },
+            { name: 'image', content: imgURL },
             { name: 'og:image', content: imgURL },
             { name: 'keywords', content: keywords },
-
+            { name: 'og:image:width', content: 1200 },
+            { name: 'og:image:height', content: 600 },
           ];
           tags.forEach((tag: any) => {
             this.Meta.updateTag(tag);
@@ -171,14 +177,12 @@ export class ArticleComponent implements OnInit {
           this.getPostBycategory();
         } else {
           this.postarr = [];
-          this.router.navigate(['/'])
-
+          this.router.navigate(['/']);
         }
       },
       (err) => {
         this.postarr = [];
-        this.router.navigate(['/'])
-
+        this.router.navigate(['/']);
       }
     );
     this.getAllAdsList();
@@ -234,7 +238,11 @@ export class ArticleComponent implements OnInit {
   }
   getPostByAuthor() {
     this.post
-      .getPostByCategoryIDodia(1, this.postarr[0].category, environment.CUSTOMER_ID)
+      .getPostByCategoryIDodia(
+        1,
+        this.postarr[0].category,
+        environment.CUSTOMER_ID
+      )
       .subscribe(
         (res: any) => {
           if (res.code == 'success') {
@@ -389,10 +397,9 @@ export class ArticleComponent implements OnInit {
       }
     );
   }
-  openapp(){
-    window.location.href = 'https://play.google.com/store/apps/details?id=com.nirmalya.prameya_news7';
-
-
+  openapp() {
+    window.location.href =
+      'https://play.google.com/store/apps/details?id=com.nirmalya.prameya_news7';
   }
   public createNavigationUrl(type: string) {
     //let shareUrl = 'https://prameya/post/';
@@ -461,7 +468,7 @@ export class ArticleComponent implements OnInit {
     let keywords = this.news.seo_keywords;
 
     let tags = [
-      { name: 'twitter:card', content: 'summary' },
+      { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:image', content: imgURL },
       { name: 'twitter:title', content: newsTitle },
       { name: 'twitter:description', content: newsDesc },

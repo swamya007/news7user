@@ -344,11 +344,13 @@ transition: .3s;
     margin-top: 0px;
     position: relative;
     height: 0;
-    padding-bottom: 70%;
+    /* padding-bottom: 70%; */
+    padding-bottom: 71.5%;
     -webkit-user-select: none;
     user-select: none;
     background-color: #fff;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
+    margin-bottom: 0;
   }
 }
 @media screen and (max-width: 1280px) {

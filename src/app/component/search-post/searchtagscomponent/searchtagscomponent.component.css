@@ -1,0 +1,9 @@
+@media (max-width: 1368px) {
+    .news-section1 {
+      background: var(--white) !important;
+      border: 1px rgb(215, 215, 215) solid !important;
+      margin-bottom: 10px;
+      min-height: auto;
+    }
+  }
+  

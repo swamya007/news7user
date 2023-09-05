@@ -32,11 +32,13 @@ export class ArticleComponent implements OnInit {
   ads_leftmiddle: any = [];
   nextthree: any = [];
   comments: any = [];
+  trimmedText: any;
   author_post: any = [];
   comment_page_no: number = 1;
   post_page_no: number = 1;
   comment_obj: any;
   data: any;
+  nameArr: any;
   polticesnews: any;
   entermentaarr: any;
   sportsnews: any;
@@ -79,6 +81,7 @@ export class ArticleComponent implements OnInit {
             // if (this.news.tags) {
             //   this.news.tags = this.news.tags.replaceAll(',', ', ');
             // }
+
             this.news.post_content_sanitized =
               this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
             this.Title.setTitle(this.news.post_title);
@@ -99,13 +102,10 @@ export class ArticleComponent implements OnInit {
               { name: 'og:description', content: newsDesc },
               { name: 'description', content: newsDesc },
               { name: 'og:url', content: postURL },
+              { property: 'og:image:type', content: imgURL },
               { name: 'image', content: imgURL },
-              { name: 'image', content: imgURL },
-
-              { name: 'og:image:width', content: 1200 },
-              { name: 'og:image:height', content: 600 },
-
-              { name: 'og:image', content: imgURL },
+              { property: 'og:image:width', content: '640' },
+              { property: 'og:image:height', content: '355' },
               { name: 'keywords', content: keywords },
               { name: 'canonical', content: shareUrl },
             ];
@@ -154,8 +154,10 @@ export class ArticleComponent implements OnInit {
           let newsDesc = this.news.meta_description;
           let postURL = this.news.permalink;
           let keywords = this.news.seo_keywords;
+          let shareUrl = `${environment.PLATFORM_BASEURL}/${this.id}`;
+
           let tags = [
-            { name: 'twitter:card', content: 'summary_large_image' },
+            { name: 'twitter:card', content: 'summary' },
             { name: 'twitter:image', content: imgURL },
             { name: 'twitter:title', content: newsTitle },
             { name: 'twitter:description', content: newsDesc },
@@ -164,11 +166,12 @@ export class ArticleComponent implements OnInit {
             { name: 'og:description', content: newsDesc },
             { name: 'description', content: newsDesc },
             { name: 'og:url', content: postURL },
+            { property: 'og:image:type', content: imgURL },
             { name: 'image', content: imgURL },
-            { name: 'og:image', content: imgURL },
+            { property: 'og:image:width', content: '640' },
+            { property: 'og:image:height', content: '355' },
             { name: 'keywords', content: keywords },
-            { name: 'og:image:width', content: 1200 },
-            { name: 'og:image:height', content: 600 },
+            { name: 'canonical', content: shareUrl },
           ];
           tags.forEach((tag: any) => {
             this.Meta.updateTag(tag);
@@ -197,7 +200,11 @@ export class ArticleComponent implements OnInit {
         ? this.ads_rightupper.length - 1
         : this.currentIndex - 1;
   }
-
+  opentags(tags: any) {
+    this.trimmedText = tags.trim();
+    alert(this.trimmedText);
+    this.router.navigate(['tag/' + this.trimmedText]);
+  }
   nextSlide() {
     this.currentIndex =
       this.currentIndex === this.ads_rightupper.length - 1
@@ -382,14 +389,16 @@ export class ArticleComponent implements OnInit {
           //     div.innerHTML = this.news.post_content;
           //   }
           // }
+          var names = this.news.tags;
+          this.nameArr = names.split(',');
 
           this.news.post_content_sanitized =
             this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
           this.Title.setTitle(this.news.post_title);
-
           this.getPostBycategory();
         } else {
           this.postarr = [];
+          this.getPostBycategory();
         }
       },
       (err) => {
@@ -466,19 +475,24 @@ export class ArticleComponent implements OnInit {
     let newsDesc = this.news.meta_description;
     let postURL = this.news.permalink;
     let keywords = this.news.seo_keywords;
+    let shareUrl = `${environment.PLATFORM_BASEURL}/${this.id}`;
 
     let tags = [
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:image', content: imgURL },
       { name: 'twitter:title', content: newsTitle },
       { name: 'twitter:description', content: newsDesc },
+      { name: 'og:type', content: 'article' },
       { name: 'og:title', content: newsTitle },
       { name: 'og:description', content: newsDesc },
       { name: 'description', content: newsDesc },
       { name: 'og:url', content: postURL },
+      { property: 'og:image:type', content: imgURL },
       { name: 'image', content: imgURL },
-      { name: 'og:image', content: imgURL },
+      { property: 'og:image:width', content: '640' },
+      { property: 'og:image:height', content: '355' },
       { name: 'keywords', content: keywords },
+      { name: 'canonical', content: shareUrl },
     ];
     tags.forEach((tag: any) => {
       this.Meta.updateTag(tag);

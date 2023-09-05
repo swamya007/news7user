@@ -102,8 +102,10 @@ export class ArticleComponent implements OnInit {
               { name: 'og:description', content: newsDesc },
               { name: 'description', content: newsDesc },
               { name: 'og:url', content: postURL },
+              { property: 'og:image:type', content: imgURL },
               { name: 'image', content: imgURL },
-              { name: 'og:image', content: imgURL },
+              { property: 'og:image:width'  , content:"640" },
+              { property: 'og:image:height' , content:"355" },
               { name: 'keywords', content: keywords },
               { name: 'canonical', content: shareUrl },
             ];
@@ -153,19 +155,24 @@ export class ArticleComponent implements OnInit {
           let newsDesc = this.news.meta_description;
           let postURL = this.news.permalink;
           let keywords =this.news.seo_keywords;
+          let shareUrl = `${environment.PLATFORM_BASEURL}/${this.id}`;
+
           let tags = [
             { name: 'twitter:card', content: 'summary' },
-            { name: 'twitter:image', content: imgURL },
-            { name: 'twitter:title', content: newsTitle },
-            { name: 'twitter:description', content: newsDesc },
-            { name: 'og:type', content: 'article' },
-            { name: 'og:title', content: newsTitle },
-            { name: 'og:description', content: newsDesc },
-            { name: 'description', content: newsDesc },
-            { name: 'og:url', content: postURL },
-            {name: 'image', content :imgURL },
-            { name: 'og:image', content: imgURL },
-            { name: 'keywords', content: keywords },
+              { name: 'twitter:image', content: imgURL },
+              { name: 'twitter:title', content: newsTitle },
+              { name: 'twitter:description', content: newsDesc },
+              { name: 'og:type', content: 'article' },
+              { name: 'og:title', content: newsTitle },
+              { name: 'og:description', content: newsDesc },
+              { name: 'description', content: newsDesc },
+              { name: 'og:url', content: postURL },
+              { property: 'og:image:type', content: imgURL },
+              { name: 'image', content: imgURL },
+              { property: 'og:image:width'  , content:"640" },
+              { property: 'og:image:height' , content:"355" },
+              { name: 'keywords', content: keywords },
+              { name: 'canonical', content: shareUrl },
 
           ];
           tags.forEach((tag: any) => {
@@ -471,19 +478,25 @@ alert(this.trimmedText)
     let newsDesc = this.news.meta_description;
     let postURL = this.news.permalink;
     let keywords = this.news.seo_keywords;
+    let shareUrl = `${environment.PLATFORM_BASEURL}/${this.id}`;
 
     let tags = [
       { name: 'twitter:card', content: 'summary' },
       { name: 'twitter:image', content: imgURL },
       { name: 'twitter:title', content: newsTitle },
       { name: 'twitter:description', content: newsDesc },
+      { name: 'og:type', content: 'article' },
       { name: 'og:title', content: newsTitle },
       { name: 'og:description', content: newsDesc },
       { name: 'description', content: newsDesc },
       { name: 'og:url', content: postURL },
+      { property: 'og:image:type', content: imgURL },
       { name: 'image', content: imgURL },
-      { name: 'og:image', content: imgURL },
+      { property: 'og:image:width' , content:"640" },
+      { property: 'og:image:height' , content:"355" },
       { name: 'keywords', content: keywords },
+      { name: 'canonical', content: shareUrl },
+
     ];
     tags.forEach((tag: any) => {
       this.Meta.updateTag(tag);

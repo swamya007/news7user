@@ -7,7 +7,7 @@
   <div class="row">
     <div class="col-md-8 col-sm-12 col-12">
       <div class="news-section cointainer">
-        <article
+        <!-- <article
           class="row news-box"
           (click)="opennewsSec(post.slug, post.twitter_exists)"
           *ngFor="
@@ -17,7 +17,6 @@
           "
         >
           <div class="col-md-6 col-sm-12 col-12 news-img-container">
-            <!-- <div style="color: black;">{{post.total_cnt}}</div> -->
             <img [src]="post.guid" />
           </div>
           <div class="col-md-6 col-sm-12 col-12 news-text-container">
@@ -32,7 +31,35 @@
               [innerHTML]="getShortPostContent(post.post_content)"
             ></p>
           </div>
-        </article>
+        </article> -->
+
+        <a
+          *ngFor="
+            let post of post_array
+              | paginate
+                : { itemsPerPage: 10, currentPage: p, totalItems: post_cnt }
+          "
+          [routerLink]="['/post/' + post.slug]"
+          target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
+        >
+          <article class="row news-box">
+            <div class="col-md-6 col-sm-12 col-12 news-img-container">
+              <img [src]="post.guid" />
+            </div>
+            <div class="col-md-6 col-sm-12 col-12 news-text-container">
+              <h1 class="post-heading">
+                {{ post.post_title ? getShortName(post.post_title) : "" }}
+              </h1>
+              <div class="news-date">
+                <time>{{ post.post_date | date : "short" }}</time>
+              </div>
+              <p
+                class="post-content"
+                [innerHTML]="getShortPostContent(post.post_content)"
+              ></p>
+            </div>
+          </article>
+        </a>
       </div>
       <div
         class="col-lg-12 col-md-12 col-12 w-100"
@@ -110,7 +137,39 @@
             <div class="heading-container">
               <h4 class="news-sub">ରାଜନୀତି</h4>
             </div>
-            <article
+            <a
+              *ngFor="let post of polticesnews"
+              [routerLink]="['/post/' + post.slug]"
+              target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
+              class="row ng-star-inserted"
+            >
+              <article class="row news-box">
+                <div class="col-md-4 col-sm-4 col-4 news-img-container">
+                  <img
+                    src="{{
+                      post.home_img != null && post.home_img != undefined
+                        ? post.home_img
+                        : post.guid
+                    }}"
+                    loading="lazy"
+                    fetchPrirority="high"
+                    [attr.alt]="post.media_alt_text"
+                  />
+                </div>
+                <div class="col-md-8 col-sm-8 col-8 news-text-container">
+                  <p>
+                    {{ post.post_title ? getShortName(post.post_title) : "" }}
+                  </p>
+                  <div class="news-date">
+                    <time class="news-date">{{
+                      post.post_date | date : "MMMM dd, yyyy"
+                    }}</time>
+                  </div>
+                </div>
+              </article>
+            </a>
+
+            <!-- <article
               class="row news-box ng-star-inserted"
               *ngFor="let post of polticesnews"
               (click)="opennewsSec(post.slug, post.twitter_exists)"
@@ -137,7 +196,7 @@
                   }}</time>
                 </div>
               </div>
-            </article>
+            </article> -->
           </div>
         </div>
       </div>
@@ -146,7 +205,38 @@
           <div class="heading-container">
             <h4 class="news-sub">ମନୋରଞ୍ଜନ</h4>
           </div>
-          <article
+          <a
+            *ngFor="let post of entermentaarr"
+            [routerLink]="['/post/' + post.slug]"
+            target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
+            class="row ng-star-inserted"
+          >
+            <article class="row news-box">
+              <div class="col-md-4 col-sm-4 col-4 news-img-container">
+                <img
+                  src="{{
+                    post.home_img != null && post.home_img != undefined
+                      ? post.home_img
+                      : post.guid
+                  }}"
+                  loading="lazy"
+                  fetchPrirority="high"
+                  [attr.alt]="post.media_alt_text"
+                />
+              </div>
+              <div class="col-md-8 col-sm-8 col-8 news-text-container">
+                <p>
+                  {{ post.post_title ? getShortName(post.post_title) : "" }}
+                </p>
+                <div class="news-date">
+                  <time class="news-date">{{
+                    post.post_date | date : "MMMM dd, yyyy"
+                  }}</time>
+                </div>
+              </div>
+            </article>
+          </a>
+          <!-- <article
             class="row news-box ng-star-inserted"
             *ngFor="let post of entermentaarr"
             (click)="opennewsSec(post.slug, post.twitter_exists)"
@@ -171,7 +261,7 @@
                 }}</time>
               </div>
             </div>
-          </article>
+          </article> -->
         </div>
       </div>
       <div class="prameya-epaper" *ngIf="ads_leftmiddle != 0">
@@ -218,7 +308,38 @@
           <div class="heading-container">
             <h4 class="news-sub">ଖେଳ</h4>
           </div>
-          <article
+          <a
+            *ngFor="let post of sportsnews"
+            [routerLink]="['/post/' + post.slug]"
+            target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
+            class="row ng-star-inserted"
+          >
+            <article class="row news-box">
+              <div class="col-md-4 col-sm-4 col-4 news-img-container">
+                <img
+                  src="{{
+                    post.home_img != null && post.home_img != undefined
+                      ? post.home_img
+                      : post.guid
+                  }}"
+                  loading="lazy"
+                  fetchPrirority="high"
+                  [attr.alt]="post.media_alt_text"
+                />
+              </div>
+              <div class="col-md-8 col-sm-8 col-8 news-text-container">
+                <p>
+                  {{ post.post_title ? getShortName(post.post_title) : "" }}
+                </p>
+                <div class="news-date">
+                  <time class="news-date">{{
+                    post.post_date | date : "MMMM dd, yyyy"
+                  }}</time>
+                </div>
+              </div>
+            </article>
+          </a>
+          <!-- <article
             class="row news-box ng-star-inserted"
             *ngFor="let post of sportsnews"
             (click)="opennewsSec(post.slug, post.twitter_exists)"
@@ -245,7 +366,7 @@
                 }}</time>
               </div>
             </div>
-          </article>
+          </article> -->
         </div>
       </div>
     </div>

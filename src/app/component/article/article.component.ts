@@ -145,8 +145,8 @@ export class ArticleComponent implements OnInit {
           // if (this.news.tags) {
           //   this.news.tags = this.news.tags.replaceAll(',', ', ');
           // }
-          // this.news.post_content_sanitized =
-          //   this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
+          this.news.post_content_sanitized =
+            this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
 
           this.Title.setTitle(this.news.post_title);
           let imgURL = this.news.guid;

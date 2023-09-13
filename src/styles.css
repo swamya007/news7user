@@ -1427,6 +1427,9 @@ footer ul li a {
   padding: 8px;
   margin: 0px 0 15px 0;
 }
+.m_0 {
+  margin: 0 !important;
+}
 .top-stories {
   /* background: #f7f7f7; */
 }
@@ -1621,7 +1624,6 @@ h1 > span {
     background: var(--white) !important;
     border: 1px rgb(215, 215, 215) solid !important;
     margin-bottom: 10px;
-    /* min-height: 70vh; */
     min-height: 68.5vh;
   }
   .home-first-container {

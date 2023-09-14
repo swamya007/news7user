@@ -288,7 +288,7 @@ export class ArticleComponent implements OnInit {
             this.author_post = this.author_post.filter(
               (a: any) => a.slug !== this.id
             );
-            this.nextthree = this.author_post?.slice(1, 7);
+            this.nextthree = this.author_post?.slice(1, 12);
           } else {
             this.author_post = [];
           }

@@ -13,9 +13,7 @@
           <a
             class="d-flex news-box1 ng-star-inserted anchor-Cat"
             *ngFor="let post of odishaarr"
-            [routerLink]="['/post/' + post.slug]"
-            target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
-          >
+            (click)="opennewsSec(post.slug, post.twitter_exists)"          >
             <article class="d-flex news-box1 ng-star-inserted">
               <div class="col-md-4 col-sm-4 col-4 news-img-container">
                 <img

@@ -145,8 +145,8 @@ export class ArticleComponent implements OnInit {
           // if (this.news.tags) {
           //   this.news.tags = this.news.tags.replaceAll(',', ', ');
           // }
-          // this.news.post_content_sanitized =
-          //   this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
+          this.news.post_content_sanitized =
+            this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
 
           this.Title.setTitle(this.news.post_title);
           let imgURL = this.news.guid;
@@ -288,7 +288,7 @@ export class ArticleComponent implements OnInit {
             this.author_post = this.author_post.filter(
               (a: any) => a.slug !== this.id
             );
-            this.nextthree = this.author_post?.slice(1, 7);
+            this.nextthree = this.author_post?.slice(1, 12);
           } else {
             this.author_post = [];
           }

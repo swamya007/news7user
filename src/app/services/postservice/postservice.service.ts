@@ -242,6 +242,9 @@ export class PostserviceService {
   getallnews(){
     return this.HTTP.get<any>(Masterapi + `/get-allodia-posts`);
   }
+  getalldist(){
+    return this.HTTP.get<any>(Masterapi + `/get-alldist`);
+  }
   getallairticle(){
     return this.HTTP.get<any>(Masterapi + `/get-allodia-posts-airticle`);
 

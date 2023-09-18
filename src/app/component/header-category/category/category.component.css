@@ -1,0 +1,23 @@
+.category-list-container .category-name {
+  background-color: #ffffff;
+  border: 2px solid #af0000;
+  margin-right: 2px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #000;
+  padding: 3px 5px;
+  margin-bottom: 3px;
+  float: left;
+  width: 85px;
+  text-align: center;
+  cursor: pointer;
+  }
+  .category-list-container .category-name:hover {
+    background-color: #da0000;
+    color: #FFF;
+  }
+  .clear
+  {
+    clear: both;
+  }

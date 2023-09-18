@@ -59,6 +59,7 @@ export class CategoryComponent implements OnInit {
   campusnews: any = [];
   scincenews: any = [];
   twinnews: any = [];
+  odishdistaarr: any = [];
   constructor(
     private adsService: AdserviceService,
     private postserviceService: PostserviceService,
@@ -92,6 +93,9 @@ export class CategoryComponent implements OnInit {
       //   this.category_three = this.post_array_upper[4].category_name.split(",");
       //   console.log('Category Three====', this.category_three)
       // }
+      this.getWithoutHeaderCategory()
+      this.getAlldist()
+
     });
   }
 
@@ -141,6 +145,7 @@ export class CategoryComponent implements OnInit {
     // }
 
     this.getAllairticlenews();
+    this.getAlldist()
   }
   moveSlideleft(direction: any) {
     if (this.ads_leftmiddle) {
@@ -157,20 +162,21 @@ export class CategoryComponent implements OnInit {
       }
     }
   }
+  opencat(id:any){
 
+    this.router.navigate(['category/' + id]);
+
+  }
   getAllairticlenews() {
     this.postserviceService.getallairticle().subscribe(
       (res: any) => {
         if (res.code == 'success') {
           this.data = res.body;
           this.data = this.data?.map((dt: any) => JSON.parse(dt));
-          console.log(this.data, 'ssihsiaoh');
           this.crimesnews = this.data[0].crime || [];
           this.sportsnews = this.data[0].sports || [];
           this.polticesnews = this.data[0].politics || [];
-          console.log(this.polticesnews, 'politc');
           this.entermentaarr = this.data[0].entertainment || [];
-          console.log(this.data, 'data');
         } else {
           this.postarr = [];
         }
@@ -182,6 +188,25 @@ export class CategoryComponent implements OnInit {
   }
   getcategoryname() {}
 
+
+  getAlldist() {
+    this.postserviceService.getalldist().subscribe(
+      (res: any) => {
+        if (res.code == 'success') {
+          var data = res.body;
+          this.odishdistaarr = data?.map((dt: any) => JSON.parse(dt));
+          // console.log(this.odishdistaarr,'dist');
+
+        } else {
+          this.odishdistaarr = [];
+        }
+      },
+      (err) => {
+        this.odishdistaarr = [];
+      }
+    );
+  }
+
   getWithoutHeaderCategory() {
     this.masterservice
       .getWithoutHeaderCategory(environment.CUSTOMER_ID)
@@ -190,7 +215,7 @@ export class CategoryComponent implements OnInit {
           if (res.code == 'success') {
             var data = res.body;
             this.category_arr = data.map((dt: any) => JSON.parse(dt));
-            console.log(this.category_arr, 'cat-name');
+            console.log(this.category_arr,'lo')
           } else {
             this.category_arr = [];
           }

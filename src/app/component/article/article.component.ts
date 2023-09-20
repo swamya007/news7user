@@ -86,7 +86,7 @@ export class ArticleComponent implements OnInit {
               this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
             this.Title.setTitle(this.news.post_title);
             let imgURL = this.news.guid;
-            let newsTitle = this.news.post_title;
+            let newsTitle = this.news.seo_title;
             let newsDesc = this.news.meta_description;
             let postURL = this.news.permalink;
             let keywords = this.news.seo_keywords;

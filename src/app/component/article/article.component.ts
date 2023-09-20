@@ -93,7 +93,7 @@ export class ArticleComponent implements OnInit {
             let shareUrl = `${environment.PLATFORM_BASEURL}/${this.id}`;
 
             let tags = [
-              { name: 'twitter:card', content: 'summary_large_image' },
+              { name: 'twitter:card', content: 'summary' },
               { name: 'twitter:image', content: imgURL },
               { name: 'twitter:title', content: newsTitle },
               { name: 'twitter:description', content: newsDesc },
@@ -102,10 +102,8 @@ export class ArticleComponent implements OnInit {
               { name: 'og:description', content: newsDesc },
               { name: 'description', content: newsDesc },
               { name: 'og:url', content: postURL },
-              { property: 'og:image:type', content: imgURL },
               { name: 'image', content: imgURL },
-              { property: 'og:image:width', content: '640' },
-              { property: 'og:image:height', content: '355' },
+              { name: 'og:image', content: imgURL },
               { name: 'keywords', content: keywords },
               { name: 'canonical', content: shareUrl },
             ];
@@ -166,10 +164,8 @@ export class ArticleComponent implements OnInit {
             { name: 'og:description', content: newsDesc },
             { name: 'description', content: newsDesc },
             { name: 'og:url', content: postURL },
-            { property: 'og:image:type', content: imgURL },
             { name: 'image', content: imgURL },
-            { property: 'og:image:width', content: '640px' },
-            { property: 'og:image:height', content: '360px' },
+            { name: 'og:image', content: imgURL },
             { name: 'keywords', content: keywords },
             { name: 'canonical', content: shareUrl },
           ];
@@ -478,19 +474,16 @@ export class ArticleComponent implements OnInit {
     let shareUrl = `${environment.PLATFORM_BASEURL}/${this.id}`;
 
     let tags = [
-      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:card', content: 'summary' },
       { name: 'twitter:image', content: imgURL },
       { name: 'twitter:title', content: newsTitle },
       { name: 'twitter:description', content: newsDesc },
-      { name: 'og:type', content: 'article' },
       { name: 'og:title', content: newsTitle },
       { name: 'og:description', content: newsDesc },
       { name: 'description', content: newsDesc },
       { name: 'og:url', content: postURL },
-      { property: 'og:image:type', content: imgURL },
       { name: 'image', content: imgURL },
-      { property: 'og:image:width', content: '640' },
-      { property: 'og:image:height', content: '355' },
+      { name: 'og:image', content: imgURL },
       { name: 'keywords', content: keywords },
       { name: 'canonical', content: shareUrl },
     ];

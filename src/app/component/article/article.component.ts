@@ -84,7 +84,7 @@ export class ArticleComponent implements OnInit {
 
             this.news.post_content_sanitized =
               this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
-            this.Title.setTitle(this.news.post_title);
+            this.Title.setTitle(this.news.seo_title);
             let imgURL = this.news.guid;
             let newsTitle = this.news.seo_title;
             let newsDesc = this.news.meta_description;
@@ -148,7 +148,7 @@ export class ArticleComponent implements OnInit {
 
           this.Title.setTitle(this.news.post_title);
           let imgURL = this.news.guid;
-          let newsTitle = this.news.post_title;
+          let newsTitle = this.news.seo_title;
           let newsDesc = this.news.meta_description;
           let postURL = this.news.permalink;
           let keywords = this.news.seo_keywords;
@@ -467,7 +467,7 @@ export class ArticleComponent implements OnInit {
   updateSEO_Tags() {
     this.Title.setTitle(this.news.post_title);
     let imgURL = this.news.guid;
-    let newsTitle = this.news.post_title;
+    let newsTitle = this.news.seo_title;
     let newsDesc = this.news.meta_description;
     let postURL = this.news.permalink;
     let keywords = this.news.seo_keywords;

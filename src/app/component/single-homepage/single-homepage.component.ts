@@ -142,7 +142,7 @@ export class SingleHomepageComponent implements OnInit {
     let myTransferStateKey = makeStateKey<any>('myDatas');
     if (this.transferState.hasKey(myTransferStateKey)) {
       this.data = this.transferState.get(myTransferStateKey, []);
-     
+
       this.transferState.remove(myTransferStateKey);
       this.odishaarr = this.data[0].odisha || [];
       this.crimesnews = this.data[0].crime || [];
@@ -247,10 +247,26 @@ export class SingleHomepageComponent implements OnInit {
   openLink(url: any) {
     window.open(url);
   }
+  // moveSlideleft(direction: any) {
+  //   if (this.ads_leftmiddle) {
+  //     if (direction === 'plus') {
+  //       if (this.currentSlide1 !== this.ads_leftmiddle.length - 1) {
+  //         this.currentSlide1 += 1;
+  //         this.translateValue1 = `-${this.currentSlide1 * 100}%`;
+  //       }
+  //     } else {
+  //       if (this.currentSlide1 !== 0) {
+  //         this.currentSlide1 -= 1;
+  //         this.translateValue1 = `-${this.currentSlide1 * 100}%`;
+  //       }
+  //     }
+  //   }
+  // }
+
   moveSlideleft(direction: any) {
-    if (this.ads_leftmiddle) {
+    if (this.ads_middle) {
       if (direction === 'plus') {
-        if (this.currentSlide1 !== this.ads_leftmiddle.length - 1) {
+        if (this.currentSlide1 !== this.ads_middle.length - 1) {
           this.currentSlide1 += 1;
           this.translateValue1 = `-${this.currentSlide1 * 100}%`;
         }
@@ -302,5 +318,4 @@ export class SingleHomepageComponent implements OnInit {
   //       setTimeout(() => {}, 3000);
   //     });
   // }
-
 }

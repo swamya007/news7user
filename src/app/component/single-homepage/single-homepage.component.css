@@ -134,7 +134,6 @@ img:nth-child(5) {
   /* background: #f00; */
   justify-content: center !important;
   margin: auto !important;
-
 }
 
 .slider-long {
@@ -163,6 +162,13 @@ img:nth-child(5) {
 .controls-long {
   position: absolute;
   bottom: 40%;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.controls {
+  position: absolute;
+  bottom: 75%;
   display: flex;
   width: 100%;
   justify-content: space-between;

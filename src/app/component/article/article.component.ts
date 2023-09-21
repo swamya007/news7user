@@ -104,8 +104,8 @@ export class ArticleComponent implements OnInit {
               { name: 'og:url', content: postURL },
               { property: 'og:image:type', content: imgURL },
               { name: 'image', content: imgURL },
-              { property: 'og:image:width', content: '640' },
-              { property: 'og:image:height', content: '355' },
+              { property: 'og:image:width', content: '' },
+              { property: 'og:image:height', content: '' },
               { name: 'keywords', content: keywords },
               { name: 'canonical', content: shareUrl },
             ];
@@ -168,8 +168,8 @@ export class ArticleComponent implements OnInit {
             { name: 'og:url', content: postURL },
             { property: 'og:image:type', content: imgURL },
             { name: 'image', content: imgURL },
-            { property: 'og:image:width', content: '640px' },
-            { property: 'og:image:height', content: '360px' },
+            { property: 'og:image:width', content: '' },
+            { property: 'og:image:height', content: '' },
             { name: 'keywords', content: keywords },
             { name: 'canonical', content: shareUrl },
           ];

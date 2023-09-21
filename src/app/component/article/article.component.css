@@ -51,8 +51,8 @@
   display: block !important;
 }
 .category-list-container .category-name {
-  background-color: #FFF;
-  border:1px solid #000;
+  background-color: #fff;
+  border: 1px solid #000;
   margin-right: 5px;
   font-size: 12px;
   font-weight: bold;
@@ -64,9 +64,10 @@
 }
 .category-list-container .category-name:hover {
   background-color: #da0000;
-  color: #FFF;
+  color: #fff;
+  cursor: pointer;
 }
-.clear
-{
+.clear {
   clear: both;
+  cursor: pointer;
 }

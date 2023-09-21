@@ -44,8 +44,18 @@ export class LatestNewsHeaderComponent implements OnInit {
   // }
 
   opennewsSec(id: any, flag: any) {
+    // if (flag === 'Y') {
+    //   window.location.href = id;
+    //   console.log(id, 'id');
+    // } else {
+    //   this.router.navigate([id]);
+    // }
+
+    // console.log('id:', id);
     if (flag === 'Y') {
-      window.location.href = id;
+      if (id) {
+        window.location.href = id;
+      }
     } else {
       this.router.navigate([id]);
     }
@@ -69,6 +79,7 @@ export class LatestNewsHeaderComponent implements OnInit {
           if (res.code == 'success') {
             var data = res.body;
             this.catarr = data.map((dt: any) => JSON.parse(dt));
+            console.log(this.catarr, 's');
           } else {
             this.catarr = [];
           }

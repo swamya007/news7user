@@ -226,7 +226,7 @@
             </div>
             <a
               *ngFor="let post of polticesnews"
-              [routerLink]="['/post/' + post.slug]"
+              [routerLink]="['/' + post.slug]"
               target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
               class="row ng-star-inserted anchor-Cat"
             >
@@ -334,7 +334,7 @@
             </div>
             <a
               *ngFor="let post of entermentaarr"
-              [routerLink]="['/post/' + post.slug]"
+              [routerLink]="['/' + post.slug]"
               target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
               class="row ng-star-inserted anchor-Cat"
             >

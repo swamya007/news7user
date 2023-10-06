@@ -294,6 +294,14 @@ button {
   height: 40px;
   width: 40px;
 }
+.world-cup{
+  position: relative;
+  left: 20%;
+}
+.world-cup img{
+  height: 60px;
+  cursor: pointer;
+}
 /* Navbar hovercolor */
 
 /* .navbar ul li:hover ::after {

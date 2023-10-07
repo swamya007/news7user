@@ -55,6 +55,7 @@ export class ArticleComponent implements OnInit {
   translateValue1 = `-${this.currentSlide1 * 100}%`;
   cat: any;
   catname: any;
+  post_id: any;
   constructor(
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
@@ -178,6 +179,7 @@ export class ArticleComponent implements OnInit {
           });
 
           this.getPostBycategory();
+          this.gettagbypostid();
         } else {
           this.postarr = [];
           this.router.navigate(['/']);
@@ -200,11 +202,7 @@ export class ArticleComponent implements OnInit {
         ? this.ads_rightupper.length - 1
         : this.currentIndex - 1;
   }
-  opentags(tags: any) {
-    this.trimmedText = tags.trim();
-    // alert(this.trimmedText);
-    this.router.navigate(['tag/' + this.trimmedText]);
-  }
+  
   nextSlide() {
     this.currentIndex =
       this.currentIndex === this.ads_rightupper.length - 1
@@ -467,7 +465,37 @@ export class ArticleComponent implements OnInit {
       window.open(url);
     }
   }
+  opentags(tags: any) {
 
+    this.router.navigate(['tag/' + tags]);
+  }
+  postarrtag:any = [];
+
+  gettagbypostid() {
+    this.post_id=this.news.id
+    
+        this.postserviceService
+          .gettagspost(
+            this.post_id,
+            environment.CUSTOMER_ID,
+          )
+          .subscribe(
+            (res: any) => {
+              if (res.code == 'success') {
+                var data = res.body;
+                this.postarrtag = data.map((dt: any) => JSON.parse(dt));
+                if (this.postarr.length > 0) {
+                  // this.postarr = this.postarr.slice(0, 4)
+                }
+              } else {
+                this.postarrtag = [];
+              }
+            },
+            (err) => {
+              this.postarrtag = [];
+            }
+          );
+      }
   updateSEO_Tags() {
     this.Title.setTitle(this.news.seo_title);
     let imgURL = this.news.guid;

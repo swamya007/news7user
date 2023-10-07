@@ -84,7 +84,9 @@ export class ArticleComponent implements OnInit {
 
             this.news.post_content_sanitized =
               this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
-            this.Title.setTitle(this.news.seo_title);
+              
+             
+             this.Title.setTitle(this.news.post_title);
             let imgURL = this.news.guid;
             let newsTitle = this.news.post_title;
             let newsDesc = this.news.post_content;
@@ -97,10 +99,10 @@ export class ArticleComponent implements OnInit {
               { name: 'twitter:title', content: newsTitle },
               { name: 'twitter:description', content: newsDesc },
               { name: 'og:type', content: 'article' },
-              { name: 'og:title', content: this.news.newsTitle },
+              { name: 'og:title', content: newsTitle },
               { name: 'og:description', content: newsDesc },
               { name: 'description', content: newsDesc },
-              { name: 'seo:title', content: this.news.newsTitle },
+              { name: 'seo:title', content: newsTitle },
               { name: 'og:url', content: postURL },
               { name: 'image', content: imgURL },
               { name: 'og:image', content: imgURL },
@@ -132,7 +134,7 @@ export class ArticleComponent implements OnInit {
     const routeParams = this.activatedRoute.snapshot.paramMap;
     this.id = routeParams.get('Id');
     this.getallpost();
-
+  
     this.post.getPostBySlugodia(this.id, environment.CUSTOMER_ID).subscribe(
       (res: any) => {
         if (res.code == 'success') {
@@ -146,7 +148,8 @@ export class ArticleComponent implements OnInit {
           this.news.post_content_sanitized =
             this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
 
-          this.Title.setTitle(this.news.seo_title);
+          this.Title.setTitle(this.news.post_title);
+
           let imgURL = this.news.guid;
           let newsTitle = this.news.post_title;
           let newsDesc = this.news.post_content;
@@ -160,7 +163,7 @@ export class ArticleComponent implements OnInit {
             { name: 'twitter:title', content: newsTitle },
             { name: 'twitter:description', content: newsDesc },
             { name: 'og:type', content: 'article' },
-            { name: 'og:title', content: this.news.newsTitle },
+            { name: 'og:title', content: newsTitle },
             { name: 'og:description', content: newsDesc },
             { name: 'description', content: newsDesc },
             { name: 'seo:title', content: this.news.seo_title },
@@ -479,10 +482,10 @@ export class ArticleComponent implements OnInit {
       { name: 'twitter:image', content: imgURL },
       { name: 'twitter:title', content: this.news.newsTitle },
       { name: 'twitter:description', content: newsDesc },
-      { name: 'og:title', content: this.news.newsTitle },
+      { name: 'og:title', content: newsTitle },
       { name: 'og:description', content: newsDesc },
       { name: 'description', content: newsDesc },
-      { name: 'seo:title', content: this.news.newsTitle },
+      { name: 'seo:title', content: newsTitle },
       { name: 'og:url', content: postURL },
       { name: 'image', content: imgURL },
       { name: 'og:image', content: imgURL },

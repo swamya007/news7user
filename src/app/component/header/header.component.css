@@ -294,6 +294,11 @@ button {
   height: 40px;
   width: 40px;
 }
+
+.world-cup img{
+  height: 60px;
+  cursor: pointer;
+}
 /* Navbar hovercolor */
 
 /* .navbar ul li:hover ::after {
@@ -332,6 +337,12 @@ button {
     color: var(--white);
     font-size: 12px !important;
   }
+}
+@media only screen and (max-width: 600px) {
+
+.world-cup{
+  display: none;
+}
 }
 @media only screen and (max-width: 600px) {
   body {

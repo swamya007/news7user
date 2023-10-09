@@ -50,12 +50,12 @@
             <div class="row">
                 <div class="col-md-8 col-sm-12 col-12">
                     <h1 class="page-title">Search results for: <span>{{searchval}}</span></h1>
-                    <app-search-news [postarr]="postarr" *ngIf="postarr && postarr.length" [p]="p"></app-search-news>
-                    <div *ngIf="postarr.length <= 0">
+                    <app-search-news [postarr]="postarr" *ngIf="postarr && postarr.length && !isFething" [p]="p"></app-search-news>
+                    <!-- <div *ngIf="postarr.length <= 0 && !isFething">
                         <div class="page-title mt-25">Nothing Found</div>
                         <div class="page-sub-title">Sorry, but nothing matched your search terms. Please try again with
                             some different keywords.</div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col-md-4 col-sm-12 col-12">
                     <div class="advertisement-space-container-first">

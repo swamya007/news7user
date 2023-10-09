@@ -24,6 +24,7 @@ export class SearchPostComponent implements OnInit {
 
   searchval: any;
   p: number = 1;
+  isFething:Boolean = true;
 
   constructor(
     private adsService: AdserviceService,
@@ -32,6 +33,7 @@ export class SearchPostComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {
     activatedRoute.params.subscribe((val) => {
+      this.isFething = true; 
       this.customer_id = environment.CUSTOMER_ID;
       const routeParams = this.activatedRoute.snapshot.paramMap;
       this.searchval = routeParams.get('value');
@@ -50,6 +52,7 @@ export class SearchPostComponent implements OnInit {
 
   getSearchedPost() {
     // this.searchval = 'am'
+    this.isFething=true;
     this.postService
       .getSearchedPost(this.searchval, environment.CUSTOMER_ID)
       .subscribe(
@@ -57,12 +60,15 @@ export class SearchPostComponent implements OnInit {
           if (res.code == 'success') {
             var data = res.body;
             this.postarr = data.map((dt: any) => JSON.parse(dt));
+            this.isFething = false;
           } else {
             this.postarr = [];
+            this.isFething = false;
           }
         },
         (err) => {
           this.postarr = [];
+          this.isFething = false;
         }
       );
   }

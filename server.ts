@@ -126,14 +126,14 @@ export function app(): express.Express {
     res.sendFile(__dirname + '/ads.txt');
   });
   server.get('/feed', async (req, res) => {
-    let resp = await axios.get('https://odia.prameya.com/prameya/api/rssfeed');
+    let resp = await axios.get('https:/user-api.prameya.com/prameya/api/rssfeed');
     res.type('text/xml').send(resp.data);
   });
 
   server.get('/:category/feed', async (req, res) => {
     const { category } = req.params;
     let resp = await axios.get(
-      `https://odia.prameya.com/prameya/api/${category}/rssfeed`
+      `https://user-api.prameya.com/prameya/api/${category}/rssfeed`
     );
     res.type('text/xml').send(resp.data);
   });
@@ -145,7 +145,7 @@ export function app(): express.Express {
     try {
       let routes = ['', 'prameya/contact-us', 'prameya/termofuses']; // Add your routes here
       const response = await axios
-        .get('https://odia.prameya.com/prameya/api/post/get-sitemap-details')
+        .get('https://user-api.prameya.com/prameya/api/post/get-sitemap-details')
         .then((res) => res.data);
       response.body?.forEach((r: any) => {
         let routeData = JSON.parse(r);
@@ -201,7 +201,7 @@ export function app(): express.Express {
     try {
       let routes: Array<any> = []; // Add your routes here
       const response = await axios
-        .get('https://odia.prameya.com/prameya/api/post/get-sitemap-details')
+        .get('https://user-api.prameya.com/prameya/api/post/get-sitemap-details')
         .then((res) => res.data);
       response.body?.forEach((r: any) => {
         let routeData = JSON.parse(r);

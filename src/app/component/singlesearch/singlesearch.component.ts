@@ -71,8 +71,10 @@ export class SinglesearchComponent implements OnInit {
     this.getAllnews();
   }
 
+  isFething=true;
   getSearchedPost() {
     // this.searchval = 'am'
+    this.isFething=true;
     this.postService
       .getSearchedPostodia(this.searchval, environment.CUSTOMER_ID)
       .subscribe(
@@ -80,12 +82,15 @@ export class SinglesearchComponent implements OnInit {
           if (res.code == 'success') {
             var data = res.body;
             this.postarr = data.map((dt: any) => JSON.parse(dt));
+            this.isFething=false;
           } else {
             this.postarr = [];
+            this.isFething=false;
           }
         },
         (err) => {
           this.postarr = [];
+          this.isFething=false;
         }
       );
   }

@@ -18,6 +18,12 @@
   width: 100% !important;
 }
 
+.world-cup dskvw{
+
+height: 100%;
+
+}
+
 .submenu {
   width: 120px;
   margin: 5px 10px;
@@ -296,8 +302,13 @@ button {
 }
 
 .world-cup img{
-  height: 60px;
+  height: 100px;
   cursor: pointer;
+}
+.logo-container{
+  display: flex;
+  width: 37%;
+  justify-content: space-between;
 }
 /* Navbar hovercolor */
 
@@ -339,12 +350,6 @@ button {
   }
 }
 @media only screen and (max-width: 600px) {
-
-.world-cup{
-  display: none;
-}
-}
-@media only screen and (max-width: 600px) {
   body {
     overflow-x: hidden;
   }
@@ -370,6 +375,17 @@ button {
     height: 400px;
     overflow-y: scroll;
     overflow-x: hidden;
+  }
+  .logo-container{
+    display: flex;
+    align-items: center;
+    width: auto;
+  
+  }
+  .world-cup img {
+    height: 90px;
+    cursor: pointer;
+    margin: 0px 10px;
   }
   .slide {
     flex: 1;

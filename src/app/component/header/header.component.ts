@@ -79,7 +79,9 @@ export class HeaderComponent implements OnInit {
       this.renderer.removeClass(navbarCollapse, 'show');
     }
   }
-
+  durgapuja(){
+    window.open("https://www.prameyanews.com/durgapuja");
+  }
   getallheaders() {
     this.masterAPI.getAllheaders(environment.CUSTOMER_ID).subscribe(
       (res: any) => {

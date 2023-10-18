@@ -80,7 +80,7 @@ export class HeaderComponent implements OnInit {
     }
   }
   durgapuja(){
-    window.open("https://www.prameyanews.com/durgapuja");
+    window.open("https://www.prameyanews.com/durga-puja-2023");
   }
   getallheaders() {
     this.masterAPI.getAllheaders(environment.CUSTOMER_ID).subscribe(

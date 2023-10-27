@@ -55,6 +55,7 @@ export class ArticleComponent implements OnInit {
   translateValue1 = `-${this.currentSlide1 * 100}%`;
   cat: any;
   catname: any;
+  post_id: any;
   constructor(
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
@@ -84,6 +85,7 @@ export class ArticleComponent implements OnInit {
 
             this.news.post_content_sanitized =
               this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
+
             this.Title.setTitle(this.news.post_title);
             let imgURL = this.news.guid;
             let newsTitle = this.news.post_title;
@@ -97,10 +99,10 @@ export class ArticleComponent implements OnInit {
               { name: 'twitter:title', content: newsTitle },
               { name: 'twitter:description', content: newsDesc },
               { name: 'og:type', content: 'article' },
-              { name: 'og:title', content: this.news.newsTitle },
+              { name: 'og:title', content: newsTitle },
               { name: 'og:description', content: newsDesc },
               { name: 'description', content: newsDesc },
-              { name: 'seo:title', content: this.news.newsTitle },
+              { name: 'seo:title', content: newsTitle },
               { name: 'og:url', content: postURL },
               { name: 'image', content: imgURL },
               { name: 'og:image', content: imgURL },
@@ -146,7 +148,8 @@ export class ArticleComponent implements OnInit {
           this.news.post_content_sanitized =
             this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
 
-          this.Title.setTitle(this.news.seo_title);
+          this.Title.setTitle(this.news.post_title);
+
           let imgURL = this.news.guid;
           let newsTitle = this.news.post_title;
           let newsDesc = this.news.post_content;
@@ -160,7 +163,7 @@ export class ArticleComponent implements OnInit {
             { name: 'twitter:title', content: newsTitle },
             { name: 'twitter:description', content: newsDesc },
             { name: 'og:type', content: 'article' },
-            { name: 'og:title', content: this.news.newsTitle },
+            { name: 'og:title', content: newsTitle },
             { name: 'og:description', content: newsDesc },
             { name: 'description', content: newsDesc },
             { name: 'seo:title', content: this.news.seo_title },
@@ -175,6 +178,7 @@ export class ArticleComponent implements OnInit {
           });
 
           this.getPostBycategory();
+          this.gettagbypostid();
         } else {
           this.postarr = [];
           this.router.navigate(['/']);
@@ -197,11 +201,7 @@ export class ArticleComponent implements OnInit {
         ? this.ads_rightupper.length - 1
         : this.currentIndex - 1;
   }
-  opentags(tags: any) {
-    this.trimmedText = tags.trim();
-    // alert(this.trimmedText);
-    this.router.navigate(['tag/' + this.trimmedText]);
-  }
+
   nextSlide() {
     this.currentIndex =
       this.currentIndex === this.ads_rightupper.length - 1
@@ -464,7 +464,33 @@ export class ArticleComponent implements OnInit {
       window.open(url);
     }
   }
+  opentags(tags: any) {
+    this.router.navigate(['tag/' + tags]);
+  }
+  postarrtag: any = [];
 
+  gettagbypostid() {
+    this.post_id = this.news.id;
+
+    this.postserviceService
+      .gettagspost(this.post_id, environment.CUSTOMER_ID)
+      .subscribe(
+        (res: any) => {
+          if (res.code == 'success') {
+            var data = res.body;
+            this.postarrtag = data.map((dt: any) => JSON.parse(dt));
+            if (this.postarr.length > 0) {
+              // this.postarr = this.postarr.slice(0, 4)
+            }
+          } else {
+            this.postarrtag = [];
+          }
+        },
+        (err) => {
+          this.postarrtag = [];
+        }
+      );
+  }
   updateSEO_Tags() {
     this.Title.setTitle(this.news.seo_title);
     let imgURL = this.news.guid;
@@ -479,10 +505,10 @@ export class ArticleComponent implements OnInit {
       { name: 'twitter:image', content: imgURL },
       { name: 'twitter:title', content: this.news.newsTitle },
       { name: 'twitter:description', content: newsDesc },
-      { name: 'og:title', content: this.news.newsTitle },
+      { name: 'og:title', content: newsTitle },
       { name: 'og:description', content: newsDesc },
       { name: 'description', content: newsDesc },
-      { name: 'seo:title', content: this.news.newsTitle },
+      { name: 'seo:title', content: newsTitle },
       { name: 'og:url', content: postURL },
       { name: 'image', content: imgURL },
       { name: 'og:image', content: imgURL },

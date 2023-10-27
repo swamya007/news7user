@@ -18,6 +18,11 @@ export class PostserviceService {
   addpost(post: any) {
     return this.HTTP.post<any>(Masterapi + `/add-post`, { ...post });
   }
+  gettagspost(post_id:any,customer_id:any) {
+    return this.HTTP.get<any>(Masterapi + `/get-tag-by-post-id?post_id=${post_id}&customer_id=${customer_id}`,{
+    });
+  }
+
 
   addpostodia(post: any) {
     return this.HTTP.post<any>(Masterapi + `/add-post-odia`, { ...post });

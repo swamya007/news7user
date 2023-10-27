@@ -79,7 +79,6 @@ export class LatestNewsHeaderComponent implements OnInit {
           if (res.code == 'success') {
             var data = res.body;
             this.catarr = data.map((dt: any) => JSON.parse(dt));
-            console.log(this.catarr, 's');
           } else {
             this.catarr = [];
           }

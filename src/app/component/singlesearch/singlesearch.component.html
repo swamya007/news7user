@@ -15,7 +15,7 @@
             *ngIf="postarr && postarr.length"
             [p]="p"
           ></app-search-news>
-          <div *ngIf="postarr.length <= 0">
+          <div *ngIf="postarr.length <= 0 && !isFething">
             <div class="page-title mt-25">Nothing Found</div>
             <div class="page-sub-title">
               Sorry, but nothing matched your search terms. Please try again

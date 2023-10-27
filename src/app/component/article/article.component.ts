@@ -84,14 +84,13 @@ export class ArticleComponent implements OnInit {
 
             this.news.post_content_sanitized =
               this.sanitizer.bypassSecurityTrustHtml(this.news.post_content);
-            this.Title.setTitle(this.news.seo_title);
+            this.Title.setTitle(this.news.post_title);
             let imgURL = this.news.guid;
-            let newsTitle = this.news.seo_title;
-            let newsDesc = this.news.meta_description;
+            let newsTitle = this.news.post_title;
+            let newsDesc = this.news.post_content_sanitized;
             let postURL = this.news.permalink;
             let keywords = this.news.seo_keywords;
             let shareUrl = `${environment.PLATFORM_BASEURL}/${this.id}`;
-
             let tags = [
               { name: 'twitter:card', content: 'summary' },
               { name: 'twitter:image', content: imgURL },
@@ -101,6 +100,7 @@ export class ArticleComponent implements OnInit {
               { name: 'og:title', content: newsTitle },
               { name: 'og:description', content: newsDesc },
               { name: 'description', content: newsDesc },
+              { name: 'seo:title', content: this.news.seo_title },
               { name: 'og:url', content: postURL },
               { name: 'image', content: imgURL },
               { name: 'og:image', content: imgURL },
@@ -148,8 +148,8 @@ export class ArticleComponent implements OnInit {
 
           this.Title.setTitle(this.news.post_title);
           let imgURL = this.news.guid;
-          let newsTitle = this.news.seo_title;
-          let newsDesc = this.news.meta_description;
+          let newsTitle = this.news.post_title;
+          let newsDesc = this.news.post_content_sanitized;
           let postURL = this.news.permalink;
           let keywords = this.news.seo_keywords;
           let shareUrl = `${environment.PLATFORM_BASEURL}/${this.id}`;
@@ -163,6 +163,7 @@ export class ArticleComponent implements OnInit {
             { name: 'og:title', content: newsTitle },
             { name: 'og:description', content: newsDesc },
             { name: 'description', content: newsDesc },
+            { name: 'seo:title', content: this.news.seo_title },
             { name: 'og:url', content: postURL },
             { name: 'image', content: imgURL },
             { name: 'og:image', content: imgURL },
@@ -467,8 +468,8 @@ export class ArticleComponent implements OnInit {
   updateSEO_Tags() {
     this.Title.setTitle(this.news.post_title);
     let imgURL = this.news.guid;
-    let newsTitle = this.news.seo_title;
-    let newsDesc = this.news.meta_description;
+    let newsTitle = this.news.post_title;
+    let newsDesc = this.news.post_content_sanitized;
     let postURL = this.news.permalink;
     let keywords = this.news.seo_keywords;
     let shareUrl = `${environment.PLATFORM_BASEURL}/${this.id}`;
@@ -481,6 +482,7 @@ export class ArticleComponent implements OnInit {
       { name: 'og:title', content: newsTitle },
       { name: 'og:description', content: newsDesc },
       { name: 'description', content: newsDesc },
+      { name: 'seo:title', content: this.news.seo_title },
       { name: 'og:url', content: postURL },
       { name: 'image', content: imgURL },
       { name: 'og:image', content: imgURL },

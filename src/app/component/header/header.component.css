@@ -8,6 +8,9 @@
 .logo-container {
   padding: 10px 13px;
 }
+.ads-sec {
+  padding: 10px 13px;
+}
 .logo-container img {
   cursor: pointer;
 }
@@ -18,10 +21,8 @@
   width: 100% !important;
 }
 
-.world-cup dskvw{
-
-height: 100%;
-
+.world-cup dskvw {
+  height: 100%;
 }
 
 .submenu {
@@ -301,11 +302,11 @@ button {
   width: 40px;
 }
 
-.world-cup img{
+.world-cup img {
   height: 100px;
   cursor: pointer;
 }
-.logo-container{
+.logo-container {
   display: flex;
   width: 37%;
   justify-content: space-between;
@@ -376,11 +377,10 @@ button {
     overflow-y: scroll;
     overflow-x: hidden;
   }
-  .logo-container{
+  .logo-container {
     display: flex;
     align-items: center;
     width: auto;
-  
   }
   .world-cup img {
     height: 90px;

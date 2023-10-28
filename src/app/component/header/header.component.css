@@ -350,6 +350,28 @@ button {
     font-size: 12px !important;
   }
 }
+@media only screen and (max-width: 1180px) {
+  .slide {
+    height: auto;
+    flex-direction: row;
+    display: flex;
+    grid-gap: 0;
+    gap: 0;
+    background: #fff;
+    align-items: center;
+  }
+
+  .ads-sec {
+    display: flex;
+    align-items: center;
+  }
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
 @media only screen and (max-width: 600px) {
   body {
     overflow-x: hidden;
@@ -389,7 +411,7 @@ button {
   }
   .slide {
     flex: 1;
-    height: 40px !important;
+    height: auto !important;
     flex-direction: row;
     display: flex;
     gap: 0;
@@ -481,5 +503,15 @@ button {
   }
   .navbar-light .navbar-nav .nav-link {
     width: 85% !important;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .slide {
+    flex: 1;
+    height: 30px !important;
+    flex-direction: row;
+    display: flex;
+    gap: 0;
+    background: #ccc;
   }
 }

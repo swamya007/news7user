@@ -1287,7 +1287,7 @@ footer ul li a {
 .news-box {
   width: 100%;
   margin: 0;
-  padding: 5px 7px;
+  padding: 0px 7px;
 }
 .news-box1 {
   width: 100%;
@@ -1451,7 +1451,7 @@ footer ul li a {
 .top-stories .news-box {
   background: #ffffff !important;
   height: auto;
-  /* margin: 20px 0; */
+  margin: 20px 0;
   margin-bottom: 15px !important;
 }
 .top-stories .news-box:last-child {

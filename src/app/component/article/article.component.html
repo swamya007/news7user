@@ -112,7 +112,7 @@
         ></div> -->
 
         <div
-          class="article-text-section  prevent-select"
+          class="article-text-section prevent-select"
           *ngIf="news.post_content"
           [innerHTML]="news.post_content_sanitized"
         ></div>
@@ -120,12 +120,12 @@
           <!-- <ul class="category-list"> -->
           <!-- <div>Tags </div>  -->
           <li
-          class="category-name"
-          *ngFor="let post of postarrtag"
-          (click)="opentags(post.slug)"
-        >
-          {{ post.tag_name }}
-        </li>
+            class="category-name"
+            *ngFor="let post of postarrtag"
+            (click)="opentags(post.slug)"
+          >
+            {{ post.tag_name }}
+          </li>
           <div class="clear"></div>
           <!-- </ul> -->
         </div>

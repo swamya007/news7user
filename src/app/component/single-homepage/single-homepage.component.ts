@@ -138,6 +138,7 @@ export class SingleHomepageComponent implements OnInit {
       }
     );
   }
+
   getLatestNews() {
     let myTransferStateKey = makeStateKey<any>('myDatas');
     if (this.transferState.hasKey(myTransferStateKey)) {
@@ -210,7 +211,7 @@ export class SingleHomepageComponent implements OnInit {
   }
 
   getShortName(user_name: any) {
-    return user_name.slice(0, 50).trim() + (user_name.length > 49 ? '...' : '');
+    return user_name.slice(0, 25).trim() + (user_name.length > 24 ? '...' : '');
   }
 
   getShortNamebhu(user_name: any) {

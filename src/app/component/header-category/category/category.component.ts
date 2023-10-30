@@ -93,9 +93,8 @@ export class CategoryComponent implements OnInit {
       //   this.category_three = this.post_array_upper[4].category_name.split(",");
       //   console.log('Category Three====', this.category_three)
       // }
-      this.getWithoutHeaderCategory()
-      this.getAlldist()
-
+      this.getWithoutHeaderCategory();
+      this.getAlldist();
     });
   }
 
@@ -145,7 +144,7 @@ export class CategoryComponent implements OnInit {
     // }
 
     this.getAllairticlenews();
-    this.getAlldist()
+    this.getAlldist();
   }
   moveSlideleft(direction: any) {
     if (this.ads_leftmiddle) {
@@ -162,10 +161,8 @@ export class CategoryComponent implements OnInit {
       }
     }
   }
-  opencat(id:any){
-
+  opencat(id: any) {
     this.router.navigate(['category/' + id]);
-
   }
   getAllairticlenews() {
     this.postserviceService.getallairticle().subscribe(
@@ -188,7 +185,6 @@ export class CategoryComponent implements OnInit {
   }
   getcategoryname() {}
 
-
   getAlldist() {
     this.postserviceService.getalldist().subscribe(
       (res: any) => {
@@ -196,7 +192,6 @@ export class CategoryComponent implements OnInit {
           var data = res.body;
           this.odishdistaarr = data?.map((dt: any) => JSON.parse(dt));
           // console.log(this.odishdistaarr,'dist');
-
         } else {
           this.odishdistaarr = [];
         }
@@ -215,7 +210,7 @@ export class CategoryComponent implements OnInit {
           if (res.code == 'success') {
             var data = res.body;
             this.category_arr = data.map((dt: any) => JSON.parse(dt));
-            console.log(this.category_arr,'lo')
+            console.log(this.category_arr, 'lo');
           } else {
             this.category_arr = [];
           }
@@ -238,7 +233,7 @@ export class CategoryComponent implements OnInit {
   }
 
   getShortName(user_name: any) {
-    return user_name.slice(0, 46).trim() + (user_name.length > 45 ? '...' : '');
+    return user_name.slice(0, 25).trim() + (user_name.length > 24 ? '...' : '');
   }
 
   getShortAuthorName(user_name: any) {

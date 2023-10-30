@@ -1,7 +1,4 @@
 <div class="article-container top-stories">
- 
- 
-
   <div>
     <h1 class="category-heading">
       {{ post_array[0].head_category_name }}
@@ -10,8 +7,6 @@
   <div class="row">
     <div class="col-md-8 col-sm-12 col-12">
       <div class="news-section cointainer">
-
-
         <!-- <div class="category-list-container"  *ngIf="category_arr[0].categoryid==='177'  && category_arr[10].parent_category==='188'">
          
           <div
@@ -24,7 +19,6 @@
           <div class="clear"></div>
         </div> -->
 
-        
         <!-- <article
           class="row news-box"
           (click)="opennewsSec(post.slug, post.twitter_exists)"
@@ -57,8 +51,7 @@
               | paginate
                 : { itemsPerPage: 10, currentPage: p, totalItems: post_cnt }
           "
-          (click)="opennewsSec(post.slug, post.twitter_exists)"          
-
+          (click)="opennewsSec(post.slug, post.twitter_exists)"
         >
           <article class="row news-box">
             <div class="col-md-6 col-sm-12 col-12 news-img-container">
@@ -157,9 +150,7 @@
             </div>
             <a
               *ngFor="let post of polticesnews"
-              (click)="opennewsSec(post.slug, post.twitter_exists)"          
-
-              class="row ng-star-inserted"
+              (click)="opennewsSec(post.slug, post.twitter_exists)"
             >
               <article class="row news-box">
                 <div class="col-md-4 col-sm-4 col-4 news-img-container">
@@ -225,9 +216,7 @@
           </div>
           <a
             *ngFor="let post of entermentaarr"
-            (click)="opennewsSec(post.slug, post.twitter_exists)"          
-
-            class="row ng-star-inserted"
+            (click)="opennewsSec(post.slug, post.twitter_exists)"
           >
             <article class="row news-box">
               <div class="col-md-4 col-sm-4 col-4 news-img-container">
@@ -328,9 +317,7 @@
           </div>
           <a
             *ngFor="let post of sportsnews"
-            (click)="opennewsSec(post.slug, post.twitter_exists)"          
-
-            class="row ng-star-inserted"
+            (click)="opennewsSec(post.slug, post.twitter_exists)"
           >
             <article class="row news-box">
               <div class="col-md-4 col-sm-4 col-4 news-img-container">

@@ -174,6 +174,7 @@ export class CategoryComponent implements OnInit {
           this.sportsnews = this.data[0].sports || [];
           this.polticesnews = this.data[0].politics || [];
           this.entermentaarr = this.data[0].entertainment || [];
+          console.log(this.data, 'datacate');
         } else {
           this.postarr = [];
         }
@@ -224,6 +225,7 @@ export class CategoryComponent implements OnInit {
   openLink(url: any) {
     window.open(url);
   }
+
   opennewsSec(id: any, flag: any) {
     if (flag === 'Y') {
       window.location.href = '/' + id;

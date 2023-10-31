@@ -256,6 +256,7 @@ export class ArticleComponent implements OnInit {
               (a: any) => a.slug !== this.id
             );
             this.nextthree = this.author_post?.slice(0, 7);
+            console.log(this.nextthree, 'reletednews');
           } else {
             this.author_post = [];
           }

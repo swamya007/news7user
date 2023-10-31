@@ -51,7 +51,8 @@
               | paginate
                 : { itemsPerPage: 10, currentPage: p, totalItems: post_cnt }
           "
-          (click)="opennewsSec(post.slug, post.twitter_exists)"
+          [routerLink]="[post.slug]"
+          target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
         >
           <article class="row news-box">
             <div class="col-md-6 col-sm-12 col-12 news-img-container">

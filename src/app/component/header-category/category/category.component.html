@@ -51,7 +51,7 @@
               | paginate
                 : { itemsPerPage: 10, currentPage: p, totalItems: post_cnt }
           "
-          [routerLink]="[post.slug]"
+          [routerLink]="['/'+post.slug]"
           target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
         >
           <article class="row news-box">

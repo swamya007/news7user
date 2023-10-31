@@ -282,7 +282,7 @@ export function app(): express.Express {
   );
 
   // All regular routes use the Universal engine
-  server.get('/', (req, res, next) => {
+  server.get('/', redisMiddleware, (req, res, next) => {
     // res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
     next();
   });

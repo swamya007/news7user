@@ -122,10 +122,11 @@
             <div class="heading-container">
               <h4 class="news-sub">ମନୋରଞ୍ଜନ</h4>
             </div>
-            <div
+            <a
               class="d-flex news-box1 ng-star-inserted"
               *ngFor="let post of entermentaarr"
-              (click)="opennewsSec(post.slug, post.twitter_exists)"
+              href="{{ post.slug }}"
+              (click)="openPost($event, post)"
             >
               <div class="col-md-4 col-sm-4 col-4 news-img-container">
                 <img
@@ -149,7 +150,7 @@
                   }}</time>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
         </section>
       </div>
@@ -197,10 +198,11 @@
             <div class="heading-container">
               <h4 class="news-sub">ଖେଳ</h4>
             </div>
-            <div
+            <a
               class="d-flex news-box1 ng-star-inserted"
               *ngFor="let post of sportsnews"
-              (click)="opennewsSec(post.slug, post.twitter_exists)"
+              href="{{ post.slug }}"
+              (click)="openPost($event, post)"
             >
               <div class="col-md-4 col-sm-4 col-4 news-img-container">
                 <img
@@ -224,7 +226,7 @@
                   }}</time>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
         </section>
       </div>
@@ -234,10 +236,11 @@
             <div class="heading-container">
               <h4 class="news-sub">ଅପରାଧ</h4>
             </div>
-            <div
-              class="d-flex news-box1 ng-star-inserted"
+            <a
               *ngFor="let post of crimesnews"
-              (click)="opennewsSec(post.slug, post.twitter_exists)"
+              href="{{ post.slug }}"
+              (click)="openPost($event, post)"
+              class="d-flex news-box1 ng-star-inserted"
             >
               <div class="col-md-4 col-sm-4 col-4 news-img-container">
                 <img
@@ -261,7 +264,7 @@
                   }}</time>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
         </section>
       </div>

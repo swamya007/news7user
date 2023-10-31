@@ -254,4 +254,13 @@ export class CategoryComponent implements OnInit {
   pageChange(page: any) {
     this.page_count.emit(page);
   }
+
+  openPost(event: any, post: any) {
+    event.preventDefault();
+    if (post.twitter_exists === 'Y') {
+      window.open(post.slug);
+    } else {
+      this.router.navigate([post.slug]);
+    }
+  }
 }

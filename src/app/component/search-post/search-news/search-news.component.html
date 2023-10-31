@@ -1,11 +1,12 @@
 <div class="news-section">
   <div class="row main-news-section">
-    <div
+    <a
       class="col-md-12"
       *ngFor="
         let post of postarr | paginate : { itemsPerPage: 6, currentPage: p }
       "
-      (click)="opennewsSec(post.slug, post.twitter_exists)"
+      href="{{ post.slug }}"
+      (click)="openPost($event, post)"
     >
       <div class="news-card main-news-border row">
         <div class="col-md-6 col-sm-12 col-12 news-img-container">
@@ -22,7 +23,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </a>
   </div>
 </div>
 <div class="pagination">

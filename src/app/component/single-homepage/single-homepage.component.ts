@@ -319,4 +319,13 @@ export class SingleHomepageComponent implements OnInit {
   //       setTimeout(() => {}, 3000);
   //     });
   // }
+
+  openPost(event: any, post: any) {
+    event.preventDefault();
+    if (post.twitter_exists === 'Y') {
+      window.open(post.slug);
+    } else {
+      this.router.navigate([post.slug]);
+    }
+  }
 }

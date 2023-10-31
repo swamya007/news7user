@@ -51,8 +51,8 @@
               | paginate
                 : { itemsPerPage: 10, currentPage: p, totalItems: post_cnt }
           "
-          [routerLink]="['/' + post.slug]"
-          target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
+          href="{{ post.slug }}"
+          (click)="openPost($event, post)"
         >
           <article class="row news-box">
             <div class="col-md-6 col-sm-12 col-12 news-img-container">
@@ -151,8 +151,8 @@
             </div>
             <a
               *ngFor="let post of polticesnews"
-              [routerLink]="['/' + post.slug]"
-              target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
+              href="{{ post.slug }}"
+              (click)="openPost($event, post)"
             >
               <article class="row news-box">
                 <div class="col-md-4 col-sm-4 col-4 news-img-container">
@@ -218,8 +218,8 @@
           </div>
           <a
             *ngFor="let post of entermentaarr"
-            [routerLink]="['/' + post.slug]"
-            target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
+            href="{{ post.slug }}"
+            (click)="openPost($event, post)"
           >
             <article class="row news-box">
               <div class="col-md-4 col-sm-4 col-4 news-img-container">
@@ -320,8 +320,8 @@
           </div>
           <a
             *ngFor="let post of sportsnews"
-            [routerLink]="['/' + post.slug]"
-            target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
+            href="{{ post.slug }}"
+            (click)="openPost($event, post)"
           >
             <article class="row news-box">
               <div class="col-md-4 col-sm-4 col-4 news-img-container">

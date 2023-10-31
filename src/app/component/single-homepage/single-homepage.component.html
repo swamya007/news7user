@@ -12,9 +12,9 @@
           </div>
           <a
             *ngFor="let post of polticesnews"
-            [routerLink]="[post.slug]"
-            target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
+            href="{{ post.slug }}"
             class="d-flex news-box1 ng-star-inserted anchor-Cat"
+            (click)="openPost($event, post)"
           >
             <article class="row news-box">
               <div class="col-md-4 col-sm-4 col-4 news-img-container">
@@ -270,8 +270,8 @@
               </div>
               <a
                 *ngFor="let post of bahu_charchita_khabar"
-                [routerLink]="[post.slug]"
-                target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
+                href="{{ post.slug }}"
+                (click)="openPost($event, post)"
                 class="d-flex news-box1 ng-star-inserted anchor-Cat"
               >
                 <article class="d-flex news-box1 ng-star-inserted">
@@ -327,8 +327,8 @@
             </div>
             <a
               *ngFor="let post of crimesnews"
-              [routerLink]="[post.slug]"
-              target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
+              href="{{ post.slug }}"
+              (click)="openPost($event, post)"
               class="d-flex news-box1 ng-star-inserted anchor-Cat"
             >
               <article class="d-flex news-box1 ng-star-inserted">
@@ -438,8 +438,8 @@
             </div>
             <a
               *ngFor="let post of nation"
-              [routerLink]="[post.slug]"
-              target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
+              href="{{ post.slug }}"
+              (click)="openPost($event, post)"
               class="d-flex news-box1 ng-star-inserted anchor-Cat"
             >
               <article class="d-flex news-box1 ng-star-inserted">
@@ -543,8 +543,8 @@
             </div>
             <a
               *ngFor="let post of polticesnews"
-              [routerLink]="[post.slug]"
-              target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
+              href="{{ post.slug }}"
+              (click)="openPost($event, post)"
               class="d-flex news-box1 ng-star-inserted anchor-Cat"
             >
               <article class="d-flex news-box1 ng-star-inserted">
@@ -660,8 +660,8 @@
                 </div>
                 <a
                   *ngFor="let post of sportsnews"
-                  [routerLink]="[post.slug]"
-                  target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
+                  href="{{ post.slug }}"
+                  (click)="openPost($event, post)"
                   class="d-flex news-box1 ng-star-inserted anchor-Cat"
                 >
                   <article class="d-flex news-box1 ng-star-inserted">
@@ -775,8 +775,8 @@
                 </div>
                 <a
                   *ngFor="let post of business"
-                  [routerLink]="[post.slug]"
-                  target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
+                  href="{{ post.slug }}"
+                  (click)="openPost($event, post)"
                   class="d-flex news-box1 ng-star-inserted anchor-Cat"
                 >
                   <article class="d-flex news-box1 ng-star-inserted">
@@ -890,8 +890,8 @@
                 </div>
                 <a
                   *ngFor="let post of entermentaarr"
-                  [routerLink]="[post.slug]"
-                  target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
+                  href="{{ post.slug }}"
+                  (click)="openPost($event, post)"
                   class="d-flex news-box1 ng-star-inserted anchor-Cat"
                 >
                   <article class="d-flex news-box1 ng-star-inserted">
@@ -1007,8 +1007,8 @@
                 <a
                   class="d-flex news-box1 ng-star-inserted anchor-Cat"
                   *ngFor="let post of lifestyle"
-                  [routerLink]="[post.slug]"
-                  target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
+                  href="{{ post.slug }}"
+                  (click)="openPost($event, post)"
                 >
                   <article class="d-flex news-box1 ng-star-inserted">
                     <div class="col-md-4 col-sm-4 col-4 news-img-container">
@@ -1143,8 +1143,8 @@
             <a
               class="d-flex news-box1 ng-star-inserted anchor-Cat"
               *ngFor="let post of horoscope"
-              [routerLink]="[post.slug]"
-              target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
+              href="{{ post.slug }}"
+              (click)="openPost($event, post)"
             >
               <article class="d-flex news-box1 ng-star-inserted">
                 <div class="col-md-4 col-sm-4 col-4 news-img-container">
@@ -1222,8 +1222,8 @@
             <a
               class="d-flex news-box1 ng-star-inserted anchor-Cat"
               *ngFor="let post of sajabaja"
-              [routerLink]="[post.slug]"
-              target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
+              href="{{ post.slug }}"
+              (click)="openPost($event, post)"
             >
               <article class="d-flex news-box1 ng-star-inserted">
                 <div class="col-md-4 col-sm-4 col-4 news-img-container">
@@ -1300,8 +1300,8 @@
             <a
               class="d-flex news-box1 ng-star-inserted anchor-Cat"
               *ngFor="let post of special"
-              [routerLink]="[post.slug]"
-              target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
+              href="{{ post.slug }}"
+              (click)="openPost($event, post)"
             >
               <article class="d-flex news-box1 ng-star-inserted">
                 <div class="col-md-4 col-sm-4 col-4 news-img-container">
@@ -1390,8 +1390,8 @@
               let i = index
             "
             class="col-md-3 col-sm-12 col-12 news-img-container ng-star-inserted anchor-Cat"
-            [routerLink]="[post.slug]"
-            target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
+            (click)="openPost($event, post)"
+            href="{{ post.slug }}"
           >
             <article>
               <img

@@ -147,8 +147,8 @@
                   <a
                     class="col-md-4 col-sm-12 col-12 news-img-container ng-star-inserted"
                     *ngFor="let post of nextthree"
-                    [routerLink]="['/' + post.slug]"
-                    target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
+                    href="{{ post.slug }}"
+                    (click)="openPost($event, post)"
                   >
                     <img class="news-images" [src]="post.guid" />
                     <div class="news-text-container">
@@ -227,8 +227,8 @@
             </div>
             <a
               *ngFor="let post of polticesnews"
-              [routerLink]="['/' + post.slug]"
-              target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
+              href="{{ post.slug }}"
+              (click)="openPost($event, post)"
               class="row ng-star-inserted anchor-Cat"
             >
               <article class="row news-box">
@@ -335,8 +335,8 @@
             </div>
             <a
               *ngFor="let post of entermentaarr"
-              [routerLink]="['/' + post.slug]"
-              target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
+              href="{{ post.slug }}"
+              (click)="openPost($event, post)"
               class="row ng-star-inserted anchor-Cat"
             >
               <article class="row news-box">

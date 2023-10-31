@@ -71,10 +71,10 @@ export class SinglesearchComponent implements OnInit {
     this.getAllnews();
   }
 
-  isFething=true;
+  isFething = true;
   getSearchedPost() {
     // this.searchval = 'am'
-    this.isFething=true;
+    this.isFething = true;
     this.postService
       .getSearchedPostodia(this.searchval, environment.CUSTOMER_ID)
       .subscribe(
@@ -82,15 +82,15 @@ export class SinglesearchComponent implements OnInit {
           if (res.code == 'success') {
             var data = res.body;
             this.postarr = data.map((dt: any) => JSON.parse(dt));
-            this.isFething=false;
+            this.isFething = false;
           } else {
             this.postarr = [];
-            this.isFething=false;
+            this.isFething = false;
           }
         },
         (err) => {
           this.postarr = [];
-          this.isFething=false;
+          this.isFething = false;
         }
       );
   }
@@ -183,6 +183,15 @@ export class SinglesearchComponent implements OnInit {
       window.location.href = '/' + id;
     } else {
       this.router.navigate(['/' + id]);
+    }
+  }
+
+  openPost(event: any, post: any) {
+    event.preventDefault();
+    if (post.twitter_exists === 'Y') {
+      window.open(post.slug);
+    } else {
+      this.router.navigate([post.slug]);
     }
   }
 }

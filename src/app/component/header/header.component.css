@@ -144,7 +144,13 @@ img:nth-child(5) {
   display: flex;
   transition: transform 0.5s ease-in-out;
 }
+.carousel {
+  transition: transform 1.3s ease-in-out;
+}
 
+.carousel-item {
+  transition: opacity 1.3s ease-in-out;
+}
 .slide-long {
   flex: 1;
   height: 720px;

@@ -370,6 +370,15 @@ export class ArticleComponent implements OnInit {
       this.router.navigate(['/' + id]);
     }
   }
+
+  openPost(event: any, post: any) {
+    event.preventDefault();
+    if (post.twitter_exists === 'Y') {
+      window.open(post.slug);
+    } else {
+      this.router.navigate([post.slug]);
+    }
+  }
   getallpost() {
     this.post.getPostBySlugodia(this.id, environment.CUSTOMER_ID).subscribe(
       (res: any) => {

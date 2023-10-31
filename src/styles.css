@@ -954,7 +954,7 @@ img:nth-child(5) {
 .pagination .ngx-pagination li:not(.disabled):hover,
 a:hover {
   color: #fff !important;
-  background-color: #000 !important;
+  /* background-color: #000 !important; */
 }
 
 .pagination .ngx-pagination li {

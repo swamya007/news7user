@@ -147,7 +147,7 @@
                   <a
                     class="col-md-4 col-sm-12 col-12 news-img-container ng-star-inserted"
                     *ngFor="let post of nextthree"
-                    [routerLink]="[post.slug]"
+                    [routerLink]="['/' + post.slug]"
                     target="{{ post.twitter_exists === 'Y' ? '_blank' : '' }}"
                   >
                     <img class="news-images" [src]="post.guid" />

@@ -17,22 +17,24 @@
     <h4 class="news-sub">ଓଡ଼ିଶା</h4>
     <!-- <div class="grey-line"></div> -->
   </div>
-  <article
-    class="row news-box"
-    (click)="opennewsSec(post.slug,post.twitter_exists)"
+  <a
     *ngFor="let post of postarr"
+    href="{{ post.slug }}"
+    (click)="openPost($event, post)"
   >
-    <!-- <a (click)="opennewsSec(post.id)"> -->
-    <div class="col-md-4 col-sm-4 col-4 news-img-container">
-      <img [src]="post.guid" />
-    </div>
-    <div class="col-md-8 col-sm-8 col-8 news-text-container">
-      <p>{{ post.post_title ? getShortName(post.post_title) : "" }}</p>
-      <div class="news-date">
-        <time>{{ post.post_date | date : "short" }}</time>
+    <article class="row news-box">
+      <!-- <a (click)="opennewsSec(post.id)"> -->
+      <div class="col-md-4 col-sm-4 col-4 news-img-container">
+        <img [src]="post.guid" />
       </div>
-    </div>
-  </article>
+      <div class="col-md-8 col-sm-8 col-8 news-text-container">
+        <p>{{ post.post_title ? getShortName(post.post_title) : "" }}</p>
+        <div class="news-date">
+          <time>{{ post.post_date | date : "short" }}</time>
+        </div>
+      </div>
+    </article>
+  </a>
 </div>
 
 <!-- <div class="news-card divider">

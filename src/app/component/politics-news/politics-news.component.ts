@@ -50,11 +50,20 @@ export class PoliticsNewsComponent implements OnInit {
       );
   }
 
-    opennewsSec(id: any, flag: any) {
+  opennewsSec(id: any, flag: any) {
     if (flag === 'Y') {
       window.location.href = '/' + id;
     } else {
       this.router.navigate(['/' + id]);
+    }
+  }
+
+  openPost(event: any, post: any) {
+    event.preventDefault();
+    if (post.twitter_exists === 'Y') {
+      window.open(post.slug);
+    } else {
+      this.router.navigate([post.slug]);
     }
   }
 }

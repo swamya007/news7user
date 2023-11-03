@@ -372,6 +372,7 @@ button {
   .ads-sec {
     display: flex;
     align-items: center;
+    width: 60%;
   }
   .header-container {
     display: flex;
@@ -467,6 +468,11 @@ button {
   .navbar-light .navbar-nav .nav-link {
     width: 85% !important;
   }
+  .ads-sec {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
 }
 @media only screen and (max-width: 575px) {
   .navbar-bg {
@@ -512,6 +518,11 @@ button {
   .navbar-light .navbar-nav .nav-link {
     width: 85% !important;
   }
+  .ads-sec {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
 }
 @media only screen and (max-width: 375px) {
   .slide {
@@ -521,5 +532,10 @@ button {
     display: flex;
     gap: 0;
     background: #ccc;
+  }
+  .ads-sec {
+    display: flex;
+    align-items: center;
+    width: 100%;
   }
 }
